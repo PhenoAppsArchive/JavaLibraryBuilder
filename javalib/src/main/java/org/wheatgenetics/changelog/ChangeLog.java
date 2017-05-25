@@ -18,16 +18,16 @@ class ChangeLog extends java.lang.Object
     {
         super();
 
-        assert inputStreamReader != null;
+        assert null != inputStreamReader;
         this.inputStreamReader = inputStreamReader;
 
-        assert lineHandler != null;
+        assert null != lineHandler;
         this.lineHandler = lineHandler;
     }
 
     void iterate() throws java.io.IOException
     {
-        if (this.lines == null)
+        if (null == this.lines)
         {
             final java.util.ArrayList<java.lang.String> arrayList =
                 new java.util.ArrayList<java.lang.String>();
@@ -44,15 +44,15 @@ class ChangeLog extends java.lang.Object
         }
 
         java.lang.String version = null;
-        assert this.lineHandler != null;
+        assert null != this.lineHandler;
         for (final java.lang.String line: this.lines)
-            if (line.length() == 0)
+            if (0 == line.length())
             {
                 version = null;
                 this.lineHandler.handleBlankLine();
             }
             else
-                if (version == null)
+                if (null == version)
                 {
                     {
                         final java.lang.String splitLine[] = line.split("/");

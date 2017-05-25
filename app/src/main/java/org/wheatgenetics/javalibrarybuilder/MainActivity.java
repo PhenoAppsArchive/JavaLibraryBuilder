@@ -7,6 +7,7 @@ package org.wheatgenetics.javalibrarybuilder;
  * android.widget.TextView
  *
  * org.wheatgenetics.javalib.Utils
+ * org.wheatgenetics.javalibrarybuilder.BuildConfig
  * org.wheatgenetics.javalibrarybuilder.R
  */
 
@@ -21,7 +22,8 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
         final int                     number   = 2;
         final android.widget.TextView textView = (android.widget.TextView)
             this.findViewById(org.wheatgenetics.javalibrarybuilder.R.id.textView);
-        assert textView != null;
+        if (org.wheatgenetics.javalibrarybuilder.BuildConfig.DEBUG && null == textView)
+            throw new java.lang.AssertionError();
         textView.setText(java.lang.String.format("double(%d) is %d",
             number, org.wheatgenetics.javalib.Utils.doubleOf(number)));
     }
