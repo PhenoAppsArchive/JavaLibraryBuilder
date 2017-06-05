@@ -1,15 +1,27 @@
 package org.wheatgenetics.javalibrarybuilder;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+/**
+ * Uses:
+ * android.os.Bundle
+ * android.support.v7.app.AppCompatActivity
+ * android.widget.TextView
+ *
+ * org.wheatgenetics.javalibrarybuilder.R
+ */
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends android.support.v7.app.AppCompatActivity
 {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
+    @java.lang.Override
+    protected void onCreate(final android.os.Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        this.setContentView(org.wheatgenetics.javalibrarybuilder.R.layout.activity_main);
+
+        final int                     number   = 2;
+        final android.widget.TextView textView = (android.widget.TextView)
+            this.findViewById(org.wheatgenetics.javalibrarybuilder.R.id.textView);
+        assert null != textView;
+        textView.setText(java.lang.String.format("doubleOf(%d) is %d",
+            number, org.wheatgenetics.javalib.Utils.doubleOf(number)));
     }
 }
