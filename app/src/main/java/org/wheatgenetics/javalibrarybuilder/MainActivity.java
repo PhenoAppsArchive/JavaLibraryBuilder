@@ -6,6 +6,7 @@ package org.wheatgenetics.javalibrarybuilder;
  * android.support.v7.app.AppCompatActivity
  * android.widget.TextView
  *
+ * org.wheatgenetics.javalib.Utils
  * org.wheatgenetics.javalibrarybuilder.R
  */
 
