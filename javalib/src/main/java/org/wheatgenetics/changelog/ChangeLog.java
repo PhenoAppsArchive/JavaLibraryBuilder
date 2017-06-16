@@ -36,7 +36,7 @@ class ChangeLog extends java.lang.Object
                     new java.io.BufferedReader(this.inputStreamReader, 8192);
                 java.lang.String line;
 
-                while ((line = bufferedReader.readLine()) != null)     // throws java.io.IOException
+                while (null != (line = bufferedReader.readLine()))     // throws java.io.IOException
                     arrayList.add(line);
             }
             this.lines = new java.lang.String[arrayList.size()];
