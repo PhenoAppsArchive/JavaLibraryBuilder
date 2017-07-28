@@ -2,6 +2,7 @@ package org.wheatgenetics.javalib;
 
 public class Utils extends java.lang.Object
 {
+    // region IfNull Methods
     public static java.lang.String replaceIfNull(final java.lang.String s,
     final java.lang.String valueIfNull) { return null == s ? valueIfNull : s; }
 
@@ -10,6 +11,7 @@ public class Utils extends java.lang.Object
 
     public static java.lang.String adjust(final java.lang.String unadjusted)
     { return org.wheatgenetics.javalib.Utils.makeEmptyIfNull(unadjusted).trim(); }
+    // endregion
 
     public static java.lang.String convert(final byte buffer[], int length)
     {
@@ -22,9 +24,9 @@ public class Utils extends java.lang.Object
 
             java.lang.String s = "";
             {
-                final int              last = length - 1;
-                      java.lang.String b                ;
-                for (int i = 0; i <= last; i++)
+                final int              first = 0, last = length - 1;
+                      java.lang.String b                           ;
+                for (int i = first; i <= last; i++)
                 {
                     b = java.lang.Byte.toString(buffer[i]);
                     if (0 == i) s = b; else s += "," + b;
@@ -33,4 +35,12 @@ public class Utils extends java.lang.Object
             return s;
         }
     }
+
+    // region stringArray() Methods
+    public static java.lang.String[] stringArray(final java.lang.String element)
+    { return new java.lang.String[] {element}; }
+
+    public java.lang.String[] stringArray(final int element)
+    { return org.wheatgenetics.javalib.Utils.stringArray(java.lang.String.valueOf(element)); }
+    // endregion
 }
