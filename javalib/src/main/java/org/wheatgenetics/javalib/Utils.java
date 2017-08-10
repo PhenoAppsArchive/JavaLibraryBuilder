@@ -22,25 +22,24 @@ public class Utils extends java.lang.Object
             length = java.lang.Math.max(0     , length       );          // Handle too small length.
             length = java.lang.Math.min(length, buffer.length);          // Handle too big   length.
 
-            java.lang.String s = "";
+            java.lang.String result = "";
             {
-                final int              first = 0, last = length - 1;
-                      java.lang.String b                           ;
+                final int first = 0, last = length - 1;
                 for (int i = first; i <= last; i++)
                 {
-                    b = java.lang.Byte.toString(buffer[i]);
-                    if (0 == i) s = b; else s += "," + b;
+                    final java.lang.String s = java.lang.Byte.toString(buffer[i]);
+                    if (0 == i) result = s; else result += "," + s;
                 }
             }
-            return s;
+            return result;
         }
     }
 
     // region stringArray() Methods
     public static java.lang.String[] stringArray(final java.lang.String element)
-    { return new java.lang.String[] {element}; }
+    { return new java.lang.String[] { element }; }
 
-    public java.lang.String[] stringArray(final int element)
+    public static java.lang.String[] stringArray(final int element)
     { return org.wheatgenetics.javalib.Utils.stringArray(java.lang.String.valueOf(element)); }
     // endregion
 }

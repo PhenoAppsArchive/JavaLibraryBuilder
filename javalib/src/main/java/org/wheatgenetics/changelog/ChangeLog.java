@@ -18,11 +18,8 @@ class ChangeLog extends java.lang.Object
     {
         super();
 
-        assert null != inputStreamReader;
         this.inputStreamReader = inputStreamReader;
-
-        assert null != lineHandler;
-        this.lineHandler = lineHandler;
+        this.lineHandler       = lineHandler      ;
     }
 
     void iterate() throws java.io.IOException

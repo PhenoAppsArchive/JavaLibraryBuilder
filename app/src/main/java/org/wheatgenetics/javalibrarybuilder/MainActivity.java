@@ -7,9 +7,9 @@ package org.wheatgenetics.javalibrarybuilder;
  * android.widget.TextView
  *
  * org.wheatgenetics.javalib.Utils
+ *
  * org.wheatgenetics.javalibrarybuilder.R
  */
-
 public class MainActivity extends android.support.v7.app.AppCompatActivity
 {
     @java.lang.Override
