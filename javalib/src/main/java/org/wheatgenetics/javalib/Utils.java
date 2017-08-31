@@ -2,6 +2,8 @@ package org.wheatgenetics.javalib;
 
 public class Utils extends java.lang.Object
 {
+    private static java.text.SimpleDateFormat SIMPLE_DATE_FORMAT = null;
+
     // region IfNull Methods
     public static java.lang.String replaceIfNull(final java.lang.String s,
     final java.lang.String valueIfNull) { return null == s ? valueIfNull : s; }
@@ -42,4 +44,13 @@ public class Utils extends java.lang.Object
     public static java.lang.String[] stringArray(final int element)
     { return org.wheatgenetics.javalib.Utils.stringArray(java.lang.String.valueOf(element)); }
     // endregion
+
+    public static java.lang.String getDateTime()
+    {
+        if (null == org.wheatgenetics.javalib.Utils.SIMPLE_DATE_FORMAT)
+            org.wheatgenetics.javalib.Utils.SIMPLE_DATE_FORMAT = new java.text.SimpleDateFormat(
+                "yyyy-MM-dd-hh-mm-ss", java.util.Locale.getDefault());
+        return org.wheatgenetics.javalib.Utils.SIMPLE_DATE_FORMAT.format(
+            java.util.Calendar.getInstance().getTime());
+    }
 }
