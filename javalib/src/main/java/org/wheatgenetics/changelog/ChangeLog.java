@@ -4,23 +4,21 @@ class ChangeLog extends java.lang.Object
 {
     interface LineHandler
     {
-        void handleBlankLine();
-        void handleVersionLine(final java.lang.String version);
-        void handleContentLine(final java.lang.String content);
+        public abstract void handleBlankLine();
+        public abstract void handleVersionLine(final java.lang.String version);
+        public abstract void handleContentLine(final java.lang.String content);
     }
 
+    // region Fields
     private final java.io.InputStreamReader                         inputStreamReader;
     private final org.wheatgenetics.changelog.ChangeLog.LineHandler lineHandler      ;
-    private       java.lang.String                                  lines[] = null   ;
+
+    private java.lang.String lines[] = null;
+    // endregion
 
     ChangeLog(final java.io.InputStreamReader inputStreamReader,
     final org.wheatgenetics.changelog.ChangeLog.LineHandler lineHandler)
-    {
-        super();
-
-        this.inputStreamReader = inputStreamReader;
-        this.lineHandler       = lineHandler      ;
-    }
+    { super(); this.inputStreamReader = inputStreamReader; this.lineHandler = lineHandler; }
 
     void iterate() throws java.io.IOException
     {
@@ -32,7 +30,6 @@ class ChangeLog extends java.lang.Object
                 final java.io.BufferedReader bufferedReader =
                     new java.io.BufferedReader(this.inputStreamReader, 8192);
                 java.lang.String line;
-
                 while (null != (line = bufferedReader.readLine()))     // throws java.io.IOException
                     arrayList.add(line);
             }
