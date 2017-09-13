@@ -43,6 +43,9 @@ public class Utils extends java.lang.Object
 
     public static java.lang.String[] stringArray(final int element)
     { return org.wheatgenetics.javalib.Utils.stringArray(java.lang.String.valueOf(element)); }
+
+    public static java.lang.String[] stringArray(final long element)
+    { return org.wheatgenetics.javalib.Utils.stringArray(java.lang.String.valueOf(element)); }
     // endregion
 
     public static java.lang.String getDateTime()
