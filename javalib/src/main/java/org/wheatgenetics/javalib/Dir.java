@@ -21,7 +21,6 @@ public class Dir extends java.lang.Object
         }
     }
 
-    // region Public Methods
     public Dir(final java.io.File parent, final java.lang.String child,
     final java.lang.String blankHiddenFileName)
     {
@@ -33,9 +32,10 @@ public class Dir extends java.lang.Object
         this.exists = this.path.exists();
     }
 
+    // region Public Methods
     public boolean getExists() { return this.exists; }
 
-    public java.io.File createIfMissing()
+    public java.io.File createIfMissing() throws java.io.IOException
     {
         if (!this.exists)
         {
@@ -44,27 +44,26 @@ public class Dir extends java.lang.Object
         }
 
         if (this.exists)
-            try
-            {
-                final java.io.File blankHiddenFile =
-                    new java.io.File(this.path, this.blankHiddenFileName);
-                return blankHiddenFile.createNewFile() ? blankHiddenFile : null;  // throws java.-
-            }                                                                     //  io.IOException
-            catch (final java.io.IOException e) { return null; }
-        else return null;
+        {
+            final java.io.File blankHiddenFile =
+                new java.io.File(this.path, this.blankHiddenFileName);
+            if (blankHiddenFile.createNewFile())
+                return blankHiddenFile;
+            else
+                throw new java.io.IOException("Couldn't create " + blankHiddenFile.getName());
+        }
+        else throw new java.io.IOException(this.path.getPath() + " does not exist");
     }
 
-    public java.io.File createNewFile(final java.lang.String fileName)
+    public java.io.File createNewFile(final java.lang.String fileName) throws java.io.IOException
     {
         if (this.exists)
-            try
-            {
-                final java.io.File file = new java.io.File(this.path, fileName);
-                file.createNewFile();                                  // throws java.io.IOException
-                return file;
-            }
-            catch (final java.io.IOException e) { return null; }
-        else return null;
+        {
+            final java.io.File file = new java.io.File(this.path, fileName);
+            file.createNewFile();                                      // throws java.io.IOException
+            return file;
+        }
+        else throw new java.io.IOException(this.path.getPath() + " does not exist");
     }
 
     public void createNewDir(final java.lang.String dirName)
