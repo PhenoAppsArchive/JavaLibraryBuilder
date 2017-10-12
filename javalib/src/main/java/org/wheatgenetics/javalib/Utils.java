@@ -24,13 +24,13 @@ public class Utils extends java.lang.Object
             length = java.lang.Math.max(0     , length       );          // Handle too small length.
             length = java.lang.Math.min(length, buffer.length);          // Handle too big   length.
 
-            final java.lang.StringBuffer result = new StringBuffer();
+            final java.lang.StringBuilder result = new java.lang.StringBuilder();
             {
                 final int first = 0, last = length - 1;
                 for (int i = first; i <= last; i++)
                 {
-                    final java.lang.String s = java.lang.Byte.toString(buffer[i]);
-                    if (0 == i) result.append(s); else result.append("," + s);
+                    final java.lang.String s = java.lang.Integer.toString(buffer[i] & 0x000000FF);
+                    if (0 == i) result.append(s); else result.append(",").append(s);
                 }
             }
             return result.toString();
