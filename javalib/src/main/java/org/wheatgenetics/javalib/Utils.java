@@ -29,6 +29,8 @@ public class Utils extends java.lang.Object
                 final int first = 0, last = length - 1;
                 for (int i = first; i <= last; i++)
                 {
+                    // Interpret byte as unsigned (not signed).  For more information, visit
+                    // https://stackoverflow.com/questions/4266756/can-we-make-unsigned-byte-in-java
                     final java.lang.String s = java.lang.Integer.toString(buffer[i] & 0x000000FF);
                     if (0 == i) result.append(s); else result.append(",").append(s);
                 }
