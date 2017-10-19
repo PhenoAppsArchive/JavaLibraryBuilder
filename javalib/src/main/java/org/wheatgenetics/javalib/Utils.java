@@ -1,5 +1,6 @@
 package org.wheatgenetics.javalib;
 
+@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
 public class Utils extends java.lang.Object
 {
     private static java.text.SimpleDateFormat SIMPLE_DATE_FORMAT = null;
@@ -15,6 +16,9 @@ public class Utils extends java.lang.Object
     { return org.wheatgenetics.javalib.Utils.makeEmptyIfNull(unadjusted).trim(); }
     // endregion
 
+    /** See <a href="https://stackoverflow.com/questions/4266756/can-we-make-unsigned-byte-in-java">https://stackoverflow.com/questions/4266756/can-we-make-unsigned-byte-in-java</a> */
+    public static int interpretAsUnsigned(final byte signedByte) { return signedByte & 0x000000FF; }
+
     public static java.lang.String convert(final byte buffer[], int length)
     {
         if (null == buffer)
@@ -29,9 +33,8 @@ public class Utils extends java.lang.Object
                 final int first = 0, last = length - 1;
                 for (int i = first; i <= last; i++)
                 {
-                    // Interpret byte as unsigned (not signed).  For more information, visit
-                    // https://stackoverflow.com/questions/4266756/can-we-make-unsigned-byte-in-java
-                    final java.lang.String s = java.lang.Integer.toString(buffer[i] & 0x000000FF);
+                    final java.lang.String s = java.lang.Integer.toString(
+                        org.wheatgenetics.javalib.Utils.interpretAsUnsigned(buffer[i]));
                     if (0 == i) result.append(s); else result.append(",").append(s);
                 }
             }

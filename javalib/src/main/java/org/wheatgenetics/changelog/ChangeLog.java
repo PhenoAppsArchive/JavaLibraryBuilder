@@ -1,5 +1,6 @@
 package org.wheatgenetics.changelog;
 
+@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
 class ChangeLog extends java.lang.Object
 {
     interface LineHandler

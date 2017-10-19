@@ -1,5 +1,6 @@
 package org.wheatgenetics.javalib;
 
+@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
 public class Dir extends java.lang.Object
 {
     // region Fields
@@ -55,6 +56,7 @@ public class Dir extends java.lang.Object
         else throw new java.io.IOException(this.path.getPath() + " does not exist");
     }
 
+    @java.lang.SuppressWarnings("ResultOfMethodCallIgnored")
     public java.io.File createNewFile(final java.lang.String fileName) throws java.io.IOException
     {
         if (this.exists)
