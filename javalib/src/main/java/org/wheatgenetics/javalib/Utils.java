@@ -16,7 +16,8 @@ public class Utils extends java.lang.Object
     { return org.wheatgenetics.javalib.Utils.makeEmptyIfNull(unadjusted).trim(); }
     // endregion
 
-    /** See <a href="https://stackoverflow.com/questions/4266756/can-we-make-unsigned-byte-in-java">https://stackoverflow.com/questions/4266756/can-we-make-unsigned-byte-in-java</a> */
+    // region convert() Methods
+    /** See <a href="https://stackoverflow.com/questions/4266756/can-we-make-unsigned-byte-in-java">https://stackoverflow.com/questions/4266756/can-we-make-unsigned-byte-in-java</a>. */
     public static int interpretAsUnsigned(final byte signedByte) { return signedByte & 0x000000FF; }
 
     public static java.lang.String convert(final byte buffer[], int length)
@@ -41,6 +42,13 @@ public class Utils extends java.lang.Object
             return result.toString();
         }
     }
+
+    public static int convert(final java.lang.String s)
+    {
+        try                                             { return java.lang.Integer.parseInt(s); }
+        catch (final java.lang.NumberFormatException e) { return                            -1; }
+    }
+    // endregion
 
     // region stringArray() Methods
     public static java.lang.String[] stringArray(final java.lang.String element)
