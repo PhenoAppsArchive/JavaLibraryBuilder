@@ -22,6 +22,7 @@ public class Dir extends java.lang.Object
         }
     }
 
+    // region Constructors
     public Dir(final java.io.File parent, final java.lang.String child,
     final java.lang.String blankHiddenFileName)
     {
@@ -32,6 +33,10 @@ public class Dir extends java.lang.Object
 
         this.exists = this.path.exists();
     }
+
+    public Dir(final org.wheatgenetics.javalib.Dir parent, final java.lang.String child)
+    { this(new java.io.File(parent.path.getPath()), child, parent.blankHiddenFileName); }
+    // endregion
 
     // region Public Methods
     public boolean getExists() { return this.exists; }
