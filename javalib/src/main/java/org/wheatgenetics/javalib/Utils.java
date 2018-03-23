@@ -1,6 +1,6 @@
 package org.wheatgenetics.javalib;
 
-@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public class Utils extends java.lang.Object
 {
     private static java.text.SimpleDateFormat SIMPLE_DATE_FORMAT = null;
@@ -29,17 +29,18 @@ public class Utils extends java.lang.Object
             length = java.lang.Math.max(0     , length       );          // Handle too small length.
             length = java.lang.Math.min(length, buffer.length);          // Handle too big   length.
 
-            final java.lang.StringBuilder result = new java.lang.StringBuilder();
+            final java.lang.StringBuilder stringBuilder = new java.lang.StringBuilder();
             {
                 final int first = 0, last = length - 1;
                 for (int i = first; i <= last; i++)
                 {
                     final java.lang.String s = java.lang.Integer.toString(
                         org.wheatgenetics.javalib.Utils.interpretAsUnsigned(buffer[i]));
-                    if (0 == i) result.append(s); else result.append(",").append(s);
+                    if (i >= 1) stringBuilder.append(",");
+                    stringBuilder.append(s);
                 }
             }
-            return result.toString();
+            return stringBuilder.toString();
         }
     }
 
@@ -52,7 +53,7 @@ public class Utils extends java.lang.Object
 
     // region stringArray() Methods
     public static java.lang.String[] stringArray(final java.lang.String element)
-    { return new java.lang.String[] { element }; }
+    { return new java.lang.String[] {element}; }
 
     public static java.lang.String[] stringArray(final int element)
     { return org.wheatgenetics.javalib.Utils.stringArray(java.lang.String.valueOf(element)); }

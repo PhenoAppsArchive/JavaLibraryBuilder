@@ -1,6 +1,6 @@
 package org.wheatgenetics.javalib;
 
-@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public class Dir extends java.lang.Object
 {
     // region Fields
@@ -10,7 +10,7 @@ public class Dir extends java.lang.Object
     private boolean exists;
     // endregion
 
-    @java.lang.SuppressWarnings("SimplifiableConditionalExpression")
+    @java.lang.SuppressWarnings({"SimplifiableConditionalExpression"})
     private static boolean createNewDir(final java.io.File parent, final java.lang.String child)
     {
         if (null == parent)
@@ -61,7 +61,7 @@ public class Dir extends java.lang.Object
         else throw new java.io.IOException(this.path.getPath() + " does not exist");
     }
 
-    @java.lang.SuppressWarnings("ResultOfMethodCallIgnored")
+    @java.lang.SuppressWarnings({"ResultOfMethodCallIgnored"})
     public java.io.File createNewFile(final java.lang.String fileName) throws java.io.IOException
     {
         if (this.exists)

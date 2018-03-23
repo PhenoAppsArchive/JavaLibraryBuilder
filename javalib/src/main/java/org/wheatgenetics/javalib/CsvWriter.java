@@ -17,7 +17,7 @@ public class CsvWriter extends com.csvreader.CsvWriter
     public void write() throws java.io.IOException { this.write(""); }
 
     public void write(final int content) throws java.io.IOException
-    { this.write(java.lang.String.valueOf(content));}
+    { this.write(java.lang.String.valueOf(content)); }
 
     public void write(final java.lang.String format, final java.lang.Object... args)
     throws java.io.IOException

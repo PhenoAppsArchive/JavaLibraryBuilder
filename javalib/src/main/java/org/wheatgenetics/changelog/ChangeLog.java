@@ -1,8 +1,9 @@
 package org.wheatgenetics.changelog;
 
-@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 class ChangeLog extends java.lang.Object
 {
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"})
     interface LineHandler
     {
         public abstract void handleBlankLine();
@@ -25,6 +26,7 @@ class ChangeLog extends java.lang.Object
     {
         if (null == this.lines)
         {
+            @java.lang.SuppressWarnings({"Convert2Diamond"})
             final java.util.ArrayList<java.lang.String> arrayList =
                 new java.util.ArrayList<java.lang.String>();
             {
