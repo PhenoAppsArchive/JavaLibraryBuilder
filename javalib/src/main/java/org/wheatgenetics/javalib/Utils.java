@@ -36,8 +36,7 @@ public class Utils extends java.lang.Object
                 {
                     final java.lang.String s = java.lang.Integer.toString(
                         org.wheatgenetics.javalib.Utils.interpretAsUnsigned(buffer[i]));
-                    if (i >= 1) stringBuilder.append(",");
-                    stringBuilder.append(s);
+                    if (i >= 1) stringBuilder.append(","); stringBuilder.append(s);
                 }
             }
             return stringBuilder.toString();

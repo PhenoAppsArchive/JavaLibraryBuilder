@@ -4,8 +4,8 @@ package org.wheatgenetics.javalib;
 public class Dir extends java.lang.Object
 {
     // region Fields
-    protected final java.io.File     path               ;
-    private   final java.lang.String blankHiddenFileName;
+    private final java.io.File     path               ;
+    private final java.lang.String blankHiddenFileName;
 
     private boolean exists;
     // endregion
@@ -21,6 +21,8 @@ public class Dir extends java.lang.Object
             return dir.exists() ? false : dir.mkdirs();
         }
     }
+
+    protected  java.io.File getPath() { return this.path; }
 
     // region Constructors
     public Dir(final java.io.File parent, final java.lang.String child,
