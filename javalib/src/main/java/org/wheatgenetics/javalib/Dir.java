@@ -91,5 +91,27 @@ public class Dir extends java.lang.Object
             else
                 return null;
     }
+
+    public java.lang.String[] list(final java.lang.String regex)
+    {
+        final java.lang.String unfilteredList[] = this.list();
+        if (null == unfilteredList)
+            return null;
+        else
+            if (unfilteredList.length < 1)
+                return unfilteredList;
+            else
+            {
+                final java.util.ArrayList<java.lang.String> arrayList =
+                    new java.util.ArrayList<java.lang.String>();
+                {
+                    final java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(regex);
+                    for (final java.lang.String l: unfilteredList)
+                        if (pattern.matcher(l).matches()) arrayList.add(l);
+                }
+                final java.lang.String filteredList[] = new java.lang.String[arrayList.size()];
+                return arrayList.toArray(filteredList);
+            }
+    }
     // endregion
 }
