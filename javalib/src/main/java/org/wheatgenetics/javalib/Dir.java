@@ -80,5 +80,16 @@ public class Dir extends java.lang.Object
 
     public void createNewDir(final java.lang.String dirName)
     { org.wheatgenetics.javalib.Dir.createNewDir(this.path, dirName); }
+
+    public java.lang.String[] list()
+    {
+        if (null == this.path)
+            return null;
+        else
+            if (this.exists)
+                return this.path.isDirectory() ? this.path.list() : null;
+            else
+                return null;
+    }
     // endregion
 }
