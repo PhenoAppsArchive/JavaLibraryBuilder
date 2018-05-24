@@ -66,16 +66,20 @@ public class Dir extends java.lang.Object
         else throw new java.io.IOException(this.getPathAsString() + " does not exist");
     }
 
+    public java.io.File makeFile(final java.lang.String fileName) throws java.io.IOException
+    {
+        if (this.exists)
+            return new java.io.File(this.path, fileName);
+        else
+            throw new java.io.IOException(this.getPathAsString() + " does not exist");
+    }
+
     @java.lang.SuppressWarnings({"ResultOfMethodCallIgnored"})
     public java.io.File createNewFile(final java.lang.String fileName) throws java.io.IOException
     {
-        if (this.exists)
-        {
-            final java.io.File file = new java.io.File(this.path, fileName);
-            file.createNewFile();                                      // throws java.io.IOException
-            return file;
-        }
-        else throw new java.io.IOException(this.getPathAsString() + " does not exist");
+        final java.io.File file = this.makeFile(fileName);         // throws java.io.IOException
+        assert null != file; file.createNewFile();
+        return file;
     }
 
     public void createNewDir(final java.lang.String dirName)
