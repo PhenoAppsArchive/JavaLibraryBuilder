@@ -5,6 +5,26 @@ public class Utils extends java.lang.Object
 {
     private static java.text.SimpleDateFormat SIMPLE_DATE_FORMAT = null;
 
+    public static class Response extends java.lang.Object
+    {
+        private final java.lang.String contentTypeInstance,
+            contentEncodingInstance, contentInstance;
+
+        private Response(final java.lang.String contentType,
+        final java.lang.String contentEncoding, final java.lang.String content)
+        {
+            super();
+
+            this.contentTypeInstance     = contentType    ;
+            this.contentEncodingInstance = contentEncoding;
+            this.contentInstance         = content        ;
+        }
+
+        public java.lang.String contentType    () { return this.contentTypeInstance    ; }
+        public java.lang.String contentEncoding() { return this.contentEncodingInstance; }
+        public java.lang.String content        () { return this.contentInstance        ; }
+    }
+
     // region IfNull Methods
     public static java.lang.String replaceIfNull(final java.lang.String s,
     final java.lang.String valueIfNull) { return null == s ? valueIfNull : s; }
@@ -71,7 +91,8 @@ public class Utils extends java.lang.Object
     }
 
     @java.lang.SuppressWarnings({"DefaultLocale"})
-    public static java.lang.String get(final java.net.URL url) throws java.io.IOException
+    public static org.wheatgenetics.javalib.Utils.Response get(
+    final java.net.URL url) throws java.io.IOException
     {
         if (null == url)
             return null;
@@ -136,7 +157,10 @@ public class Utils extends java.lang.Object
                                 while (null != (chunk = inputStreamReader.read()))
                                     stringBuilder.append(chunk);
                             }
-                            return stringBuilder.toString();
+                            return new org.wheatgenetics.javalib.Utils.Response(
+                                httpURLConnection.getContentType    (),
+                                httpURLConnection.getContentEncoding(),
+                                stringBuilder.toString              ());
                         }
                         finally { inputStream.close(); /* throws java.io.IOException */ }
                 }
