@@ -90,6 +90,7 @@ public class Utils extends java.lang.Object
             java.util.Calendar.getInstance().getTime());
     }
 
+    // region get() Methods
     @java.lang.SuppressWarnings({"DefaultLocale"})
     public static org.wheatgenetics.javalib.Utils.Response get(
     final java.net.URL url) throws java.io.IOException
@@ -167,4 +168,31 @@ public class Utils extends java.lang.Object
             }
         }
     }
+
+    public static org.wheatgenetics.javalib.Utils.Response threadedGet(final java.net.URL url)
+    {
+        class Thread extends java.lang.Thread
+        {
+            // region Fields
+            private final java.net.URL                             url            ;
+            private       org.wheatgenetics.javalib.Utils.Response response = null;
+            // endregion
+
+            private Thread(final java.net.URL url) { super(); this.url = url; }
+
+            @java.lang.Override public void run()
+            {
+                try { this.response = org.wheatgenetics.javalib.Utils.get(this.url) /* throws */; }
+                catch (final java.io.IOException e) { this.response = null; }
+            }
+
+            private org.wheatgenetics.javalib.Utils.Response getResponse() { return this.response; }
+        }
+
+        final Thread thread = new Thread(url);
+        thread.start();
+        try { thread.join(); } catch (final java.lang.InterruptedException e) { return null; }
+        return thread.getResponse();
+    }
+    // endregion
 }
