@@ -23,24 +23,28 @@ public class Dir extends java.lang.Object
     }
 
     // region Protected Methods
-    protected void         requestPermissions() {                   }
-    protected java.io.File getPath           () { return this.path; }
+    protected void         requestPermissions(final int requestCode) {                   }
+    protected java.io.File getPath           ()                      { return this.path; }
     // endregion
 
     // region Constructors
-    public Dir(final java.io.File path, final java.lang.String blankHiddenFileName)
+    public Dir(final java.io.File path, final java.lang.String blankHiddenFileName,
+    final int requestCode)
     {
         super();
+
         this.path = path; this.blankHiddenFileName = blankHiddenFileName;
-        assert null != this.path; this.requestPermissions(); this.exists = this.path.exists();
+
+        this.requestPermissions(requestCode);
+        assert null != this.path; this.exists = this.path.exists();
     }
 
     public Dir(final java.io.File parent, final java.lang.String child,
-    final java.lang.String blankHiddenFileName)
-    { this(new java.io.File(parent, child), blankHiddenFileName); }
+    final java.lang.String blankHiddenFileName, final int requestCode)
+    { this(new java.io.File(parent, child), blankHiddenFileName, requestCode); }
 
-    public Dir(final org.wheatgenetics.javalib.Dir parent, final java.lang.String child)
-    { this(parent.path, child, parent.blankHiddenFileName); }
+    public Dir(final org.wheatgenetics.javalib.Dir parent, final java.lang.String child,
+    final int requestCode) { this(parent.path, child, parent.blankHiddenFileName, requestCode); }
     // endregion
 
     // region Public Methods
