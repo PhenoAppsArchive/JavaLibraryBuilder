@@ -22,14 +22,17 @@ public class Dir extends java.lang.Object
         }
     }
 
-    protected java.io.File getPath() { return this.path; }
+    // region Protected Methods
+    protected void         requestPermissions() {                   }
+    protected java.io.File getPath           () { return this.path; }
+    // endregion
 
     // region Constructors
     public Dir(final java.io.File path, final java.lang.String blankHiddenFileName)
     {
         super();
         this.path = path; this.blankHiddenFileName = blankHiddenFileName;
-        assert null != this.path; this.exists = this.path.exists();
+        assert null != this.path; this.requestPermissions(); this.exists = this.path.exists();
     }
 
     public Dir(final java.io.File parent, final java.lang.String child,
