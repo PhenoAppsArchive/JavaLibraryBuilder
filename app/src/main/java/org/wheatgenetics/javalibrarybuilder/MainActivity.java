@@ -27,7 +27,7 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
         private Dir(final java.io.File path, final android.app.Activity activity,
         @android.support.annotation.IdRes final int id)
         {
-            super(path, ".javalibrarybuilder", -1);
+            super(path, ".javalibrarybuilder");
 
             assert null != activity;
             final android.widget.TextView textView = activity.findViewById(id);
