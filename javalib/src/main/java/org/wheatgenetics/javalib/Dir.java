@@ -7,9 +7,10 @@ public class Dir extends java.lang.Object
     private final java.io.File     path               ;
     private final java.lang.String blankHiddenFileName;
 
-    private boolean exists;
+    private boolean exists, existsHasBeenSet = false;
     // endregion
 
+    // region Private Methods
     @java.lang.SuppressWarnings({"SimplifiableConditionalExpression"})
     private static boolean createNewDir(final java.io.File parent, final java.lang.String child)
     {
@@ -22,15 +23,15 @@ public class Dir extends java.lang.Object
         }
     }
 
+    private void setExists()
+    { assert null != this.path; this.exists = this.path.exists(); this.existsHasBeenSet = true; }
+    // endregion
+
     protected java.io.File getPath() { return this.path; }
 
     // region Constructors
     public Dir(final java.io.File path, final java.lang.String blankHiddenFileName)
-    {
-        super();
-        this.path = path; this.blankHiddenFileName = blankHiddenFileName;
-        assert null != this.path; this.exists = this.path.exists();
-    }
+    { super(); this.path = path; this.blankHiddenFileName = blankHiddenFileName; }
 
     public Dir(final java.io.File parent, final java.lang.String child,
     final java.lang.String blankHiddenFileName)
@@ -44,17 +45,14 @@ public class Dir extends java.lang.Object
     public java.lang.String getPathAsString()
     { return null == this.path ? null : this.path.getPath(); }
 
-    public boolean getExists() { return this.exists; }
+    public boolean getExists() { if (!this.existsHasBeenSet) this.setExists(); return this.exists; }
 
     public java.io.File createIfMissing() throws java.io.IOException
     {
-        if (!this.exists)
-        {
-            org.wheatgenetics.javalib.Dir.createNewDir(this.path, null);
-            assert null != this.path; this.exists = this.path.exists();
-        }
+        if (!this.getExists())
+            { org.wheatgenetics.javalib.Dir.createNewDir(this.path, null); this.setExists(); }
 
-        if (this.exists)
+        if (this.getExists())
         {
             final java.io.File blankHiddenFile =
                 new java.io.File(this.path, this.blankHiddenFileName);
@@ -68,7 +66,7 @@ public class Dir extends java.lang.Object
 
     public java.io.File makeFile(final java.lang.String fileName) throws java.io.IOException
     {
-        if (this.exists)
+        if (this.getExists())
             return new java.io.File(this.path, fileName);
         else
             throw new java.io.IOException(this.getPathAsString() + " does not exist");
@@ -90,7 +88,7 @@ public class Dir extends java.lang.Object
         if (null == this.path)
             return null;
         else
-            if (this.exists)
+            if (this.getExists())
                 return this.path.isDirectory() ? this.path.list() : null;
             else
                 return null;
