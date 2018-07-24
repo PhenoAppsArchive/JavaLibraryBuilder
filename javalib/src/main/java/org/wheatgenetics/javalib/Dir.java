@@ -7,7 +7,7 @@ public class Dir extends java.lang.Object
     private final java.io.File     path               ;
     private final java.lang.String blankHiddenFileName;
 
-    private boolean exists, existsHasBeenSet = false;
+    private boolean exists, existsHasBeenSet = false, permissionRequired;
     // endregion
 
     // region Private Methods
@@ -25,13 +25,31 @@ public class Dir extends java.lang.Object
 
     private void setExists()
     { assert null != this.path; this.exists = this.path.exists(); this.existsHasBeenSet = true; }
+
+    private void checkPermission()
+    {
+        if (this.permissionRequired) if (!this.permissionGranted())
+            throw new java.security.AccessControlException(
+                "Permission is required but has not been granted");
+    }
     // endregion
 
+    // region Protected Methods
     protected java.io.File getPath() { return this.path; }
+
+    protected void setPermissionRequired(final boolean permissionRequired)
+    { this.permissionRequired = permissionRequired; }
+
+    protected boolean permissionGranted() { return false; }
+    // endregion
 
     // region Constructors
     public Dir(final java.io.File path, final java.lang.String blankHiddenFileName)
-    { super(); this.path = path; this.blankHiddenFileName = blankHiddenFileName; }
+    {
+        super();
+        this.path = path; this.blankHiddenFileName = blankHiddenFileName;
+        this.setPermissionRequired(false);
+    }
 
     public Dir(final java.io.File parent, final java.lang.String child,
     final java.lang.String blankHiddenFileName)
@@ -50,12 +68,17 @@ public class Dir extends java.lang.Object
     public java.io.File createIfMissing() throws java.io.IOException
     {
         if (!this.getExists())
-            { org.wheatgenetics.javalib.Dir.createNewDir(this.path, null); this.setExists(); }
+        {
+            this.checkPermission();
+            org.wheatgenetics.javalib.Dir.createNewDir(this.path, null);
+            this.setExists();
+        }
 
         if (this.getExists())
         {
             final java.io.File blankHiddenFile =
                 new java.io.File(this.path, this.blankHiddenFileName);
+            this.checkPermission();
             if (blankHiddenFile.createNewFile())
                 return blankHiddenFile;
             else
@@ -76,12 +99,12 @@ public class Dir extends java.lang.Object
     public java.io.File createNewFile(final java.lang.String fileName) throws java.io.IOException
     {
         final java.io.File file = this.makeFile(fileName);         // throws java.io.IOException
-        assert null != file; file.createNewFile();
+        this.checkPermission(); assert null != file; file.createNewFile();
         return file;
     }
 
     public void createNewDir(final java.lang.String dirName)
-    { org.wheatgenetics.javalib.Dir.createNewDir(this.path, dirName); }
+    { this.checkPermission(); org.wheatgenetics.javalib.Dir.createNewDir(this.path, dirName); }
 
     public java.lang.String[] list()
     {
@@ -89,9 +112,11 @@ public class Dir extends java.lang.Object
             return null;
         else
             if (this.getExists())
+            {
+                this.checkPermission();
                 return this.path.isDirectory() ? this.path.list() : null;
-            else
-                return null;
+            }
+            else return null;
     }
 
     public java.lang.String[] list(final java.lang.String regex)
