@@ -34,13 +34,13 @@ public class Dir extends java.lang.Object
     }
     // endregion
 
-    // region Protected Methods
-    protected java.io.File getPath() { return this.path; }
-
-    protected void setPermissionRequired(final boolean permissionRequired)
+    void setPermissionRequired(final boolean permissionRequired)
     { this.permissionRequired = permissionRequired; }
 
-    protected boolean permissionGranted() { return false; }
+    // region Protected Methods
+    protected java.io.File getPath          () { return this.path; }
+    protected boolean      permissionGranted() { return false    ; }
+    protected void         requestPermission() {                   }
     // endregion
 
     // region Constructors
