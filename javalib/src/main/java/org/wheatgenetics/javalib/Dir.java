@@ -24,7 +24,13 @@ public class Dir extends java.lang.Object
     }
 
     private void setExists()
-    { assert null != this.path; this.exists = this.path.exists(); this.existsHasBeenSet = true; }
+    {
+        this.checkPermission();
+        assert null != this.path; this.exists = this.path.exists(); this.existsHasBeenSet = true;
+    }
+
+    private void setPermissionRequired(final boolean permissionRequired)
+    { this.permissionRequired = permissionRequired; }
 
     private void checkPermission()
     {
@@ -34,8 +40,7 @@ public class Dir extends java.lang.Object
     }
     // endregion
 
-    void setPermissionRequired(final boolean permissionRequired)
-    { this.permissionRequired = permissionRequired; }
+    void setPermissionRequiredToTrue() { this.setPermissionRequired(true); }
 
     // region Protected Methods
     protected java.io.File getPath          () { return this.path; }
@@ -47,6 +52,8 @@ public class Dir extends java.lang.Object
     public Dir(final java.io.File path, final java.lang.String blankHiddenFileName)
     {
         super();
+
+        if (null == path) throw new java.lang.IllegalArgumentException("path must not be null");
         this.path = path; this.blankHiddenFileName = blankHiddenFileName;
         this.setPermissionRequired(false);
     }
@@ -68,23 +75,26 @@ public class Dir extends java.lang.Object
     public java.io.File createIfMissing() throws java.io.IOException
     {
         if (!this.getExists())
-        {
-            this.checkPermission();
-            org.wheatgenetics.javalib.Dir.createNewDir(this.path, null);
-            this.setExists();
-        }
+            { org.wheatgenetics.javalib.Dir.createNewDir(this.path, null); this.setExists(); }
 
-        if (this.getExists())
-        {
-            final java.io.File blankHiddenFile =
-                new java.io.File(this.path, this.blankHiddenFileName);
-            this.checkPermission();
-            if (blankHiddenFile.createNewFile())
-                return blankHiddenFile;
+        if (!this.getExists())
+            throw new java.io.IOException(this.getPathAsString() + " does not exist");
+        else
+            if (null == this.blankHiddenFileName)
+                return null;
             else
-                throw new java.io.IOException("Couldn't create " + blankHiddenFile.getName());
-        }
-        else throw new java.io.IOException(this.getPathAsString() + " does not exist");
+                if (this.blankHiddenFileName.trim().length() <= 0)
+                    return null;
+                else
+                {
+                    final java.io.File blankHiddenFile =
+                        new java.io.File(this.path, this.blankHiddenFileName);
+                    if (blankHiddenFile.createNewFile())               // throws java.io.IOException
+                        return blankHiddenFile;
+                    else
+                        throw new java.io.IOException(
+                            "Couldn't create " + blankHiddenFile.getName());
+                }
     }
 
     public java.io.File makeFile(final java.lang.String fileName) throws java.io.IOException
@@ -95,11 +105,14 @@ public class Dir extends java.lang.Object
             throw new java.io.IOException(this.getPathAsString() + " does not exist");
     }
 
-    @java.lang.SuppressWarnings({"ResultOfMethodCallIgnored"})
     public java.io.File createNewFile(final java.lang.String fileName) throws java.io.IOException
     {
         final java.io.File file = this.makeFile(fileName);         // throws java.io.IOException
-        this.checkPermission(); assert null != file; file.createNewFile();
+
+        assert null != file;
+        // noinspection ResultOfMethodCallIgnored
+        file.createNewFile();
+
         return file;
     }
 
@@ -112,11 +125,9 @@ public class Dir extends java.lang.Object
             return null;
         else
             if (this.getExists())
-            {
-                this.checkPermission();
                 return this.path.isDirectory() ? this.path.list() : null;
-            }
-            else return null;
+            else
+                return null;
     }
 
     public java.lang.String[] list(final java.lang.String regex)
