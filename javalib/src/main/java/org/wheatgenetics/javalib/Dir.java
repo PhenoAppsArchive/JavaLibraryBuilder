@@ -35,8 +35,12 @@ public class Dir extends java.lang.Object
     private void checkPermission()
     {
         if (this.permissionRequired) if (!this.permissionGranted())
-            throw new java.security.AccessControlException(
-                "Permission is required but has not been granted");
+        {
+            this.requestPermission();
+            if (!this.permissionGranted())
+                throw new java.security.AccessControlException(
+                    "Permission is required but has not been granted");
+        }
     }
     // endregion
 
