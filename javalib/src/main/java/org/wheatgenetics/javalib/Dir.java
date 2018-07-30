@@ -79,7 +79,7 @@ public class Dir extends java.lang.Object
     public java.io.File createIfMissing() throws java.io.IOException
     {
         if (!this.getExists())
-            { org.wheatgenetics.javalib.Dir.createNewDir(this.path, null); this.setExists(); }
+            { org.wheatgenetics.javalib.Dir.createNewDir(this.path,null); this.setExists(); }
 
         if (!this.getExists())
             throw new java.io.IOException(this.getPathAsString() + " does not exist");
@@ -93,11 +93,9 @@ public class Dir extends java.lang.Object
                 {
                     final java.io.File blankHiddenFile =
                         new java.io.File(this.path, this.blankHiddenFileName);
-                    if (blankHiddenFile.createNewFile())               // throws java.io.IOException
-                        return blankHiddenFile;
-                    else
-                        throw new java.io.IOException(
-                            "Couldn't create " + blankHiddenFile.getName());
+                    // noinspection ResultOfMethodCallIgnored
+                    blankHiddenFile.createNewFile();                   // throws java.io.IOException
+                    return blankHiddenFile;
                 }
     }
 
