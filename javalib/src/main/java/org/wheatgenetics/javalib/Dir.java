@@ -34,13 +34,9 @@ public class Dir extends java.lang.Object
 
     private void checkPermission()
     {
-        if (this.permissionRequired) if (!this.permissionGranted())
-        {
-            this.requestPermission();
-            if (!this.permissionGranted())
-                throw new java.security.AccessControlException(
-                    "Permission is required but has not been granted");
-        }
+        if (this.permissionRequired) if (!this.permissionGranted()) if (!this.requestPermission())
+            throw new java.security.AccessControlException(
+                "Permission is required but has not been granted");
     }
     // endregion
 
@@ -49,7 +45,18 @@ public class Dir extends java.lang.Object
     // region Protected Methods
     protected java.io.File getPath          () { return this.path; }
     protected boolean      permissionGranted() { return false    ; }
-    protected void         requestPermission() {                   }
+
+    /**
+     * The purpose of this method is to request permission.  In this class the method doesn't do its
+     * job (because it can't -- this must be done at the Android (not the Java) layer).  Since it
+     * doesn't do its job it returns the value false.  When this method is overridden the subclass
+     * that makes this method do its job should return the value true.
+     */
+    protected boolean requestPermission()
+    {
+        // noinspection UnnecessaryLocalVariable
+        final boolean permissionRequested = false; return permissionRequested;
+    }
     // endregion
 
     // region Constructors
@@ -109,7 +116,7 @@ public class Dir extends java.lang.Object
 
     public java.io.File createNewFile(final java.lang.String fileName) throws java.io.IOException
     {
-        final java.io.File file = this.makeFile(fileName);         // throws java.io.IOException
+        final java.io.File file = this.makeFile(fileName);             // throws java.io.IOException
 
         assert null != file;
         // noinspection ResultOfMethodCallIgnored

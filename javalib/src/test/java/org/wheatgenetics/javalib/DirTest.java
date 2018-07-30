@@ -67,11 +67,7 @@ public class DirTest extends java.lang.Object
     { org.junit.Assert.assertFalse(this.tmpDir.permissionGranted()); }
 
     @org.junit.Test() public void requestPermissionDoesNothing()
-    {
-        org.junit.Assert.assertFalse(this.tmpDir.permissionGranted());
-        this.tmpDir.requestPermission();
-        org.junit.Assert.assertFalse(this.tmpDir.permissionGranted());
-    }
+    { org.junit.Assert.assertFalse(this.tmpDir.requestPermission()); }
     // endregion
 
     // region Constructor Tests
