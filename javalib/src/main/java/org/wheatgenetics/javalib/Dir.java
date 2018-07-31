@@ -86,7 +86,11 @@ public class Dir extends java.lang.Object
     public java.io.File createIfMissing() throws java.io.IOException
     {
         if (!this.getExists())
-            { org.wheatgenetics.javalib.Dir.createNewDir(this.path,null); this.setExists(); }
+        {
+            this.checkPermission();
+            org.wheatgenetics.javalib.Dir.createNewDir(this.path,null);
+            this.setExists();
+        }
 
         if (!this.getExists())
             throw new java.io.IOException(this.getPathAsString() + " does not exist");
@@ -100,8 +104,12 @@ public class Dir extends java.lang.Object
                 {
                     final java.io.File blankHiddenFile =
                         new java.io.File(this.path, this.blankHiddenFileName);
+
+                    this.checkPermission();
+
                     // noinspection ResultOfMethodCallIgnored
                     blankHiddenFile.createNewFile();                   // throws java.io.IOException
+
                     return blankHiddenFile;
                 }
     }
@@ -117,6 +125,8 @@ public class Dir extends java.lang.Object
     public java.io.File createNewFile(final java.lang.String fileName) throws java.io.IOException
     {
         final java.io.File file = this.makeFile(fileName);             // throws java.io.IOException
+
+        this.checkPermission();
 
         assert null != file;
         // noinspection ResultOfMethodCallIgnored
@@ -134,7 +144,10 @@ public class Dir extends java.lang.Object
             return null;
         else
             if (this.getExists())
+            {
+                this.checkPermission();
                 return this.path.isDirectory() ? this.path.list() : null;
+            }
             else
                 return null;
     }

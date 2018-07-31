@@ -63,7 +63,7 @@ public class DirTest extends java.lang.Object
             org.wheatgenetics.javalib.DirTest.TMP_FOLDER, this.tmpDir.getPath());
     }
 
-    @org.junit.Test() public void permissionGrantedSucceeds()
+    @org.junit.Test() public void permissionGrantedWorks()
     { org.junit.Assert.assertFalse(this.tmpDir.permissionGranted()); }
 
     @org.junit.Test() public void requestPermissionDoesNothing()
