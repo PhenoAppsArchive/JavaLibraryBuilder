@@ -152,7 +152,7 @@ public class DirTest extends java.lang.Object
             new java.io.File("asl;dfjals;fjl"),null).getExists());
     }
 
-    // region createIfMissiong() Public Method Tests
+    // region createIfMissing() Public Method Tests
     @org.junit.Test() public void nullCreateIfMissingWorks() throws java.io.IOException
     {
         org.wheatgenetics.javalib.DirTest.deleteTmpSubFolder();
