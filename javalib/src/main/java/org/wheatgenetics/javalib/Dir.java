@@ -8,7 +8,8 @@ package org.wheatgenetics.javalib;
 public class Dir extends java.lang.Object
 {
     // region Types
-    private enum PermissionCheck { PERMITTED, REQUESTED, DENIED }
+    @java.lang.SuppressWarnings({"UnnecessaryEnumModifier"})
+    private static enum PermissionCheck { PERMITTED, REQUESTED, DENIED }
 
     public abstract static class PermissionException extends java.lang.Exception
     { private PermissionException(final java.lang.String message) { super(message); } }
