@@ -7,6 +7,7 @@ package org.wheatgenetics.javalib;
  * org.junit.Test
  *
  * org.wheatgenetics.javalib.Dir
+ * org.wheatgenetics.javalib.Dir.PermissionException
  */
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public class DirTest extends java.lang.Object
@@ -146,22 +147,26 @@ public class DirTest extends java.lang.Object
     }
 
     @org.junit.Test() public void getExistsWorks()
+    throws org.wheatgenetics.javalib.Dir.PermissionException
     {
-        org.junit.Assert.assertTrue (this.tmpDir.getExists());
+        org.junit.Assert.assertTrue(this.tmpDir.getExists() /* throws PermissionException */);
         org.junit.Assert.assertFalse(new org.wheatgenetics.javalib.Dir(
-            new java.io.File("asl;dfjals;fjl"),null).getExists());
+            new java.io.File("asl;dfjals;fjl"),null)
+                .getExists() /* throws PermissionException */);
     }
 
     // region createIfMissing() Public Method Tests
-    @org.junit.Test() public void nullCreateIfMissingWorks() throws java.io.IOException
+    @org.junit.Test() public void nullCreateIfMissingWorks()
+    throws java.io.IOException, org.wheatgenetics.javalib.Dir.PermissionException
     {
         org.wheatgenetics.javalib.DirTest.deleteTmpSubFolder();
-        org.junit.Assert.assertNull(
-            this.tmpSubDir.createIfMissing() /* throws java.io.IOException */);
+        org.junit.Assert.assertNull(this.tmpSubDir.createIfMissing() /* throws
+            java.io.IOException, org.wheatgenetics.javalib.Dir.PermissionException */);
         org.junit.Assert.assertTrue(org.wheatgenetics.javalib.DirTest.TMP_SUB_FOLDER.exists());
     }
 
-    @org.junit.Test() public void nonNullCreateIfMissingWorks() throws java.io.IOException
+    @org.junit.Test() public void nonNullCreateIfMissingWorks()
+    throws java.io.IOException, org.wheatgenetics.javalib.Dir.PermissionException
     {
         org.wheatgenetics.javalib.DirTest.deleteTmpSubFolder();
         {
@@ -170,9 +175,9 @@ public class DirTest extends java.lang.Object
                 final org.wheatgenetics.javalib.Dir tmpSubDir = new org.wheatgenetics.javalib.Dir(
                     org.wheatgenetics.javalib.DirTest.TMP_SUB_FOLDER,
                     org.wheatgenetics.javalib.DirTest.TMP_FILE_NAME );
-                blankHiddenFile = tmpSubDir.createIfMissing();         // throws java.io.IOException
-            }
-            org.junit.Assert.assertNotNull(blankHiddenFile);
+                blankHiddenFile = tmpSubDir.createIfMissing();  // throws java.io.IOException, org.-
+            }                                                   //  wheatgenetics.javalib.Dir.Per-
+            org.junit.Assert.assertNotNull(blankHiddenFile);    //  missionException
         }
         org.junit.Assert.assertTrue(org.wheatgenetics.javalib.DirTest.TMP_FILE.exists      ());
         org.junit.Assert.assertTrue(org.wheatgenetics.javalib.DirTest.TMP_SUB_FOLDER.exists());
@@ -180,41 +185,47 @@ public class DirTest extends java.lang.Object
     // endregion
 
     // region makeFile() Public Method Tests
-    @org.junit.Test(expected = java.io.IOException.class)
-    public void makeFileWorks() throws java.io.IOException
+    @org.junit.Test(expected = java.io.IOException.class) public void makeFileWorks()
+    throws java.io.IOException, org.wheatgenetics.javalib.Dir.PermissionException
     {
         org.wheatgenetics.javalib.DirTest.deleteTmpSubFolder();
-        this.tmpSubDir.makeFile("abc");                       // throws java.io.IOException
+        this.tmpSubDir.makeFile("abc");         // throws java.io.IOException, org.wheatge-
+    }                                                    //  netics.javalib.Dir.PermissionException
+
+    @org.junit.Test() public void makeFileSucceeds()
+    throws java.io.IOException, org.wheatgenetics.javalib.Dir.PermissionException
+    {
+        org.wheatgenetics.javalib.DirTest.deleteTmpSubFolder();
+        this.tmpSubDir.createIfMissing();                             // throws java.io.IOException,
+        this.tmpSubDir.makeFile(                                      //  PermissionException
+            org.wheatgenetics.javalib.DirTest.TMP_FILE_NAME);         // throws java.io.IOException,
+    }                                                                 //  PermissionException
+    // endregion
+
+    @org.junit.Test() public void createNewFileSucceeds()
+    throws java.io.IOException, org.wheatgenetics.javalib.Dir.PermissionException
+    {
+        org.wheatgenetics.javalib.DirTest.deleteTmpSubFolder();
+        this.tmpSubDir.createIfMissing();                             // throws java.io.IOException,
+        this.tmpSubDir.createNewFile(                                 //  PermissionException
+            org.wheatgenetics.javalib.DirTest.TMP_FILE_NAME);         // throws java.io.IOException,
+        org.junit.Assert.assertTrue(                                  //  PermissionException
+            org.wheatgenetics.javalib.DirTest.TMP_FILE.exists());
     }
 
-    @org.junit.Test() public void makeFileSucceeds() throws java.io.IOException
+    @org.junit.Test() public void createNewDirSucceeds()
+    throws java.io.IOException, org.wheatgenetics.javalib.Dir.PermissionException
     {
         org.wheatgenetics.javalib.DirTest.deleteTmpSubFolder();
-        this.tmpSubDir.createIfMissing();                              // throws java.io.IOException
-        this.tmpSubDir.makeFile(org.wheatgenetics.javalib.DirTest.TMP_FILE_NAME);   // throws java.-
-    }                                                                               //  io.IOExcep-
-    // endregion                                                                    //  tion
-
-    @org.junit.Test() public void createNewFileSucceeds() throws java.io.IOException
-    {
-        org.wheatgenetics.javalib.DirTest.deleteTmpSubFolder();
-        this.tmpSubDir.createIfMissing();                              // throws java.io.IOException
-        this.tmpSubDir.createNewFile(org.wheatgenetics.javalib.DirTest.TMP_FILE_NAME);    // throws
-        org.junit.Assert.assertTrue(org.wheatgenetics.javalib.DirTest.TMP_FILE.exists()); //  java.-
-    }                                                                                     //  io.IO-
-                                                                                          //  Excep-
-    @org.junit.Test() public void createNewDirSucceeds() throws java.io.IOException         //  tion
-    {
-        org.wheatgenetics.javalib.DirTest.deleteTmpSubFolder();
-        this.tmpSubDir.createIfMissing();                              // throws java.io.IOException
-
+        this.tmpSubDir.createIfMissing();                // throws java.io.IOException, org.wheatge-
+                                                         //  netics.javalib.Dir.PermissionException
         final java.io.File tmpSubSubFolder;
         {
             final java.lang.String tmpSubSubFolderName = "abc";
             tmpSubSubFolder = new java.io.File(
                 org.wheatgenetics.javalib.DirTest.TMP_SUB_FOLDER, tmpSubSubFolderName);
-            this.tmpSubDir.createNewDir(tmpSubSubFolderName);
-        }
+            this.tmpSubDir.createNewDir(tmpSubSubFolderName);      // throws org.wheatgenetics.java-
+        }                                                          //  lib.Dir.PermissionException
         org.junit.Assert.assertTrue(tmpSubSubFolder.exists());
 
         // noinspection ResultOfMethodCallIgnored
@@ -223,31 +234,36 @@ public class DirTest extends java.lang.Object
 
     // region list() Public Method Tests
     @org.junit.Test() public void listWorks()
+    throws org.wheatgenetics.javalib.Dir.PermissionException
     {
         org.wheatgenetics.javalib.DirTest.deleteTmpSubFolder();
-        org.junit.Assert.assertNull(this.tmpSubDir.list());
+        org.junit.Assert.assertNull(this.tmpSubDir.list() /* throws
+            org.wheatgenetics.javalib.Dir.PermissionException */);
     }
 
-    @org.junit.Test() public void listSucceeds() throws java.io.IOException
+    @org.junit.Test() public void listSucceeds()
+    throws java.io.IOException, org.wheatgenetics.javalib.Dir.PermissionException
     {
         org.wheatgenetics.javalib.DirTest.deleteTmpSubFolder();
-        this.tmpSubDir.createIfMissing();                              // throws java.io.IOException
-
-        final java.lang.String list[] = this.tmpSubDir.list();
-        org.junit.Assert.assertNotNull(list                     );
+        this.tmpSubDir.createIfMissing();                // throws java.io.IOException, org.wheatge-
+                                                         //  netics.javalib.Dir.PermissionException
+        final java.lang.String list[] = this.tmpSubDir.list();     // throws org.wheatgenetics.java-
+        org.junit.Assert.assertNotNull(list                     ); //  lib.Dir.PermissionException
         org.junit.Assert.assertTrue   (list.length == 0);
     }
 
-    @org.junit.Test() public void regexListSucceeds() throws java.io.IOException
+    @org.junit.Test() public void regexListSucceeds()
+    throws java.io.IOException, org.wheatgenetics.javalib.Dir.PermissionException
     {
         org.wheatgenetics.javalib.DirTest.deleteTmpSubFolder();
-        this.tmpSubDir.createIfMissing();                              // throws java.io.IOException
-        this.tmpSubDir.createNewFile(org.wheatgenetics.javalib.DirTest.TMP_FILE_NAME);  // throws
-                                                                                        //  java.io-
-        final java.lang.String list[] = this.tmpSubDir.list(".+\\.xml");         //  .IOExcep-
-        org.junit.Assert.assertNotNull(list                     );                      //  tion
-        org.junit.Assert.assertTrue   (list.length == 1);
-    }
+        this.tmpSubDir.createIfMissing();                 // throws IOException, PermissionException
+        this.tmpSubDir.createNewFile(                     // throws IOException, PermissionException
+            org.wheatgenetics.javalib.DirTest.TMP_FILE_NAME);
+                                                              //
+        final java.lang.String list[] = this.tmpSubDir.list(".+\\.xml"); // throws org.wheat-
+        org.junit.Assert.assertNotNull(list                     );             //  genetics.java-
+        org.junit.Assert.assertTrue   (list.length == 1);             //  lib.Dir.Permis-
+    }                                                                          //  sionException
     // endregion
     // endregion
 }
