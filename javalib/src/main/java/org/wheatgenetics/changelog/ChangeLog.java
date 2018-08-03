@@ -18,11 +18,12 @@ class ChangeLog extends java.lang.Object
     private java.lang.String lines[] = null;
     // endregion
 
-    ChangeLog(final java.io.InputStreamReader inputStreamReader,
-    final org.wheatgenetics.changelog.ChangeLog.LineHandler lineHandler)
+    @java.lang.SuppressWarnings({"unused"}) ChangeLog(
+    final java.io.InputStreamReader                         inputStreamReader,
+    final org.wheatgenetics.changelog.ChangeLog.LineHandler lineHandler      )
     { super(); this.inputStreamReader = inputStreamReader; this.lineHandler = lineHandler; }
 
-    void iterate() throws java.io.IOException
+    @java.lang.SuppressWarnings({"unused"}) void iterate() throws java.io.IOException
     {
         if (null == this.lines)
         {

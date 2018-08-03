@@ -26,11 +26,13 @@ public class Utils extends java.lang.Object
     }
 
     // region IfNull Methods
-    public static java.lang.String replaceIfNull(final java.lang.String s,
-    final java.lang.String valueIfNull) { return null == s ? valueIfNull : s; }
+    @java.lang.SuppressWarnings({"WeakerAccess"}) public static java.lang.String replaceIfNull(
+    final java.lang.String s, final java.lang.String valueIfNull)
+    { return null == s ? valueIfNull : s; }
 
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     public static java.lang.String makeEmptyIfNull(final java.lang.String s)
-    { return org.wheatgenetics.javalib.Utils.replaceIfNull(s, ""); }
+    { return org.wheatgenetics.javalib.Utils.replaceIfNull(s,""); }
 
     public static java.lang.String adjust(final java.lang.String unadjusted)
     { return org.wheatgenetics.javalib.Utils.makeEmptyIfNull(unadjusted).trim(); }
@@ -38,8 +40,10 @@ public class Utils extends java.lang.Object
 
     // region convert() Methods
     /** See <a href="https://stackoverflow.com/questions/4266756/can-we-make-unsigned-byte-in-java">https://stackoverflow.com/questions/4266756/can-we-make-unsigned-byte-in-java</a>. */
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     public static int interpretAsUnsigned(final byte signedByte) { return signedByte & 0x000000FF; }
 
+    @java.lang.SuppressWarnings({"unused"})
     public static java.lang.String convert(final byte buffer[], int length)
     {
         if (null == buffer)
@@ -63,7 +67,7 @@ public class Utils extends java.lang.Object
         }
     }
 
-    public static int convert(final java.lang.String s)
+    @java.lang.SuppressWarnings({"unused"}) public static int convert(final java.lang.String s)
     {
         try                                             { return java.lang.Integer.parseInt(s); }
         catch (final java.lang.NumberFormatException e) { return                            -1; }
@@ -71,17 +75,20 @@ public class Utils extends java.lang.Object
     // endregion
 
     // region stringArray() Methods
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     public static java.lang.String[] stringArray(final java.lang.String element)
     { return new java.lang.String[] {element}; }
 
+    @java.lang.SuppressWarnings({"unused"})
     public static java.lang.String[] stringArray(final int element)
     { return org.wheatgenetics.javalib.Utils.stringArray(java.lang.String.valueOf(element)); }
 
+    @java.lang.SuppressWarnings({"unused"})
     public static java.lang.String[] stringArray(final long element)
     { return org.wheatgenetics.javalib.Utils.stringArray(java.lang.String.valueOf(element)); }
     // endregion
 
-    public static java.lang.String getDateTime()
+    @java.lang.SuppressWarnings({"unused"}) public static java.lang.String getDateTime()
     {
         if (null == org.wheatgenetics.javalib.Utils.SIMPLE_DATE_FORMAT)
             org.wheatgenetics.javalib.Utils.SIMPLE_DATE_FORMAT = new java.text.SimpleDateFormat(
@@ -91,7 +98,7 @@ public class Utils extends java.lang.Object
     }
 
     // region get() Methods
-    @java.lang.SuppressWarnings({"DefaultLocale"})
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     public static org.wheatgenetics.javalib.Utils.Response get(
     final java.net.URL url) throws java.io.IOException
     {
@@ -142,12 +149,12 @@ public class Utils extends java.lang.Object
                                         {
                                             final int numberOfCharactersRead =
                                                 this.inputStreamReader.read(      // throws java.io-
-                                                    cbuf, 0, length);             //  .IOException
+                                                    cbuf,0, length);           //  .IOException
                                             if (-1 == numberOfCharactersRead)
                                                 return null;
                                             else
                                                 return new java.lang.String(
-                                                    cbuf, 0, numberOfCharactersRead);
+                                                    cbuf,0, numberOfCharactersRead);
                                         }
                                         catch (final java.io.IOException e) { return null; }
                                     }
@@ -163,7 +170,7 @@ public class Utils extends java.lang.Object
                                 httpURLConnection.getContentEncoding(),
                                 stringBuilder.toString              ());
                         }
-                        finally { inputStream.close(); /* throws java.io.IOException */ }
+                        finally { inputStream.close() /* throws java.io.IOException */; }
                 }
             }
         }

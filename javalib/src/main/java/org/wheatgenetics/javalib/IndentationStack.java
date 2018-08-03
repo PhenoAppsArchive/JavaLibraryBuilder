@@ -3,6 +3,7 @@ package org.wheatgenetics.javalib;
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 class IndentationStack extends java.lang.Object
 {
+    @java.lang.SuppressWarnings({"Convert2Diamond"})
     private final java.util.ArrayList<java.lang.String> arrayList =
         new java.util.ArrayList<java.lang.String>();
 

@@ -128,12 +128,17 @@ public class Dir extends java.lang.Object
     void setPermissionRequiredToTrue() { this.setPermissionRequired(true); }
 
     // region Protected Methods
-    protected java.io.File getPath() { return this.path; }
+    @java.lang.SuppressWarnings({"WeakerAccess"}) protected java.io.File getPath()
+    { return this.path; }
 
-    @java.lang.SuppressWarnings({"WeakerAccess"}) protected void log(final java.lang.String msg) {}
+    @java.lang.SuppressWarnings({"WeakerAccess", "EmptyMethod"})
+    protected void log(@java.lang.SuppressWarnings({"unused"}) final java.lang.String msg) {}
 
-    protected java.lang.String label            () { return this.indentationStack.label(); }
-    protected boolean          permissionGranted() { return false                        ; }
+    @java.lang.SuppressWarnings("unused") protected java.lang.String label()
+    { return this.indentationStack.label(); }
+
+    @java.lang.SuppressWarnings({"WeakerAccess", "SameReturnValue"})
+    protected boolean permissionGranted() { return false; }
 
     /**
      * The purpose of this method is to request permission.  In this class the method doesn't do its
@@ -141,6 +146,7 @@ public class Dir extends java.lang.Object
      * doesn't do its job it returns the value false.  When this method is overridden the subclass
      * that makes this method do its job should return the value true.
      */
+    @java.lang.SuppressWarnings({"WeakerAccess", "SameReturnValue"})
     protected boolean requestPermission() { return false; }
     // endregion
 
@@ -240,6 +246,7 @@ public class Dir extends java.lang.Object
             throw new java.io.IOException(this.getPathAsString() + " does not exist");
     }
 
+    @java.lang.SuppressWarnings({"UnusedReturnValue"})
     public java.io.File createNewFile(final java.lang.String fileName)
     throws java.io.IOException, org.wheatgenetics.javalib.Dir.PermissionException
     {
@@ -300,6 +307,7 @@ public class Dir extends java.lang.Object
                 return unfilteredList;
             else
             {
+                // noinspection Convert2Diamond
                 final java.util.ArrayList<java.lang.String> arrayList =
                     new java.util.ArrayList<java.lang.String>();
                 {
