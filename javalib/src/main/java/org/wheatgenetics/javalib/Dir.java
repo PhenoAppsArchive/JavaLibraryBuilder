@@ -11,13 +11,16 @@ public class Dir extends java.lang.Object
     @java.lang.SuppressWarnings({"UnnecessaryEnumModifier"})
     private static enum PermissionCheck { PERMITTED, REQUESTED, DENIED }
 
-    public abstract static class PermissionException extends java.lang.Exception
+
+    public static class PermissionException extends java.lang.Exception
     { private PermissionException(final java.lang.String message) { super(message); } }
 
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     public static class PermissionRequestedException
     extends org.wheatgenetics.javalib.Dir.PermissionException
     { private PermissionRequestedException() { super("Permission requested"); } }
 
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     public static class PermissionDeniedException
     extends org.wheatgenetics.javalib.Dir.PermissionException
     { private PermissionDeniedException() { super("Permission denied"); } }
@@ -44,15 +47,14 @@ public class Dir extends java.lang.Object
         }
     }
 
-    private static boolean createNewDir(final java.io.File parent, final java.lang.String child)
+    private static void createNewDir(final java.io.File parent, final java.lang.String child)
     {
-        if (null == parent)
-            return false;
-        else
+        if (null != parent)
         {
             final java.io.File dir = null == child ? parent : new java.io.File(parent, child);
-            // noinspection SimplifiableConditionalExpression
-            return dir.exists() ? false : dir.mkdirs();
+            if (!dir.exists())
+                // noinspection ResultOfMethodCallIgnored
+                dir.mkdirs();
         }
     }
 
@@ -126,10 +128,12 @@ public class Dir extends java.lang.Object
     void setPermissionRequiredToTrue() { this.setPermissionRequired(true); }
 
     // region Protected Methods
-    protected java.io.File     getPath          ()                           { return this.path; }
-    protected void             log              (final java.lang.String msg) {                   }
-    protected java.lang.String label            ()       { return this.indentationStack.label(); }
-    protected boolean          permissionGranted()                           { return false    ; }
+    protected java.io.File getPath() { return this.path; }
+
+    @java.lang.SuppressWarnings({"WeakerAccess"}) protected void log(final java.lang.String msg) {}
+
+    protected java.lang.String label            () { return this.indentationStack.label(); }
+    protected boolean          permissionGranted() { return false                        ; }
 
     /**
      * The purpose of this method is to request permission.  In this class the method doesn't do its
@@ -137,11 +141,7 @@ public class Dir extends java.lang.Object
      * doesn't do its job it returns the value false.  When this method is overridden the subclass
      * that makes this method do its job should return the value true.
      */
-    protected boolean requestPermission()
-    {
-        // noinspection UnnecessaryLocalVariable
-        final boolean permissionRequested = false; return permissionRequested;
-    }
+    protected boolean requestPermission() { return false; }
     // endregion
 
     // region Constructors
@@ -154,11 +154,12 @@ public class Dir extends java.lang.Object
         this.setPermissionRequired(false);
     }
 
-    public Dir(final java.io.File parent, final java.lang.String child,
-    final java.lang.String blankHiddenFileName)
+    @java.lang.SuppressWarnings({"WeakerAccess"}) public Dir(final java.io.File parent,
+    final java.lang.String child, final java.lang.String blankHiddenFileName)
     { this(new java.io.File(parent, child), blankHiddenFileName); }
 
-    public Dir(final org.wheatgenetics.javalib.Dir parent, final java.lang.String child)
+    @java.lang.SuppressWarnings({"WeakerAccess"}) public Dir(
+    final org.wheatgenetics.javalib.Dir parent, final java.lang.String child)
     { this(parent.getPath(), child, parent.blankHiddenFileName); }
     // endregion
 
@@ -175,8 +176,9 @@ public class Dir extends java.lang.Object
             try
             {
                 if (!this.existsHasBeenSet)
-                    org.wheatgenetics.javalib.Dir.throwIfNotPermitted(this.setExists());   // throws
-                return this.exists;
+                    org.wheatgenetics.javalib.Dir.throwIfNotPermitted(  // throws org.wheatgenetics-
+                        this.setExists());                              //  .javalib.Dir.Permission-
+                return this.exists;                                     //  Exception
             }
             finally { this.log("leaving: " + this.status()); }
         }
@@ -241,9 +243,11 @@ public class Dir extends java.lang.Object
     public java.io.File createNewFile(final java.lang.String fileName)
     throws java.io.IOException, org.wheatgenetics.javalib.Dir.PermissionException
     {
-        final java.io.File file = this.makeFile(fileName);            // throws java.io.IOException,
-                                                                      //  PermissionException
-        org.wheatgenetics.javalib.Dir.throwIfNotPermitted(this.checkPermission());         // throws
+        final java.io.File file = this.makeFile(fileName);     // throws java.io.IOException, org.-
+                                                               //  wheatgenetics.javalib.Dir.Permis-
+                                                               //  sionException
+        org.wheatgenetics.javalib.Dir.throwIfNotPermitted(     // throws org.wheatgenetics.java-
+            this.checkPermission());                           //  lib.Dir.PermissionException
 
         assert null != file;
         // noinspection ResultOfMethodCallIgnored
@@ -255,7 +259,8 @@ public class Dir extends java.lang.Object
     public void createNewDir(final java.lang.String dirName)
     throws org.wheatgenetics.javalib.Dir.PermissionException
     {
-        org.wheatgenetics.javalib.Dir.throwIfNotPermitted(this.checkPermission());         // throws
+        org.wheatgenetics.javalib.Dir.throwIfNotPermitted(         // throws org.wheatgenetics.java-
+            this.checkPermission());                               //  lib.Dir.PermissionException
         org.wheatgenetics.javalib.Dir.createNewDir(this.getPath(), dirName);
     }
 
@@ -273,9 +278,9 @@ public class Dir extends java.lang.Object
                 else
                     if (this.getExists())                          // throws org.wheatgenetics.java-
                     {                                              //  lib.Dir.PermissionException
-                        org.wheatgenetics.javalib.Dir.throwIfNotPermitted(                 // throws
-                            this.checkPermission());
-                        return path.isDirectory() ? path.list() : null;
+                        org.wheatgenetics.javalib.Dir.throwIfNotPermitted(  // throws org.wheatgene-
+                            this.checkPermission());                        //  tics.javalib.Dir-
+                        return path.isDirectory() ? path.list() : null;     //  .PermissionException
                     }
                     else return null;
             }
