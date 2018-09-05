@@ -134,9 +134,17 @@ public class Dir extends java.lang.Object
     @java.lang.SuppressWarnings({"WeakerAccess", "EmptyMethod"})
     protected void log(@java.lang.SuppressWarnings({"unused"}) final java.lang.String msg) {}
 
-    @java.lang.SuppressWarnings("unused") protected java.lang.String label()
+    @java.lang.SuppressWarnings({"unused"}) protected java.lang.String label()
     { return this.indentationStack.label(); }
 
+    /**
+     * The purpose of this method is to find out if permission to write to external public storage
+     * has been granted.  In this class the method doesn't do its job (because it can't -- this must
+     * be done at the Android (not the Java) layer).  Since it doesn't do its job it returns the
+     * value false.  When this method is overridden the subclass that makes this method do its job
+     * should determine if this permission has been granted and return true if it has been and false
+     * if it has not been.
+     */
     @java.lang.SuppressWarnings({"WeakerAccess", "SameReturnValue"})
     protected boolean permissionGranted() { return false; }
 
@@ -144,7 +152,7 @@ public class Dir extends java.lang.Object
      * The purpose of this method is to request permission.  In this class the method doesn't do its
      * job (because it can't -- this must be done at the Android (not the Java) layer).  Since it
      * doesn't do its job it returns the value false.  When this method is overridden the subclass
-     * that makes this method do its job should return the value true.
+     * that makes this method do its job should request permission then return the value true.
      */
     @java.lang.SuppressWarnings({"WeakerAccess", "SameReturnValue"})
     protected boolean requestPermission() { return false; }
@@ -156,7 +164,10 @@ public class Dir extends java.lang.Object
         super();
 
         if (null == path) throw new java.lang.IllegalArgumentException("path must not be null");
-        this.path = path; this.blankHiddenFileName = blankHiddenFileName;
+        this.path = path;
+
+        this.blankHiddenFileName = null == blankHiddenFileName ? null : blankHiddenFileName.trim();
+
         this.setPermissionRequired(false);
     }
 
@@ -215,7 +226,7 @@ public class Dir extends java.lang.Object
                     if (null == this.blankHiddenFileName)
                         return null;
                     else
-                        if (this.blankHiddenFileName.trim().length() <= 0)
+                        if (this.blankHiddenFileName.length() <= 0)
                             return null;
                         else
                         {
