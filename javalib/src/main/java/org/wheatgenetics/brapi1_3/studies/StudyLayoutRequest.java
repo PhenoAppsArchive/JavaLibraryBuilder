@@ -23,16 +23,22 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
         if (null != observationUnitPositionsResponse)
         {
             final io.swagger.client.model.ObservationUnitPositionsResponseResult
-                observationUnitPositionsResponseResult = observationUnitPositionsResponse.getResult();
+                observationUnitPositionsResponseResult =
+                    observationUnitPositionsResponse.getResult();
             if (null != observationUnitPositionsResponseResult)
             {
-                int position = 0;
-                for (final io.swagger.client.model.ObservationUnitPosition observationUnitPosition:
-                observationUnitPositionsResponseResult.getData())
-                    this.addLayoutItem(
-                        new org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayout(
-                            position++             ,
-                            observationUnitPosition));
+                final java.util.List<io.swagger.client.model.ObservationUnitPosition> list =
+                    observationUnitPositionsResponseResult.getData();
+                if (null != list) if (list.size() > 0)
+                {
+                    int position = 0;
+                    for (final io.swagger.client.model.ObservationUnitPosition
+                    observationUnitPosition: list)
+                        this.addLayoutItem(
+                            new org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayout(
+                                position++             ,
+                                observationUnitPosition));
+                }
             }
         }
     }
