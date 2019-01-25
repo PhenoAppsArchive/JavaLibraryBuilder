@@ -3,6 +3,9 @@ package org.wheatgenetics.brapi1_3.studies;
 /**
  * Uses:
  * io.swagger.client.model.ObservationUnitPosition
+ * io.swagger.client.model.ObservationUnitPosition.EntryTypeEnum
+ * io.swagger.client.model.ObservationUnitPosition.PositionCoordinateXTypeEnum
+ * io.swagger.client.model.ObservationUnitPosition.PositionCoordinateYTypeEnum
  * io.swagger.client.model.StudyLayoutRequestLayout
  * io.swagger.client.model.StudyLayoutRequestLayout.EntryTypeEnum
  * io.swagger.client.model.StudyLayoutRequestLayout.PositionCoordinateXTypeEnum
@@ -27,134 +30,174 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             this.setBlockNumber(
                 java.lang.Integer.valueOf(observationUnitPosition.getBlockNumber()));
 
+            // region setEntryType()
             {
-                final io.swagger.client.model.StudyLayoutRequestLayout.EntryTypeEnum entryTypeEnum;
-                switch (observationUnitPosition.getEntryType())
+                final io.swagger.client.model.StudyLayoutRequestLayout.EntryTypeEnum
+                    destinationEntryTypeEnum;
                 {
-                    case CHECK:
-                        entryTypeEnum =
-                            io.swagger.client.model.StudyLayoutRequestLayout.EntryTypeEnum.CHECK;
-                        break;
+                    final io.swagger.client.model.ObservationUnitPosition.EntryTypeEnum
+                        sourceEntryTypeEnum = observationUnitPosition.getEntryType();
+                    if (null == sourceEntryTypeEnum)
+                        destinationEntryTypeEnum = null;
+                    else
+                        switch (sourceEntryTypeEnum)
+                        {
+                            case CHECK:
+                                destinationEntryTypeEnum = io.swagger.client.model
+                                    .StudyLayoutRequestLayout.EntryTypeEnum.CHECK;
+                                break;
 
-                    case TEST:
-                        entryTypeEnum =
-                            io.swagger.client.model.StudyLayoutRequestLayout.EntryTypeEnum.TEST;
-                        break;
+                            case TEST:
+                                destinationEntryTypeEnum = io.swagger.client.model
+                                    .StudyLayoutRequestLayout.EntryTypeEnum.TEST;
+                                break;
 
-                    case FILLER:
-                        entryTypeEnum =
-                            io.swagger.client.model.StudyLayoutRequestLayout.EntryTypeEnum.FILLER;
-                        break;
+                            case FILLER:
+                                destinationEntryTypeEnum = io.swagger.client.model
+                                    .StudyLayoutRequestLayout.EntryTypeEnum.FILLER;
+                                break;
 
-                    default: entryTypeEnum = null; break;
+                            default: destinationEntryTypeEnum = null; break;
+                        }
                 }
-                this.setEntryType(entryTypeEnum);
+                this.setEntryType(destinationEntryTypeEnum);
             }
+            // endregion
 
             this.setObservationUnitDbId(observationUnitPosition.getObservationUnitDbId());
             this.setPositionCoordinateX(observationUnitPosition.getPositionCoordinateX());
 
+            // region setPositionCoordinateXType()
             {
                 final io.swagger.client.model.StudyLayoutRequestLayout.PositionCoordinateXTypeEnum
-                    positionCoordinateXTypeEnum;
-                switch (observationUnitPosition.getPositionCoordinateXType())
+                    destinationPositionCoordinateXTypeEnum;
                 {
-                    case LONGITUDE:
-                        positionCoordinateXTypeEnum = io.swagger.client.model
-                            .StudyLayoutRequestLayout.PositionCoordinateXTypeEnum.LONGITUDE;
-                        break;
+                    final
+                        io.swagger.client.model.ObservationUnitPosition.PositionCoordinateXTypeEnum
+                            sourcePositionCoordinateXTypeEnum =
+                                observationUnitPosition.getPositionCoordinateXType();
+                    if (null == sourcePositionCoordinateXTypeEnum)
+                        destinationPositionCoordinateXTypeEnum = null;
+                    else
+                        switch (sourcePositionCoordinateXTypeEnum)
+                        {
+                            case LONGITUDE:
+                                destinationPositionCoordinateXTypeEnum = io.swagger.client.model
+                                    .StudyLayoutRequestLayout.PositionCoordinateXTypeEnum.LONGITUDE;
+                                break;
 
-                    case LATITUDE:
-                        positionCoordinateXTypeEnum = io.swagger.client.model
-                            .StudyLayoutRequestLayout.PositionCoordinateXTypeEnum.LATITUDE;
-                        break;
+                            case LATITUDE:
+                                destinationPositionCoordinateXTypeEnum = io.swagger.client.model
+                                    .StudyLayoutRequestLayout.PositionCoordinateXTypeEnum.LATITUDE;
+                                break;
 
-                    case PLANTED_ROW:
-                        positionCoordinateXTypeEnum = io.swagger.client.model
-                            .StudyLayoutRequestLayout.PositionCoordinateXTypeEnum.PLANTED_ROW;
-                        break;
+                            case PLANTED_ROW:
+                                destinationPositionCoordinateXTypeEnum =
+                                    io.swagger.client.model.StudyLayoutRequestLayout
+                                        .PositionCoordinateXTypeEnum.PLANTED_ROW;
+                                break;
 
-                    case PLANTED_INDIVIDUAL:
-                        positionCoordinateXTypeEnum = io.swagger.client.model
-                            .StudyLayoutRequestLayout.PositionCoordinateXTypeEnum.PLANTED_INDIVIDUAL;
-                        break;
+                            case PLANTED_INDIVIDUAL:
+                                destinationPositionCoordinateXTypeEnum =
+                                    io.swagger.client.model.StudyLayoutRequestLayout
+                                        .PositionCoordinateXTypeEnum.PLANTED_INDIVIDUAL;
+                                break;
 
-                    case GRID_ROW:
-                        positionCoordinateXTypeEnum = io.swagger.client.model
-                            .StudyLayoutRequestLayout.PositionCoordinateXTypeEnum.GRID_ROW;
-                        break;
+                            case GRID_ROW:
+                                destinationPositionCoordinateXTypeEnum = io.swagger.client.model
+                                    .StudyLayoutRequestLayout.PositionCoordinateXTypeEnum.GRID_ROW;
+                                break;
 
-                    case GRID_COL:
-                        positionCoordinateXTypeEnum = io.swagger.client.model
-                            .StudyLayoutRequestLayout.PositionCoordinateXTypeEnum.GRID_COL;
-                        break;
+                            case GRID_COL:
+                                destinationPositionCoordinateXTypeEnum = io.swagger.client.model
+                                    .StudyLayoutRequestLayout.PositionCoordinateXTypeEnum.GRID_COL;
+                                break;
 
-                    case MEASURED_ROW:
-                        positionCoordinateXTypeEnum = io.swagger.client.model
-                            .StudyLayoutRequestLayout.PositionCoordinateXTypeEnum.MEASURED_ROW;
-                        break;
+                            case MEASURED_ROW:
+                                destinationPositionCoordinateXTypeEnum =
+                                    io.swagger.client.model.StudyLayoutRequestLayout
+                                        .PositionCoordinateXTypeEnum.MEASURED_ROW;
+                                break;
 
-                    case MEASURED_COL:
-                        positionCoordinateXTypeEnum = io.swagger.client.model
-                            .StudyLayoutRequestLayout.PositionCoordinateXTypeEnum.MEASURED_COL;
-                        break;
+                            case MEASURED_COL:
+                                destinationPositionCoordinateXTypeEnum =
+                                    io.swagger.client.model.StudyLayoutRequestLayout
+                                        .PositionCoordinateXTypeEnum.MEASURED_COL;
+                                break;
 
-                    default: positionCoordinateXTypeEnum = null;
+                            default: destinationPositionCoordinateXTypeEnum = null;
+                        }
                 }
-                this.setPositionCoordinateXType(positionCoordinateXTypeEnum);
+                this.setPositionCoordinateXType(destinationPositionCoordinateXTypeEnum);
             }
+            // endregion
 
             this.setPositionCoordinateY(observationUnitPosition.getPositionCoordinateY());
 
+            // region setPositionCoordinateYType()
             {
                 final io.swagger.client.model.StudyLayoutRequestLayout.PositionCoordinateYTypeEnum
-                    positionCoordinateYTypeEnum;
-                switch (observationUnitPosition.getPositionCoordinateYType())
+                    destinationPositionCoordinateYTypeEnum;
                 {
-                    case LONGITUDE:
-                        positionCoordinateYTypeEnum = io.swagger.client.model
-                            .StudyLayoutRequestLayout.PositionCoordinateYTypeEnum.LONGITUDE;
-                        break;
+                    final
+                        io.swagger.client.model.ObservationUnitPosition.PositionCoordinateYTypeEnum
+                            sourcePositionCoordinateYTypeEnum =
+                                observationUnitPosition.getPositionCoordinateYType();
+                    if (null == sourcePositionCoordinateYTypeEnum)
+                        destinationPositionCoordinateYTypeEnum = null;
+                    else
+                        switch (sourcePositionCoordinateYTypeEnum)
+                        {
+                            case LONGITUDE:
+                                destinationPositionCoordinateYTypeEnum = io.swagger.client.model
+                                    .StudyLayoutRequestLayout.PositionCoordinateYTypeEnum.LONGITUDE;
+                                break;
 
-                    case LATITUDE:
-                        positionCoordinateYTypeEnum = io.swagger.client.model
-                            .StudyLayoutRequestLayout.PositionCoordinateYTypeEnum.LATITUDE;
-                        break;
+                            case LATITUDE:
+                                destinationPositionCoordinateYTypeEnum = io.swagger.client.model
+                                    .StudyLayoutRequestLayout.PositionCoordinateYTypeEnum.LATITUDE;
+                                break;
 
-                    case PLANTED_ROW:
-                        positionCoordinateYTypeEnum = io.swagger.client.model
-                            .StudyLayoutRequestLayout.PositionCoordinateYTypeEnum.PLANTED_ROW;
-                        break;
+                            case PLANTED_ROW:
+                                destinationPositionCoordinateYTypeEnum =
+                                    io.swagger.client.model.StudyLayoutRequestLayout
+                                        .PositionCoordinateYTypeEnum.PLANTED_ROW;
+                                break;
 
-                    case PLANTED_INDIVIDUAL:
-                        positionCoordinateYTypeEnum = io.swagger.client.model
-                            .StudyLayoutRequestLayout.PositionCoordinateYTypeEnum.PLANTED_INDIVIDUAL;
-                        break;
+                            case PLANTED_INDIVIDUAL:
+                                destinationPositionCoordinateYTypeEnum =
+                                    io.swagger.client.model.StudyLayoutRequestLayout
+                                        .PositionCoordinateYTypeEnum.PLANTED_INDIVIDUAL;
+                                break;
 
-                    case GRID_ROW:
-                        positionCoordinateYTypeEnum = io.swagger.client.model
-                            .StudyLayoutRequestLayout.PositionCoordinateYTypeEnum.GRID_ROW;
-                        break;
+                            case GRID_ROW:
+                                destinationPositionCoordinateYTypeEnum = io.swagger.client.model
+                                    .StudyLayoutRequestLayout.PositionCoordinateYTypeEnum.GRID_ROW;
+                                break;
 
-                    case GRID_COL:
-                        positionCoordinateYTypeEnum = io.swagger.client.model
-                            .StudyLayoutRequestLayout.PositionCoordinateYTypeEnum.GRID_COL;
-                        break;
+                            case GRID_COL:
+                                destinationPositionCoordinateYTypeEnum = io.swagger.client.model
+                                    .StudyLayoutRequestLayout.PositionCoordinateYTypeEnum.GRID_COL;
+                                break;
 
-                    case MEASURED_ROW:
-                        positionCoordinateYTypeEnum = io.swagger.client.model
-                            .StudyLayoutRequestLayout.PositionCoordinateYTypeEnum.MEASURED_ROW;
-                        break;
+                            case MEASURED_ROW:
+                                destinationPositionCoordinateYTypeEnum =
+                                    io.swagger.client.model.StudyLayoutRequestLayout
+                                        .PositionCoordinateYTypeEnum.MEASURED_ROW;
+                                break;
 
-                    case MEASURED_COL:
-                        positionCoordinateYTypeEnum = io.swagger.client.model
-                            .StudyLayoutRequestLayout.PositionCoordinateYTypeEnum.MEASURED_COL;
-                        break;
+                            case MEASURED_COL:
+                                destinationPositionCoordinateYTypeEnum =
+                                    io.swagger.client.model.StudyLayoutRequestLayout
+                                        .PositionCoordinateYTypeEnum.MEASURED_COL;
+                                break;
 
-                    default: positionCoordinateYTypeEnum = null;
+                            default: destinationPositionCoordinateYTypeEnum = null;
+                        }
                 }
-                this.setPositionCoordinateYType(positionCoordinateYTypeEnum);
+                this.setPositionCoordinateYType(destinationPositionCoordinateYTypeEnum);
             }
+            // endregion
 
             this.setReplicate(java.lang.Integer.valueOf(observationUnitPosition.getReplicate()));
         }
