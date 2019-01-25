@@ -2,6 +2,8 @@ package org.wheatgenetics.brapi1_3.studies;
 
 /**
  * Uses:
+ * io.swagger.client.model.ObservationUnitPosition
+ * io.swagger.client.model.ObservationUnitPositionsResponse
  * io.swagger.client.model.StudyLayoutRequest
  * io.swagger.client.model.StudyLayoutRequestLayout
  *
@@ -13,6 +15,28 @@ package org.wheatgenetics.brapi1_3.studies;
 public class StudyLayoutRequest extends io.swagger.client.model.StudyLayoutRequest
 implements org.wheatgenetics.javalib.mstrdtl.Items
 {
+    public StudyLayoutRequest(
+    final io.swagger.client.model.ObservationUnitPositionsResponse observationUnitPositionsResponse)
+    {
+        super();
+
+        if (null != observationUnitPositionsResponse)
+        {
+            final io.swagger.client.model.ObservationUnitPositionsResponseResult
+                observationUnitPositionsResponseResult = observationUnitPositionsResponse.getResult();
+            if (null != observationUnitPositionsResponseResult)
+            {
+                int position = 0;
+                for (final io.swagger.client.model.ObservationUnitPosition observationUnitPosition:
+                observationUnitPositionsResponseResult.getData())
+                    this.addLayoutItem(
+                        new org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayout(
+                            position++             ,
+                            observationUnitPosition));
+            }
+        }
+    }
+
     // region Overridden Methods
     @java.lang.Override public void add(final org.wheatgenetics.javalib.mstrdtl.Item item)
     { this.addLayoutItem((org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayout) item); }
