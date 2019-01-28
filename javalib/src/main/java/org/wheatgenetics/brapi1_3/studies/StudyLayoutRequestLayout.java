@@ -213,8 +213,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // endregion
 
     // region Overridden Methods
-    @java.lang.Override public java.lang.String getTitle()
-    { return java.lang.Integer.toString(this.getBlockNumber()); }
+    @java.lang.Override public java.lang.String getTitle() { return this.getObservationUnitDbId(); }
 
     @java.lang.Override public java.lang.String getContent() { return this.toString(); }
 
