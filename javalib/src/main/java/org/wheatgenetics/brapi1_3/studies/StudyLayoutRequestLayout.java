@@ -27,8 +27,13 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
 
         if (null != observationUnitPosition)
         {
-            this.setBlockNumber(
-                java.lang.Integer.valueOf(observationUnitPosition.getBlockNumber()));
+            // region setBlockNumber()
+            {
+                final java.lang.String blockNumber = observationUnitPosition.getBlockNumber();
+                this.setBlockNumber(null == blockNumber ?
+                    null :java.lang.Integer.valueOf(blockNumber));
+            }
+            // endregion
 
             // region setEntryType()
             {
@@ -199,7 +204,10 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             }
             // endregion
 
-            this.setReplicate(java.lang.Integer.valueOf(observationUnitPosition.getReplicate()));
+            // region setReplicate()
+            final java.lang.String replicate = observationUnitPosition.getReplicate();
+            this.setReplicate(null == replicate ? null : java.lang.Integer.valueOf(replicate));
+            // endregion
         }
     }
     // endregion
