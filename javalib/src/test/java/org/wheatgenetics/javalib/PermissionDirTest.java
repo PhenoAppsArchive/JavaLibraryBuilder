@@ -58,9 +58,8 @@ public class PermissionDirTest extends java.lang.Object
 
     @org.junit.Test(expected = org.wheatgenetics.javalib.Dir.PermissionException.class)
     public void createNewDirWorks() throws org.wheatgenetics.javalib.Dir.PermissionException
-    {
-        this.tmpPermissionDir.createNewDir("abc");        // throws org.wheatgenetics.java-
-    }                                                              //  lib.Dir.PermissionException
+    { this.tmpPermissionDir.createNewDir("abc"); }        // throws org.wheatgenetics.java-
+                                                                   //  lib.Dir.PermissionException
 
     @org.junit.Test(expected = org.wheatgenetics.javalib.Dir.PermissionException.class)
     public void listWorks() throws org.wheatgenetics.javalib.Dir.PermissionException

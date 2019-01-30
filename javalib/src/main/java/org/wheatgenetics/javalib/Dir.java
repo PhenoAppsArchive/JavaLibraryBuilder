@@ -131,6 +131,12 @@ public class Dir extends java.lang.Object
     @java.lang.SuppressWarnings({"WeakerAccess"}) protected java.io.File getPath()
     { return this.path; }
 
+    /**
+     * The purpose of this method is to log a message.  In this class the method doesn't do its job
+     * (because it can't -- this must be done at the Android (not the Java) layer).  When this
+     * method is overridden the subclass that makes this method do its job should send msg to the
+     * message log.
+     */
     @java.lang.SuppressWarnings({"WeakerAccess", "EmptyMethod"})
     protected void log(@java.lang.SuppressWarnings({"unused"}) final java.lang.String msg) {}
 
@@ -163,12 +169,16 @@ public class Dir extends java.lang.Object
     {
         super();
 
-        if (null == path) throw new java.lang.IllegalArgumentException("path must not be null");
-        this.path = path;
+        if (null == path)
+            throw new java.lang.IllegalArgumentException("path must not be null");
+        else
+        {
+            this.path                = path;
+            this.blankHiddenFileName =
+                null == blankHiddenFileName ? null : blankHiddenFileName.trim();
 
-        this.blankHiddenFileName = null == blankHiddenFileName ? null : blankHiddenFileName.trim();
-
-        this.setPermissionRequired(false);
+            this.setPermissionRequired(false);
+        }
     }
 
     @java.lang.SuppressWarnings({"WeakerAccess"}) public Dir(final java.io.File parent,
@@ -216,7 +226,7 @@ public class Dir extends java.lang.Object
                 {
                     org.wheatgenetics.javalib.Dir.throwIfNotPermitted(                     // throws
                         this.checkPermission());
-                    org.wheatgenetics.javalib.Dir.createNewDir(path,null);
+                    org.wheatgenetics.javalib.Dir.createNewDir       (path,null);
                     org.wheatgenetics.javalib.Dir.throwIfNotPermitted(this.setExists());   // throws
                 }
 
@@ -252,7 +262,7 @@ public class Dir extends java.lang.Object
     throws java.io.IOException, org.wheatgenetics.javalib.Dir.PermissionException
     {
         if (this.getExists())            // throws org.wheatgenetics.javalib.Dir.PermissionException
-            return new java.io.File(this.getPath(), fileName);
+            return new java.io.File(/* parent => */ this.getPath(), /* child => */ fileName);
         else
             throw new java.io.IOException(this.getPathAsString() + " does not exist");
     }
@@ -326,8 +336,15 @@ public class Dir extends java.lang.Object
                     for (final java.lang.String l: unfilteredList)
                         if (pattern.matcher(l).matches()) arrayList.add(l);
                 }
-                final java.lang.String filteredList[] = new java.lang.String[arrayList.size()];
-                return arrayList.toArray(filteredList);
+
+                final int arrayListSize = arrayList.size();
+                if (arrayListSize <= 0)
+                    return null;
+                else
+                {
+                    final java.lang.String filteredList[] = new java.lang.String[arrayListSize];
+                    return arrayList.toArray(filteredList);
+                }
             }
     }
     // endregion
