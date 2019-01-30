@@ -12,23 +12,23 @@ package org.wheatgenetics.javalib;
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public class DirTest extends java.lang.Object
 {
-    // region Fields
+    // region Constants and Fields
     private static final java.io.File TMP_FOLDER =
         new java.io.File(java.lang.System.getProperty("java.io.tmpdir"));
     private final org.wheatgenetics.javalib.Dir tmpDir = new org.wheatgenetics.javalib.Dir(
-        org.wheatgenetics.javalib.DirTest.TMP_FOLDER,null);
+        /* path => */ org.wheatgenetics.javalib.DirTest.TMP_FOLDER,null);
 
     private static final java.lang.String TMP_SUB_FOLDER_NAME = "tmpsubdir";
     private static final java.io.File     TMP_SUB_FOLDER      = new java.io.File(
-        org.wheatgenetics.javalib.DirTest.TMP_FOLDER         ,
-        org.wheatgenetics.javalib.DirTest.TMP_SUB_FOLDER_NAME);
+        /* parent => */ org.wheatgenetics.javalib.DirTest.TMP_FOLDER         ,
+        /* child  => */ org.wheatgenetics.javalib.DirTest.TMP_SUB_FOLDER_NAME);
     private final org.wheatgenetics.javalib.Dir tmpSubDir = new org.wheatgenetics.javalib.Dir(
-        org.wheatgenetics.javalib.DirTest.TMP_SUB_FOLDER,null);
+        /* path => */ org.wheatgenetics.javalib.DirTest.TMP_SUB_FOLDER,null);
 
     private static final java.lang.String TMP_FILE_NAME = "tmpfile.xml";
     private static final java.io.File     TMP_FILE      = new java.io.File(
-        org.wheatgenetics.javalib.DirTest.TMP_SUB_FOLDER,
-        org.wheatgenetics.javalib.DirTest.TMP_FILE_NAME );
+        /* parent => */ org.wheatgenetics.javalib.DirTest.TMP_SUB_FOLDER,
+        /* child  => */ org.wheatgenetics.javalib.DirTest.TMP_FILE_NAME );
     // endregion
 
     // region Private Methods
@@ -77,7 +77,7 @@ public class DirTest extends java.lang.Object
     public void firstConstructorWorks()
     {
         new org.wheatgenetics.javalib.Dir(
-            /* path                => */ (java.io.File)    null,
+            /* path                => */ (java.io.File) null,
             /* blankHiddenFileName => */null);
     }
 
@@ -85,7 +85,7 @@ public class DirTest extends java.lang.Object
     {
         new org.wheatgenetics.javalib.Dir(
             /* path                => */ org.wheatgenetics.javalib.DirTest.TMP_FOLDER,
-            /* blankHiddenFileName => */null                  );
+            /* blankHiddenFileName => */null);
     }
     // endregion
 
@@ -99,8 +99,8 @@ public class DirTest extends java.lang.Object
     {
         new org.wheatgenetics.javalib.Dir(
             /* parent              => */ org.wheatgenetics.javalib.DirTest.TMP_FOLDER,
-            /* child               => */null                                   ,
-            /* blankHiddenFileName => */null                       );
+            /* child               => */null,
+            /* blankHiddenFileName => */null);
     }
 
     @org.junit.Test() public void secondConstructorSucceeds()
@@ -108,7 +108,7 @@ public class DirTest extends java.lang.Object
         new org.wheatgenetics.javalib.Dir(
             /* parent              => */ org.wheatgenetics.javalib.DirTest.TMP_FOLDER         ,
             /* child               => */ org.wheatgenetics.javalib.DirTest.TMP_SUB_FOLDER_NAME,
-            /* blankHiddenFileName => */null                                );
+            /* blankHiddenFileName => */null);
     }
     // endregion
 
@@ -116,6 +116,7 @@ public class DirTest extends java.lang.Object
     @org.junit.Test(expected = java.lang.NullPointerException.class)
     public void nullParentThirdConstructorWorks()
     {
+        // noinspection ConstantConditions
         new org.wheatgenetics.javalib.Dir(
             /* parent => */ (org.wheatgenetics.javalib.Dir) null, /* child => */null);
     }
@@ -151,7 +152,7 @@ public class DirTest extends java.lang.Object
     {
         org.junit.Assert.assertTrue(this.tmpDir.getExists() /* throws PermissionException */);
         org.junit.Assert.assertFalse(new org.wheatgenetics.javalib.Dir(
-            new java.io.File("asl;dfjals;fjl"),null)
+            /* path => */ new java.io.File("asl;dfjals;fjl"),null)
                 .getExists() /* throws PermissionException */);
     }
 
@@ -173,8 +174,8 @@ public class DirTest extends java.lang.Object
             final java.io.File blankHiddenFile;
             {
                 final org.wheatgenetics.javalib.Dir tmpSubDir = new org.wheatgenetics.javalib.Dir(
-                    org.wheatgenetics.javalib.DirTest.TMP_SUB_FOLDER,
-                    org.wheatgenetics.javalib.DirTest.TMP_FILE_NAME );
+                    /* path                => */ org.wheatgenetics.javalib.DirTest.TMP_SUB_FOLDER,
+                    /* blankHiddenFileName => */ org.wheatgenetics.javalib.DirTest.TMP_FILE_NAME );
                 blankHiddenFile = tmpSubDir.createIfMissing();  // throws java.io.IOException, org.-
             }                                                   //  wheatgenetics.javalib.Dir.Per-
             org.junit.Assert.assertNotNull(blankHiddenFile);    //  missionException
@@ -223,7 +224,8 @@ public class DirTest extends java.lang.Object
         {
             final java.lang.String tmpSubSubFolderName = "abc";
             tmpSubSubFolder = new java.io.File(
-                org.wheatgenetics.javalib.DirTest.TMP_SUB_FOLDER, tmpSubSubFolderName);
+                /* parent => */ org.wheatgenetics.javalib.DirTest.TMP_SUB_FOLDER,
+                /* child  => */ tmpSubSubFolderName                             );
             this.tmpSubDir.createNewDir(tmpSubSubFolderName);      // throws org.wheatgenetics.java-
         }                                                          //  lib.Dir.PermissionException
         org.junit.Assert.assertTrue(tmpSubSubFolder.exists());
@@ -249,7 +251,7 @@ public class DirTest extends java.lang.Object
                                                          //  netics.javalib.Dir.PermissionException
         final java.lang.String list[] = this.tmpSubDir.list();     // throws org.wheatgenetics.java-
         org.junit.Assert.assertNotNull(list                     ); //  lib.Dir.PermissionException
-        org.junit.Assert.assertTrue   (list.length == 0);
+        org.junit.Assert.assertTrue   (0 == list.length);
     }
 
     @org.junit.Test() public void regexListSucceeds()
@@ -259,11 +261,16 @@ public class DirTest extends java.lang.Object
         this.tmpSubDir.createIfMissing();                 // throws IOException, PermissionException
         this.tmpSubDir.createNewFile(                     // throws IOException, PermissionException
             org.wheatgenetics.javalib.DirTest.TMP_FILE_NAME);
-                                                              //
-        final java.lang.String list[] = this.tmpSubDir.list(".+\\.xml"); // throws org.wheat-
-        org.junit.Assert.assertNotNull(list                     );             //  genetics.java-
-        org.junit.Assert.assertTrue   (list.length == 1);             //  lib.Dir.Permis-
-    }                                                                          //  sionException
+
+        {
+            final java.lang.String list[] = this.tmpSubDir.list(".+\\.xml"); // throws Permis-
+            org.junit.Assert.assertNotNull(list                     );             //  sionException
+            org.junit.Assert.assertTrue   (list.length == 1);
+        }
+
+        final java.lang.String list[] = this.tmpSubDir.list(".+\\.abc");    // throws Permis-
+        org.junit.Assert.assertNull(list);                                         //  sionException
+    }
     // endregion
     // endregion
 }
