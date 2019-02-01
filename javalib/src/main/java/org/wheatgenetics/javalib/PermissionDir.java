@@ -4,7 +4,6 @@ package org.wheatgenetics.javalib;
  * Uses:
  * org.wheatgenetics.javalib.Dir
  */
-@java.lang.SuppressWarnings({"WeakerAccess"})
 public abstract class PermissionDir extends org.wheatgenetics.javalib.Dir
 {
     public PermissionDir(final java.io.File path, final java.lang.String blankHiddenFileName)

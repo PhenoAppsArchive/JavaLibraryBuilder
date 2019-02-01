@@ -15,13 +15,11 @@ public class Dir extends java.lang.Object
     public static class PermissionException extends java.lang.Exception
     { private PermissionException(final java.lang.String message) { super(message); } }
 
-    @java.lang.SuppressWarnings({"WeakerAccess"})
-    public static class PermissionRequestedException
+    @java.lang.SuppressWarnings({"WeakerAccess"}) public static class PermissionRequestedException
     extends org.wheatgenetics.javalib.Dir.PermissionException
     { private PermissionRequestedException() { super("Permission requested"); } }
 
-    @java.lang.SuppressWarnings({"WeakerAccess"})
-    public static class PermissionDeniedException
+    @java.lang.SuppressWarnings({"WeakerAccess"}) public static class PermissionDeniedException
     extends org.wheatgenetics.javalib.Dir.PermissionException
     { private PermissionDeniedException() { super("Permission denied"); } }
     // endregion
@@ -128,8 +126,7 @@ public class Dir extends java.lang.Object
     void setPermissionRequiredToTrue() { this.setPermissionRequired(true); }
 
     // region Protected Methods
-    @java.lang.SuppressWarnings({"WeakerAccess"}) protected java.io.File getPath()
-    { return this.path; }
+    protected java.io.File getPath() { return this.path; }
 
     /**
      * The purpose of this method is to log a message.  In this class the method doesn't do its job
@@ -191,9 +188,10 @@ public class Dir extends java.lang.Object
     // endregion
 
     // region Public Methods
-    public java.lang.String getPathAsString()
+    @java.lang.SuppressWarnings({"WeakerAccess"}) public java.lang.String getPathAsString()
     { final java.io.File path = this.getPath(); return null == path ? null : path.getPath(); }
 
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     public boolean getExists() throws org.wheatgenetics.javalib.Dir.PermissionException
     {
         this.indentationStack.push("getExists()");
@@ -212,7 +210,7 @@ public class Dir extends java.lang.Object
         finally { this.indentationStack.pop(); }
     }
 
-    public java.io.File createIfMissing()
+    @java.lang.SuppressWarnings({"WeakerAccess"}) public java.io.File createIfMissing()
     throws java.io.IOException, org.wheatgenetics.javalib.Dir.PermissionException
     {
         this.indentationStack.push("createIfMissing()");
@@ -258,6 +256,7 @@ public class Dir extends java.lang.Object
         finally { this.indentationStack.pop(); }
     }
 
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     public java.io.File makeFile(final java.lang.String fileName)
     throws java.io.IOException, org.wheatgenetics.javalib.Dir.PermissionException
     {
@@ -267,7 +266,7 @@ public class Dir extends java.lang.Object
             throw new java.io.IOException(this.getPathAsString() + " does not exist");
     }
 
-    @java.lang.SuppressWarnings({"UnusedReturnValue"})
+    @java.lang.SuppressWarnings({"WeakerAccess", "UnusedReturnValue"})
     public java.io.File createNewFile(final java.lang.String fileName)
     throws java.io.IOException, org.wheatgenetics.javalib.Dir.PermissionException
     {
@@ -284,8 +283,8 @@ public class Dir extends java.lang.Object
         return file;
     }
 
-    public void createNewDir(final java.lang.String dirName)
-    throws org.wheatgenetics.javalib.Dir.PermissionException
+    @java.lang.SuppressWarnings({"WeakerAccess"}) public void createNewDir(
+    final java.lang.String dirName) throws org.wheatgenetics.javalib.Dir.PermissionException
     {
         org.wheatgenetics.javalib.Dir.throwIfNotPermitted(         // throws org.wheatgenetics.java-
             this.checkPermission());                               //  lib.Dir.PermissionException

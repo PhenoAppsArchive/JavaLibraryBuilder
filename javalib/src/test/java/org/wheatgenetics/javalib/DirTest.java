@@ -143,6 +143,7 @@ public class DirTest extends java.lang.Object
     // region Public Method Tests
     @org.junit.Test() public void getPathAsStringSucceeds()
     {
+        // noinspection SimplifiableJUnitAssertion
         org.junit.Assert.assertTrue(this.tmpDir.getPathAsString().equals(
             org.wheatgenetics.javalib.DirTest.TMP_FOLDER.getPath()));
     }
@@ -250,8 +251,8 @@ public class DirTest extends java.lang.Object
         this.tmpSubDir.createIfMissing();                // throws java.io.IOException, org.wheatge-
                                                          //  netics.javalib.Dir.PermissionException
         final java.lang.String list[] = this.tmpSubDir.list();     // throws org.wheatgenetics.java-
-        org.junit.Assert.assertNotNull(list                     ); //  lib.Dir.PermissionException
-        org.junit.Assert.assertTrue   (0 == list.length);
+        org.junit.Assert.assertNotNull(list);                      //  lib.Dir.PermissionException
+        org.junit.Assert.assertEquals (0, list.length);
     }
 
     @org.junit.Test() public void regexListSucceeds()
@@ -264,8 +265,8 @@ public class DirTest extends java.lang.Object
 
         {
             final java.lang.String list[] = this.tmpSubDir.list(".+\\.xml"); // throws Permis-
-            org.junit.Assert.assertNotNull(list                     );             //  sionException
-            org.junit.Assert.assertTrue   (list.length == 1);
+            org.junit.Assert.assertNotNull(list);                                  //  sionException
+            org.junit.Assert.assertEquals (1, list.length);
         }
 
         final java.lang.String list[] = this.tmpSubDir.list(".+\\.abc");    // throws Permis-
