@@ -16,5 +16,5 @@ public interface Items
     @java.lang.SuppressWarnings({"unused"}) public int size();
 
     @java.lang.SuppressWarnings({"unused"})
-    public org.wheatgenetics.javalib.mstrdtl.Item get (final int position);
+    public org.wheatgenetics.javalib.mstrdtl.Item get(final int position);
 }

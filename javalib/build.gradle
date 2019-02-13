@@ -21,6 +21,3 @@ dependencies {
     implementation "javax.annotation:javax.annotation-api:${javax_annotation_version}"
     implementation "io.swagger.core.v3:swagger-annotations:${swagger_annotations_version}"
 }
-
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
