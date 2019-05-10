@@ -3,8 +3,7 @@ package org.wheatgenetics.changelog;
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 class ChangeLog extends java.lang.Object
 {
-    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"})
-    interface LineHandler
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) interface LineHandler
     {
         public abstract void handleBlankLine();
         public abstract void handleVersionLine(final java.lang.String version);
@@ -32,7 +31,7 @@ class ChangeLog extends java.lang.Object
                 new java.util.ArrayList<java.lang.String>();
             {
                 final java.io.BufferedReader bufferedReader =
-                    new java.io.BufferedReader(this.inputStreamReader, 8192);
+                    new java.io.BufferedReader(this.inputStreamReader,8192);
                 java.lang.String line;
                 while (null != (line = bufferedReader.readLine()))     // throws java.io.IOException
                     arrayList.add(line);
