@@ -1,7 +1,6 @@
 package org.wheatgenetics.javalib.mstrdtl;
 
-@java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"})
-public interface Item
+@java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface Item
 {
     // region Constants
     @java.lang.SuppressWarnings({"unused"}) public static final int              MIN_POSITION = 0;
