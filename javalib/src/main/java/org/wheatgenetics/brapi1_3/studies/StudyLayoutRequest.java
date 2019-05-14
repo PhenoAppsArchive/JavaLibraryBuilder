@@ -12,6 +12,7 @@ package org.wheatgenetics.brapi1_3.studies;
  *
  * org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayout
  */
+@java.lang.SuppressWarnings({"unused"})
 public class StudyLayoutRequest extends io.swagger.client.model.StudyLayoutRequest
 implements org.wheatgenetics.javalib.mstrdtl.Items
 {
@@ -36,14 +37,13 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
                     observationUnitPosition: list)
                         this.addLayoutItem(
                             new org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayout(
-                                position++             ,
-                                observationUnitPosition));
+                                position++, observationUnitPosition));
                 }
             }
         }
     }
 
-    // region Overridden Methods
+    // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
     @java.lang.Override public void add(final org.wheatgenetics.javalib.mstrdtl.Item item)
     { this.addLayoutItem((org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayout) item); }
 
