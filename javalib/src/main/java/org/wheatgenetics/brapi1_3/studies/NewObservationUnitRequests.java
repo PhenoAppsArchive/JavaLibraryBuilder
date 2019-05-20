@@ -2,6 +2,7 @@ package org.wheatgenetics.brapi1_3.studies;
 
 /**
  * Used:
+ * io.swagger.client.model.NewObservationUnitRequest
  * io.swagger.client.model.ObservationUnit
  * io.swagger.client.model.ObservationUnitsResponse1
  * io.swagger.client.model.ObservationUnitsResponse1Result
@@ -15,16 +16,16 @@ package org.wheatgenetics.brapi1_3.studies;
 public class NewObservationUnitRequests extends java.lang.Object
 implements org.wheatgenetics.javalib.mstrdtl.Items
 {
-    private java.util.ArrayList<org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequest>
+    private java.util.ArrayList<io.swagger.client.model.NewObservationUnitRequest>
         arrayListInstance = null;
 
-    private java.util.ArrayList<org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequest>
+    private java.util.ArrayList<io.swagger.client.model.NewObservationUnitRequest>
     arrayList()
     {
         if (null == this.arrayListInstance)
             // noinspection Convert2Diamond
             this.arrayListInstance = new java.util.ArrayList<
-                org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequest>();
+                io.swagger.client.model.NewObservationUnitRequest>();
         return this.arrayListInstance;
     }
 
@@ -64,6 +65,13 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
     { return null == this.arrayListInstance ? 0 : this.arrayListInstance.size(); }
 
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(final int position)
-    { return null == this.arrayListInstance ? null : this.arrayListInstance.get(position); }
+    {
+        return null == this.arrayListInstance ? null :
+            (org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequest)
+                this.arrayListInstance.get(position);
+    }
     // endregion
+
+    public java.util.List<io.swagger.client.model.NewObservationUnitRequest> list()
+    { return this.arrayListInstance; }
 }
