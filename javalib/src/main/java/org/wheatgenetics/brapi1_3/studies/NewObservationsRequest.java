@@ -24,16 +24,15 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
 
         if (null != observationsResponse)
         {
-            final io.swagger.client.model.ObservationsResponseResult observationsResponseResult =
+            final io.swagger.client.model.ObservationsResponseResult result =
                 observationsResponse.getResult();
-            if (null != observationsResponseResult)
+            if (null != result)
             {
-                final java.util.List<io.swagger.client.model.Observation> list =
-                    observationsResponseResult.getData();
-                if (null != list) if (list.size() > 0)
+                final java.util.List<io.swagger.client.model.Observation> data = result.getData();
+                if (null != data) if (data.size() > 0)
                 {
                     int position = 0;
-                    for (final io.swagger.client.model.Observation observation : list)
+                    for (final io.swagger.client.model.Observation observation : data)
                         this.addObservationsItem(new
                             org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservations(
                                 position++, observation));

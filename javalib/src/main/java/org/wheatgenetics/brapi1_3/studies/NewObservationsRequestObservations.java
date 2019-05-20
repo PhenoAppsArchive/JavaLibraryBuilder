@@ -21,16 +21,13 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     {
         this(position);
 
-        if (null != observation)
-        {
-            this.setCollector              (observation.getOperator            ());
-            this.setObservationDbId        (observation.getObservationDbId     ());
-            this.setObservationTimeStamp   (observation.getObservationTimeStamp());
-            this.setObservationUnitDbId    (observation.getObservationUnitDbId ());
-            this.setObservationVariableDbId(
-                observation.getObservationVariableDbId());
-            this.setValue(observation.getValue());
-        }
+        if (null != observation) this
+            .collector              (observation.getOperator               ())
+            .observationDbId        (observation.getObservationDbId        ())
+            .observationTimeStamp   (observation.getObservationTimeStamp   ())
+            .observationUnitDbId    (observation.getObservationUnitDbId    ())
+            .observationVariableDbId(observation.getObservationVariableDbId())
+            .value                  (observation.getValue                  ());
     }
     // endregion
 
