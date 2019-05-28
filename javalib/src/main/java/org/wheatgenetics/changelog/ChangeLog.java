@@ -1,6 +1,6 @@
 package org.wheatgenetics.changelog;
 
-@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
+@java.lang.SuppressWarnings({"unused", "ClassExplicitlyExtendsObject"})
 class ChangeLog extends java.lang.Object
 {
     @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) interface LineHandler
@@ -14,15 +14,15 @@ class ChangeLog extends java.lang.Object
     private final java.io.InputStreamReader                         inputStreamReader;
     private final org.wheatgenetics.changelog.ChangeLog.LineHandler lineHandler      ;
 
-    private java.lang.String lines[] = null;
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) private java.lang.String lines[] = null;
     // endregion
 
-    @java.lang.SuppressWarnings({"unused"}) ChangeLog(
+    ChangeLog(
     final java.io.InputStreamReader                         inputStreamReader,
     final org.wheatgenetics.changelog.ChangeLog.LineHandler lineHandler      )
     { super(); this.inputStreamReader = inputStreamReader; this.lineHandler = lineHandler; }
 
-    @java.lang.SuppressWarnings({"unused"}) void iterate() throws java.io.IOException
+    void iterate() throws java.io.IOException
     {
         if (null == this.lines)
         {
@@ -41,8 +41,7 @@ class ChangeLog extends java.lang.Object
         }
 
         java.lang.String version = null;
-        assert null != this.lineHandler;
-        for (final java.lang.String line: this.lines)
+        if (null != this.lineHandler) for (final java.lang.String line: this.lines)
             if (0 == line.length())
             {
                 version = null;
@@ -52,6 +51,7 @@ class ChangeLog extends java.lang.Object
                 if (null == version)
                 {
                     {
+                        @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
                         final java.lang.String splitLine[] = line.split("/");
                         version = splitLine[1];
                     }

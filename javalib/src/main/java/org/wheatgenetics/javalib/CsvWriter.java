@@ -4,8 +4,7 @@ package org.wheatgenetics.javalib;
  * Uses:
  * com.csvreader.CsvWriter
  */
-@java.lang.SuppressWarnings({"WeakerAccess"})
-public class CsvWriter extends com.csvreader.CsvWriter
+@java.lang.SuppressWarnings({"WeakerAccess"}) public class CsvWriter extends com.csvreader.CsvWriter
 {
     // region Constructors
     @java.lang.SuppressWarnings({"WeakerAccess", "unused"})
@@ -24,8 +23,8 @@ public class CsvWriter extends com.csvreader.CsvWriter
     @java.lang.SuppressWarnings({"unused"}) public void write() throws java.io.IOException
     { this.write("") /* throws java.io.IOException */; }
 
-    @java.lang.SuppressWarnings({"unused"}) public void write(final int content)
-    throws java.io.IOException
+    @java.lang.SuppressWarnings({"unused"})
+    public void write(final int content) throws java.io.IOException
     { this.write(java.lang.String.valueOf(content)) /* throws java.io.IOException */; }
 
     @java.lang.SuppressWarnings({"unused"}) public void write(final java.lang.String format,

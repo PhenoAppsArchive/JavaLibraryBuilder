@@ -43,8 +43,8 @@ public class Utils extends java.lang.Object
     @java.lang.SuppressWarnings({"WeakerAccess"})
     public static int interpretAsUnsigned(final byte signedByte) { return signedByte & 0x000000FF; }
 
-    @java.lang.SuppressWarnings({"unused"})
-    public static java.lang.String convert(final byte buffer[], int length)
+    @java.lang.SuppressWarnings({"unused"}) public static java.lang.String convert(
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) final byte buffer[], int length)
     {
         if (null == buffer)
             return null;
@@ -143,7 +143,9 @@ public class Utils extends java.lang.Object
 
                                     private java.lang.String read()
                                     {
-                                        final int  length = 1024            ;
+                                        final int length = 1024;
+
+                                        @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
                                         final char cbuf[] = new char[length];
                                         try
                                         {

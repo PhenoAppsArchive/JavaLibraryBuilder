@@ -319,6 +319,7 @@ public class Dir extends java.lang.Object
     public java.lang.String[] list(final java.lang.String regex)
     throws org.wheatgenetics.javalib.Dir.PermissionException
     {
+        // noinspection CStyleArrayDeclaration
         final java.lang.String unfilteredList[] = this.list();     // throws org.wheatgenetics.java-
         if (null == unfilteredList)                                //   lib.Dir.PermissionException
             return null;
@@ -341,6 +342,7 @@ public class Dir extends java.lang.Object
                     return null;
                 else
                 {
+                    // noinspection CStyleArrayDeclaration
                     final java.lang.String filteredList[] = new java.lang.String[arrayListSize];
                     return arrayList.toArray(filteredList);
                 }
