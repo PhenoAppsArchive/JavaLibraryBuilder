@@ -45,6 +45,7 @@ public class DirTest extends java.lang.Object
 
         if (org.wheatgenetics.javalib.DirTest.TMP_SUB_FOLDER.exists())
         {
+            // noinspection CStyleArrayDeclaration
             final java.lang.String list[] = org.wheatgenetics.javalib.DirTest.TMP_SUB_FOLDER.list();
             if (null != list) org.junit.Assert.assertTrue(list.length <= 0);
 
@@ -250,6 +251,7 @@ public class DirTest extends java.lang.Object
         org.wheatgenetics.javalib.DirTest.deleteTmpSubFolder();
         this.tmpSubDir.createIfMissing();                // throws java.io.IOException, org.wheatge-
                                                          //  netics.javalib.Dir.PermissionException
+        // noinspection CStyleArrayDeclaration
         final java.lang.String list[] = this.tmpSubDir.list();     // throws org.wheatgenetics.java-
         org.junit.Assert.assertNotNull(list);                      //  lib.Dir.PermissionException
         org.junit.Assert.assertEquals (0, list.length);
@@ -264,11 +266,13 @@ public class DirTest extends java.lang.Object
             org.wheatgenetics.javalib.DirTest.TMP_FILE_NAME);
 
         {
+            // noinspection CStyleArrayDeclaration
             final java.lang.String list[] = this.tmpSubDir.list(".+\\.xml"); // throws Permis-
             org.junit.Assert.assertNotNull(list);                                  //  sionException
             org.junit.Assert.assertEquals (1, list.length);
         }
 
+        // noinspection CStyleArrayDeclaration
         final java.lang.String list[] = this.tmpSubDir.list(".+\\.abc");    // throws Permis-
         org.junit.Assert.assertNull(list);                                         //  sionException
     }
