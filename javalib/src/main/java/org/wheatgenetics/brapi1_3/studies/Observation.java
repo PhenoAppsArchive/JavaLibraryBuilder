@@ -7,16 +7,47 @@ package org.wheatgenetics.brapi1_3.studies;
  */
 class Observation extends io.swagger.client.model.Observation
 {
-    Observation(final io.swagger.client.model.ObservationSummary observationSummary)
+    Observation(final io.swagger.client.model.ObservationSummary observationSummary,
+    final java.lang.String germplasmDbId      , final java.lang.String germplasmName      ,
+    final java.lang.String observationLevel   , final java.lang.String observationUnitDbId,
+    final java.lang.String observationUnitName, final java.lang.String studyDbId          )
     {
         super();
 
-        if (null != observationSummary) this                                        // TODO: Others!
-            .observationDbId        (observationSummary.getObservationDbId        ())
-            .observationTimeStamp   (observationSummary.getObservationTimeStamp   ())
+        if (null != observationSummary) this
+            .germplasmDbId          (germplasmDbId                                  )
+            .germplasmName          (germplasmName                                  )
+            .observationDbId        (observationSummary.getObservationDbId()        )
+            .observationLevel       (observationLevel                               )
+            .observationTimeStamp   (observationSummary.getObservationTimeStamp()   )
+            .observationUnitDbId    (observationUnitDbId                            )
+            .observationUnitName    (observationUnitName                            )
             .observationVariableDbId(observationSummary.getObservationVariableDbId())
             .observationVariableName(observationSummary.getObservationVariableName())
             .season                 (observationSummary.getSeason                 ())
-            .value                  (observationSummary.getValue                  ());
+            .studyDbId              (studyDbId                                      )
+            .value                  (observationSummary.getValue()                  );
+    }
+
+    Observation(final io.swagger.client.model.Observation observation,
+    final java.lang.String operator, final java.lang.String uploadedBy)
+    {
+        super();
+
+        if (null != observation) this
+            .germplasmDbId          (observation.getGermplasmDbId          ())
+            .germplasmName          (observation.getGermplasmName          ())
+            .observationDbId        (observation.getObservationDbId        ())
+            .observationLevel       (observation.getObservationLevel       ())
+            .observationTimeStamp   (observation.getObservationTimeStamp   ())
+            .observationUnitDbId    (observation.getObservationUnitDbId    ())
+            .observationUnitName    (observation.getObservationUnitName    ())
+            .observationVariableDbId(observation.getObservationVariableDbId())
+            .observationVariableName(observation.getObservationVariableName())
+            .operator               (operator                                )
+            .season                 (observation.getSeason   ()              )
+            .studyDbId              (observation.getStudyDbId()              )
+            .uploadedBy             (uploadedBy                              )
+            .value                  (observation.getValue()                  );
     }
 }

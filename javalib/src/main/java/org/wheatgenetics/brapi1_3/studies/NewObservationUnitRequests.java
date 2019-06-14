@@ -29,6 +29,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
         return this.arrayListInstance;
     }
 
+    // region Constructors
     public NewObservationUnitRequests(
     final io.swagger.client.model.ObservationUnitsResponse1 observationUnitsResponse1)
     {
@@ -53,6 +54,23 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
             }
         }
     }
+
+    public NewObservationUnitRequests(
+    final org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequests newObservationUnitRequests,
+    final java.lang.String operator, final java.lang.String uploadedBy)
+    {
+        super();
+
+        if (null != newObservationUnitRequests) if (newObservationUnitRequests.size() > 0)
+            for (final io.swagger.client.model.NewObservationUnitRequest newObservationUnitRequest:
+            newObservationUnitRequests.arrayListInstance)
+                this.arrayList().add(
+                    new org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequest(
+                        (org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequest)
+                            newObservationUnitRequest,
+                        operator, uploadedBy));
+    }
+    // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
     @java.lang.Override public void add(final org.wheatgenetics.javalib.mstrdtl.Item item)
