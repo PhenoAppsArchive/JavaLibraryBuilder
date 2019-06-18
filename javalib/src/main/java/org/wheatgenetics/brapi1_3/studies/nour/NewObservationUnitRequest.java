@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies;
+package org.wheatgenetics.brapi1_3.studies.nour;
 
 /**
  * Uses:
@@ -10,6 +10,8 @@ package org.wheatgenetics.brapi1_3.studies;
  * io.swagger.client.model.ObservationUnit.PositionCoordinateYTypeEnum
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
+ *
+ * org.wheatgenetics.brapi1_3.studies.nour.Observations
  */
 public class NewObservationUnitRequest extends io.swagger.client.model.NewObservationUnitRequest
 implements org.wheatgenetics.javalib.mstrdtl.Item
@@ -117,7 +119,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
                 .observationUnitDbId(observationUnitDbId                     )
                 .observationUnitName(observationUnitName                     )
                 .observationUnitXref(observationUnit.getObservationUnitXref())
-                .observations       (new org.wheatgenetics.brapi1_3.studies.Observations(
+                .observations       (new org.wheatgenetics.brapi1_3.studies.nour.Observations(
                     observationUnit.getObservations (), germplasmDbId   ,
                     observationUnit.getGermplasmName(), observationLevel, observationUnitDbId,
                     observationUnitName               , studyDbId                            ))
@@ -125,11 +127,11 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
                 .plotNumber             (observationUnit.getPlotNumber         ())
                 .positionCoordinateX    (observationUnit.getPositionCoordinateX())
                 .positionCoordinateXType(
-                    org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequest.convert(
+                    org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.convert(
                         observationUnit.getPositionCoordinateXType()))
                 .positionCoordinateY    (observationUnit.getPositionCoordinateY())
                 .positionCoordinateYType(
-                    org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequest.convert(
+                    org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.convert(
                         observationUnit.getPositionCoordinateYType()))
                 .replicate (observationUnit.getReplicate() )
                 .studyDbId (studyDbId                      )
@@ -137,8 +139,8 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
         }
     }
 
-    NewObservationUnitRequest(
-    final org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequest newObservationUnitRequest,
+    NewObservationUnitRequest(final
+    org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest newObservationUnitRequest,
     final java.lang.String operator, final java.lang.String uploadedBy)
     {
         this(newObservationUnitRequest.getPosition());
@@ -158,7 +160,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             .observationUnitDbId(observationUnitDbId                               )
             .observationUnitName(observationUnitName                               )
             .observationUnitXref(newObservationUnitRequest.getObservationUnitXref())
-            .observations       (new org.wheatgenetics.brapi1_3.studies.Observations(
+            .observations       (new org.wheatgenetics.brapi1_3.studies.nour.Observations(
                 newObservationUnitRequest.getObservations(), operator, uploadedBy))
             .plantNumber            (newObservationUnitRequest.getPlantNumber            ())
             .plotNumber             (newObservationUnitRequest.getPlotNumber             ())

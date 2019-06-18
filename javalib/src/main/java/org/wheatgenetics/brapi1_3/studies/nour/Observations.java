@@ -1,11 +1,11 @@
-package org.wheatgenetics.brapi1_3.studies;
+package org.wheatgenetics.brapi1_3.studies.nour;
 
 /**
  * Uses:
  * io.swagger.client.model.Observation
  * io.swagger.client.model.ObservationSummary
  *
- * org.wheatgenetics.brapi1_3.studies.Observation
+ * org.wheatgenetics.brapi1_3.studies.nour.Observation
  */
 class Observations extends java.util.ArrayList<io.swagger.client.model.Observation>
 {
@@ -19,7 +19,7 @@ class Observations extends java.util.ArrayList<io.swagger.client.model.Observati
 
         if (null != observationSummaries)
             for (final io.swagger.client.model.ObservationSummary observationSummary:
-            observationSummaries) this.add(new org.wheatgenetics.brapi1_3.studies.Observation(
+            observationSummaries) this.add(new org.wheatgenetics.brapi1_3.studies.nour.Observation(
                 observationSummary , germplasmDbId      , germplasmName, observationLevel,
                 observationUnitDbId, observationUnitName, studyDbId                      ));
     }
@@ -30,7 +30,7 @@ class Observations extends java.util.ArrayList<io.swagger.client.model.Observati
 
         if (null != observations)
             for (final io.swagger.client.model.Observation observation: observations)
-                this.add(new org.wheatgenetics.brapi1_3.studies.Observation(observation));
+                this.add(new org.wheatgenetics.brapi1_3.studies.nour.Observation(observation));
     }
 
     Observations(final java.util.List<io.swagger.client.model.Observation> observations,
@@ -40,7 +40,7 @@ class Observations extends java.util.ArrayList<io.swagger.client.model.Observati
 
         if (null != observations)
             for (final io.swagger.client.model.Observation observation: observations)
-                this.add(new org.wheatgenetics.brapi1_3.studies.Observation(
+                this.add(new org.wheatgenetics.brapi1_3.studies.nour.Observation(
                     observation, operator, uploadedBy));
     }
 }
