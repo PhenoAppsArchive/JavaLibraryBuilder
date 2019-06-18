@@ -24,6 +24,15 @@ class Observations extends java.util.ArrayList<io.swagger.client.model.Observati
                 observationUnitDbId, observationUnitName, studyDbId                      ));
     }
 
+    Observations(final java.util.List<io.swagger.client.model.Observation> observations)
+    {
+        super();
+
+        if (null != observations)
+            for (final io.swagger.client.model.Observation observation: observations)
+                this.add(new org.wheatgenetics.brapi1_3.studies.Observation(observation));
+    }
+
     Observations(final java.util.List<io.swagger.client.model.Observation> observations,
     final java.lang.String operator, final java.lang.String uploadedBy)
     {

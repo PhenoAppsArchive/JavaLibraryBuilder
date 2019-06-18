@@ -29,8 +29,7 @@ class Observation extends io.swagger.client.model.Observation
             .value                  (observationSummary.getValue()                  );
     }
 
-    Observation(final io.swagger.client.model.Observation observation,
-    final java.lang.String operator, final java.lang.String uploadedBy)
+    Observation(final io.swagger.client.model.Observation observation)
     {
         super();
 
@@ -44,10 +43,12 @@ class Observation extends io.swagger.client.model.Observation
             .observationUnitName    (observation.getObservationUnitName    ())
             .observationVariableDbId(observation.getObservationVariableDbId())
             .observationVariableName(observation.getObservationVariableName())
-            .operator               (operator                                )
-            .season                 (observation.getSeason   ()              )
-            .studyDbId              (observation.getStudyDbId()              )
-            .uploadedBy             (uploadedBy                              )
-            .value                  (observation.getValue()                  );
+            .season                 (observation.getSeason                 ())
+            .studyDbId              (observation.getStudyDbId              ())
+            .value                  (observation.getValue                  ());
     }
+
+    Observation(final io.swagger.client.model.Observation observation,
+    final java.lang.String operator, final java.lang.String uploadedBy)
+    { this(observation); this.operator(operator).uploadedBy(uploadedBy); }
 }
