@@ -5,9 +5,13 @@ package org.wheatgenetics.brapi1_3.studies.nour;
  * io.swagger.client.model.NewObservationUnitRequest
  * io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateXTypeEnum
  * io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateYTypeEnum
+ * io.swagger.client.model.Observation
+ * io.swagger.client.model.ObservationSummary
+ * io.swagger.client.model.ObservationTreatment
  * io.swagger.client.model.ObservationUnit
  * io.swagger.client.model.ObservationUnit.PositionCoordinateXTypeEnum
  * io.swagger.client.model.ObservationUnit.PositionCoordinateYTypeEnum
+ * io.swagger.client.model.ObservationUnitXref
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  *
@@ -16,9 +20,13 @@ package org.wheatgenetics.brapi1_3.studies.nour;
 public class NewObservationUnitRequest extends io.swagger.client.model.NewObservationUnitRequest
 implements org.wheatgenetics.javalib.mstrdtl.Item
 {
-    private final int position;
+    // region Fields
+    private final int                                                  position                  ;
+    private       org.wheatgenetics.brapi1_3.studies.nour.Observations observationsAsItems = null;
+    // endregion
 
     // region Private Methods
+    // region convert() Private Methods
     private static io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateXTypeEnum
     convert(final io.swagger.client.model.ObservationUnit.PositionCoordinateXTypeEnum
         positionCoordinateXTypeEnum)
@@ -94,6 +102,103 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     }
     // endregion
 
+    private void setObservationsAsItems(
+    final org.wheatgenetics.brapi1_3.studies.nour.Observations observationsAsItems)
+    {
+        if (null == observationsAsItems)
+        {
+            super.observations(null);
+            this.observationsAsItems = null;
+        }
+        else
+        {
+            this.observationsAsItems = observationsAsItems;
+            super.observations(this.observationsAsItems.list());
+        }
+    }
+
+    // region assign() Private Methods
+    private org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest assign(
+    final java.lang.String blockNumber        , final java.lang.String entryNumber        ,
+    final java.lang.String entryType          , final java.lang.String germplasmDbId      ,
+    final java.lang.String observationLevel   , final java.lang.String observationUnitDbId,
+    final java.lang.String observationUnitName,
+    final java.util.List<io.swagger.client.model.ObservationUnitXref> observationUnitXref,
+    final java.lang.String plantNumber        , final java.lang.String plotNumber         ,
+    final java.lang.String positionCoordinateX, final java.lang.String positionCoordinateY,
+    final java.lang.String replicate          , final java.lang.String studyDbId          ,
+    final java.util.List<io.swagger.client.model.ObservationTreatment> treatments)
+    {
+        this.blockNumber(blockNumber).entryNumber(entryNumber).entryType(entryType)
+            .germplasmDbId      (germplasmDbId      ).observationLevel   (observationLevel   )
+            .observationUnitDbId(observationUnitDbId).observationUnitName(observationUnitName)
+            .observationUnitXref(observationUnitXref).plantNumber        (plantNumber        )
+            .plotNumber         (plotNumber         ).positionCoordinateX(positionCoordinateX)
+            .positionCoordinateY(positionCoordinateY).replicate          (replicate          )
+            .studyDbId(studyDbId).treatments(treatments);
+        return this;
+    }
+
+    private void assign(
+    final java.lang.String blockNumber        , final java.lang.String entryNumber        ,
+    final java.lang.String entryType          , final java.lang.String germplasmDbId      ,
+    final java.lang.String germplasmName      , final java.lang.String observationLevel   ,
+    final java.lang.String observationUnitDbId, final java.lang.String observationUnitName,
+    final java.util.List<io.swagger.client.model.ObservationUnitXref> observationUnitXref ,
+    final java.util.List<io.swagger.client.model.ObservationSummary > observationSummaries,
+    final java.lang.String plantNumber        , final java.lang.String plotNumber,
+    final java.lang.String positionCoordinateX,
+    final io.swagger.client.model.ObservationUnit.PositionCoordinateXTypeEnum
+        positionCoordinateXType,
+    final java.lang.String positionCoordinateY,
+    final io.swagger.client.model.ObservationUnit.PositionCoordinateYTypeEnum
+        positionCoordinateYType,
+    final java.lang.String replicate, final java.lang.String studyDbId,
+    final java.util.List<io.swagger.client.model.ObservationTreatment> treatments)
+    {
+        this.assign(blockNumber, entryNumber, entryType, germplasmDbId, observationLevel,
+            observationUnitDbId, observationUnitName, observationUnitXref, plantNumber, plotNumber,
+            positionCoordinateX, positionCoordinateY, replicate, studyDbId, treatments)
+            .positionCoordinateXType(
+                org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.convert(
+                    positionCoordinateXType))
+            .positionCoordinateYType(
+                org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.convert(
+                    positionCoordinateYType));
+        this.setObservationsAsItems(new org.wheatgenetics.brapi1_3.studies.nour.Observations(
+            observationSummaries, germplasmDbId      , germplasmName, observationLevel,
+            observationUnitDbId , observationUnitName, studyDbId                      ));
+    }
+
+    private void assign(
+    final java.lang.String blockNumber        , final java.lang.String entryNumber        ,
+    final java.lang.String entryType          , final java.lang.String germplasmDbId      ,
+    final java.lang.String observationLevel   , final java.lang.String observationUnitDbId,
+    final java.lang.String observationUnitName,
+    final java.util.List<io.swagger.client.model.ObservationUnitXref> observationUnitXref,
+    final org.wheatgenetics.brapi1_3.studies.nour.Observations        observations       ,
+    final java.lang.String operator           , final java.lang.String uploadedBy,
+    final java.lang.String plantNumber        , final java.lang.String plotNumber,
+    final java.lang.String positionCoordinateX,
+    final io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateXTypeEnum
+        positionCoordinateXType,
+    final java.lang.String positionCoordinateY,
+    final io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateYTypeEnum
+        positionCoordinateYType,
+    final java.lang.String replicate, final java.lang.String studyDbId,
+    final java.util.List<io.swagger.client.model.ObservationTreatment> treatments)
+    {
+        this.assign(blockNumber, entryNumber, entryType, germplasmDbId, observationLevel,
+            observationUnitDbId, observationUnitName, observationUnitXref, plantNumber, plotNumber,
+            positionCoordinateX, positionCoordinateY, replicate, studyDbId, treatments)
+            .positionCoordinateXType(positionCoordinateXType)
+            .positionCoordinateYType(positionCoordinateYType);
+        this.setObservationsAsItems(new org.wheatgenetics.brapi1_3.studies.nour.Observations(
+            observations, operator, uploadedBy));
+    }
+    // endregion
+    // endregion
+
     // region Constructors
     NewObservationUnitRequest(final int position) { super(); this.position = position; }
 
@@ -101,42 +206,17 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     final io.swagger.client.model.ObservationUnit observationUnit)
     {
         this(position);
-
-        if (null != observationUnit)
-        {
-            final java.lang.String
-                germplasmDbId       = observationUnit.getGermplasmDbId      (),
-                observationLevel    = observationUnit.getObservationLevel   (),
-                observationUnitDbId = observationUnit.getObservationUnitDbId(),
-                observationUnitName = observationUnit.getObservationUnitName(),
-                studyDbId           = observationUnit.getStudyDbId          ();
-            this
-                .blockNumber        (observationUnit.getBlockNumber()        )
-                .entryNumber        (observationUnit.getEntryNumber()        )
-                .entryType          (observationUnit.getEntryType  ()        )
-                .germplasmDbId      (germplasmDbId                           )
-                .observationLevel   (observationLevel                        )
-                .observationUnitDbId(observationUnitDbId                     )
-                .observationUnitName(observationUnitName                     )
-                .observationUnitXref(observationUnit.getObservationUnitXref())
-                .observations       (new org.wheatgenetics.brapi1_3.studies.nour.Observations(
-                    observationUnit.getObservations (), germplasmDbId   ,
-                    observationUnit.getGermplasmName(), observationLevel, observationUnitDbId,
-                    observationUnitName               , studyDbId                            ))
-                .plantNumber            (observationUnit.getPlantNumber        ())
-                .plotNumber             (observationUnit.getPlotNumber         ())
-                .positionCoordinateX    (observationUnit.getPositionCoordinateX())
-                .positionCoordinateXType(
-                    org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.convert(
-                        observationUnit.getPositionCoordinateXType()))
-                .positionCoordinateY    (observationUnit.getPositionCoordinateY())
-                .positionCoordinateYType(
-                    org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.convert(
-                        observationUnit.getPositionCoordinateYType()))
-                .replicate (observationUnit.getReplicate() )
-                .studyDbId (studyDbId                      )
-                .treatments(observationUnit.getTreatments());
-        }
+        if (null != observationUnit) this.assign(
+            observationUnit.getBlockNumber        (), observationUnit.getEntryNumber            (),
+            observationUnit.getEntryType          (), observationUnit.getGermplasmDbId          (),
+            observationUnit.getGermplasmName      (), observationUnit.getObservationLevel       (),
+            observationUnit.getObservationUnitDbId(), observationUnit.getObservationUnitName    (),
+            observationUnit.getObservationUnitXref(), observationUnit.getObservations           (),
+            observationUnit.getPlantNumber        (), observationUnit.getPlotNumber             (),
+            observationUnit.getPositionCoordinateX(), observationUnit.getPositionCoordinateXType(),
+            observationUnit.getPositionCoordinateY(), observationUnit.getPositionCoordinateYType(),
+            observationUnit.getReplicate          (), observationUnit.getStudyDbId              (),
+            observationUnit.getTreatments         ()                                              );
     }
 
     NewObservationUnitRequest(final
@@ -145,34 +225,46 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     {
         this(newObservationUnitRequest.getPosition());
 
-        final java.lang.String
-            germplasmDbId       = newObservationUnitRequest.getGermplasmDbId      (),
-            observationLevel    = newObservationUnitRequest.getObservationLevel   (),
-            observationUnitDbId = newObservationUnitRequest.getObservationUnitDbId(),
-            observationUnitName = newObservationUnitRequest.getObservationUnitName(),
-            studyDbId           = newObservationUnitRequest.getStudyDbId          ();
-        this
-            .blockNumber        (newObservationUnitRequest.getBlockNumber()        )
-            .entryNumber        (newObservationUnitRequest.getEntryNumber()        )
-            .entryType          (newObservationUnitRequest.getEntryType  ()        )
-            .germplasmDbId      (germplasmDbId                                     )
-            .observationLevel   (observationLevel                                  )
-            .observationUnitDbId(observationUnitDbId                               )
-            .observationUnitName(observationUnitName                               )
-            .observationUnitXref(newObservationUnitRequest.getObservationUnitXref())
-            .observations       (new org.wheatgenetics.brapi1_3.studies.nour.Observations(
-                newObservationUnitRequest.getObservations(), operator, uploadedBy))
-            .plantNumber            (newObservationUnitRequest.getPlantNumber            ())
-            .plotNumber             (newObservationUnitRequest.getPlotNumber             ())
-            .positionCoordinateX    (newObservationUnitRequest.getPositionCoordinateX    ())
-            .positionCoordinateXType(newObservationUnitRequest.getPositionCoordinateXType())
-            .positionCoordinateY    (newObservationUnitRequest.getPositionCoordinateY    ())
-            .positionCoordinateYType(newObservationUnitRequest.getPositionCoordinateYType())
-            .replicate              (newObservationUnitRequest.getReplicate              ())
-            .studyDbId              (studyDbId                                             )
-            .treatments             (newObservationUnitRequest.getTreatments()             );
+        this.assign(
+            newObservationUnitRequest.getBlockNumber(), newObservationUnitRequest.getEntryNumber(),
+            newObservationUnitRequest.getEntryType(), newObservationUnitRequest.getGermplasmDbId(),
+            newObservationUnitRequest.getObservationLevel   (),
+            newObservationUnitRequest.getObservationUnitDbId(),
+            newObservationUnitRequest.getObservationUnitName(),
+            newObservationUnitRequest.getObservationUnitXref(),
+            newObservationUnitRequest.getObservationsAsItems(), operator, uploadedBy,
+            newObservationUnitRequest.getPlantNumber(), newObservationUnitRequest.getPlotNumber(),
+            newObservationUnitRequest.getPositionCoordinateX    (),
+            newObservationUnitRequest.getPositionCoordinateXType(),
+            newObservationUnitRequest.getPositionCoordinateY    (),
+            newObservationUnitRequest.getPositionCoordinateYType(),
+            newObservationUnitRequest.getReplicate (), newObservationUnitRequest.getStudyDbId(),
+            newObservationUnitRequest.getTreatments()                                          );
     }
     // endregion
+
+    // region Overridden Methods
+    @java.lang.Override public io.swagger.client.model.NewObservationUnitRequest observations(
+    final java.util.List<io.swagger.client.model.Observation> observations)
+    {
+        if (null == observations)
+            this.setObservationsAsItems(null);
+        else
+            if (null == this.observationsAsItems)
+                this.setObservationsAsItems(
+                    new org.wheatgenetics.brapi1_3.studies.nour.Observations(observations));
+            else
+                throw new java.lang.UnsupportedOperationException(
+                    "this.observations already initialized");
+        return this;
+    }
+
+    @java.lang.Override public java.util.List<io.swagger.client.model.Observation> getObservations()
+    { return null == this.observationsAsItems ? null : this.observationsAsItems.list(); }
+
+    @java.lang.Override public void setObservations(
+    final java.util.List<io.swagger.client.model.Observation> observations)
+    { this.observations(observations); }
 
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
     @java.lang.Override public java.lang.String getTitle() { return this.getObservationUnitDbId(); }
@@ -182,6 +274,13 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }
     // endregion
+    // endregion
 
+    // region Package Methods
     int getPosition() { return this.position; }
+
+    @java.lang.SuppressWarnings({"WeakerAccess"})
+    org.wheatgenetics.brapi1_3.studies.nour.Observations getObservationsAsItems()
+    { return this.observationsAsItems; }
+    // endregion
 }

@@ -17,7 +17,7 @@ public class NewObservationUnitRequests extends java.lang.Object
 implements org.wheatgenetics.javalib.mstrdtl.Items
 {
     private java.util.ArrayList<io.swagger.client.model.NewObservationUnitRequest>
-        arrayListInstance = null;
+        arrayListInstance = null;                                                       // lazy load
 
     private java.util.ArrayList<io.swagger.client.model.NewObservationUnitRequest>
     arrayList()
