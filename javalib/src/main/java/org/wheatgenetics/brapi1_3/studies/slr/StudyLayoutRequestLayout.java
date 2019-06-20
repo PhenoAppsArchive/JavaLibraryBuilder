@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies;
+package org.wheatgenetics.brapi1_3.studies.slr;
 
 /**
  * Uses:
@@ -9,6 +9,7 @@ package org.wheatgenetics.brapi1_3.studies;
  * io.swagger.client.model.StudyLayoutRequestLayout
  * io.swagger.client.model.StudyLayoutRequestLayout.EntryTypeEnum
  * io.swagger.client.model.StudyLayoutRequestLayout.PositionCoordinateXTypeEnum
+ * io.swagger.client.model.StudyLayoutRequestLayout.PositionCoordinateYTypeEnum
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  */
@@ -31,7 +32,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             {
                 final java.lang.String blockNumber = observationUnitPosition.getBlockNumber();
                 this.setBlockNumber(null == blockNumber ?
-                    null :java.lang.Integer.valueOf(blockNumber));
+                    null : java.lang.Integer.valueOf(blockNumber));
             }
             // endregion
 
