@@ -17,7 +17,7 @@ package org.wheatgenetics.brapi1_3.studies.nour;
  *
  * org.wheatgenetics.brapi1_3.studies.nour.Observations
  */
-public class NewObservationUnitRequest extends io.swagger.client.model.NewObservationUnitRequest
+class NewObservationUnitRequest extends io.swagger.client.model.NewObservationUnitRequest
 implements org.wheatgenetics.javalib.mstrdtl.Item
 {
     // region Fields

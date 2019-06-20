@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies;
+package org.wheatgenetics.brapi1_3.studies.nor;
 
 /**
  * Uses:
@@ -11,7 +11,7 @@ package org.wheatgenetics.brapi1_3.studies;
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
  *
- * org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservations
+ * org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservations
  */
 @java.lang.SuppressWarnings({"unused"})
 public class NewObservationsRequest extends io.swagger.client.model.NewObservationsRequest
@@ -33,9 +33,8 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
                 {
                     int position = 0;
                     for (final io.swagger.client.model.Observation observation : data)
-                        this.addObservationsItem(new
-                            org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservations(
-                                position++, observation));
+                        this.addObservationsItem(new org.wheatgenetics.brapi1_3.studies.nor
+                            .NewObservationsRequestObservations(position++, observation));
                 }
             }
         }
@@ -45,13 +44,13 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
     @java.lang.Override public void add(final org.wheatgenetics.javalib.mstrdtl.Item item)
     {
         this.addObservationsItem(
-            (org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservations) item);
+            (org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservations) item);
     }
 
     @java.lang.Override public void append()
     {
-        this.add(
-            new org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservations(this.size()));
+        this.add(new
+            org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservations(this.size()));
     }
 
     @java.lang.Override public int size()
@@ -66,7 +65,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
         final java.util.List<io.swagger.client.model.NewObservationsRequestObservations>
             observations = this.getObservations();
         return null == observations ? null :
-            (org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservations)
+            (org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservations)
                 observations.get(position);
     }
     // endregion

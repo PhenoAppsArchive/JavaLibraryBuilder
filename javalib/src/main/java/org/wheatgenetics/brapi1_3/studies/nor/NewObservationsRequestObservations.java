@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies;
+package org.wheatgenetics.brapi1_3.studies.nor;
 
 /**
  * Uses:
@@ -7,7 +7,7 @@ package org.wheatgenetics.brapi1_3.studies;
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  */
-public class NewObservationsRequestObservations
+class NewObservationsRequestObservations
 extends io.swagger.client.model.NewObservationsRequestObservations
 implements org.wheatgenetics.javalib.mstrdtl.Item
 {

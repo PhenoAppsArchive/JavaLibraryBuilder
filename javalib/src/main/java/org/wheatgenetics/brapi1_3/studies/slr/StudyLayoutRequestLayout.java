@@ -13,7 +13,7 @@ package org.wheatgenetics.brapi1_3.studies.slr;
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  */
-public class StudyLayoutRequestLayout extends io.swagger.client.model.StudyLayoutRequestLayout
+class StudyLayoutRequestLayout extends io.swagger.client.model.StudyLayoutRequestLayout
 implements org.wheatgenetics.javalib.mstrdtl.Item
 {
     private final int position;
