@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObservationUnitRequests
+package org.wheatgenetics.brapi1_3.studies.nour.o;               // nour: NewObservationUnitRequests
 
 /**
  * Uses:
@@ -25,6 +25,10 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     final io.swagger.client.model.Season season   , final java.lang.String studyDbId              ,
     final java.lang.String value                                                                  )
     {
+        final io.swagger.client.model.Season copyOfSeason = new io.swagger.client.model.Season();
+        copyOfSeason
+            .season(season.getSeason()).seasonDbId(season.getSeasonDbId()).year(season.getYear());
+
         this
             .germplasmDbId          (germplasmDbId          )
             .germplasmName          (germplasmName          )
@@ -35,7 +39,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             .observationUnitName    (observationUnitName    )
             .observationVariableDbId(observationVariableDbId)
             .observationVariableName(observationVariableName)
-            .season                 (season                 )
+            .season                 (copyOfSeason           )
             .studyDbId              (studyDbId              )
             .value                  (value                  );
     }
@@ -74,7 +78,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             observation.getStudyDbId              (), observation.getValue                  ());
     }
 
-    Observation(final org.wheatgenetics.brapi1_3.studies.nour.Observation observation,
+    Observation(final org.wheatgenetics.brapi1_3.studies.nour.o.Observation observation,
     final java.lang.String operator, final java.lang.String uploadedBy)
     { this(observation.position, observation); this.operator(operator).uploadedBy(uploadedBy); }
     // endregion

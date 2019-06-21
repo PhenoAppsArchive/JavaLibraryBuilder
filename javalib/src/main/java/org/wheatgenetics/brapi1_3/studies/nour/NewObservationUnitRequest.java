@@ -15,7 +15,7 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  *
- * org.wheatgenetics.brapi1_3.studies.nour.Observations
+ * org.wheatgenetics.brapi1_3.studies.nour.o.Observations
  * org.wheatgenetics.brapi1_3.studies.nour.ObservationTreatments
  * org.wheatgenetics.brapi1_3.studies.nour.ObservationUnitXrefs
  */
@@ -27,7 +27,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
 
     private org.wheatgenetics.brapi1_3.studies.nour.ObservationUnitXrefs
         observationUnitXrefsAsItems = null;
-    private org.wheatgenetics.brapi1_3.studies.nour.Observations        observationsAsItems = null;
+    private org.wheatgenetics.brapi1_3.studies.nour.o.Observations      observationsAsItems = null;
     private org.wheatgenetics.brapi1_3.studies.nour.ObservationTreatments treatmentsAsItems = null;
     // endregion
 
@@ -122,7 +122,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     }
 
     private void setObservationsAsItems(
-    final org.wheatgenetics.brapi1_3.studies.nour.Observations observationsAsItems)
+    final org.wheatgenetics.brapi1_3.studies.nour.o.Observations observationsAsItems)
     {
         if (null == observationsAsItems)
             { super.observations(null); this.observationsAsItems = null; }
@@ -192,7 +192,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
                     positionCoordinateYType));
         this.setObservationUnitXrefsAsItems(
             new org.wheatgenetics.brapi1_3.studies.nour.ObservationUnitXrefs(observationUnitXref));
-        this.setObservationsAsItems(new org.wheatgenetics.brapi1_3.studies.nour.Observations(
+        this.setObservationsAsItems(new org.wheatgenetics.brapi1_3.studies.nour.o.Observations(
             observationSummaries, germplasmDbId      , germplasmName, observationLevel,
             observationUnitDbId , observationUnitName, studyDbId                      ));
         this.setTreatmentsAsItems(
@@ -205,7 +205,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     final java.lang.String observationLevel   , final java.lang.String observationUnitDbId,
     final java.lang.String observationUnitName,
     final org.wheatgenetics.brapi1_3.studies.nour.ObservationUnitXrefs observationUnitXrefs,
-    final org.wheatgenetics.brapi1_3.studies.nour.Observations         observations       ,
+    final org.wheatgenetics.brapi1_3.studies.nour.o.Observations       observations       ,
     final java.lang.String operator           , final java.lang.String uploadedBy,
     final java.lang.String plantNumber        , final java.lang.String plotNumber,
     final java.lang.String positionCoordinateX,
@@ -224,7 +224,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             .positionCoordinateYType(positionCoordinateYType);
         this.setObservationUnitXrefsAsItems(
             new org.wheatgenetics.brapi1_3.studies.nour.ObservationUnitXrefs(observationUnitXrefs));
-        this.setObservationsAsItems(new org.wheatgenetics.brapi1_3.studies.nour.Observations(
+        this.setObservationsAsItems(new org.wheatgenetics.brapi1_3.studies.nour.o.Observations(
             observations, operator, uploadedBy));
         this.setTreatmentsAsItems(
             new org.wheatgenetics.brapi1_3.studies.nour.ObservationTreatments(treatments));
@@ -280,14 +280,14 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // region observationUnitXrefs Overridden Methods
     @java.lang.Override
     public io.swagger.client.model.NewObservationUnitRequest observationUnitXref(
-    final java.util.List<io.swagger.client.model.ObservationUnitXref> observationUnitXrefs)
+    final java.util.List<io.swagger.client.model.ObservationUnitXref> observationUnitXref)
     {
-        if (null == observationUnitXrefs)
+        if (null == observationUnitXref)
             this.setObservationUnitXrefsAsItems(null);
         else
             if (null == this.observationUnitXrefsAsItems) this.setObservationUnitXrefsAsItems(
                 new org.wheatgenetics.brapi1_3.studies.nour.ObservationUnitXrefs(
-                    observationUnitXrefs));
+                    observationUnitXref));
             else
                 throw new java.lang.UnsupportedOperationException(
                     "this.observationUnitXrefsAsItems already initialized");
@@ -314,7 +314,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             this.setObservationsAsItems(null);
         else
             if (null == this.observationsAsItems) this.setObservationsAsItems(
-                new org.wheatgenetics.brapi1_3.studies.nour.Observations(observations));
+                new org.wheatgenetics.brapi1_3.studies.nour.o.Observations(observations));
             else
                 throw new java.lang.UnsupportedOperationException(
                     "this.observationsAsItems already initialized");
@@ -372,7 +372,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     { return this.observationUnitXrefsAsItems; }
 
     @java.lang.SuppressWarnings({"WeakerAccess"})
-    org.wheatgenetics.brapi1_3.studies.nour.Observations getObservationsAsItems()
+    org.wheatgenetics.brapi1_3.studies.nour.o.Observations getObservationsAsItems()
     { return this.observationsAsItems; }
 
     @java.lang.SuppressWarnings({"WeakerAccess"})
