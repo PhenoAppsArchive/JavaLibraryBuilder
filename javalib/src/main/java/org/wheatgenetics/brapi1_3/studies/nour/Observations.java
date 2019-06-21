@@ -51,7 +51,7 @@ class Observations extends java.lang.Object implements org.wheatgenetics.javalib
         if (null != observations) if (observations.size() > 0)
             for (final io.swagger.client.model.Observation observation:
             observations.arrayListInstance)
-                this.arrayList().add(new org.wheatgenetics.brapi1_3.studies.nour.Observation(
+                this.add(new org.wheatgenetics.brapi1_3.studies.nour.Observation(
                     (org.wheatgenetics.brapi1_3.studies.nour.Observation) observation,
                     operator, uploadedBy                                             ));
     }
@@ -64,7 +64,7 @@ class Observations extends java.lang.Object implements org.wheatgenetics.javalib
         {
             int position = 0;
             for (final io.swagger.client.model.Observation observation: observations)
-                this.arrayList().add(new org.wheatgenetics.brapi1_3.studies.nour.Observation(
+                this.add(new org.wheatgenetics.brapi1_3.studies.nour.Observation(
                     position++, observation));
         }
     }

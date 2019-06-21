@@ -64,11 +64,10 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
         if (null != newObservationUnitRequests) if (newObservationUnitRequests.size() > 0)
             for (final io.swagger.client.model.NewObservationUnitRequest newObservationUnitRequest:
             newObservationUnitRequests.arrayListInstance)
-                this.arrayList().add(
-                    new org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest(
-                        (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest)
-                            newObservationUnitRequest,
-                        operator, uploadedBy));
+                this.add( new org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest(
+                    (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest)
+                        newObservationUnitRequest,
+                    operator, uploadedBy));
     }
     // endregion
 
