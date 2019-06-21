@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies.nor;
+package org.wheatgenetics.brapi1_3.studies.nor;                       // nor: NewObservationsRequest
 
 /**
  * Uses:

@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies.slr;
+package org.wheatgenetics.brapi1_3.studies.slr;                           // slr: StudyLayoutRequest
 
 /**
  * Uses:
