@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies.nour;
+package org.wheatgenetics.brapi1_3.studies.nour.ot;              // nour: NewObservationUnitRequests
 
 /**
  * Uses:
@@ -7,9 +7,9 @@ package org.wheatgenetics.brapi1_3.studies.nour;
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
  *
- * org.wheatgenetics.brapi1_3.studies.nour.ObservationTreatment
+ * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment
  */
-@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"}) class ObservationTreatments
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"}) public class ObservationTreatments
 extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
 {
     private java.util.ArrayList<io.swagger.client.model.ObservationTreatment>
@@ -25,7 +25,7 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     }
 
     // region Constructors
-    ObservationTreatments(
+    public ObservationTreatments(
     final java.util.List<io.swagger.client.model.ObservationTreatment> observationTreatments)
     {
         super();
@@ -35,32 +35,34 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
             int position = 0;
             for (final io.swagger.client.model.ObservationTreatment observationTreatment:
             observationTreatments)
-                this.arrayList().add(
-                    new org.wheatgenetics.brapi1_3.studies.nour.ObservationTreatment(
-                        position++, observationTreatment));
+                this.add(new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment(
+                    position++, observationTreatment));
         }
     }
 
-    @java.lang.SuppressWarnings({"CopyConstructorMissesField"}) ObservationTreatments(
-    final org.wheatgenetics.brapi1_3.studies.nour.ObservationTreatments observationTreatments)
+    @java.lang.SuppressWarnings({"CopyConstructorMissesField"}) public ObservationTreatments(
+    final org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments observationTreatments)
     {
         super();
 
         if (null != observationTreatments) if (observationTreatments.size() > 0)
             for (final io.swagger.client.model.ObservationTreatment observationTreatment:
             observationTreatments.arrayListInstance)
-                this.add(new org.wheatgenetics.brapi1_3.studies.nour.ObservationTreatment(
-                    (org.wheatgenetics.brapi1_3.studies.nour.ObservationTreatment)
+                this.add(new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment(
+                    (org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment)
                         observationTreatment));
     }
     // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
     @java.lang.Override public void add(final org.wheatgenetics.javalib.mstrdtl.Item item)
-    { this.arrayList().add((org.wheatgenetics.brapi1_3.studies.nour.ObservationTreatment) item); }
+    {
+        this.arrayList().add(
+            (org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment) item);
+    }
 
     @java.lang.Override public void append()
-    { this.add(new org.wheatgenetics.brapi1_3.studies.nour.ObservationTreatment(this.size())); }
+    { this.add(new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment(this.size())); }
 
     @java.lang.Override public int size()
     { return null == this.arrayListInstance ? 0 : this.arrayListInstance.size(); }
@@ -68,11 +70,11 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(final int position)
     {
         return null == this.arrayListInstance ? null :
-            (org.wheatgenetics.brapi1_3.studies.nour.ObservationTreatment)
+            (org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment)
                 this.arrayListInstance.get(position);
     }
     // endregion
 
-    java.util.List<io.swagger.client.model.ObservationTreatment> list()
+    public java.util.List<io.swagger.client.model.ObservationTreatment> list()
     { return this.arrayListInstance; }
 }

@@ -16,7 +16,7 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * org.wheatgenetics.javalib.mstrdtl.Item
  *
  * org.wheatgenetics.brapi1_3.studies.nour.o.Observations
- * org.wheatgenetics.brapi1_3.studies.nour.ObservationTreatments
+ * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments
  * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs
  */
 class NewObservationUnitRequest extends io.swagger.client.model.NewObservationUnitRequest
@@ -27,8 +27,9 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
 
     private org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs
         observationUnitXrefsAsItems = null;
-    private org.wheatgenetics.brapi1_3.studies.nour.o.Observations      observationsAsItems = null;
-    private org.wheatgenetics.brapi1_3.studies.nour.ObservationTreatments treatmentsAsItems = null;
+    private org.wheatgenetics.brapi1_3.studies.nour.o.Observations observationsAsItems = null;
+    private org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments
+        treatmentsAsItems = null;
     // endregion
 
     // region Private Methods
@@ -134,7 +135,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     }
 
     private void setTreatmentsAsItems(final
-    org.wheatgenetics.brapi1_3.studies.nour.ObservationTreatments treatmentsAsItems)
+    org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments treatmentsAsItems)
     {
         if (null == treatmentsAsItems)
             { super.treatments(null); this.treatmentsAsItems = null; }
@@ -197,7 +198,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             observationSummaries, germplasmDbId      , germplasmName, observationLevel,
             observationUnitDbId , observationUnitName, studyDbId                      ));
         this.setTreatmentsAsItems(
-            new org.wheatgenetics.brapi1_3.studies.nour.ObservationTreatments(treatments));
+            new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments(treatments));
     }
 
     private void assign(
@@ -216,7 +217,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     final io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateYTypeEnum
         positionCoordinateYType,
     final java.lang.String replicate, final java.lang.String studyDbId,
-    final org.wheatgenetics.brapi1_3.studies.nour.ObservationTreatments treatments)
+    final org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments treatments)
     {
         this.assign(blockNumber, entryNumber, entryType, germplasmDbId, observationLevel,
             observationUnitDbId, observationUnitName, plantNumber, plotNumber, positionCoordinateX,
@@ -229,7 +230,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
         this.setObservationsAsItems(new org.wheatgenetics.brapi1_3.studies.nour.o.Observations(
             observations, operator, uploadedBy));
         this.setTreatmentsAsItems(
-            new org.wheatgenetics.brapi1_3.studies.nour.ObservationTreatments(treatments));
+            new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments(treatments));
     }
     // endregion
     // endregion
@@ -339,7 +340,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             this.setTreatmentsAsItems(null);
         else
             if (null == this.treatmentsAsItems) this.setTreatmentsAsItems(
-                new org.wheatgenetics.brapi1_3.studies.nour.ObservationTreatments(treatments));
+                new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments(treatments));
             else
                 throw new java.lang.UnsupportedOperationException(
                     "this.treatmentsAsItems already initialized");
@@ -378,7 +379,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     { return this.observationsAsItems; }
 
     @java.lang.SuppressWarnings({"WeakerAccess"})
-    org.wheatgenetics.brapi1_3.studies.nour.ObservationTreatments getTreatmentsAsItems()
+    org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments getTreatmentsAsItems()
     { return this.treatmentsAsItems; }
     // endregion
     // endregion

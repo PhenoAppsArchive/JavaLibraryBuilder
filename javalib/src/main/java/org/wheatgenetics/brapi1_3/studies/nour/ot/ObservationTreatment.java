@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies.nour;
+package org.wheatgenetics.brapi1_3.studies.nour.ot;              // nour: NewObservationUnitRequests
 
 /**
  * Uses:
@@ -30,7 +30,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     }
 
     ObservationTreatment(
-    final org.wheatgenetics.brapi1_3.studies.nour.ObservationTreatment observationTreatment)
+    final org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment observationTreatment)
     {
         this(observationTreatment.getPosition());
         this.assign(observationTreatment.getFactor(), observationTreatment.getModality());
