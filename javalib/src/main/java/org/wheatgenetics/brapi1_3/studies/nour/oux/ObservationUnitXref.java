@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObservationUnitRequests
+package org.wheatgenetics.brapi1_3.studies.nour.oux;                 // nour: NewObservationUnitRequests
 
 /**
  * Uses:
@@ -30,7 +30,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     }
 
     ObservationUnitXref(
-    final org.wheatgenetics.brapi1_3.studies.nour.ObservationUnitXref observationUnitXref)
+    final org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref observationUnitXref)
     {
         this(observationUnitXref.getPosition());
         this.assign(observationUnitXref.getId(), observationUnitXref.getSource());

@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies.nour;
+package org.wheatgenetics.brapi1_3.studies.nour.oux;
 
 /**
  * Uses:
@@ -7,9 +7,9 @@ package org.wheatgenetics.brapi1_3.studies.nour;
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
  *
- * org.wheatgenetics.brapi1_3.studies.nour.ObservationUnitXref
+ * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref
  */
-@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"}) class ObservationUnitXrefs
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"}) public class ObservationUnitXrefs
 extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
 {
     private java.util.ArrayList<io.swagger.client.model.ObservationUnitXref>
@@ -25,7 +25,7 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     }
 
     // region Constructors
-    ObservationUnitXrefs(
+    public ObservationUnitXrefs(
     final java.util.List<io.swagger.client.model.ObservationUnitXref> observationUnitXrefs)
     {
         super();
@@ -35,32 +35,34 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
             int position = 0;
             for (final io.swagger.client.model.ObservationUnitXref observationUnitXref:
             observationUnitXrefs)
-                this.arrayList().add(
-                    new org.wheatgenetics.brapi1_3.studies.nour.ObservationUnitXref(
-                        position++, observationUnitXref));
+                this.add(new org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref(
+                    position++, observationUnitXref));
         }
     }
 
-    @java.lang.SuppressWarnings({"CopyConstructorMissesField"}) ObservationUnitXrefs(
-    final org.wheatgenetics.brapi1_3.studies.nour.ObservationUnitXrefs observationUnitXrefs)
+    @java.lang.SuppressWarnings({"CopyConstructorMissesField"}) public ObservationUnitXrefs(
+    final org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs observationUnitXrefs)
     {
         super();
 
         if (null != observationUnitXrefs) if (observationUnitXrefs.size() > 0)
             for (final io.swagger.client.model.ObservationUnitXref observationUnitXref:
             observationUnitXrefs.arrayListInstance)
-                this.add(new org.wheatgenetics.brapi1_3.studies.nour.ObservationUnitXref(
-                    (org.wheatgenetics.brapi1_3.studies.nour.ObservationUnitXref)
+                this.add(new org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref(
+                    (org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref)
                         observationUnitXref));
     }
     // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
     @java.lang.Override public void add(final org.wheatgenetics.javalib.mstrdtl.Item item)
-    { this.arrayList().add((org.wheatgenetics.brapi1_3.studies.nour.ObservationUnitXref) item); }
+    {
+        this.arrayList().add(
+            (org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref) item);
+    }
 
     @java.lang.Override public void append()
-    { this.add(new org.wheatgenetics.brapi1_3.studies.nour.ObservationUnitXref(this.size())); }
+    { this.add(new org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref(this.size())); }
 
     @java.lang.Override public int size()
     { return null == this.arrayListInstance ? 0 : this.arrayListInstance.size(); }
@@ -68,11 +70,11 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(final int position)
     {
         return null == this.arrayListInstance ? null :
-            (org.wheatgenetics.brapi1_3.studies.nour.ObservationUnitXref)
+            (org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref)
                 this.arrayListInstance.get(position);
     }
     // endregion
 
-    java.util.List<io.swagger.client.model.ObservationUnitXref> list()
+    public java.util.List<io.swagger.client.model.ObservationUnitXref> list()
     { return this.arrayListInstance; }
 }
