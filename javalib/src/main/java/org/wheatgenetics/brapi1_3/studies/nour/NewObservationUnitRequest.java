@@ -19,7 +19,7 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments
  * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs
  */
-class NewObservationUnitRequest extends io.swagger.client.model.NewObservationUnitRequest
+public class NewObservationUnitRequest extends io.swagger.client.model.NewObservationUnitRequest
 implements org.wheatgenetics.javalib.mstrdtl.Item
 {
     // region Fields
@@ -366,21 +366,19 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // endregion
     // endregion
 
-    // region Package Methods
     int getPosition() { return this.position; }
 
-    // region getAsItems() Package Methods
+    // region Public Methods
     @java.lang.SuppressWarnings({"WeakerAccess"})
-    org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs
+    public org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs
     getObservationUnitXrefsAsItems() { return this.observationUnitXrefsAsItems; }
 
     @java.lang.SuppressWarnings({"WeakerAccess"})
-    org.wheatgenetics.brapi1_3.studies.nour.o.Observations getObservationsAsItems()
+    public org.wheatgenetics.brapi1_3.studies.nour.o.Observations getObservationsAsItems()
     { return this.observationsAsItems; }
 
     @java.lang.SuppressWarnings({"WeakerAccess"})
-    org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments getTreatmentsAsItems()
+    public org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments getTreatmentsAsItems()
     { return this.treatmentsAsItems; }
-    // endregion
     // endregion
 }
