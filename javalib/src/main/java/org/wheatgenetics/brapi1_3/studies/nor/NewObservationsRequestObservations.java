@@ -14,13 +14,21 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     private final int position;
 
     // region Constructors
-    NewObservationsRequestObservations(final int position) { super(); this.position = position; }
+    NewObservationsRequestObservations(final int position)
+    {
+        super();
+
+        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+            throw new java.lang.IllegalArgumentException(
+                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
+        else
+            this.position = position;
+    }
 
     NewObservationsRequestObservations(final int position,
     final io.swagger.client.model.Observation observation)
     {
         this(position);
-
         if (null != observation) this
             .collector              (observation.getOperator               ())
             .observationDbId        (observation.getObservationDbId        ())

@@ -31,7 +31,6 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     final java.lang.String observationUnitName, final java.lang.String studyDbId          )
     {
         super();
-
         if (null != observationSummaries) if (observationSummaries.size() > 0)
         {
             int position = 0;
@@ -47,7 +46,6 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     final java.lang.String operator, final java.lang.String uploadedBy)
     {
         super();
-
         if (null != observations) if (observations.size() > 0)
             for (final io.swagger.client.model.Observation observation:
             observations.arrayListInstance)
@@ -59,7 +57,6 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     public Observations(final java.util.List<io.swagger.client.model.Observation> observations)
     {
         super();
-
         if (null != observations) if (observations.size() > 0)
         {
             int position = 0;
@@ -82,6 +79,9 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
 
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(final int position)
     {
+        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+            throw new java.lang.IllegalArgumentException(
+                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
         return null == this.arrayListInstance ? null :
             (org.wheatgenetics.brapi1_3.studies.nour.o.Observation)
                 this.arrayListInstance.get(position);

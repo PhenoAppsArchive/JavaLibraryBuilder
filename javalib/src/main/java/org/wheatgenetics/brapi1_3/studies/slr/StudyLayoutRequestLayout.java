@@ -19,7 +19,16 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     private final int position;
 
     // region Constructors
-    StudyLayoutRequestLayout(final int position) { super(); this.position = position; }
+    StudyLayoutRequestLayout(final int position)
+    {
+        super();
+
+        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+            throw new java.lang.IllegalArgumentException(
+                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
+        else
+            this.position = position;
+    }
 
     StudyLayoutRequestLayout(final int position,
     final io.swagger.client.model.ObservationUnitPosition observationUnitPosition)

@@ -29,7 +29,6 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     final java.util.List<io.swagger.client.model.ObservationTreatment> observationTreatments)
     {
         super();
-
         if (null != observationTreatments) if (observationTreatments.size() > 0)
         {
             int position = 0;
@@ -44,7 +43,6 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     final org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments observationTreatments)
     {
         super();
-
         if (null != observationTreatments) if (observationTreatments.size() > 0)
             for (final io.swagger.client.model.ObservationTreatment observationTreatment:
             observationTreatments.arrayListInstance)
@@ -69,6 +67,9 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
 
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(final int position)
     {
+        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+            throw new java.lang.IllegalArgumentException(
+                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
         return null == this.arrayListInstance ? null :
             (org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment)
                 this.arrayListInstance.get(position);

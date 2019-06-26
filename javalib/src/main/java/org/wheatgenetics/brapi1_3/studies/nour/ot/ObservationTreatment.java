@@ -19,7 +19,16 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // endregion
 
     // region Constructors
-    ObservationTreatment(final int position) { super(); this.position = position; }
+    ObservationTreatment(final int position)
+    {
+        super();
+
+        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+            throw new java.lang.IllegalArgumentException(
+                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
+        else
+            this.position = position;
+    }
 
     ObservationTreatment(final int position,
     final io.swagger.client.model.ObservationTreatment observationTreatment)

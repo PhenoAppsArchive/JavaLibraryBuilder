@@ -25,10 +25,9 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     final io.swagger.client.model.Season season   , final java.lang.String studyDbId              ,
     final java.lang.String value                                                                  )
     {
-        final io.swagger.client.model.Season copyOfSeason = new io.swagger.client.model.Season();
-        copyOfSeason
-            .season(season.getSeason()).seasonDbId(season.getSeasonDbId()).year(season.getYear());
-
+        final io.swagger.client.model.Season copyOfSeason =
+            new io.swagger.client.model.Season().season(season.getSeason())
+                .seasonDbId(season.getSeasonDbId()).year(season.getYear());
         this
             .germplasmDbId          (germplasmDbId          )
             .germplasmName          (germplasmName          )
@@ -48,7 +47,16 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // endregion
 
     // region Constructors
-    Observation(final int position) { super(); this.position = position; }
+    Observation(final int position)
+    {
+        super();
+
+        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+            throw new java.lang.IllegalArgumentException(
+                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
+        else
+            this.position = position;
+    }
 
     Observation(final int position,
     final io.swagger.client.model.ObservationSummary observationSummary,
@@ -58,10 +66,10 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     {
         this(position);
         if (null != observationSummary) this.assign(
-            germplasmDbId                               , germplasmName      ,
-            observationSummary.getObservationDbId     (), observationLevel   ,
-            observationSummary.getObservationTimeStamp(), observationUnitDbId,
-            observationUnitName, observationSummary.getObservationVariableDbId(),
+            germplasmDbId                               ,               germplasmName      ,
+            observationSummary.getObservationDbId     (),               observationLevel   ,
+            observationSummary.getObservationTimeStamp(),               observationUnitDbId,
+            observationUnitName,            observationSummary.getObservationVariableDbId(),
             observationSummary.getObservationVariableName(), observationSummary.getSeason(),
             studyDbId                                      , observationSummary.getValue ());
     }

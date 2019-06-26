@@ -32,7 +32,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
                 if (null != data) if (data.size() > 0)
                 {
                     int position = 0;
-                    for (final io.swagger.client.model.Observation observation : data)
+                    for (final io.swagger.client.model.Observation observation: data)
                         this.addObservationsItem(new org.wheatgenetics.brapi1_3.studies.nor
                             .NewObservationsRequestObservations(position++, observation));
                 }
@@ -62,11 +62,17 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
 
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(final int position)
     {
-        final java.util.List<io.swagger.client.model.NewObservationsRequestObservations>
-            observations = this.getObservations();
-        return null == observations ? null :
-            (org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservations)
-                observations.get(position);
+        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+            throw new java.lang.IllegalArgumentException(
+                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
+        else
+        {
+            final java.util.List<io.swagger.client.model.NewObservationsRequestObservations>
+                observations = this.getObservations();
+            return null == observations ? null :
+                (org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservations)
+                    observations.get(position);
+        }
     }
     // endregion
 }
