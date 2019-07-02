@@ -88,7 +88,25 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
 
     Observation(final org.wheatgenetics.brapi1_3.studies.nour.o.Observation observation,
     final java.lang.String operator, final java.lang.String uploadedBy)
-    { this(observation.position, observation); this.operator(operator).uploadedBy(uploadedBy); }
+    {
+        this(observation.getPosition(), observation);
+        this.operator(operator).uploadedBy(uploadedBy);
+    }
+
+    @java.lang.SuppressWarnings({"unused"})
+    Observation(final io.swagger.client.model.Observation observation)
+    {
+        super();
+        this.position = -1;
+        if (null != observation) this.assign(
+            observation.getGermplasmDbId          (), observation.getGermplasmName          (),
+            observation.getObservationDbId        (), observation.getObservationLevel       (),
+            observation.getObservationTimeStamp   (), observation.getObservationUnitDbId    (),
+            observation.getObservationUnitName    (), observation.getObservationVariableDbId(),
+            observation.getObservationVariableName(), observation.getSeason                 (),
+            observation.getStudyDbId              (), observation.getValue                  ());
+    }
+
     // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
