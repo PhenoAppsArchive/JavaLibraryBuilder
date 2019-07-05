@@ -19,6 +19,11 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
     private java.util.ArrayList<io.swagger.client.model.NewObservationUnitRequest>
         arrayListInstance = null;                                                       // lazy load
 
+    // region Private Methods
+    /** Convert the given object to string with each line indented by 4 spaces. */
+    private java.lang.String toIndentedString(final java.lang.Object o)
+    { return null == o ? "null" : o.toString().replace("\n","\n    "); }
+
     private java.util.ArrayList<io.swagger.client.model.NewObservationUnitRequest>
     arrayList()
     {
@@ -28,6 +33,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
                 io.swagger.client.model.NewObservationUnitRequest>();
         return this.arrayListInstance;
     }
+    // endregion
 
     // region Constructors
     public NewObservationUnitRequests(
@@ -71,6 +77,17 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
     }
     // endregion
 
+    // region Overridden Methods
+    @java.lang.Override public java.lang.String toString()
+    {
+        @java.lang.SuppressWarnings({"StringBufferReplaceableByString"})
+        final java.lang.StringBuilder stringBuilder =
+            new java.lang.StringBuilder("class NewObservationUnitRequests {");
+        stringBuilder.append("\n    data: ").append(this.toIndentedString(this.list()));
+        stringBuilder.append("\n}");
+        return stringBuilder.toString();
+    }
+
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
     @java.lang.Override public void add(final org.wheatgenetics.javalib.mstrdtl.Item item)
     {
@@ -97,6 +114,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
                 (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest)
                     this.arrayListInstance.get(position);
     }
+    // endregion
     // endregion
 
     public java.util.List<io.swagger.client.model.NewObservationUnitRequest> list()
