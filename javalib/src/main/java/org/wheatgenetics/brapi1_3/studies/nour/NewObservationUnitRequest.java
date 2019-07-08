@@ -380,6 +380,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // endregion
     // endregion
 
+    @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
     int getPosition() { return this.position; }
 
     // region Public Methods

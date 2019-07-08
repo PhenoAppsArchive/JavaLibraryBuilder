@@ -48,5 +48,6 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     { return java.lang.String.valueOf(this.getPosition()); }
     // endregion
 
+    @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
     int getPosition() { return this.position; }
 }
