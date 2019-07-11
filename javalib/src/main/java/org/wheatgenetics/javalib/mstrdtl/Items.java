@@ -4,7 +4,7 @@ package org.wheatgenetics.javalib.mstrdtl;
  * Uses:
  * org.wheatgenetics.javalib.mstrdtl.Item
  */
-@java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface Items
+@java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier", "unused"}) public interface Items
 {
     @java.lang.SuppressWarnings({"unused"})
     public void add(final org.wheatgenetics.javalib.mstrdtl.Item item);
