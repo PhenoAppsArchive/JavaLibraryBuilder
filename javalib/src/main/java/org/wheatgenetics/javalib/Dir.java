@@ -126,6 +126,7 @@ public class Dir extends java.lang.Object
     void setPermissionRequiredToTrue() { this.setPermissionRequired(true); }
 
     // region Protected Methods
+    @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
     protected java.io.File getPath() { return this.path; }
 
     /**
