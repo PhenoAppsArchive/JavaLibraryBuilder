@@ -21,7 +21,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
 
     // region Private Methods
     /** Convert the given object to string with each line indented by 4 spaces. */
-    private java.lang.String toIndentedString(final java.lang.Object o)
+    private static java.lang.String toIndentedString(final java.lang.Object o)
     { return null == o ? "null" : o.toString().replace("\n","\n    "); }
 
     private java.util.ArrayList<io.swagger.client.model.NewObservationUnitRequest>
@@ -83,8 +83,12 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
         @java.lang.SuppressWarnings({"StringBufferReplaceableByString"})
         final java.lang.StringBuilder stringBuilder =
             new java.lang.StringBuilder("class NewObservationUnitRequests {");
-        stringBuilder.append("\n    data: ").append(this.toIndentedString(this.list()));
+
+        stringBuilder.append("\n    list: ").append(
+            org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests.toIndentedString(
+                this.list()));
         stringBuilder.append("\n}");
+
         return stringBuilder.toString();
     }
 
