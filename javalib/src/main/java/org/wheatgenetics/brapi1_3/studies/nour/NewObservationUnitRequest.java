@@ -342,7 +342,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     { this.observations(observations); }
     // endregion
 
-    // region observations Overridden Methods
+    // region observationTreatments Overridden Methods
     @java.lang.Override public io.swagger.client.model.NewObservationUnitRequest treatments(
     final java.util.List<io.swagger.client.model.ObservationTreatment> observationTreatments)
     {

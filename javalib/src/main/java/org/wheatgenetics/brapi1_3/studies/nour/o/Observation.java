@@ -106,7 +106,6 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             observation.getObservationVariableName(), observation.getSeason                 (),
             observation.getStudyDbId              (), observation.getValue                  ());
     }
-
     // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
