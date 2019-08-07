@@ -24,13 +24,8 @@ public class TestItems extends java.lang.Object implements org.wheatgenetics.jav
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
     @java.lang.Override public void append(final org.wheatgenetics.javalib.mstrdtl.Item item)
     {
-        if (null != item)
-        {
-            final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
-                (org.wheatgenetics.javalib.mstrdtl.TestItem) item;
-            testItem.setPosition(this.size());
-            this.testItems().add(testItem);
-        }
+        if (null != item) item.setPosition(this.size());
+        this.testItems().add((org.wheatgenetics.javalib.mstrdtl.TestItem) item);
     }
 
     @java.lang.Override public void append()
@@ -42,7 +37,7 @@ public class TestItems extends java.lang.Object implements org.wheatgenetics.jav
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(final int position)
     {
         if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-            throw new java.lang.IllegalArgumentException(
+            throw new java.lang.IndexOutOfBoundsException(
                 org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
         return null == this.testItemsInstance ? null : this.testItemsInstance.get(position);
     }

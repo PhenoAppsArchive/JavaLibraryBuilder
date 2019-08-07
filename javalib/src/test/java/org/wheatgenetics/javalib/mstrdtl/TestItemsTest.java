@@ -31,4 +31,21 @@ public class TestItemsTest extends java.lang.Object
         org.junit.Assert.assertEquals(2  , testItems.size());
         org.junit.Assert.assertEquals("1", testItems.get(1).getPositionAsString());
     }
+
+    // region get() Tests
+    @org.junit.Test(expected = java.lang.IndexOutOfBoundsException.class)
+    public void tooSmallPositionGetThrows()
+    { new org.wheatgenetics.javalib.mstrdtl.TestItems().get(-55); }
+
+    @org.junit.Test() public void tooSmallPositionGetHasCorrectMessage()
+    {
+        try { new org.wheatgenetics.javalib.mstrdtl.TestItems().get(-5); }
+        catch (final java.lang.IndexOutOfBoundsException e)
+        {
+            org.junit.Assert.assertEquals(
+                org.wheatgenetics.javalib.mstrdtl.TestItem.TOO_SMALL_POSITION_MESSAGE,
+                e.getMessage()                                                       );
+        }
+    }
+    // endregion
 }

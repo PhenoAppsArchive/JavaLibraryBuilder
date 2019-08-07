@@ -23,7 +23,7 @@ public class TestItemTest extends java.lang.Object
     }
 
     // region setPosition() Tests
-    @org.junit.Test(expected = java.lang.IllegalArgumentException.class)
+    @org.junit.Test(expected = java.lang.IndexOutOfBoundsException.class)
     public void tooSmallPositionSetPositionThrows()
     {
         final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
@@ -36,7 +36,7 @@ public class TestItemTest extends java.lang.Object
         final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
             new org.wheatgenetics.javalib.mstrdtl.TestItem();
         try { testItem.setPosition(-5); }
-        catch (final java.lang.IllegalArgumentException e)
+        catch (final java.lang.IndexOutOfBoundsException e)
         {
             org.junit.Assert.assertEquals(
                 org.wheatgenetics.javalib.mstrdtl.TestItem.TOO_SMALL_POSITION_MESSAGE,

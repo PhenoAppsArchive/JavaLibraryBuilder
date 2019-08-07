@@ -21,7 +21,7 @@ public class TestItem extends java.lang.Object implements org.wheatgenetics.java
     public void setPosition(final int position)
     {
         if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-            throw new java.lang.IllegalArgumentException(
+            throw new java.lang.IndexOutOfBoundsException(
                 org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
         else
         {
@@ -44,6 +44,7 @@ public class TestItem extends java.lang.Object implements org.wheatgenetics.java
     @java.lang.Override public java.lang.String getContent() { return this.content; }
     // endregion
 
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     public void setContent(final java.lang.String content)
     { this.content = org.wheatgenetics.javalib.Utils.makeEmptyIfNull(content); }
 }
