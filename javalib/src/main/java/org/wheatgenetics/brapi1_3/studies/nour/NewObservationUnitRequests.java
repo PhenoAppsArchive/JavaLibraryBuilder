@@ -50,13 +50,10 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
                 final java.util.List<io.swagger.client.model.ObservationUnit> data =
                     result.getData();
                 if (null != data) if (data.size() > 0)
-                {
-                    int position = 0;
                     for (final io.swagger.client.model.ObservationUnit observationUnit: data)
-                        this.add(
-                            new org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest(
-                                position++, observationUnit));
-                }
+                        this.append(new
+                            org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest(
+                                observationUnit));
             }
         }
     }
@@ -70,7 +67,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
         if (null != newObservationUnitRequests) if (newObservationUnitRequests.size() > 0)
             for (final io.swagger.client.model.NewObservationUnitRequest newObservationUnitRequest:
             newObservationUnitRequests.arrayListInstance)
-                this.add( new org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest(
+                this.append(new org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest(
                     (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest)
                         newObservationUnitRequest,
                     operator, uploadedBy));
@@ -93,17 +90,15 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
     }
 
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
-    @java.lang.Override public void add(final org.wheatgenetics.javalib.mstrdtl.Item item)
+    @java.lang.Override public void append(final org.wheatgenetics.javalib.mstrdtl.Item item)
     {
+        if (null != item) item.setPosition(this.size());
         this.arrayList().add(
             (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest) item);
     }
 
     @java.lang.Override public void append()
-    {
-        this.add(
-            new org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest(this.size()));
-    }
+    { this.append(new org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest()); }
 
     @java.lang.Override public int size()
     { return null == this.arrayListInstance ? 0 : this.arrayListInstance.size(); }

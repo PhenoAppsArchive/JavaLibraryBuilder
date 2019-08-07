@@ -13,7 +13,7 @@ package org.wheatgenetics.brapi1_3.studies.nour.o;               // nour: NewObs
 class Observation extends io.swagger.client.model.Observation
 implements org.wheatgenetics.javalib.mstrdtl.Item
 {
-    private final int position;
+    private int position;
 
     // region Private Methods
     private void assign(
@@ -47,24 +47,14 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // endregion
 
     // region Constructors
-    Observation(final int position)
-    {
-        super();
+    Observation() { super(); }
 
-        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-            throw new java.lang.IllegalArgumentException(
-                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
-        else
-            this.position = position;
-    }
-
-    Observation(final int position,
-    final io.swagger.client.model.ObservationSummary observationSummary,
+    Observation(final io.swagger.client.model.ObservationSummary observationSummary,
     final java.lang.String germplasmDbId      , final java.lang.String germplasmName      ,
     final java.lang.String observationLevel   , final java.lang.String observationUnitDbId,
     final java.lang.String observationUnitName, final java.lang.String studyDbId          )
     {
-        this(position);
+        this();
         if (null != observationSummary) this.assign(
             germplasmDbId                               ,               germplasmName      ,
             observationSummary.getObservationDbId     (),               observationLevel   ,
@@ -74,30 +64,27 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             studyDbId                                      , observationSummary.getValue ());
     }
 
-    Observation(final int position, final io.swagger.client.model.Observation observation)
-    {
-        this(position);
-        if (null != observation) this.assign(
-            observation.getGermplasmDbId          (), observation.getGermplasmName          (),
-            observation.getObservationDbId        (), observation.getObservationLevel       (),
-            observation.getObservationTimeStamp   (), observation.getObservationUnitDbId    (),
-            observation.getObservationUnitName    (), observation.getObservationVariableDbId(),
-            observation.getObservationVariableName(), observation.getSeason                 (),
-            observation.getStudyDbId              (), observation.getValue                  ());
-    }
-
     Observation(final org.wheatgenetics.brapi1_3.studies.nour.o.Observation observation,
     final java.lang.String operator, final java.lang.String uploadedBy)
     {
-        this(observation.getPosition(), observation);
+        this();
+        if (null != observation)
+        {
+            this.setPosition(observation.getPosition());
+            this.assign(
+                observation.getGermplasmDbId          (), observation.getGermplasmName          (),
+                observation.getObservationDbId        (), observation.getObservationLevel       (),
+                observation.getObservationTimeStamp   (), observation.getObservationUnitDbId    (),
+                observation.getObservationUnitName    (), observation.getObservationVariableDbId(),
+                observation.getObservationVariableName(), observation.getSeason                 (),
+                observation.getStudyDbId              (), observation.getValue                  ());
+        }
         this.operator(operator).uploadedBy(uploadedBy);
     }
 
-    @java.lang.SuppressWarnings({"unused"})
     Observation(final io.swagger.client.model.Observation observation)
     {
-        super();
-        this.position = -1;
+        this(); this.position = -1;
         if (null != observation) this.assign(
             observation.getGermplasmDbId          (), observation.getGermplasmName          (),
             observation.getObservationDbId        (), observation.getObservationLevel       (),
@@ -109,11 +96,19 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
-    @java.lang.Override public java.lang.String getTitle() { return this.getObservationDbId(); }
-
-    @java.lang.Override public java.lang.String getContent() { return this.toString(); }
+    @java.lang.Override public void setPosition(final int position)
+    {
+        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+            throw new java.lang.IllegalArgumentException(
+                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
+        else
+            this.position = position;
+    }
 
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }
+
+    @java.lang.Override public java.lang.String getTitle  () { return this.getObservationDbId(); }
+    @java.lang.Override public java.lang.String getContent() { return this.toString          (); }
     // endregion
 }

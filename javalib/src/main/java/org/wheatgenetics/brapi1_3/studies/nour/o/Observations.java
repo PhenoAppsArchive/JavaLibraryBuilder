@@ -32,14 +32,11 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     {
         super();
         if (null != observationSummaries) if (observationSummaries.size() > 0)
-        {
-            int position = 0;
             for (final io.swagger.client.model.ObservationSummary observationSummary:
             observationSummaries)
-                this.add(new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(
-                    position++      , observationSummary , germplasmDbId      , germplasmName,
-                    observationLevel, observationUnitDbId, observationUnitName, studyDbId    ));
-        }
+                this.append(new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(
+                    observationSummary , germplasmDbId, germplasmName, observationLevel,
+                    observationUnitDbId, observationUnitName         , studyDbId       ));
     }
 
     public Observations(final org.wheatgenetics.brapi1_3.studies.nour.o.Observations observations,
@@ -49,7 +46,7 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
         if (null != observations) if (observations.size() > 0)
             for (final io.swagger.client.model.Observation observation:
             observations.arrayListInstance)
-                this.add(new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(
+                this.append(new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(
                     (org.wheatgenetics.brapi1_3.studies.nour.o.Observation) observation,
                     operator, uploadedBy                                               ));
     }
@@ -58,21 +55,20 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     {
         super();
         if (null != observations) if (observations.size() > 0)
-        {
-            int position = 0;
             for (final io.swagger.client.model.Observation observation: observations)
-                this.add(new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(
-                    position++, observation));
-        }
+                this.append(new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(observation));
     }
     // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
-    @java.lang.Override public void add(final org.wheatgenetics.javalib.mstrdtl.Item item)
-    { this.arrayList().add((org.wheatgenetics.brapi1_3.studies.nour.o.Observation) item); }
+    @java.lang.Override public void append(final org.wheatgenetics.javalib.mstrdtl.Item item)
+    {
+        if (null != item) item.setPosition(this.size());
+        this.arrayList().add((org.wheatgenetics.brapi1_3.studies.nour.o.Observation) item);
+    }
 
     @java.lang.Override public void append()
-    { this.add(new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(this.size())); }
+    { this.append(new org.wheatgenetics.brapi1_3.studies.nour.o.Observation()); }
 
     @java.lang.Override public int size()
     { return null == this.arrayListInstance ? 0 : this.arrayListInstance.size(); }

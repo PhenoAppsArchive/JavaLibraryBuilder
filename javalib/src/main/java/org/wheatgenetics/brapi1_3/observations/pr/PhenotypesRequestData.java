@@ -13,7 +13,7 @@ public class PhenotypesRequestData extends io.swagger.client.model.PhenotypesReq
 implements org.wheatgenetics.javalib.mstrdtl.Item
 {
     // region Fields
-    private final int position;
+    private int                                                       position;
     private org.wheatgenetics.brapi1_3.observations.pr.o.Observations
         observationsAsItems = null;                                                     // lazy load
     // endregion
@@ -28,17 +28,6 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             this.observationsAsItems = observationsAsItems;
             super.observations(this.observationsAsItems.list());
         }
-    }
-
-    PhenotypesRequestData(final int position)
-    {
-        super();
-
-        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-            throw new java.lang.IllegalArgumentException(
-                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
-        else
-            this.position = position;
     }
 
     // region Overridden Methods
@@ -65,12 +54,21 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     { this.observations(observations); }
 
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
-    @java.lang.Override public java.lang.String getTitle() { return this.getObservatioUnitDbId(); }
+    @java.lang.Override public void setPosition(final int position)
+    {
+        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+            throw new java.lang.IllegalArgumentException(
+                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
+        else
+            this.position = position;
+    }
 
-    @java.lang.Override public java.lang.String getContent() { return this.toString(); }
 
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }
+
+    @java.lang.Override public java.lang.String getTitle() { return this.getObservatioUnitDbId(); }
+    @java.lang.Override public java.lang.String getContent() { return this.toString           (); }
     // endregion
     // endregion
 

@@ -9,7 +9,7 @@ package org.wheatgenetics.brapi1_3.studies.nour.oux;             // nour: NewObs
 class ObservationUnitXref extends io.swagger.client.model.ObservationUnitXref
 implements org.wheatgenetics.javalib.mstrdtl.Item
 {
-    private final int position;
+    private int position;
 
     // region Private Methods
     private void assign(final java.lang.String id, final java.lang.String source)
@@ -19,21 +19,11 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // endregion
 
     // region Constructors
-    ObservationUnitXref(final int position)
-    {
-        super();
+    ObservationUnitXref() { super(); }
 
-        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-            throw new java.lang.IllegalArgumentException(
-                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
-        else
-            this.position = position;
-    }
-
-    ObservationUnitXref(final int position,
-    final io.swagger.client.model.ObservationUnitXref observationUnitXref)
+    ObservationUnitXref(final io.swagger.client.model.ObservationUnitXref observationUnitXref)
     {
-        this(position);
+        this();
         if (null != observationUnitXref)
             this.assign(observationUnitXref.getId(), observationUnitXref.getSource());
     }
@@ -41,17 +31,29 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     ObservationUnitXref(
     final org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref observationUnitXref)
     {
-        this(observationUnitXref.getPosition());
-        this.assign(observationUnitXref.getId(), observationUnitXref.getSource());
+        this();
+        if (null != observationUnitXref)
+        {
+            this.setPosition(observationUnitXref.getPosition());
+            this.assign(observationUnitXref.getId(), observationUnitXref.getSource());
+        }
     }
     // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
-    @java.lang.Override public java.lang.String getTitle() { return this.getId(); }
-
-    @java.lang.Override public java.lang.String getContent() { return this.toString(); }
+    @java.lang.Override public void setPosition(final int position)
+    {
+        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+            throw new java.lang.IllegalArgumentException(
+                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
+        else
+            this.position = position;
+    }
 
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }
+
+    @java.lang.Override public java.lang.String getTitle  () { return this.getId   (); }
+    @java.lang.Override public java.lang.String getContent() { return this.toString(); }
     // endregion
 }

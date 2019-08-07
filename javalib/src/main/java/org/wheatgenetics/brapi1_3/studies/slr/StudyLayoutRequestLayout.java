@@ -16,25 +16,15 @@ package org.wheatgenetics.brapi1_3.studies.slr;                           // slr
 class StudyLayoutRequestLayout extends io.swagger.client.model.StudyLayoutRequestLayout
 implements org.wheatgenetics.javalib.mstrdtl.Item
 {
-    private final int position;
+    private int position;
 
     // region Constructors
-    StudyLayoutRequestLayout(final int position)
-    {
-        super();
+    StudyLayoutRequestLayout() { super(); }
 
-        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-            throw new java.lang.IllegalArgumentException(
-                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
-        else
-            this.position = position;
-    }
-
-    StudyLayoutRequestLayout(final int position,
+    StudyLayoutRequestLayout(
     final io.swagger.client.model.ObservationUnitPosition observationUnitPosition)
     {
-        this(position);
-
+        this();
         if (null != observationUnitPosition)
         {
             // region setBlockNumber()
@@ -223,12 +213,20 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
-    @java.lang.Override public java.lang.String getTitle() { return this.getObservationUnitDbId(); }
-
-    @java.lang.Override public java.lang.String getContent() { return this.toString(); }
+    @java.lang.Override public void setPosition(final int position)
+    {
+        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+            throw new java.lang.IllegalArgumentException(
+                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
+        else
+            this.position = position;
+    }
 
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }
+
+    @java.lang.Override public java.lang.String getTitle() { return this.getObservationUnitDbId(); }
+    @java.lang.Override public java.lang.String getContent() { return this.toString            (); }
     // endregion
 
     @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"})

@@ -23,7 +23,7 @@ public class NewObservationUnitRequest extends io.swagger.client.model.NewObserv
 implements org.wheatgenetics.javalib.mstrdtl.Item
 {
     // region Fields
-    private final int position;
+    private int position;
 
     private org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs
         observationUnitXrefsAsItems = null;
@@ -238,21 +238,11 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // endregion
 
     // region Constructors
-    NewObservationUnitRequest(final int position)
-    {
-        super();
+    NewObservationUnitRequest() { super(); }
 
-        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-            throw new java.lang.IllegalArgumentException(
-                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
-        else
-            this.position = position;
-    }
-
-    NewObservationUnitRequest(final int position,
-    final io.swagger.client.model.ObservationUnit observationUnit)
+    NewObservationUnitRequest(final io.swagger.client.model.ObservationUnit observationUnit)
     {
-        this(position);
+        this();
         if (null != observationUnit) this.assign(
             observationUnit.getBlockNumber        (), observationUnit.getEntryNumber            (),
             observationUnit.getEntryType          (), observationUnit.getGermplasmDbId          (),
@@ -270,22 +260,26 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest newObservationUnitRequest,
     final java.lang.String operator, final java.lang.String uploadedBy)
     {
-        this(newObservationUnitRequest.getPosition());
-        this.assign(
-            newObservationUnitRequest.getBlockNumber(), newObservationUnitRequest.getEntryNumber(),
-            newObservationUnitRequest.getEntryType(), newObservationUnitRequest.getGermplasmDbId(),
-            newObservationUnitRequest.getObservationLevel           (),
-            newObservationUnitRequest.getObservationUnitDbId        (),
-            newObservationUnitRequest.getObservationUnitName        (),
-            newObservationUnitRequest.getObservationUnitXrefsAsItems(),
-            newObservationUnitRequest.getObservationsAsItems        (), operator, uploadedBy,
-            newObservationUnitRequest.getPlantNumber(), newObservationUnitRequest.getPlotNumber(),
-            newObservationUnitRequest.getPositionCoordinateX    (),
-            newObservationUnitRequest.getPositionCoordinateXType(),
-            newObservationUnitRequest.getPositionCoordinateY    (),
-            newObservationUnitRequest.getPositionCoordinateYType(),
-            newObservationUnitRequest.getReplicate(), newObservationUnitRequest.getStudyDbId(),
-            newObservationUnitRequest.getObservationTreatmentsAsItems()                       );
+        this();
+        if (null != newObservationUnitRequest)
+        {
+            this.setPosition(newObservationUnitRequest.getPosition());
+            this.assign(
+                newObservationUnitRequest.getBlockNumber(), newObservationUnitRequest.getEntryNumber(),
+                newObservationUnitRequest.getEntryType(), newObservationUnitRequest.getGermplasmDbId(),
+                newObservationUnitRequest.getObservationLevel           (),
+                newObservationUnitRequest.getObservationUnitDbId        (),
+                newObservationUnitRequest.getObservationUnitName        (),
+                newObservationUnitRequest.getObservationUnitXrefsAsItems(),
+                newObservationUnitRequest.getObservationsAsItems        (), operator, uploadedBy,
+                newObservationUnitRequest.getPlantNumber(), newObservationUnitRequest.getPlotNumber(),
+                newObservationUnitRequest.getPositionCoordinateX    (),
+                newObservationUnitRequest.getPositionCoordinateXType(),
+                newObservationUnitRequest.getPositionCoordinateY    (),
+                newObservationUnitRequest.getPositionCoordinateYType(),
+                newObservationUnitRequest.getReplicate(), newObservationUnitRequest.getStudyDbId(),
+                newObservationUnitRequest.getObservationTreatmentsAsItems()                       );
+        }
     }
     // endregion
 
@@ -371,12 +365,20 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
-    @java.lang.Override public java.lang.String getTitle() { return this.getObservationUnitDbId(); }
-
-    @java.lang.Override public java.lang.String getContent() { return this.toString(); }
+    @java.lang.Override public void setPosition(final int position)
+    {
+        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+            throw new java.lang.IllegalArgumentException(
+                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
+        else
+            this.position = position;
+    }
 
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }
+
+    @java.lang.Override public java.lang.String getTitle() { return this.getObservationUnitDbId(); }
+    @java.lang.Override public java.lang.String getContent() { return this.toString            (); }
     // endregion
     // endregion
 

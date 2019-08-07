@@ -32,21 +32,21 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     {
         this();
         if (null != observations) if (observations.size() > 0)
-        {
-            int position = 0;
             for (final io.swagger.client.model.PhenotypesRequestObservation observation:
-            observations) this.add(new org.wheatgenetics.brapi1_3.observations.pr.o.Observation(
-                position++, observation));
-        }
+            observations) this.append(new org.wheatgenetics.brapi1_3.observations.pr.o.Observation(
+                observation));
     }
     // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
-    @java.lang.Override public void add(final org.wheatgenetics.javalib.mstrdtl.Item item)
-    { this.arrayList().add((org.wheatgenetics.brapi1_3.observations.pr.o.Observation) item); }
+    @java.lang.Override public void append(final org.wheatgenetics.javalib.mstrdtl.Item item)
+    {
+        if (null != item) item.setPosition(this.size());
+        this.arrayList().add((org.wheatgenetics.brapi1_3.observations.pr.o.Observation) item);
+    }
 
     @java.lang.Override public void append()
-    { this.add(new org.wheatgenetics.brapi1_3.observations.pr.o.Observation(this.size())); }
+    { this.append(new org.wheatgenetics.brapi1_3.observations.pr.o.Observation()); }
 
     @java.lang.Override public int size()
     { return null == this.arrayListInstance ? 0 : this.arrayListInstance.size(); }

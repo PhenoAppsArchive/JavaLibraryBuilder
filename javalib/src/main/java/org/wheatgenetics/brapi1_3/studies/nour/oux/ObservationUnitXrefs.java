@@ -30,13 +30,10 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     {
         super();
         if (null != observationUnitXrefs) if (observationUnitXrefs.size() > 0)
-        {
-            int position = 0;
             for (final io.swagger.client.model.ObservationUnitXref observationUnitXref:
             observationUnitXrefs)
-                this.add(new org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref(
-                    position++, observationUnitXref));
-        }
+                this.append(new org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref(
+                    observationUnitXref));
     }
 
     @java.lang.SuppressWarnings({"CopyConstructorMissesField"}) public ObservationUnitXrefs(
@@ -46,21 +43,22 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
         if (null != observationUnitXrefs) if (observationUnitXrefs.size() > 0)
             for (final io.swagger.client.model.ObservationUnitXref observationUnitXref:
             observationUnitXrefs.arrayListInstance)
-                this.add(new org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref(
+                this.append(new org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref(
                     (org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref)
                         observationUnitXref));
     }
     // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
-    @java.lang.Override public void add(final org.wheatgenetics.javalib.mstrdtl.Item item)
+    @java.lang.Override public void append(final org.wheatgenetics.javalib.mstrdtl.Item item)
     {
+        if (null != item) item.setPosition(this.size());
         this.arrayList().add(
             (org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref) item);
     }
 
     @java.lang.Override public void append()
-    { this.add(new org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref(this.size())); }
+    { this.append(new org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref()); }
 
     @java.lang.Override public int size()
     { return null == this.arrayListInstance ? 0 : this.arrayListInstance.size(); }

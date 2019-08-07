@@ -10,15 +10,18 @@ package org.wheatgenetics.brapi1_3.observations.pr;
  *
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData
  */
-public class PhenotypesRequest extends io.swagger.client.model.PhenotypesRequest
-implements org.wheatgenetics.javalib.mstrdtl.Items
+@java.lang.SuppressWarnings({"unused"}) public class PhenotypesRequest
+extends io.swagger.client.model.PhenotypesRequest implements org.wheatgenetics.javalib.mstrdtl.Items
 {
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
-    @java.lang.Override public void add(final org.wheatgenetics.javalib.mstrdtl.Item item)
-    { this.addDataItem((org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData) item); }
+    @java.lang.Override public void append(final org.wheatgenetics.javalib.mstrdtl.Item item)
+    {
+        if (null != item) item.setPosition(this.size());
+        this.addDataItem((org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData) item);
+    }
 
     @java.lang.Override public void append()
-    { this.add(new org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData(this.size())); }
+    { this.append(new org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData()); }
 
     @java.lang.Override public int size()
     {

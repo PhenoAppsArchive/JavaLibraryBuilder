@@ -11,24 +11,14 @@ class NewObservationsRequestObservations
 extends io.swagger.client.model.NewObservationsRequestObservations
 implements org.wheatgenetics.javalib.mstrdtl.Item
 {
-    private final int position;
+    private int position;
 
     // region Constructors
-    NewObservationsRequestObservations(final int position)
-    {
-        super();
+    NewObservationsRequestObservations() { super(); }
 
-        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-            throw new java.lang.IllegalArgumentException(
-                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
-        else
-            this.position = position;
-    }
-
-    NewObservationsRequestObservations(final int position,
-    final io.swagger.client.model.Observation observation)
+    NewObservationsRequestObservations(final io.swagger.client.model.Observation observation)
     {
-        this(position);
+        this();
         if (null != observation) this
             .collector              (observation.getOperator               ())
             .observationDbId        (observation.getObservationDbId        ())
@@ -40,12 +30,20 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
-    @java.lang.Override public java.lang.String getTitle() { return this.getObservationDbId(); }
-
-    @java.lang.Override public java.lang.String getContent() { return this.toString(); }
+    @java.lang.Override public void setPosition(final int position)
+    {
+        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+            throw new java.lang.IllegalArgumentException(
+                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
+        else
+            this.position = position;
+    }
 
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }
+
+    @java.lang.Override public java.lang.String getTitle  () { return this.getObservationDbId(); }
+    @java.lang.Override public java.lang.String getContent() { return this.toString          (); }
     // endregion
 
     @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"})

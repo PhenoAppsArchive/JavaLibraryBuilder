@@ -21,7 +21,6 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
     final io.swagger.client.model.ObservationsResponse observationsResponse)
     {
         super();
-
         if (null != observationsResponse)
         {
             final io.swagger.client.model.ObservationsResponseResult result =
@@ -30,27 +29,25 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
             {
                 final java.util.List<io.swagger.client.model.Observation> data = result.getData();
                 if (null != data) if (data.size() > 0)
-                {
-                    int position = 0;
                     for (final io.swagger.client.model.Observation observation: data)
                         this.addObservationsItem(new org.wheatgenetics.brapi1_3.studies.nor
-                            .NewObservationsRequestObservations(position++, observation));
-                }
+                            .NewObservationsRequestObservations(observation));
             }
         }
     }
 
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
-    @java.lang.Override public void add(final org.wheatgenetics.javalib.mstrdtl.Item item)
+    @java.lang.Override public void append(final org.wheatgenetics.javalib.mstrdtl.Item item)
     {
+        if (null != item) item.setPosition(this.size());
         this.addObservationsItem(
             (org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservations) item);
     }
 
     @java.lang.Override public void append()
     {
-        this.add(new
-            org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservations(this.size()));
+        this.append(new
+            org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservations());
     }
 
     @java.lang.Override public int size()

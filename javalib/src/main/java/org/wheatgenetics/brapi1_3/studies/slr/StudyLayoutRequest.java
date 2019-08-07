@@ -31,24 +31,24 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
                 final java.util.List<io.swagger.client.model.ObservationUnitPosition> data =
                     result.getData();
                 if (null != data) if (data.size() > 0)
-                {
-                    int position = 0;
                     for (final io.swagger.client.model.ObservationUnitPosition
                     observationUnitPosition: data)
                         this.addLayoutItem(
                             new org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout(
-                                position++, observationUnitPosition));
-                }
+                                observationUnitPosition));
             }
         }
     }
 
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
-    @java.lang.Override public void add(final org.wheatgenetics.javalib.mstrdtl.Item item)
-    { this.addLayoutItem((org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout) item); }
+    @java.lang.Override public void append(final org.wheatgenetics.javalib.mstrdtl.Item item)
+    {
+        if (null != item) item.setPosition(this.size());
+        this.addLayoutItem((org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout) item);
+    }
 
     @java.lang.Override public void append()
-    { this.add(new org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout(this.size())); }
+    { this.append(new org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout()); }
 
     @java.lang.Override public int size()
     {
