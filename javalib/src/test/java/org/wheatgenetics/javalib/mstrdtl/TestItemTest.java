@@ -6,21 +6,39 @@ package org.wheatgenetics.javalib.mstrdtl;
  * org.junit.Test
  *
  * org.wheatgenetics.javalib.mstrdtl.TestItem
+ * org.wheatgenetics.javalib.mstrdtl.TestItem.Container
  */
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public class TestItemTest extends java.lang.Object
 {
-    @org.junit.Test() public void constructorSucceeds()
+    private org.wheatgenetics.javalib.mstrdtl.TestItem.Container
+        falseContainerInstance = null, trueContainerInstance;                          // lazy loads
+
+    // region Private Methods
+    private org.wheatgenetics.javalib.mstrdtl.TestItem.Container falseContainer()
     {
-        final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
-            new org.wheatgenetics.javalib.mstrdtl.TestItem();
-        testItem.setPosition(2);
-        org.junit.Assert.assertEquals("2"     , testItem.getPositionAsString());
-        org.junit.Assert.assertEquals("Item 3", testItem.getTitle           ());
-        org.junit.Assert.assertEquals("Content of Item 3:" +
-                "\nMore information here.\nMore information here.\nMore information here.",
-            testItem.getContent());
+        if (null == this.falseContainerInstance)
+            // noinspection Convert2Lambda
+            this.falseContainerInstance = new org.wheatgenetics.javalib.mstrdtl.TestItem.Container()
+                {
+                    @java.lang.Override public boolean canMoveDown(final int position)
+                    { return false; }
+                };
+        return this.falseContainerInstance;
     }
+
+    private org.wheatgenetics.javalib.mstrdtl.TestItem.Container trueContainer()
+    {
+        if (null == this.trueContainerInstance)
+            // noinspection Convert2Lambda
+            this.trueContainerInstance = new org.wheatgenetics.javalib.mstrdtl.TestItem.Container()
+                {
+                    @java.lang.Override public boolean canMoveDown(final int position)
+                    { return true; }
+                };
+        return this.trueContainerInstance;
+    }
+    // endregion
 
     // region setPosition() Tests
     @org.junit.Test(expected = java.lang.IndexOutOfBoundsException.class)
@@ -44,24 +62,78 @@ public class TestItemTest extends java.lang.Object
         }
     }
 
-    @org.junit.Test public void setPositionAlsoSetsTitleAndContent()
+    @org.junit.Test() public void setPositionWorks()
     {
         final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
             new org.wheatgenetics.javalib.mstrdtl.TestItem();
         testItem.setPosition(0);
-        org.junit.Assert.assertEquals("0"     , testItem.getPositionAsString());
+        org.junit.Assert.assertEquals("0", testItem.getPositionAsString());
+
+        testItem.setPosition(2);
+        org.junit.Assert.assertEquals("2", testItem.getPositionAsString());
+    }
+    // endregion
+
+    // region canMoveUp() Tests
+    @org.junit.Test() public void nullContainerCanMoveUpIsFalse()
+    { org.junit.Assert.assertFalse(new org.wheatgenetics.javalib.mstrdtl.TestItem().canMoveUp()); }
+
+    @org.junit.Test() public void zeroPositionCanMoveUpIsFalse()
+    {
+        final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
+            new org.wheatgenetics.javalib.mstrdtl.TestItem();
+        testItem.setPosition(0); testItem.setContainer(this.trueContainer());
+        org.junit.Assert.assertFalse(testItem.canMoveUp());
+    }
+
+    @org.junit.Test() public void nonZeroPositionCanMoveUpIsFalse()
+    {
+        final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
+            new org.wheatgenetics.javalib.mstrdtl.TestItem();
+        testItem.setPosition(55); testItem.setContainer(this.trueContainer());
+        org.junit.Assert.assertTrue(testItem.canMoveUp());
+    }
+    // endregion
+
+    // region canMoveDown() Tests
+    @org.junit.Test() public void nullContainerCanMoveDownIsFalse()
+    {
+        org.junit.Assert.assertFalse(
+            new org.wheatgenetics.javalib.mstrdtl.TestItem().canMoveDown());
+    }
+
+    @org.junit.Test() public void falseContainerCanMoveDownIsFalse()
+    {
+        final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
+            new org.wheatgenetics.javalib.mstrdtl.TestItem();
+        testItem.setContainer(this.falseContainer());
+        org.junit.Assert.assertFalse(testItem.canMoveDown());
+    }
+
+    @org.junit.Test() public void trueContainerCanMoveDownIsTrue()
+    {
+        final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
+            new org.wheatgenetics.javalib.mstrdtl.TestItem();
+        testItem.setContainer(this.trueContainer());
+        org.junit.Assert.assertTrue(testItem.canMoveDown());
+    }
+    // endregion
+
+    @org.junit.Test() public void setTitleAndContentWorks()
+    {
+        final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
+            new org.wheatgenetics.javalib.mstrdtl.TestItem();
+        testItem.setPosition(0); testItem.setTitleAndContent();
         org.junit.Assert.assertEquals("Item 1", testItem.getTitle           ());
         org.junit.Assert.assertEquals("Content of Item 1:\nMore information here.",
             testItem.getContent());
 
-        testItem.setPosition(2);
-        org.junit.Assert.assertEquals("2"     , testItem.getPositionAsString());
+        testItem.setPosition(2); testItem.setTitleAndContent();
         org.junit.Assert.assertEquals("Item 3", testItem.getTitle           ());
         org.junit.Assert.assertEquals("Content of Item 3:" +
                 "\nMore information here.\nMore information here.\nMore information here.",
             testItem.getContent());
     }
-    // endregion
 
     // region setContent() Tests
     @org.junit.Test() public void nullSetContentWorks()

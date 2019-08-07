@@ -48,4 +48,27 @@ public class TestItemsTest extends java.lang.Object
         }
     }
     // endregion
+
+    // region canMoveDown() Tests
+    @org.junit.Test() public void tooSmallPositionCanMoveDownIsFalse()
+    {
+        org.junit.Assert.assertFalse(
+            new org.wheatgenetics.javalib.mstrdtl.TestItems().canMoveDown(-1));
+    }
+
+    @org.junit.Test() public void emptyItemsCanMoveDownIsFalse()
+    {
+        org.junit.Assert.assertFalse(
+            new org.wheatgenetics.javalib.mstrdtl.TestItems().canMoveDown(0));
+    }
+
+    @org.junit.Test() public void canMoveDownWorks()
+    {
+        final org.wheatgenetics.javalib.mstrdtl.TestItems testItems =
+            new org.wheatgenetics.javalib.mstrdtl.TestItems();
+        testItems.append(); org.junit.Assert.assertFalse(testItems.canMoveDown(0));
+        testItems.append(); org.junit.Assert.assertFalse(testItems.canMoveDown(1));
+        testItems.append(); org.junit.Assert.assertTrue (testItems.canMoveDown(0));
+    }
+    // endregion
 }
