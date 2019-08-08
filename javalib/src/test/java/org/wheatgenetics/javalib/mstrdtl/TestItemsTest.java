@@ -31,4 +31,44 @@ public class TestItemsTest extends java.lang.Object
         org.junit.Assert.assertEquals(2  , testItems.size());
         org.junit.Assert.assertEquals("1", testItems.get(1).getPositionAsString());
     }
+
+    // region get() Tests
+    @org.junit.Test(expected = java.lang.IndexOutOfBoundsException.class)
+    public void tooSmallPositionGetThrows()
+    { new org.wheatgenetics.javalib.mstrdtl.TestItems().get(-55); }
+
+    @org.junit.Test() public void tooSmallPositionGetHasCorrectMessage()
+    {
+        try { new org.wheatgenetics.javalib.mstrdtl.TestItems().get(-5); }
+        catch (final java.lang.IndexOutOfBoundsException e)
+        {
+            org.junit.Assert.assertEquals(
+                org.wheatgenetics.javalib.mstrdtl.TestItem.TOO_SMALL_POSITION_MESSAGE,
+                e.getMessage()                                                       );
+        }
+    }
+    // endregion
+
+    // region canMoveDown() Tests
+    @org.junit.Test() public void tooSmallPositionCanMoveDownIsFalse()
+    {
+        org.junit.Assert.assertFalse(
+            new org.wheatgenetics.javalib.mstrdtl.TestItems().canMoveDown(-1));
+    }
+
+    @org.junit.Test() public void emptyItemsCanMoveDownIsFalse()
+    {
+        org.junit.Assert.assertFalse(
+            new org.wheatgenetics.javalib.mstrdtl.TestItems().canMoveDown(0));
+    }
+
+    @org.junit.Test() public void canMoveDownWorks()
+    {
+        final org.wheatgenetics.javalib.mstrdtl.TestItems testItems =
+            new org.wheatgenetics.javalib.mstrdtl.TestItems();
+        testItems.append(); org.junit.Assert.assertFalse(testItems.canMoveDown(0));
+        testItems.append(); org.junit.Assert.assertFalse(testItems.canMoveDown(1));
+        testItems.append(); org.junit.Assert.assertTrue (testItems.canMoveDown(0));
+    }
+    // endregion
 }

@@ -10,6 +10,8 @@ package org.wheatgenetics.javalib.mstrdtl;
 public class TestItem extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Item
 {
     // region Fields
+    private org.wheatgenetics.javalib.mstrdtl.TestItem.Container container = null;
+
     private int              position      ;
     private java.lang.String title, content;
     // endregion
@@ -17,24 +19,13 @@ public class TestItem extends java.lang.Object implements org.wheatgenetics.java
     private int getPosition() { return this.position; }
 
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
-    @java.lang.Override @java.lang.SuppressWarnings({"DefaultLocale"})
-    public void setPosition(final int position)
+    @java.lang.Override public void setPosition(final int position)
     {
         if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-            throw new java.lang.IllegalArgumentException(
+            throw new java.lang.IndexOutOfBoundsException(
                 org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
         else
-        {
-            this.position = position                                                        ;
-            this.title    = java.lang.String.format("Item %d",this.position + 1);
-
-            final java.lang.StringBuilder builder =
-                new java.lang.StringBuilder("Content of ").append(this.getTitle()).append(':');
-            for (int i = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION;
-            i <= this.position; i++)
-                builder.append("\nMore information here.");
-            this.content = builder.toString();
-        }
+            this.position = position;
     }
 
     @java.lang.Override public java.lang.String getPositionAsString()
@@ -42,8 +33,35 @@ public class TestItem extends java.lang.Object implements org.wheatgenetics.java
 
     @java.lang.Override public java.lang.String getTitle  () { return this.title  ; }
     @java.lang.Override public java.lang.String getContent() { return this.content; }
+
+    @java.lang.Override public boolean canMoveUp()
+    { return null != this.container && this.getPosition() > 0; }
+
+    @java.lang.Override public boolean canMoveDown()
+    {
+        // noinspection SimplifiableConditionalExpression
+        return null == this.container ? false : this.container.canMoveDown(this.getPosition());
+    }
     // endregion
 
+    // region Package Methods
+    void setContainer(final org.wheatgenetics.javalib.mstrdtl.TestItem.Container container)
+    { this.container = container; }
+
+    @java.lang.SuppressWarnings({"DefaultLocale"}) void setTitleAndContent()
+    {
+        this.title = java.lang.String.format("Item %d",this.getPosition() + 1);
+
+        final java.lang.StringBuilder builder =
+            new java.lang.StringBuilder("Content of ").append(this.getTitle()).append(':');
+        for (int i = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION;
+        i <= this.getPosition(); i++)
+            builder.append("\nMore information here.");
+        this.content = builder.toString();
+    }
+    // endregion
+
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     public void setContent(final java.lang.String content)
     { this.content = org.wheatgenetics.javalib.Utils.makeEmptyIfNull(content); }
 }
