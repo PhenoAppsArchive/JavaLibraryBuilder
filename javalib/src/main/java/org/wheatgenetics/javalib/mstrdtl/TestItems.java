@@ -27,13 +27,16 @@ implements org.wheatgenetics.javalib.mstrdtl.Items, org.wheatgenetics.javalib.ms
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
     @java.lang.Override public void append(final org.wheatgenetics.javalib.mstrdtl.Item item)
     {
-        if (null != item) item.setPosition(this.size());
-
-        final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
-            (org.wheatgenetics.javalib.mstrdtl.TestItem) item;
-        if (null != testItem) testItem.setTitleAndContent();
-
-        this.testItems().add(testItem);
+        if (item instanceof org.wheatgenetics.javalib.mstrdtl.TestItem)
+        {
+            final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
+                (org.wheatgenetics.javalib.mstrdtl.TestItem) item;
+            if (testItem.containersAreTheSame(this))
+            {
+                testItem.setPosition(this.size()); testItem.setTitleAndContent();
+                this.testItems().add(testItem);
+            }
+        }
     }
 
     @java.lang.Override public void append()

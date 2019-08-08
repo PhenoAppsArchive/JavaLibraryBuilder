@@ -118,6 +118,26 @@ public class TestItemTest extends java.lang.Object
     }
     // endregion
 
+    // region containersAreTheSame() Tests
+    @org.junit.Test() public void nullContainersAreTheSame()
+    {
+        final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
+            new org.wheatgenetics.javalib.mstrdtl.TestItem(null);
+        org.junit.Assert.assertFalse(testItem.containersAreTheSame(this.falseContainer()));
+        org.junit.Assert.assertFalse(testItem.containersAreTheSame(this.trueContainer ()));
+        org.junit.Assert.assertTrue (testItem.containersAreTheSame(null                 ));
+    }
+
+    @org.junit.Test() public void nonNullContainersAreTheSame()
+    {
+        final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
+            new org.wheatgenetics.javalib.mstrdtl.TestItem(this.falseContainer());
+        org.junit.Assert.assertTrue (testItem.containersAreTheSame(this.falseContainer()));
+        org.junit.Assert.assertFalse(testItem.containersAreTheSame(this.trueContainer ()));
+        org.junit.Assert.assertFalse(testItem.containersAreTheSame(null                 ));
+    }
+    // endregion
+
     @org.junit.Test() public void setTitleAndContentWorks()
     {
         final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =

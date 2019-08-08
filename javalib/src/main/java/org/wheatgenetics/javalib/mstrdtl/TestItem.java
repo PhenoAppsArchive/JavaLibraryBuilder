@@ -47,6 +47,11 @@ public class TestItem extends java.lang.Object implements org.wheatgenetics.java
     }
     // endregion
 
+    // region Package Methods
+    boolean containersAreTheSame(
+    final org.wheatgenetics.javalib.mstrdtl.TestItem.Container container)
+    { return container == this.container; }
+
     @java.lang.SuppressWarnings({"DefaultLocale"}) void setTitleAndContent()
     {
         this.title = java.lang.String.format("Item %d",this.getPosition() + 1);
@@ -58,6 +63,7 @@ public class TestItem extends java.lang.Object implements org.wheatgenetics.java
             builder.append("\nMore information here.");
         this.content = builder.toString();
     }
+    // endregion
 
     @java.lang.SuppressWarnings({"WeakerAccess"})
     public void setContent(final java.lang.String content)

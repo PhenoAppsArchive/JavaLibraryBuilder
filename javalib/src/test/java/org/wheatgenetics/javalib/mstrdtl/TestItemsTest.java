@@ -32,6 +32,23 @@ public class TestItemsTest extends java.lang.Object
         org.junit.Assert.assertEquals("1", testItems.get(1).getPositionAsString());
     }
 
+    @org.junit.Test() public void foreignAppendFailsLocalAppendSucceeds()
+    {
+        final org.wheatgenetics.javalib.mstrdtl.TestItems
+            foreignTestItems = new org.wheatgenetics.javalib.mstrdtl.TestItems(),
+            localTestItems   = new org.wheatgenetics.javalib.mstrdtl.TestItems();
+        final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
+            new org.wheatgenetics.javalib.mstrdtl.TestItem(foreignTestItems);
+
+        org.junit.Assert.assertEquals(0, localTestItems.size());
+        localTestItems.append(testItem);
+        org.junit.Assert.assertEquals(0, localTestItems.size());
+
+        org.junit.Assert.assertEquals(0, foreignTestItems.size());
+        foreignTestItems.append(testItem);
+        org.junit.Assert.assertEquals(1, foreignTestItems.size());
+    }
+
     // region get() Tests
     @org.junit.Test(expected = java.lang.IndexOutOfBoundsException.class)
     public void tooSmallPositionGetThrows()
