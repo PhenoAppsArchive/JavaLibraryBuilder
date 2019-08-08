@@ -5,28 +5,26 @@ package org.wheatgenetics.javalib.mstrdtl;
  * org.wheatgenetics.javalib.Utils
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
+ * org.wheatgenetics.javalib.mstrdtl.Utils
  */
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public class TestItem extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Item
 {
     // region Fields
-    private org.wheatgenetics.javalib.mstrdtl.TestItem.Container container = null;
+    private final org.wheatgenetics.javalib.mstrdtl.TestItem.Container container;
 
-    private int              position      ;
-    private java.lang.String title, content;
+    private int              position           ;
+    private java.lang.String title, content = "";
     // endregion
 
     private int getPosition() { return this.position; }
 
+    TestItem(final org.wheatgenetics.javalib.mstrdtl.TestItem.Container container)
+    { super(); this.container = container; }
+
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
     @java.lang.Override public void setPosition(final int position)
-    {
-        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-            throw new java.lang.IndexOutOfBoundsException(
-                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
-        else
-            this.position = position;
-    }
+    { this.position = org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position); }
 
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }
@@ -35,18 +33,22 @@ public class TestItem extends java.lang.Object implements org.wheatgenetics.java
     @java.lang.Override public java.lang.String getContent() { return this.content; }
 
     @java.lang.Override public boolean canMoveUp()
-    { return null != this.container && this.getPosition() > 0; }
+    {
+        return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveUp(
+            this.container, this.getPosition());
+    }
 
     @java.lang.Override public boolean canMoveDown()
     {
-        // noinspection SimplifiableConditionalExpression
-        return null == this.container ? false : this.container.canMoveDown(this.getPosition());
+        return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(
+            this.container, this.getPosition());
     }
     // endregion
 
     // region Package Methods
-    void setContainer(final org.wheatgenetics.javalib.mstrdtl.TestItem.Container container)
-    { this.container = container; }
+    boolean containersAreTheSame(
+    final org.wheatgenetics.javalib.mstrdtl.TestItem.Container container)
+    { return container == this.container; }
 
     @java.lang.SuppressWarnings({"DefaultLocale"}) void setTitleAndContent()
     {

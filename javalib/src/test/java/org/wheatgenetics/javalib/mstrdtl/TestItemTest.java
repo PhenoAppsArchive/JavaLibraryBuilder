@@ -45,14 +45,14 @@ public class TestItemTest extends java.lang.Object
     public void tooSmallPositionSetPositionThrows()
     {
         final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
-            new org.wheatgenetics.javalib.mstrdtl.TestItem();
+            new org.wheatgenetics.javalib.mstrdtl.TestItem(null);
         testItem.setPosition(-2);
     }
 
     @org.junit.Test() public void tooSmallPositionSetPositionHasCorrectMessage()
     {
         final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
-            new org.wheatgenetics.javalib.mstrdtl.TestItem();
+            new org.wheatgenetics.javalib.mstrdtl.TestItem(null);
         try { testItem.setPosition(-5); }
         catch (final java.lang.IndexOutOfBoundsException e)
         {
@@ -65,7 +65,7 @@ public class TestItemTest extends java.lang.Object
     @org.junit.Test() public void setPositionWorks()
     {
         final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
-            new org.wheatgenetics.javalib.mstrdtl.TestItem();
+            new org.wheatgenetics.javalib.mstrdtl.TestItem(null);
         testItem.setPosition(0);
         org.junit.Assert.assertEquals("0", testItem.getPositionAsString());
 
@@ -76,22 +76,23 @@ public class TestItemTest extends java.lang.Object
 
     // region canMoveUp() Tests
     @org.junit.Test() public void nullContainerCanMoveUpIsFalse()
-    { org.junit.Assert.assertFalse(new org.wheatgenetics.javalib.mstrdtl.TestItem().canMoveUp()); }
+    {
+        org.junit.Assert.assertFalse(
+            new org.wheatgenetics.javalib.mstrdtl.TestItem(null).canMoveUp());
+    }
 
     @org.junit.Test() public void zeroPositionCanMoveUpIsFalse()
     {
         final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
-            new org.wheatgenetics.javalib.mstrdtl.TestItem();
-        testItem.setPosition(0); testItem.setContainer(this.trueContainer());
-        org.junit.Assert.assertFalse(testItem.canMoveUp());
+            new org.wheatgenetics.javalib.mstrdtl.TestItem(this.trueContainer());
+        testItem.setPosition(0); org.junit.Assert.assertFalse(testItem.canMoveUp());
     }
 
-    @org.junit.Test() public void nonZeroPositionCanMoveUpIsFalse()
+    @org.junit.Test() public void nonZeroPositionCanMoveUpIsTrue()
     {
         final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
-            new org.wheatgenetics.javalib.mstrdtl.TestItem();
-        testItem.setPosition(55); testItem.setContainer(this.trueContainer());
-        org.junit.Assert.assertTrue(testItem.canMoveUp());
+            new org.wheatgenetics.javalib.mstrdtl.TestItem(this.trueContainer());
+        testItem.setPosition(55); org.junit.Assert.assertTrue(testItem.canMoveUp());
     }
     // endregion
 
@@ -99,37 +100,55 @@ public class TestItemTest extends java.lang.Object
     @org.junit.Test() public void nullContainerCanMoveDownIsFalse()
     {
         org.junit.Assert.assertFalse(
-            new org.wheatgenetics.javalib.mstrdtl.TestItem().canMoveDown());
+            new org.wheatgenetics.javalib.mstrdtl.TestItem(null).canMoveDown());
     }
 
     @org.junit.Test() public void falseContainerCanMoveDownIsFalse()
     {
         final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
-            new org.wheatgenetics.javalib.mstrdtl.TestItem();
-        testItem.setContainer(this.falseContainer());
+            new org.wheatgenetics.javalib.mstrdtl.TestItem(this.falseContainer());
         org.junit.Assert.assertFalse(testItem.canMoveDown());
     }
 
     @org.junit.Test() public void trueContainerCanMoveDownIsTrue()
     {
         final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
-            new org.wheatgenetics.javalib.mstrdtl.TestItem();
-        testItem.setContainer(this.trueContainer());
+            new org.wheatgenetics.javalib.mstrdtl.TestItem(this.trueContainer());
         org.junit.Assert.assertTrue(testItem.canMoveDown());
+    }
+    // endregion
+
+    // region containersAreTheSame() Tests
+    @org.junit.Test() public void nullContainersAreTheSame()
+    {
+        final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
+            new org.wheatgenetics.javalib.mstrdtl.TestItem(null);
+        org.junit.Assert.assertFalse(testItem.containersAreTheSame(this.falseContainer()));
+        org.junit.Assert.assertFalse(testItem.containersAreTheSame(this.trueContainer ()));
+        org.junit.Assert.assertTrue (testItem.containersAreTheSame(null                 ));
+    }
+
+    @org.junit.Test() public void nonNullContainersAreTheSame()
+    {
+        final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
+            new org.wheatgenetics.javalib.mstrdtl.TestItem(this.falseContainer());
+        org.junit.Assert.assertTrue (testItem.containersAreTheSame(this.falseContainer()));
+        org.junit.Assert.assertFalse(testItem.containersAreTheSame(this.trueContainer ()));
+        org.junit.Assert.assertFalse(testItem.containersAreTheSame(null                 ));
     }
     // endregion
 
     @org.junit.Test() public void setTitleAndContentWorks()
     {
         final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
-            new org.wheatgenetics.javalib.mstrdtl.TestItem();
+            new org.wheatgenetics.javalib.mstrdtl.TestItem(null);
         testItem.setPosition(0); testItem.setTitleAndContent();
-        org.junit.Assert.assertEquals("Item 1", testItem.getTitle           ());
+        org.junit.Assert.assertEquals("Item 1", testItem.getTitle());
         org.junit.Assert.assertEquals("Content of Item 1:\nMore information here.",
             testItem.getContent());
 
         testItem.setPosition(2); testItem.setTitleAndContent();
-        org.junit.Assert.assertEquals("Item 3", testItem.getTitle           ());
+        org.junit.Assert.assertEquals("Item 3", testItem.getTitle());
         org.junit.Assert.assertEquals("Content of Item 3:" +
                 "\nMore information here.\nMore information here.\nMore information here.",
             testItem.getContent());
@@ -139,16 +158,16 @@ public class TestItemTest extends java.lang.Object
     @org.junit.Test() public void nullSetContentWorks()
     {
         final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
-            new org.wheatgenetics.javalib.mstrdtl.TestItem();
-        testItem.setContent(null);
-        org.junit.Assert.assertNotNull(testItem.getContent());
+            new org.wheatgenetics.javalib.mstrdtl.TestItem(null);
+                                   org.junit.Assert.assertNotNull(testItem.getContent());
+        testItem.setContent(null); org.junit.Assert.assertNotNull(testItem.getContent());
     }
 
     @org.junit.Test() public void setContentWorks()
     {
         final java.lang.String                           testContent = "testContent";
         final org.wheatgenetics.javalib.mstrdtl.TestItem testItem    =
-            new org.wheatgenetics.javalib.mstrdtl.TestItem();
+            new org.wheatgenetics.javalib.mstrdtl.TestItem(null);
         testItem.setContent(testContent);
         org.junit.Assert.assertEquals(testContent, testItem.getContent());
     }
