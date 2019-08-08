@@ -9,11 +9,15 @@ package org.wheatgenetics.brapi1_3.studies.nour.o;               // nour: NewObs
  * io.swagger.client.model.Season
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
+ * org.wheatgenetics.javalib.mstrdtl.Utils
  */
 class Observation extends io.swagger.client.model.Observation
 implements org.wheatgenetics.javalib.mstrdtl.Item
 {
-    private int position;
+    // region Fields
+    private final org.wheatgenetics.brapi1_3.studies.nour.o.Observation.Container container;
+    private       int                                                             position ;
+    // endregion
 
     // region Private Methods
     private void assign(
@@ -47,14 +51,16 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // endregion
 
     // region Constructors
-    Observation() { super(); }
+    Observation(final org.wheatgenetics.brapi1_3.studies.nour.o.Observation.Container container)
+    { super(); this.container = container; }
 
-    Observation(final io.swagger.client.model.ObservationSummary observationSummary,
+    Observation(final org.wheatgenetics.brapi1_3.studies.nour.o.Observation.Container container,
+    final io.swagger.client.model.ObservationSummary observationSummary,
     final java.lang.String germplasmDbId      , final java.lang.String germplasmName      ,
     final java.lang.String observationLevel   , final java.lang.String observationUnitDbId,
     final java.lang.String observationUnitName, final java.lang.String studyDbId          )
     {
-        this();
+        this(container);
         if (null != observationSummary) this.assign(
             germplasmDbId                               ,               germplasmName      ,
             observationSummary.getObservationDbId     (),               observationLevel   ,
@@ -64,27 +70,27 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             studyDbId                                      , observationSummary.getValue ());
     }
 
-    Observation(final org.wheatgenetics.brapi1_3.studies.nour.o.Observation observation,
-    final java.lang.String operator, final java.lang.String uploadedBy)
+    @java.lang.SuppressWarnings({"WeakerAccess"})
+    Observation(final org.wheatgenetics.brapi1_3.studies.nour.o.Observation observation)
     {
-        this();
-        if (null != observation)
-        {
-            this.setPosition(observation.getPosition());
-            this.assign(
-                observation.getGermplasmDbId          (), observation.getGermplasmName          (),
-                observation.getObservationDbId        (), observation.getObservationLevel       (),
-                observation.getObservationTimeStamp   (), observation.getObservationUnitDbId    (),
-                observation.getObservationUnitName    (), observation.getObservationVariableDbId(),
-                observation.getObservationVariableName(), observation.getSeason                 (),
-                observation.getStudyDbId              (), observation.getValue                  ());
-        }
-        this.operator(operator).uploadedBy(uploadedBy);
+        this(observation.container); this.setPosition(observation.getPosition());
+        this.assign(
+            observation.getGermplasmDbId          (), observation.getGermplasmName          (),
+            observation.getObservationDbId        (), observation.getObservationLevel       (),
+            observation.getObservationTimeStamp   (), observation.getObservationUnitDbId    (),
+            observation.getObservationUnitName    (), observation.getObservationVariableDbId(),
+            observation.getObservationVariableName(), observation.getSeason                 (),
+            observation.getStudyDbId              (), observation.getValue                  ());
     }
 
-    Observation(final io.swagger.client.model.Observation observation)
+    Observation(final org.wheatgenetics.brapi1_3.studies.nour.o.Observation observation,
+    final java.lang.String operator, final java.lang.String uploadedBy)
+    { this(observation); this.operator(operator).uploadedBy(uploadedBy); }
+
+    Observation(final org.wheatgenetics.brapi1_3.studies.nour.o.Observation.Container container,
+    final io.swagger.client.model.Observation observation)
     {
-        this(); this.position = -1;
+        this(container); this.position = -1;
         if (null != observation) this.assign(
             observation.getGermplasmDbId          (), observation.getGermplasmName          (),
             observation.getObservationDbId        (), observation.getObservationLevel       (),
@@ -97,18 +103,28 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
 
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
     @java.lang.Override public void setPosition(final int position)
-    {
-        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-            throw new java.lang.IllegalArgumentException(
-                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
-        else
-            this.position = position;
-    }
+    { this.position = org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position); }
 
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }
 
     @java.lang.Override public java.lang.String getTitle  () { return this.getObservationDbId(); }
     @java.lang.Override public java.lang.String getContent() { return this.toString          (); }
+
+    @java.lang.Override public boolean canMoveUp()
+    {
+        return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveUp(
+            this.container, this.getPosition());
+    }
+
+    @java.lang.Override public boolean canMoveDown()
+    {
+        return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(
+            this.container, this.getPosition());
+    }
     // endregion
+
+    boolean containersAreTheSame(
+    final org.wheatgenetics.brapi1_3.studies.nour.o.Observation.Container container)
+    { return container == this.container; }
 }

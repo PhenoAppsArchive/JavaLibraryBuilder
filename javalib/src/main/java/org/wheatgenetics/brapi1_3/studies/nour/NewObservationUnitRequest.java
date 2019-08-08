@@ -14,15 +14,20 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * io.swagger.client.model.ObservationUnitXref
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
+ * org.wheatgenetics.javalib.mstrdtl.Utils
  *
  * org.wheatgenetics.brapi1_3.studies.nour.o.Observations
  * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments
  * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs
  */
+@java.lang.SuppressWarnings({"WeakerAccess"})
 public class NewObservationUnitRequest extends io.swagger.client.model.NewObservationUnitRequest
 implements org.wheatgenetics.javalib.mstrdtl.Item
 {
     // region Fields
+    private final org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.Container
+        container;
+
     private int position;
 
     private org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs
@@ -238,11 +243,15 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // endregion
 
     // region Constructors
-    NewObservationUnitRequest() { super(); }
+    NewObservationUnitRequest(final
+    org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.Container container)
+    { super(); this.container = container; }
 
-    NewObservationUnitRequest(final io.swagger.client.model.ObservationUnit observationUnit)
+    NewObservationUnitRequest(
+    final org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.Container container    ,
+    final io.swagger.client.model.ObservationUnit                                   observationUnit)
     {
-        this();
+        this(container);
         if (null != observationUnit) this.assign(
             observationUnit.getBlockNumber        (), observationUnit.getEntryNumber            (),
             observationUnit.getEntryType          (), observationUnit.getGermplasmDbId          (),
@@ -260,26 +269,23 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest newObservationUnitRequest,
     final java.lang.String operator, final java.lang.String uploadedBy)
     {
-        this();
-        if (null != newObservationUnitRequest)
-        {
-            this.setPosition(newObservationUnitRequest.getPosition());
-            this.assign(
-                newObservationUnitRequest.getBlockNumber(), newObservationUnitRequest.getEntryNumber(),
-                newObservationUnitRequest.getEntryType(), newObservationUnitRequest.getGermplasmDbId(),
-                newObservationUnitRequest.getObservationLevel           (),
-                newObservationUnitRequest.getObservationUnitDbId        (),
-                newObservationUnitRequest.getObservationUnitName        (),
-                newObservationUnitRequest.getObservationUnitXrefsAsItems(),
-                newObservationUnitRequest.getObservationsAsItems        (), operator, uploadedBy,
-                newObservationUnitRequest.getPlantNumber(), newObservationUnitRequest.getPlotNumber(),
-                newObservationUnitRequest.getPositionCoordinateX    (),
-                newObservationUnitRequest.getPositionCoordinateXType(),
-                newObservationUnitRequest.getPositionCoordinateY    (),
-                newObservationUnitRequest.getPositionCoordinateYType(),
-                newObservationUnitRequest.getReplicate(), newObservationUnitRequest.getStudyDbId(),
-                newObservationUnitRequest.getObservationTreatmentsAsItems()                       );
-        }
+        this(newObservationUnitRequest.container);
+        this.setPosition(newObservationUnitRequest.getPosition());
+        this.assign(
+            newObservationUnitRequest.getBlockNumber(), newObservationUnitRequest.getEntryNumber(),
+            newObservationUnitRequest.getEntryType(), newObservationUnitRequest.getGermplasmDbId(),
+            newObservationUnitRequest.getObservationLevel           (),
+            newObservationUnitRequest.getObservationUnitDbId        (),
+            newObservationUnitRequest.getObservationUnitName        (),
+            newObservationUnitRequest.getObservationUnitXrefsAsItems(),
+            newObservationUnitRequest.getObservationsAsItems        (), operator, uploadedBy,
+            newObservationUnitRequest.getPlantNumber(), newObservationUnitRequest.getPlotNumber(),
+            newObservationUnitRequest.getPositionCoordinateX    (),
+            newObservationUnitRequest.getPositionCoordinateXType(),
+            newObservationUnitRequest.getPositionCoordinateY    (),
+            newObservationUnitRequest.getPositionCoordinateYType(),
+            newObservationUnitRequest.getReplicate(), newObservationUnitRequest.getStudyDbId(),
+            newObservationUnitRequest.getObservationTreatmentsAsItems()                       );
     }
     // endregion
 
@@ -366,24 +372,36 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
 
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
     @java.lang.Override public void setPosition(final int position)
-    {
-        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-            throw new java.lang.IllegalArgumentException(
-                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
-        else
-            this.position = position;
-    }
+    { this.position = org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position); }
 
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }
 
     @java.lang.Override public java.lang.String getTitle() { return this.getObservationUnitDbId(); }
     @java.lang.Override public java.lang.String getContent() { return this.toString            (); }
+
+    @java.lang.Override public boolean canMoveUp()
+    {
+        return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveUp(
+            this.container, this.getPosition());
+    }
+
+    @java.lang.Override public boolean canMoveDown()
+    {
+        return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(
+            this.container, this.getPosition());
+    }
     // endregion
     // endregion
 
+    // region Package Methods
+    boolean containersAreTheSame(
+    final org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.Container container)
+    { return container == this.container; }
+
     @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
     int getPosition() { return this.position; }
+    // endregion
 
     // region Public Methods
     @java.lang.SuppressWarnings({"WeakerAccess"})

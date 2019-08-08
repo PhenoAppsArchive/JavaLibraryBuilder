@@ -6,6 +6,7 @@ package org.wheatgenetics.brapi1_3.observations.pr;
  * io.swagger.client.model.PhenotypesRequestObservation
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
+ * org.wheatgenetics.javalib.mstrdtl.Utils
  *
  * org.wheatgenetics.brapi1_3.observations.pr.o.Observations
  */
@@ -13,6 +14,9 @@ public class PhenotypesRequestData extends io.swagger.client.model.PhenotypesReq
 implements org.wheatgenetics.javalib.mstrdtl.Item
 {
     // region Fields
+    private final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.Container
+        container;
+
     private int                                                       position;
     private org.wheatgenetics.brapi1_3.observations.pr.o.Observations
         observationsAsItems = null;                                                     // lazy load
@@ -29,6 +33,10 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             super.observations(this.observationsAsItems.list());
         }
     }
+
+    PhenotypesRequestData(
+    final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.Container container)
+    { super(); this.container = container; }
 
     // region Overridden Methods
     @java.lang.Override public io.swagger.client.model.PhenotypesRequestData observations(
@@ -55,25 +63,36 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
 
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
     @java.lang.Override public void setPosition(final int position)
-    {
-        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-            throw new java.lang.IllegalArgumentException(
-                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
-        else
-            this.position = position;
-    }
-
+    { this.position = org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position); }
 
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }
 
     @java.lang.Override public java.lang.String getTitle() { return this.getObservatioUnitDbId(); }
     @java.lang.Override public java.lang.String getContent() { return this.toString           (); }
+
+    @java.lang.Override public boolean canMoveUp()
+    {
+        return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveUp(
+            this.container, this.getPosition());
+    }
+
+    @java.lang.Override public boolean canMoveDown()
+    {
+        return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(
+            this.container, this.getPosition());
+    }
     // endregion
     // endregion
 
+    // region Package Methods
+    boolean containersAreTheSame(
+    final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.Container container)
+    { return container == this.container; }
+
     @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"}) int getPosition()
     { return this.position; }
+    // endregion
 
     @java.lang.SuppressWarnings({"unused"})
     public org.wheatgenetics.brapi1_3.observations.pr.o.Observations getObservationsAsItems()

@@ -10,18 +10,20 @@ package org.wheatgenetics.brapi1_3.studies.slr;                           // slr
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
+ * org.wheatgenetics.javalib.mstrdtl.Utils
  *
  * org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout
+ * org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout.Container
  */
 @java.lang.SuppressWarnings({"unused"})
 public class StudyLayoutRequest extends io.swagger.client.model.StudyLayoutRequest
-implements org.wheatgenetics.javalib.mstrdtl.Items
+implements org.wheatgenetics.javalib.mstrdtl.Items,
+org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout.Container
 {
     public StudyLayoutRequest(
     final io.swagger.client.model.ObservationUnitPositionsResponse observationUnitPositionsResponse)
     {
         super();
-
         if (null != observationUnitPositionsResponse)
         {
             final io.swagger.client.model.ObservationUnitPositionsResponseResult result =
@@ -35,20 +37,33 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
                     observationUnitPosition: data)
                         this.addLayoutItem(
                             new org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout(
-                                observationUnitPosition));
+                                this, observationUnitPosition));
             }
         }
     }
 
+    // region Overridden Methods
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
     @java.lang.Override public void append(final org.wheatgenetics.javalib.mstrdtl.Item item)
     {
-        if (null != item) item.setPosition(this.size());
-        this.addLayoutItem((org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout) item);
+        if (item instanceof org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout)
+        {
+            final org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout
+                studyLayoutRequestLayout =
+                    (org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout) item;
+            if (studyLayoutRequestLayout.containersAreTheSame(this))
+            {
+                studyLayoutRequestLayout.setPosition(this.size());
+                this.addLayoutItem(studyLayoutRequestLayout);
+            }
+        }
     }
 
     @java.lang.Override public void append()
-    { this.append(new org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout()); }
+    {
+        this.append(
+            new org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout(this));
+    }
 
     @java.lang.Override public int size()
     {
@@ -59,17 +74,19 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
 
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(final int position)
     {
-        if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-            throw new java.lang.IllegalArgumentException(
-                org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
-        else
-        {
-            final java.util.List<io.swagger.client.model.StudyLayoutRequestLayout> layout =
-                this.getLayout();
-            return null == layout ? null :
-                (org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout)
-                    layout.get(position);
-        }
+        final int nonNegativePosition =
+            org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position);
+        final java.util.List<io.swagger.client.model.StudyLayoutRequestLayout> layout =
+            this.getLayout();
+        return null == layout ? null :
+            (org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout)
+                layout.get(nonNegativePosition);
     }
+    // endregion
+
+    // region org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout.Container Overridden Method
+    @java.lang.Override public boolean canMoveDown(final int position)
+    { return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()); }
+    // endregion
     // endregion
 }
