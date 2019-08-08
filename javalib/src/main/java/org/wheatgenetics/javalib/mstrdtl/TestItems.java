@@ -10,7 +10,6 @@ package org.wheatgenetics.javalib.mstrdtl;
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public class TestItems extends java.lang.Object
 implements org.wheatgenetics.javalib.mstrdtl.Items, org.wheatgenetics.javalib.mstrdtl.Item.Container
-
 {
     private java.util.List<org.wheatgenetics.javalib.mstrdtl.TestItem>
         testItemsInstance = null;                                                       // lazy load
@@ -32,13 +31,13 @@ implements org.wheatgenetics.javalib.mstrdtl.Items, org.wheatgenetics.javalib.ms
 
         final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
             (org.wheatgenetics.javalib.mstrdtl.TestItem) item;
-        if (null != testItem) { testItem.setContainer(this); testItem.setTitleAndContent(); }
+        if (null != testItem) testItem.setTitleAndContent();
 
         this.testItems().add(testItem);
     }
 
     @java.lang.Override public void append()
-    { this.append(new org.wheatgenetics.javalib.mstrdtl.TestItem()); }
+    { this.append(new org.wheatgenetics.javalib.mstrdtl.TestItem(this)); }
 
     @java.lang.Override public int size()
     { return null == this.testItemsInstance ? 0 : this.testItemsInstance.size(); }

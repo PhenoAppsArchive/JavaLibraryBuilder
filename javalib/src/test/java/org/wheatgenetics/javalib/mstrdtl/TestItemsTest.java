@@ -25,7 +25,7 @@ public class TestItemsTest extends java.lang.Object
 
         {
             final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
-                new org.wheatgenetics.javalib.mstrdtl.TestItem();
+                new org.wheatgenetics.javalib.mstrdtl.TestItem(testItems);
             testItem.setPosition(27); testItems.append(testItem);
         }
         org.junit.Assert.assertEquals(2  , testItems.size());

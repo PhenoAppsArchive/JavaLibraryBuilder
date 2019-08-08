@@ -10,13 +10,16 @@ package org.wheatgenetics.javalib.mstrdtl;
 public class TestItem extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Item
 {
     // region Fields
-    private org.wheatgenetics.javalib.mstrdtl.TestItem.Container container = null;
+    private final org.wheatgenetics.javalib.mstrdtl.TestItem.Container container;
 
-    private int              position      ;
-    private java.lang.String title, content;
+    private int              position           ;
+    private java.lang.String title, content = "";
     // endregion
 
     private int getPosition() { return this.position; }
+
+    TestItem(final org.wheatgenetics.javalib.mstrdtl.TestItem.Container container)
+    { super(); this.container = container; }
 
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
     @java.lang.Override public void setPosition(final int position)
@@ -44,10 +47,6 @@ public class TestItem extends java.lang.Object implements org.wheatgenetics.java
     }
     // endregion
 
-    // region Package Methods
-    void setContainer(final org.wheatgenetics.javalib.mstrdtl.TestItem.Container container)
-    { this.container = container; }
-
     @java.lang.SuppressWarnings({"DefaultLocale"}) void setTitleAndContent()
     {
         this.title = java.lang.String.format("Item %d",this.getPosition() + 1);
@@ -59,7 +58,6 @@ public class TestItem extends java.lang.Object implements org.wheatgenetics.java
             builder.append("\nMore information here.");
         this.content = builder.toString();
     }
-    // endregion
 
     @java.lang.SuppressWarnings({"WeakerAccess"})
     public void setContent(final java.lang.String content)
