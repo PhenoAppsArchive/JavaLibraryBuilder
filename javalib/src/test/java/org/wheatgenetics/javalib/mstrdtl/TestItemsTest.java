@@ -50,6 +50,9 @@ public class TestItemsTest extends java.lang.Object
     }
 
     // region get() Tests
+    @org.junit.Test() public void emptyItemsGetReturnsNull()
+    { org.junit.Assert.assertNull(new org.wheatgenetics.javalib.mstrdtl.TestItems().get(0)); }
+
     @org.junit.Test(expected = java.lang.IndexOutOfBoundsException.class)
     public void tooSmallPositionGetThrows()
     { new org.wheatgenetics.javalib.mstrdtl.TestItems().get(-55); }
