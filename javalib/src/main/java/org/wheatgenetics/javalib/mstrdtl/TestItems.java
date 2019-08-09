@@ -3,14 +3,14 @@ package org.wheatgenetics.javalib.mstrdtl;
 /**
  * Uses:
  * org.wheatgenetics.javalib.mstrdtl.Item
- * org.wheatgenetics.javalib.mstrdtl.Item.Container
  * org.wheatgenetics.javalib.mstrdtl.Items
  * org.wheatgenetics.javalib.mstrdtl.TestItem
+ * org.wheatgenetics.javalib.mstrdtl.TestItem.Container
  * org.wheatgenetics.javalib.mstrdtl.Utils
  */
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
-public class TestItems extends java.lang.Object
-implements org.wheatgenetics.javalib.mstrdtl.Items, org.wheatgenetics.javalib.mstrdtl.Item.Container
+public class TestItems extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items,
+org.wheatgenetics.javalib.mstrdtl.TestItem.Container
 {
     private java.util.List<org.wheatgenetics.javalib.mstrdtl.TestItem>
         testItemsInstance = null;                                                       // lazy load
@@ -55,9 +55,21 @@ implements org.wheatgenetics.javalib.mstrdtl.Items, org.wheatgenetics.javalib.ms
     }
     // endregion
 
-    // region org.wheatgenetics.javalib.mstrdtl.Item.Container Overridden Method
+    // region org.wheatgenetics.javalib.mstrdtl.TestItem.Container Overridden Methods
     @java.lang.Override public boolean canMoveDown(final int position)
     { return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()); }
+
+    @java.lang.Override public void moveUp(final int position)
+    {
+        if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveUp(position, this.size()))
+            java.util.Collections.swap(this.testItemsInstance, position,position - 1);
+    }
+
+    @java.lang.Override public void moveDown(final int position)
+    {
+        if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()))
+            java.util.Collections.swap(this.testItemsInstance, position,position + 1);
+    }
     // endregion
     // endregion
 }
