@@ -34,10 +34,9 @@ org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout.Container
                     result.getData();
                 if (null != data) if (data.size() > 0)
                     for (final io.swagger.client.model.ObservationUnitPosition
-                    observationUnitPosition: data)
-                        this.addLayoutItem(
-                            new org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout(
-                                this, observationUnitPosition));
+                    observationUnitPosition: data) this.append(
+                        new org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout(
+                            this, observationUnitPosition));
             }
         }
     }

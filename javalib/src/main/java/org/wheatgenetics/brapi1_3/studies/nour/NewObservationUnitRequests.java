@@ -68,8 +68,8 @@ org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.Container
 
         if (null != newObservationUnitRequests) if (newObservationUnitRequests.size() > 0)
             for (final io.swagger.client.model.NewObservationUnitRequest newObservationUnitRequest:
-            newObservationUnitRequests.arrayListInstance)
-                this.append(new org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest(
+            newObservationUnitRequests.arrayListInstance) this.append(
+                new org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest(
                     (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest)
                         newObservationUnitRequest,
                     operator, uploadedBy));

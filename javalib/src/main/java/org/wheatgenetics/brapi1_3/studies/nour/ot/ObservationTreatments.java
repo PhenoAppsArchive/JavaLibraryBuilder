@@ -34,8 +34,8 @@ org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment.Container
         super();
         if (null != observationTreatments) if (observationTreatments.size() > 0)
             for (final io.swagger.client.model.ObservationTreatment observationTreatment:
-            observationTreatments)
-                this.append(new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment(
+            observationTreatments) this.append(
+                new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment(
                     this, observationTreatment));
     }
 
@@ -45,8 +45,8 @@ org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment.Container
         super();
         if (null != observationTreatments) if (observationTreatments.size() > 0)
             for (final io.swagger.client.model.ObservationTreatment observationTreatment:
-            observationTreatments.arrayListInstance)
-                this.append(new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment(
+            observationTreatments.arrayListInstance) this.append(
+                new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment(
                     (org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment)
                         observationTreatment));
     }

@@ -33,7 +33,7 @@ org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservations.Contai
                 final java.util.List<io.swagger.client.model.Observation> data = result.getData();
                 if (null != data) if (data.size() > 0)
                     for (final io.swagger.client.model.Observation observation: data)
-                        this.addObservationsItem(new org.wheatgenetics.brapi1_3.studies.nor
+                        this.append(new org.wheatgenetics.brapi1_3.studies.nor
                             .NewObservationsRequestObservations(this, observation));
             }
         }

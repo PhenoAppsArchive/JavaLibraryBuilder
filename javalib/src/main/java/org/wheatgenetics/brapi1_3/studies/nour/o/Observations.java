@@ -36,8 +36,8 @@ org.wheatgenetics.brapi1_3.studies.nour.o.Observation.Container
         super();
         if (null != observationSummaries) if (observationSummaries.size() > 0)
             for (final io.swagger.client.model.ObservationSummary observationSummary:
-            observationSummaries)
-                this.append(new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(this,
+            observationSummaries) this.append(
+                new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(this,
                     observationSummary , germplasmDbId, germplasmName, observationLevel,
                     observationUnitDbId, observationUnitName         , studyDbId       ));
     }
@@ -48,8 +48,8 @@ org.wheatgenetics.brapi1_3.studies.nour.o.Observation.Container
         super();
         if (null != observations) if (observations.size() > 0)
             for (final io.swagger.client.model.Observation observation:
-            observations.arrayListInstance)
-                this.append(new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(
+            observations.arrayListInstance) this.append(
+                new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(
                     (org.wheatgenetics.brapi1_3.studies.nour.o.Observation) observation,
                     operator, uploadedBy                                               ));
     }
