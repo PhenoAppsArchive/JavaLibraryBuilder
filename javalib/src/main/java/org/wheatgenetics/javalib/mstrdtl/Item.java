@@ -2,7 +2,13 @@ package org.wheatgenetics.javalib.mstrdtl;
 
 @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface Item
 {
-    interface Container { public boolean canMoveDown(int position); }
+    interface Container
+    {
+        public boolean canMoveDown(int position);
+
+        public void moveUp  (int position);
+        public void moveDown(int position);
+    }
 
     // region Constants
     public static final int              MIN_POSITION               = 0;

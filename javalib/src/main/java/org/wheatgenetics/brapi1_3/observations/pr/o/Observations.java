@@ -70,9 +70,21 @@ org.wheatgenetics.brapi1_3.observations.pr.o.Observation.Container
     }
     // endregion
 
-    // region org.wheatgenetics.brapi1_3.observations.o.Observation.Container Overridden Method
+    // region org.wheatgenetics.brapi1_3.observations.o.Observation.Container Overridden Methods
     @java.lang.Override public boolean canMoveDown(final int position)
     { return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()); }
+
+    @java.lang.Override public void moveUp(final int position)
+    {
+        if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveUp(position, this.size()))
+            java.util.Collections.swap(this.arrayListInstance, position,position - 1);
+    }
+
+    @java.lang.Override public void moveDown(final int position)
+    {
+        if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()))
+            java.util.Collections.swap(this.arrayListInstance, position,position + 1);
+    }
     // endregion
     // endregion
 
