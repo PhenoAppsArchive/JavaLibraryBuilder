@@ -16,12 +16,8 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     private int position;
     // endregion
 
-    // region Private Methods
     private void assign(final java.lang.String id, final java.lang.String source)
     { this.id(id).source(source); }
-
-    private int getPosition() { return this.position; }
-    // endregion
 
     // region Constructors
     ObservationUnitXref(final
@@ -48,6 +44,8 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
     @java.lang.Override public void setPosition(final int position)
     { this.position = org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position); }
+
+    @java.lang.Override public int getPosition() { return this.position; }
 
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }

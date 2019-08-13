@@ -15,8 +15,6 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     private       int                                                                position ;
     // endregion
 
-    private int getPosition() { return this.position; }
-
     // region Constructors
     Observation(final org.wheatgenetics.brapi1_3.observations.pr.o.Observation.Container container)
     { super(); this.container = container; }
@@ -43,6 +41,8 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
     @java.lang.Override public void setPosition(final int position)
     { this.position = org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position); }
+
+    @java.lang.Override public int getPosition() { return this.position; }
 
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }

@@ -65,6 +65,8 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     @java.lang.Override public void setPosition(final int position)
     { this.position = org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position); }
 
+    @java.lang.Override public int getPosition() { return this.position; }
+
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }
 
@@ -85,14 +87,9 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // endregion
     // endregion
 
-    // region Package Methods
     boolean containersAreTheSame(
     final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.Container container)
     { return container == this.container; }
-
-    @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"}) int getPosition()
-    { return this.position; }
-    // endregion
 
     @java.lang.SuppressWarnings({"unused"})
     public org.wheatgenetics.brapi1_3.observations.pr.o.Observations getObservationsAsItems()
