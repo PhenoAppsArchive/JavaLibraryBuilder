@@ -6,8 +6,8 @@ package org.wheatgenetics.javalib.mstrdtl;
     {
         public boolean canMoveDown(int position);
 
-        public void moveUp  (int position);
-        public void moveDown(int position);
+        @java.lang.SuppressWarnings({"unused"}) public void moveUp  (int position);
+        @java.lang.SuppressWarnings({"unused"}) public void moveDown(int position);
     }
 
     // region Constants
@@ -19,6 +19,7 @@ package org.wheatgenetics.javalib.mstrdtl;
     // region Public Methods
     public void setPosition(final int position);
 
+    public int              getPosition        ();
     public java.lang.String getPositionAsString();
     public java.lang.String getTitle           ();
     public java.lang.String getContent         ();

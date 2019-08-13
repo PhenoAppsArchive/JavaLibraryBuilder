@@ -17,8 +17,6 @@ public class TestItem extends java.lang.Object implements org.wheatgenetics.java
     private java.lang.String title, content = "";
     // endregion
 
-    private int getPosition() { return this.position; }
-
     TestItem(final org.wheatgenetics.javalib.mstrdtl.TestItem.Container container)
     { super(); this.container = container; }
 
@@ -26,6 +24,7 @@ public class TestItem extends java.lang.Object implements org.wheatgenetics.java
     @java.lang.Override public void setPosition(final int position)
     { this.position = org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position); }
 
+    @java.lang.Override public int              getPosition        () { return this.position; }
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }
 
