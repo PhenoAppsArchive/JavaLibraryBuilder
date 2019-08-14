@@ -17,25 +17,29 @@ public class TestItemTest extends java.lang.Object
     // region Private Methods
     private org.wheatgenetics.javalib.mstrdtl.TestItem.Container falseContainer()
     {
-        if (null == this.falseContainerInstance)
-            // noinspection Convert2Lambda
-            this.falseContainerInstance = new org.wheatgenetics.javalib.mstrdtl.TestItem.Container()
-                {
-                    @java.lang.Override public boolean canMoveDown(final int position)
-                    { return false; }
-                };
+        if (null == this.falseContainerInstance) this.falseContainerInstance =
+            new org.wheatgenetics.javalib.mstrdtl.TestItem.Container()
+            {
+                @java.lang.Override public boolean canMoveDown(final int position)
+                { return false; }
+
+                @java.lang.Override public void moveUp  (final int position) {}
+                @java.lang.Override public void moveDown(final int position) {}
+            };
         return this.falseContainerInstance;
     }
 
     private org.wheatgenetics.javalib.mstrdtl.TestItem.Container trueContainer()
     {
-        if (null == this.trueContainerInstance)
-            // noinspection Convert2Lambda
-            this.trueContainerInstance = new org.wheatgenetics.javalib.mstrdtl.TestItem.Container()
-                {
-                    @java.lang.Override public boolean canMoveDown(final int position)
-                    { return true; }
-                };
+        if (null == this.trueContainerInstance) this.trueContainerInstance =
+            new org.wheatgenetics.javalib.mstrdtl.TestItem.Container()
+            {
+                @java.lang.Override public boolean canMoveDown(final int position)
+                { return true; }
+
+                @java.lang.Override public void moveUp  (final int position) {}
+                @java.lang.Override public void moveDown(final int position) {}
+            };
         return this.trueContainerInstance;
     }
     // endregion
@@ -67,9 +71,11 @@ public class TestItemTest extends java.lang.Object
         final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
             new org.wheatgenetics.javalib.mstrdtl.TestItem(null);
         testItem.setPosition(0);
+        org.junit.Assert.assertEquals( 0 , testItem.getPosition        ());
         org.junit.Assert.assertEquals("0", testItem.getPositionAsString());
 
         testItem.setPosition(2);
+        org.junit.Assert.assertEquals( 2 , testItem.getPosition        ());
         org.junit.Assert.assertEquals("2", testItem.getPositionAsString());
     }
     // endregion

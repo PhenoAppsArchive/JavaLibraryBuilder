@@ -15,7 +15,6 @@ org.wheatgenetics.javalib.mstrdtl.TestItem.Container
     private java.util.List<org.wheatgenetics.javalib.mstrdtl.TestItem>
         testItemsInstance = null;                                                       // lazy load
 
-    // region Private Methods
     private java.util.List<org.wheatgenetics.javalib.mstrdtl.TestItem> testItems()
     {
         if (null == this.testItemsInstance)
@@ -24,19 +23,6 @@ org.wheatgenetics.javalib.mstrdtl.TestItem.Container
                 new java.util.ArrayList<org.wheatgenetics.javalib.mstrdtl.TestItem>();
         return this.testItemsInstance;
     }
-
-    private void swap(final int positionA, final int positionB)
-    {
-        if (null != this.testItemsInstance)
-        {
-            final org.wheatgenetics.javalib.mstrdtl.TestItem
-                testItemA = this.testItemsInstance.get(positionA),
-                testItemB = this.testItemsInstance.get(positionB);
-            java.util.Collections.swap(this.testItemsInstance, positionA, positionB);
-            testItemA.setPosition(positionB); testItemB.setPosition(positionA);
-        }
-    }
-    // endregion
 
     // region Overridden Methods
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
@@ -76,13 +62,15 @@ org.wheatgenetics.javalib.mstrdtl.TestItem.Container
     @java.lang.Override public void moveUp(final int position)
     {
         if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveUp(position, this.size()))
-            this.swap(position,position - 1);
+            org.wheatgenetics.javalib.mstrdtl.Utils.swap(
+                this.testItemsInstance, position,position - 1);
     }
 
     @java.lang.Override public void moveDown(final int position)
     {
         if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()))
-            this.swap(position,position + 1);
+            org.wheatgenetics.javalib.mstrdtl.Utils.swap(
+                this.testItemsInstance, position,position + 1);
     }
     // endregion
     // endregion
