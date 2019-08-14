@@ -54,5 +54,16 @@ public class Utils extends java.lang.Object
                 return position < lastPosition;
             }
     }
+
+    public static <T extends org.wheatgenetics.javalib.mstrdtl.Item> void swap(
+    final java.util.List<T> list, final int positionA, final int positionB)
+    {
+        if (null != list)
+        {
+            final T itemA = list.get(positionA), itemB = list.get(positionB);
+            java.util.Collections.swap(list, positionA, positionB);
+            itemA.setPosition(positionB); itemB.setPosition(positionA);
+        }
+    }
     // endregion
 }
