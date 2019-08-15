@@ -8,6 +8,7 @@ package org.wheatgenetics.javalib.mstrdtl;
 
         @java.lang.SuppressWarnings({"unused"}) public void moveUp  (int position);
         @java.lang.SuppressWarnings({"unused"}) public void moveDown(int position);
+        @java.lang.SuppressWarnings({"unused"}) public void delete  (int position);
     }
 
     // region Constants

@@ -72,6 +72,9 @@ org.wheatgenetics.javalib.mstrdtl.TestItem.Container
             org.wheatgenetics.javalib.mstrdtl.Utils.swap(
                 this.testItemsInstance, position,position + 1);
     }
+
+    @java.lang.Override public void delete(final int position)
+    { org.wheatgenetics.javalib.mstrdtl.Utils.delete(this.testItemsInstance, position); }
     // endregion
     // endregion
 }
