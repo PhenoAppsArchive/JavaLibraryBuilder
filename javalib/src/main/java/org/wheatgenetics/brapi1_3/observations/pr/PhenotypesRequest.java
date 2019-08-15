@@ -65,13 +65,15 @@ org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.Container
     @java.lang.Override public void moveUp(final int position)
     {
         if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveUp(position, this.size()))
-            java.util.Collections.swap(this.getData(), position,position - 1);
+            org.wheatgenetics.javalib.mstrdtl.Utils.swap(
+                this.getData(), position,position - 1);
     }
 
     @java.lang.Override public void moveDown(final int position)
     {
         if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()))
-            java.util.Collections.swap(this.getData(), position,position + 1);
+            org.wheatgenetics.javalib.mstrdtl.Utils.swap(
+                this.getData(), position,position + 1);
     }
     // endregion
     // endregion

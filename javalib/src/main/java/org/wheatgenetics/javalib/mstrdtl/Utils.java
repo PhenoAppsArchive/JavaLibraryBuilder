@@ -55,12 +55,14 @@ public class Utils extends java.lang.Object
             }
     }
 
-    public static <T extends org.wheatgenetics.javalib.mstrdtl.Item> void swap(
+    public static <T extends java.lang.Object> void swap(
     final java.util.List<T> list, final int positionA, final int positionB)
     {
         if (null != list)
         {
-            final T itemA = list.get(positionA), itemB = list.get(positionB);
+            final org.wheatgenetics.javalib.mstrdtl.Item
+                itemA = (org.wheatgenetics.javalib.mstrdtl.Item) list.get(positionA),
+                itemB = (org.wheatgenetics.javalib.mstrdtl.Item) list.get(positionB);
             java.util.Collections.swap(list, positionA, positionB);
             itemA.setPosition(positionB); itemB.setPosition(positionA);
         }
