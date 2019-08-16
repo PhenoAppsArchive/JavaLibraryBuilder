@@ -28,8 +28,8 @@ public class TestItemsTest extends java.lang.Object
                 new org.wheatgenetics.javalib.mstrdtl.TestItem(testItems);
             testItem.setPosition(27); testItems.append(testItem);
         }
-        org.junit.Assert.assertEquals(2  , testItems.size());
-        org.junit.Assert.assertEquals("1", testItems.get(1).getPositionAsString());
+        org.junit.Assert.assertEquals(2, testItems.size()              );
+        org.junit.Assert.assertEquals(1, testItems.get(1).getPosition());
     }
 
     @org.junit.Test() public void foreignAppendFailsLocalAppendSucceeds()

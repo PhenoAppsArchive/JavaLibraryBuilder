@@ -55,6 +55,7 @@ public class Utils extends java.lang.Object
             }
     }
 
+    @java.lang.SuppressWarnings({"TypeParameterExplicitlyExtendsObject"})
     public static <T extends java.lang.Object> void swap(
     final java.util.List<T> list, final int positionA, final int positionB)
     {
@@ -65,6 +66,20 @@ public class Utils extends java.lang.Object
                 itemB = (org.wheatgenetics.javalib.mstrdtl.Item) list.get(positionB);
             java.util.Collections.swap(list, positionA, positionB);
             itemA.setPosition(positionB); itemB.setPosition(positionA);
+        }
+    }
+
+    @java.lang.SuppressWarnings({"TypeParameterExplicitlyExtendsObject"}) public static<
+    T extends java.lang.Object> void delete(final java.util.List<T> list, final int position)
+    {
+        if (null != list)
+        {
+            list.remove(position);
+
+            // noinspection UnnecessaryLocalVariable
+            final int firstPosition = position, lastPosition = list.size() - 1;
+            for (int i = firstPosition; i <= lastPosition; i++)
+                ((org.wheatgenetics.javalib.mstrdtl.Item) list.get(i)).setPosition(i);
         }
     }
     // endregion

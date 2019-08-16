@@ -12,7 +12,7 @@ package org.wheatgenetics.javalib.mstrdtl;
 public class TestItemTest extends java.lang.Object
 {
     private org.wheatgenetics.javalib.mstrdtl.TestItem.Container
-        falseContainerInstance = null, trueContainerInstance;                          // lazy loads
+        falseContainerInstance = null, trueContainerInstance = null;                   // lazy loads
 
     // region Private Methods
     private org.wheatgenetics.javalib.mstrdtl.TestItem.Container falseContainer()
@@ -25,6 +25,7 @@ public class TestItemTest extends java.lang.Object
 
                 @java.lang.Override public void moveUp  (final int position) {}
                 @java.lang.Override public void moveDown(final int position) {}
+                @java.lang.Override public void delete  (final int position) {}
             };
         return this.falseContainerInstance;
     }
@@ -39,6 +40,7 @@ public class TestItemTest extends java.lang.Object
 
                 @java.lang.Override public void moveUp  (final int position) {}
                 @java.lang.Override public void moveDown(final int position) {}
+                @java.lang.Override public void delete  (final int position) {}
             };
         return this.trueContainerInstance;
     }

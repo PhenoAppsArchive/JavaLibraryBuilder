@@ -19,22 +19,21 @@ public class NewObservationUnitRequests extends java.lang.Object
 implements org.wheatgenetics.javalib.mstrdtl.Items,
 org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.Container
 {
-    private java.util.ArrayList<io.swagger.client.model.NewObservationUnitRequest>
-        arrayListInstance = null;                                                       // lazy load
+    private java.util.List<io.swagger.client.model.NewObservationUnitRequest>
+        listInstance = null;                                                            // lazy load
 
     // region Private Methods
     /** Convert the given object to string with each line indented by 4 spaces. */
     private static java.lang.String toIndentedString(final java.lang.Object o)
     { return null == o ? "null" : o.toString().replace("\n","\n    "); }
 
-    private java.util.ArrayList<io.swagger.client.model.NewObservationUnitRequest>
-    arrayList()
+    private java.util.List<io.swagger.client.model.NewObservationUnitRequest> list()
     {
-        if (null == this.arrayListInstance)
+        if (null == this.listInstance)
             // noinspection Convert2Diamond
-            this.arrayListInstance = new java.util.ArrayList<
-                io.swagger.client.model.NewObservationUnitRequest>();
-        return this.arrayListInstance;
+            this.listInstance =
+                new java.util.ArrayList<io.swagger.client.model.NewObservationUnitRequest>();
+        return this.listInstance;
     }
     // endregion
 
@@ -68,7 +67,7 @@ org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.Container
 
         if (null != newObservationUnitRequests) if (newObservationUnitRequests.size() > 0)
             for (final io.swagger.client.model.NewObservationUnitRequest newObservationUnitRequest:
-            newObservationUnitRequests.arrayListInstance) this.append(
+            newObservationUnitRequests.listInstance) this.append(
                 new org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest(
                     (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest)
                         newObservationUnitRequest,
@@ -102,7 +101,7 @@ org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.Container
             if (newObservationUnitRequest.containersAreTheSame(this))
             {
                 newObservationUnitRequest.setPosition(this.size());
-                this.arrayList().add(newObservationUnitRequest);
+                this.list().add(newObservationUnitRequest);
             }
         }
     }
@@ -114,19 +113,18 @@ org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.Container
     }
 
     @java.lang.Override public int size()
-    { return null == this.arrayListInstance ? 0 : this.arrayListInstance.size(); }
+    { return null == this.listInstance ? 0 : this.listInstance.size(); }
 
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(final int position)
     {
         final int nonNegativePosition =
             org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position);
-        return null == this.arrayListInstance ? null :
+        return null == this.listInstance ? null :
                 (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest)
-                    this.arrayListInstance.get(nonNegativePosition);
+                    this.listInstance.get(nonNegativePosition);
     }
-    // endregion
 
-    // region org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.Container Overridden Methods
+    // region org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.Container org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
     @java.lang.Override public boolean canMoveDown(final int position)
     { return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()); }
 
@@ -134,18 +132,22 @@ org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.Container
     {
         if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveUp(position, this.size()))
             org.wheatgenetics.javalib.mstrdtl.Utils.swap(
-                this.arrayListInstance, position,position - 1);
+                this.listInstance, position,position - 1);
     }
 
     @java.lang.Override public void moveDown(final int position)
     {
         if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()))
             org.wheatgenetics.javalib.mstrdtl.Utils.swap(
-                this.arrayListInstance, position,position + 1);
+                this.listInstance, position,position + 1);
     }
+
+    @java.lang.Override public void delete(final int position)
+    { org.wheatgenetics.javalib.mstrdtl.Utils.delete(this.listInstance, position); }
+    // endregion
     // endregion
     // endregion
 
-    public java.util.List<io.swagger.client.model.NewObservationUnitRequest> list()
-    { return this.arrayListInstance; }
+    public java.util.List<io.swagger.client.model.NewObservationUnitRequest> getList()
+    { return this.listInstance; }
 }

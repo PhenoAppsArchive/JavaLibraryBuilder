@@ -30,7 +30,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
         else
         {
             this.observationsAsItems = observationsAsItems;
-            super.observations(this.observationsAsItems.list());
+            super.observations(this.observationsAsItems.getList());
         }
     }
 
@@ -55,7 +55,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
 
     @java.lang.Override
     public java.util.List<io.swagger.client.model.PhenotypesRequestObservation> getObservations()
-    { return null == this.observationsAsItems ? null : this.observationsAsItems.list(); }
+    { return null == this.observationsAsItems ? null : this.observationsAsItems.getList(); }
 
     @java.lang.Override public void setObservations(
     final java.util.List<io.swagger.client.model.PhenotypesRequestObservation> observations)

@@ -41,7 +41,6 @@ org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout.Container
         }
     }
 
-    // region Overridden Methods
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
     @java.lang.Override public void append(final org.wheatgenetics.javalib.mstrdtl.Item item)
     {
@@ -81,9 +80,8 @@ org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout.Container
             (org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout)
                 layout.get(nonNegativePosition);
     }
-    // endregion
 
-    // region org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout.Container Overridden Methods
+    // region org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout.Container org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
     @java.lang.Override public boolean canMoveDown(final int position)
     { return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()); }
 
@@ -100,6 +98,9 @@ org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout.Container
             org.wheatgenetics.javalib.mstrdtl.Utils.swap(
                 this.getLayout(), position,position + 1);
     }
+
+    @java.lang.Override public void delete(final int position)
+    { org.wheatgenetics.javalib.mstrdtl.Utils.delete(this.getLayout(), position); }
     // endregion
     // endregion
 }

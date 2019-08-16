@@ -123,7 +123,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
         else
         {
             this.observationUnitXrefsAsItems = observationUnitXrefsAsItems;
-            super.observationUnitXref(this.observationUnitXrefsAsItems.list());
+            super.observationUnitXref(this.observationUnitXrefsAsItems.getList());
         }
     }
 
@@ -135,7 +135,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
         else
         {
             this.observationsAsItems = observationsAsItems;
-            super.observations(this.observationsAsItems.list());
+            super.observations(this.observationsAsItems.getList());
         }
     }
 
@@ -147,7 +147,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
         else
         {
             this.observationTreatmentsAsItems = observationTreatmentsAsItems;
-            super.treatments(this.observationTreatmentsAsItems.list());
+            super.treatments(this.observationTreatmentsAsItems.getList());
         }
     }
     // endregion
@@ -311,7 +311,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     public java.util.List<io.swagger.client.model.ObservationUnitXref> getObservationUnitXref()
     {
         return null == this.observationUnitXrefsAsItems ?
-            null : this.observationUnitXrefsAsItems.list();
+            null : this.observationUnitXrefsAsItems.getList();
     }
 
     @java.lang.Override public void setObservationUnitXref(
@@ -335,7 +335,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     }
 
     @java.lang.Override public java.util.List<io.swagger.client.model.Observation> getObservations()
-    { return null == this.observationsAsItems ? null : this.observationsAsItems.list(); }
+    { return null == this.observationsAsItems ? null : this.observationsAsItems.getList(); }
 
     @java.lang.Override public void setObservations(
     final java.util.List<io.swagger.client.model.Observation> observations)
@@ -362,7 +362,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     public java.util.List<io.swagger.client.model.ObservationTreatment> getTreatments()
     {
         return null == this.observationTreatmentsAsItems ?
-            null : this.observationTreatmentsAsItems.list();
+            null : this.observationTreatmentsAsItems.getList();
     }
 
     @java.lang.Override public void setTreatments(

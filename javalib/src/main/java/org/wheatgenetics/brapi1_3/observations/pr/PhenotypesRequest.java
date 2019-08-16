@@ -17,7 +17,6 @@ public class PhenotypesRequest extends io.swagger.client.model.PhenotypesRequest
 implements org.wheatgenetics.javalib.mstrdtl.Items,
 org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.Container
 {
-    // region Overridden Methods
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
     @java.lang.Override public void append(final org.wheatgenetics.javalib.mstrdtl.Item item)
     {
@@ -50,15 +49,13 @@ org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.Container
     {
         final int nonNegativePosition =
             org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position);
-        final java.util.List<io.swagger.client.model.PhenotypesRequestData> data =
-            this.getData();
+        final java.util.List<io.swagger.client.model.PhenotypesRequestData> data = this.getData();
         return null == data ? null :
             (org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData)
                 data.get(nonNegativePosition);
     }
-    // endregion
 
-    // region org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.Container Overridden Methods
+    // region org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.Container org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
     @java.lang.Override public boolean canMoveDown(final int position)
     { return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()); }
 
@@ -75,6 +72,9 @@ org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.Container
             org.wheatgenetics.javalib.mstrdtl.Utils.swap(
                 this.getData(), position,position + 1);
     }
+
+    @java.lang.Override public void delete(final int position)
+    { org.wheatgenetics.javalib.mstrdtl.Utils.delete(this.getData(), position); }
     // endregion
     // endregion
 }
