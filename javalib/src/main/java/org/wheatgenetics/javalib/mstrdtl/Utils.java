@@ -69,8 +69,8 @@ public class Utils extends java.lang.Object
         }
     }
 
-    @java.lang.SuppressWarnings({"TypeParameterExplicitlyExtendsObject"}) public static
-    <T extends java.lang.Object> void delete(final java.util.List<T> list, final int position)
+    @java.lang.SuppressWarnings({"TypeParameterExplicitlyExtendsObject"}) public static<
+    T extends java.lang.Object> void delete(final java.util.List<T> list, final int position)
     {
         if (null != list)
         {
