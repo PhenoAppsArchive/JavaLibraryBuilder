@@ -5,12 +5,10 @@ package org.wheatgenetics.javalib.mstrdtl;
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
  * org.wheatgenetics.javalib.mstrdtl.TestItem
- * org.wheatgenetics.javalib.mstrdtl.TestItem.Container
  * org.wheatgenetics.javalib.mstrdtl.Utils
  */
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
-public class TestItems extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items,
-org.wheatgenetics.javalib.mstrdtl.TestItem.Container
+public class TestItems extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
 {
     private java.util.List<org.wheatgenetics.javalib.mstrdtl.TestItem> listInstance = null; // lazy
                                                                                             //  load
@@ -24,6 +22,26 @@ org.wheatgenetics.javalib.mstrdtl.TestItem.Container
     }
 
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
+    @java.lang.Override public boolean canMoveDown(final int position)
+    { return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()); }
+
+    @java.lang.Override public void moveUp(final int position)
+    {
+        if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveUp(position, this.size()))
+            org.wheatgenetics.javalib.mstrdtl.Utils.swap(
+                this.listInstance, position,position - 1);
+    }
+
+    @java.lang.Override public void moveDown(final int position)
+    {
+        if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()))
+            org.wheatgenetics.javalib.mstrdtl.Utils.swap(
+                this.listInstance, position,position + 1);
+    }
+
+    @java.lang.Override public void delete(final int position)
+    { org.wheatgenetics.javalib.mstrdtl.Utils.delete(this.listInstance, position); }
+
     @java.lang.Override public void append(final org.wheatgenetics.javalib.mstrdtl.Item item)
     {
         if (item instanceof org.wheatgenetics.javalib.mstrdtl.TestItem)
@@ -50,27 +68,5 @@ org.wheatgenetics.javalib.mstrdtl.TestItem.Container
             org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position);
         return null == this.listInstance ? null : this.listInstance.get(nonNegativePosition);
     }
-
-    // region org.wheatgenetics.javalib.mstrdtl.TestItem.Container org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
-    @java.lang.Override public boolean canMoveDown(final int position)
-    { return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()); }
-
-    @java.lang.Override public void moveUp(final int position)
-    {
-        if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveUp(position, this.size()))
-            org.wheatgenetics.javalib.mstrdtl.Utils.swap(
-                this.listInstance, position,position - 1);
-    }
-
-    @java.lang.Override public void moveDown(final int position)
-    {
-        if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()))
-            org.wheatgenetics.javalib.mstrdtl.Utils.swap(
-                this.listInstance, position,position + 1);
-    }
-
-    @java.lang.Override public void delete(final int position)
-    { org.wheatgenetics.javalib.mstrdtl.Utils.delete(this.listInstance, position); }
-    // endregion
     // endregion
 }
