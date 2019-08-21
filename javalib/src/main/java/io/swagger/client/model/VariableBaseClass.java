@@ -32,7 +32,8 @@ import org.threeten.bp.OffsetDateTime;
  * VariableBaseClass
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-11-15T17:05:32.234Z[GMT]")public class VariableBaseClass {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-11-15T17:05:32.234Z[GMT]")
+public class VariableBaseClass {
 
   @SerializedName("contextOfUse")
   private List<String> contextOfUse = null;

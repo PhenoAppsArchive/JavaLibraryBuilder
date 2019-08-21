@@ -12,6 +12,7 @@
 
 package io.swagger.client.model;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -22,7 +23,7 @@ import io.swagger.client.model.Method;
 import io.swagger.client.model.OntologyRefernce;
 import io.swagger.client.model.Scale;
 import io.swagger.client.model.Trait;
-import io.swagger.client.model.VariableBaseClass;
+import io.swagger.client.model.GermplasmAttributeDef;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.List;
@@ -32,7 +33,8 @@ import org.threeten.bp.OffsetDateTime;
  * GermplasmAttributeDef
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-11-15T17:05:32.234Z[GMT]")public class GermplasmAttributeDef extends VariableBaseClass {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-11-15T17:05:32.234Z[GMT]")
+public class GermplasmAttributeDef {
 
   @SerializedName("attributeCategoryDbId")
   private String attributeCategoryDbId = null;
@@ -222,6 +224,396 @@ import org.threeten.bp.OffsetDateTime;
   public void setValues(String values) {
     this.values = values;
   }
+
+  @SerializedName("contextOfUse")
+  private List<String> contextOfUse = null;
+
+  @SerializedName("crop")
+  private String crop = null;
+
+  @SerializedName("defaultValue")
+  private String defaultValue = null;
+
+  @SerializedName("documentationURL")
+  private String documentationURL = null;
+
+  @SerializedName("growthStage")
+  private String growthStage = null;
+
+  @SerializedName("institution")
+  private String institution = null;
+
+  @SerializedName("language")
+  private String language = null;
+
+  @SerializedName("method")
+  private Method method = null;
+
+  @SerializedName("ontologyDbId")
+  private String ontologyDbId = null;
+
+  @SerializedName("ontologyName")
+  private String ontologyName = null;
+
+  @SerializedName("ontologyRefernce")
+  private OntologyRefernce ontologyRefernce = null;
+
+  @SerializedName("scale")
+  private Scale scale = null;
+
+  @SerializedName("scientist")
+  private String scientist = null;
+
+  @SerializedName("status")
+  private String status = null;
+
+  @SerializedName("submissionTimestamp")
+  private OffsetDateTime submissionTimestamp = null;
+
+  @SerializedName("synonyms")
+  private List<String> synonyms = null;
+
+  @SerializedName("trait")
+  private Trait trait = null;
+
+  @SerializedName("xref")
+  private String xref = null;
+  public GermplasmAttributeDef contextOfUse(List<String> contextOfUse) {
+    this.contextOfUse = contextOfUse;
+    return this;
+  }
+
+  public GermplasmAttributeDef addContextOfUseItem(String contextOfUseItem) {
+    if (this.contextOfUse == null) {
+      this.contextOfUse = new ArrayList<String>();
+    }
+    this.contextOfUse.add(contextOfUseItem);
+    return this;
+  }
+
+  /**
+   * Indication of how trait is routinely used. (examples: [\&quot;Trial evaluation\&quot;, \&quot;Nursery evaluation\&quot;])
+   * @return contextOfUse
+   **/
+  @Schema(description = "Indication of how trait is routinely used. (examples: [\"Trial evaluation\", \"Nursery evaluation\"])")
+  public List<String> getContextOfUse() {
+    return contextOfUse;
+  }
+  public void setContextOfUse(List<String> contextOfUse) {
+    this.contextOfUse = contextOfUse;
+  }
+  public GermplasmAttributeDef crop(String crop) {
+    this.crop = crop;
+    return this;
+  }
+
+
+
+  /**
+   * Crop name (examples: \&quot;Maize\&quot;, \&quot;Wheat\&quot;)
+   * @return crop
+   **/
+  @Schema(description = "Crop name (examples: \"Maize\", \"Wheat\")")
+  public String getCrop() {
+    return crop;
+  }
+  public void setCrop(String crop) {
+    this.crop = crop;
+  }
+  public GermplasmAttributeDef defaultValue(String defaultValue) {
+    this.defaultValue = defaultValue;
+    return this;
+  }
+
+
+
+  /**
+   * Variable default value. (examples: \&quot;red\&quot;, \&quot;2.3\&quot;, etc.)
+   * @return defaultValue
+   **/
+  @Schema(description = "Variable default value. (examples: \"red\", \"2.3\", etc.)")
+  public String getDefaultValue() {
+    return defaultValue;
+  }
+  public void setDefaultValue(String defaultValue) {
+    this.defaultValue = defaultValue;
+  }
+  public GermplasmAttributeDef documentationURL(String documentationURL) {
+    this.documentationURL = documentationURL;
+    return this;
+  }
+
+
+
+  /**
+   * A URL to the human readable documentation of this object
+   * @return documentationURL
+   **/
+  @Schema(description = "A URL to the human readable documentation of this object")
+  public String getDocumentationURL() {
+    return documentationURL;
+  }
+  public void setDocumentationURL(String documentationURL) {
+    this.documentationURL = documentationURL;
+  }
+  public GermplasmAttributeDef growthStage(String growthStage) {
+    this.growthStage = growthStage;
+    return this;
+  }
+
+
+
+  /**
+   * Growth stage at which measurement is made (examples: \&quot;flowering\&quot;)
+   * @return growthStage
+   **/
+  @Schema(description = "Growth stage at which measurement is made (examples: \"flowering\")")
+  public String getGrowthStage() {
+    return growthStage;
+  }
+  public void setGrowthStage(String growthStage) {
+    this.growthStage = growthStage;
+  }
+  public GermplasmAttributeDef institution(String institution) {
+    this.institution = institution;
+    return this;
+  }
+
+
+
+  /**
+   * Name of institution submitting the variable
+   * @return institution
+   **/
+  @Schema(description = "Name of institution submitting the variable")
+  public String getInstitution() {
+    return institution;
+  }
+  public void setInstitution(String institution) {
+    this.institution = institution;
+  }
+  public GermplasmAttributeDef language(String language) {
+    this.language = language;
+    return this;
+  }
+
+
+
+  /**
+   * 2 letter ISO code for the language of submission of the variable.
+   * @return language
+   **/
+  @Schema(description = "2 letter ISO code for the language of submission of the variable.")
+  public String getLanguage() {
+    return language;
+  }
+  public void setLanguage(String language) {
+    this.language = language;
+  }
+  public GermplasmAttributeDef method(Method method) {
+    this.method = method;
+    return this;
+  }
+
+
+
+  /**
+   * Get method
+   * @return method
+   **/
+  @Schema(required = true, description = "")
+  public Method getMethod() {
+    return method;
+  }
+  public void setMethod(Method method) {
+    this.method = method;
+  }
+  public GermplasmAttributeDef ontologyDbId(String ontologyDbId) {
+    this.ontologyDbId = ontologyDbId;
+    return this;
+  }
+
+
+
+  /**
+   * DEPRECATED in v1.3 - see \&quot;this.ontologyRefernce.ontologyDbId\&quot;
+   * @return ontologyDbId
+   **/
+  @Schema(description = "DEPRECATED in v1.3 - see \"this.ontologyRefernce.ontologyDbId\"")
+  public String getOntologyDbId() {
+    return ontologyDbId;
+  }
+  public void setOntologyDbId(String ontologyDbId) {
+    this.ontologyDbId = ontologyDbId;
+  }
+  public GermplasmAttributeDef ontologyName(String ontologyName) {
+    this.ontologyName = ontologyName;
+    return this;
+  }
+
+
+
+  /**
+   * DEPRECATED in v1.3 - see \&quot;this.ontologyRefernce.ontologyName\&quot;
+   * @return ontologyName
+   **/
+  @Schema(description = "DEPRECATED in v1.3 - see \"this.ontologyRefernce.ontologyName\"")
+  public String getOntologyName() {
+    return ontologyName;
+  }
+  public void setOntologyName(String ontologyName) {
+    this.ontologyName = ontologyName;
+  }
+  public GermplasmAttributeDef ontologyRefernce(OntologyRefernce ontologyRefernce) {
+    this.ontologyRefernce = ontologyRefernce;
+    return this;
+  }
+
+
+
+  /**
+   * Get ontologyRefernce
+   * @return ontologyRefernce
+   **/
+  @Schema(description = "")
+  public OntologyRefernce getOntologyRefernce() {
+    return ontologyRefernce;
+  }
+  public void setOntologyRefernce(OntologyRefernce ontologyRefernce) {
+    this.ontologyRefernce = ontologyRefernce;
+  }
+  public GermplasmAttributeDef scale(Scale scale) {
+    this.scale = scale;
+    return this;
+  }
+
+
+
+  /**
+   * Get scale
+   * @return scale
+   **/
+  @Schema(required = true, description = "")
+  public Scale getScale() {
+    return scale;
+  }
+  public void setScale(Scale scale) {
+    this.scale = scale;
+  }
+  public GermplasmAttributeDef scientist(String scientist) {
+    this.scientist = scientist;
+    return this;
+  }
+
+
+
+  /**
+   * Name of scientist submitting the variable.
+   * @return scientist
+   **/
+  @Schema(description = "Name of scientist submitting the variable.")
+  public String getScientist() {
+    return scientist;
+  }
+  public void setScientist(String scientist) {
+    this.scientist = scientist;
+  }
+  public GermplasmAttributeDef status(String status) {
+    this.status = status;
+    return this;
+  }
+
+
+
+  /**
+   * Variable status. (examples: \&quot;recommended\&quot;, \&quot;obsolete\&quot;, \&quot;legacy\&quot;, etc.)
+   * @return status
+   **/
+  @Schema(description = "Variable status. (examples: \"recommended\", \"obsolete\", \"legacy\", etc.)")
+  public String getStatus() {
+    return status;
+  }
+  public void setStatus(String status) {
+    this.status = status;
+  }
+  public GermplasmAttributeDef submissionTimestamp(OffsetDateTime submissionTimestamp) {
+    this.submissionTimestamp = submissionTimestamp;
+    return this;
+  }
+
+
+
+  /**
+   * Timestamp when the Variable was added (ISO 8601)
+   * @return submissionTimestamp
+   **/
+  @Schema(description = "Timestamp when the Variable was added (ISO 8601)")
+  public OffsetDateTime getSubmissionTimestamp() {
+    return submissionTimestamp;
+  }
+  public void setSubmissionTimestamp(OffsetDateTime submissionTimestamp) {
+    this.submissionTimestamp = submissionTimestamp;
+  }
+  public GermplasmAttributeDef synonyms(List<String> synonyms) {
+    this.synonyms = synonyms;
+    return this;
+  }
+
+  public GermplasmAttributeDef addSynonymsItem(String synonymsItem) {
+    if (this.synonyms == null) {
+      this.synonyms = new ArrayList<String>();
+    }
+    this.synonyms.add(synonymsItem);
+    return this;
+  }
+
+  /**
+   * Other variable names
+   * @return synonyms
+   **/
+  @Schema(description = "Other variable names")
+  public List<String> getSynonyms() {
+    return synonyms;
+  }
+  public void setSynonyms(List<String> synonyms) {
+    this.synonyms = synonyms;
+  }
+  public GermplasmAttributeDef trait(Trait trait) {
+    this.trait = trait;
+    return this;
+  }
+
+
+
+  /**
+   * Get trait
+   * @return trait
+   **/
+  @Schema(required = true, description = "")
+  public Trait getTrait() {
+    return trait;
+  }
+  public void setTrait(Trait trait) {
+    this.trait = trait;
+  }
+  public GermplasmAttributeDef xref(String xref) {
+    this.xref = xref;
+    return this;
+  }
+
+
+
+  /**
+   * Cross reference of the variable term to a term from an external ontology or to a database of a major system.
+   * @return xref
+   **/
+  @Schema(description = "Cross reference of the variable term to a term from an external ontology or to a database of a major system.")
+  public String getXref() {
+    return xref;
+  }
+  public void setXref(String xref) {
+    this.xref = xref;
+  }
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -232,20 +624,40 @@ import org.threeten.bp.OffsetDateTime;
     }
     GermplasmAttributeDef germplasmAttributeDef = (GermplasmAttributeDef) o;
     return Objects.equals(this.attributeCategoryDbId, germplasmAttributeDef.attributeCategoryDbId) &&
-        Objects.equals(this.attributeDbId, germplasmAttributeDef.attributeDbId) &&
-        Objects.equals(this.attributeName, germplasmAttributeDef.attributeName) &&
-        Objects.equals(this.code, germplasmAttributeDef.code) &&
-        Objects.equals(this.datatype, germplasmAttributeDef.datatype) &&
-        Objects.equals(this.description, germplasmAttributeDef.description) &&
-        Objects.equals(this.name, germplasmAttributeDef.name) &&
-        Objects.equals(this.uri, germplasmAttributeDef.uri) &&
-        Objects.equals(this.values, germplasmAttributeDef.values) &&
-        super.equals(o);
+            Objects.equals(this.attributeDbId, germplasmAttributeDef.attributeDbId) &&
+            Objects.equals(this.attributeName, germplasmAttributeDef.attributeName) &&
+            Objects.equals(this.code, germplasmAttributeDef.code) &&
+            Objects.equals(this.datatype, germplasmAttributeDef.datatype) &&
+            Objects.equals(this.description, germplasmAttributeDef.description) &&
+            Objects.equals(this.name, germplasmAttributeDef.name) &&
+            Objects.equals(this.uri, germplasmAttributeDef.uri) &&
+            Objects.equals(this.values, germplasmAttributeDef.values) &&
+            Objects.equals(this.contextOfUse, germplasmAttributeDef.contextOfUse) &&
+            Objects.equals(this.crop, germplasmAttributeDef.crop) &&
+            Objects.equals(this.defaultValue, germplasmAttributeDef.defaultValue) &&
+            Objects.equals(this.documentationURL, germplasmAttributeDef.documentationURL) &&
+            Objects.equals(this.growthStage, germplasmAttributeDef.growthStage) &&
+            Objects.equals(this.institution, germplasmAttributeDef.institution) &&
+            Objects.equals(this.language, germplasmAttributeDef.language) &&
+            Objects.equals(this.method, germplasmAttributeDef.method) &&
+            Objects.equals(this.ontologyDbId, germplasmAttributeDef.ontologyDbId) &&
+            Objects.equals(this.ontologyName, germplasmAttributeDef.ontologyName) &&
+            Objects.equals(this.ontologyRefernce, germplasmAttributeDef.ontologyRefernce) &&
+            Objects.equals(this.scale, germplasmAttributeDef.scale) &&
+            Objects.equals(this.scientist, germplasmAttributeDef.scientist) &&
+            Objects.equals(this.status, germplasmAttributeDef.status) &&
+            Objects.equals(this.submissionTimestamp, germplasmAttributeDef.submissionTimestamp) &&
+            Objects.equals(this.synonyms, germplasmAttributeDef.synonyms) &&
+            Objects.equals(this.trait, germplasmAttributeDef.trait) &&
+            Objects.equals(this.xref, germplasmAttributeDef.xref);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(attributeCategoryDbId, attributeDbId, attributeName, code, datatype, description, name, uri, values, super.hashCode());
+    return java.util.Objects.hash(attributeCategoryDbId, attributeDbId, attributeName, code,
+            datatype, description, name, uri, values, contextOfUse, crop, defaultValue,
+            documentationURL, growthStage, institution, language, method, ontologyDbId, ontologyName,
+            ontologyRefernce, scale, scientist, status, submissionTimestamp, synonyms, trait, xref);
   }
 
   @Override
@@ -262,6 +674,25 @@ import org.threeten.bp.OffsetDateTime;
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    uri: ").append(toIndentedString(uri)).append("\n");
     sb.append("    values: ").append(toIndentedString(values)).append("\n");
+
+    sb.append("    contextOfUse: ").append(toIndentedString(contextOfUse)).append("\n");
+    sb.append("    crop: ").append(toIndentedString(crop)).append("\n");
+    sb.append("    defaultValue: ").append(toIndentedString(defaultValue)).append("\n");
+    sb.append("    documentationURL: ").append(toIndentedString(documentationURL)).append("\n");
+    sb.append("    growthStage: ").append(toIndentedString(growthStage)).append("\n");
+    sb.append("    institution: ").append(toIndentedString(institution)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
+    sb.append("    method: ").append(toIndentedString(method)).append("\n");
+    sb.append("    ontologyDbId: ").append(toIndentedString(ontologyDbId)).append("\n");
+    sb.append("    ontologyName: ").append(toIndentedString(ontologyName)).append("\n");
+    sb.append("    ontologyRefernce: ").append(toIndentedString(ontologyRefernce)).append("\n");
+    sb.append("    scale: ").append(toIndentedString(scale)).append("\n");
+    sb.append("    scientist: ").append(toIndentedString(scientist)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    submissionTimestamp: ").append(toIndentedString(submissionTimestamp)).append("\n");
+    sb.append("    synonyms: ").append(toIndentedString(synonyms)).append("\n");
+    sb.append("    trait: ").append(toIndentedString(trait)).append("\n");
+    sb.append("    xref: ").append(toIndentedString(xref)).append("\n");
     sb.append("}");
     return sb.toString();
   }

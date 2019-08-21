@@ -1,4 +1,5 @@
 *.iml
+*.idea
 .gradle
 /local.properties
 /.idea/libraries
@@ -8,5 +9,5 @@
 /build
 /captures
 .externalNativeBuild
-/javalib/build/classes
-/javalib/build/tmp
+/javalib/build
+secrets.properties

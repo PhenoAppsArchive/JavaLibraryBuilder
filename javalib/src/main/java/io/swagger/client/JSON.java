@@ -48,19 +48,6 @@ public class JSON {
 
     public static GsonBuilder createGson() {
         GsonFireBuilder fireBuilder = new GsonFireBuilder()
-          .registerTypeSelector(VariableBaseClass.class, new TypeSelector<VariableBaseClass>() {
-            @Override
-            public Class<? extends VariableBaseClass> getClassForElement(JsonElement readElement) {
-                Map<String, Class<? extends VariableBaseClass>> classByDiscriminatorValue = new HashMap<>();
-
-                    classByDiscriminatorValue.put("germplasmAttributeDef".toUpperCase(), GermplasmAttributeDef.class);
-                    classByDiscriminatorValue.put("observationVariable".toUpperCase(), ObservationVariable.class);
-                    classByDiscriminatorValue.put("VariableBaseClass".toUpperCase(), VariableBaseClass.class);
-                return getClassByDiscriminator(
-                            classByDiscriminatorValue,
-                            getDiscriminatorValue(readElement, ""));
-            }
-          })
           .registerTypeSelector(ListSummary.class, new TypeSelector<ListSummary>() {
             @Override
             public Class<? extends ListSummary> getClassForElement(JsonElement readElement) {
