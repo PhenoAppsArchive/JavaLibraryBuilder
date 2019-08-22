@@ -13,12 +13,10 @@ package org.wheatgenetics.brapi1_3.studies.nor;                       // nor: Ne
  * org.wheatgenetics.javalib.mstrdtl.Utils
  *
  * org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservations
- * org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservations.Container
  */
 @java.lang.SuppressWarnings({"unused"})
 public class NewObservationsRequest extends io.swagger.client.model.NewObservationsRequest
-implements org.wheatgenetics.javalib.mstrdtl.Items,
-org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservations.Container
+implements org.wheatgenetics.javalib.mstrdtl.Items
 {
     public NewObservationsRequest(
     final io.swagger.client.model.ObservationsResponse observationsResponse)
@@ -40,6 +38,26 @@ org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservations.Contai
     }
 
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
+    @java.lang.Override public boolean canMoveDown(final int position)
+    { return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()); }
+
+    @java.lang.Override public void moveUp(final int position)
+    {
+        if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveUp(position, this.size()))
+            org.wheatgenetics.javalib.mstrdtl.Utils.swap(
+                this.getObservations(), position,position - 1);
+    }
+
+    @java.lang.Override public void moveDown(final int position)
+    {
+        if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()))
+            org.wheatgenetics.javalib.mstrdtl.Utils.swap(
+                this.getObservations(), position,position + 1);
+    }
+
+    @java.lang.Override public void delete(final int position)
+    { org.wheatgenetics.javalib.mstrdtl.Utils.delete(this.getObservations(), position); }
+
     @java.lang.Override public void append(final org.wheatgenetics.javalib.mstrdtl.Item item)
     {
         if (item instanceof
@@ -81,27 +99,5 @@ org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservations.Contai
             (org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservations)
                 observations.get(nonNegativePosition);
     }
-
-    // region org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservations.Container org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
-    @java.lang.Override public boolean canMoveDown(final int position)
-    { return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()); }
-
-    @java.lang.Override public void moveUp(final int position)
-    {
-        if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveUp(position, this.size()))
-            org.wheatgenetics.javalib.mstrdtl.Utils.swap(
-                this.getObservations(), position,position - 1);
-    }
-
-    @java.lang.Override public void moveDown(final int position)
-    {
-        if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()))
-            org.wheatgenetics.javalib.mstrdtl.Utils.swap(
-                this.getObservations(), position,position + 1);
-    }
-
-    @java.lang.Override public void delete(final int position)
-    { org.wheatgenetics.javalib.mstrdtl.Utils.delete(this.getObservations(), position); }
-    // endregion
     // endregion
 }

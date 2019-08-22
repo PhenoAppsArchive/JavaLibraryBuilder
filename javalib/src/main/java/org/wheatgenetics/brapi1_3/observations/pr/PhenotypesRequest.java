@@ -10,14 +10,32 @@ package org.wheatgenetics.brapi1_3.observations.pr;
  * org.wheatgenetics.javalib.mstrdtl.Utils
  *
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData
- * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.Container
  */
 @java.lang.SuppressWarnings({"unused"})
 public class PhenotypesRequest extends io.swagger.client.model.PhenotypesRequest
-implements org.wheatgenetics.javalib.mstrdtl.Items,
-org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.Container
+implements org.wheatgenetics.javalib.mstrdtl.Items
 {
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
+    @java.lang.Override public boolean canMoveDown(final int position)
+    { return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()); }
+
+    @java.lang.Override public void moveUp(final int position)
+    {
+        if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveUp(position, this.size()))
+            org.wheatgenetics.javalib.mstrdtl.Utils.swap(
+                this.getData(), position,position - 1);
+    }
+
+    @java.lang.Override public void moveDown(final int position)
+    {
+        if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()))
+            org.wheatgenetics.javalib.mstrdtl.Utils.swap(
+                this.getData(), position,position + 1);
+    }
+
+    @java.lang.Override public void delete(final int position)
+    { org.wheatgenetics.javalib.mstrdtl.Utils.delete(this.getData(), position); }
+
     @java.lang.Override public void append(final org.wheatgenetics.javalib.mstrdtl.Item item)
     {
         if (item instanceof org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData)
@@ -54,27 +72,5 @@ org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.Container
             (org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData)
                 data.get(nonNegativePosition);
     }
-
-    // region org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.Container org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
-    @java.lang.Override public boolean canMoveDown(final int position)
-    { return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()); }
-
-    @java.lang.Override public void moveUp(final int position)
-    {
-        if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveUp(position, this.size()))
-            org.wheatgenetics.javalib.mstrdtl.Utils.swap(
-                this.getData(), position,position - 1);
-    }
-
-    @java.lang.Override public void moveDown(final int position)
-    {
-        if (org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(position, this.size()))
-            org.wheatgenetics.javalib.mstrdtl.Utils.swap(
-                this.getData(), position,position + 1);
-    }
-
-    @java.lang.Override public void delete(final int position)
-    { org.wheatgenetics.javalib.mstrdtl.Utils.delete(this.getData(), position); }
-    // endregion
     // endregion
 }
