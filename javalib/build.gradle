@@ -17,7 +17,7 @@ ext {
 
     project_group = "org.phenoapps"
     project_name = "javalib"
-    project_version = "1.0.4"
+    project_version = "1.0.0"
 }
 
 dependencies {
@@ -78,10 +78,11 @@ bintray {
     key = getSeceret('bintray_api_key')
     publications = ['myPublication']
     pkg {
+        userOrg = 'pheno-apps'
         repo = 'pheno-apps-java-client-library'
         name = "${project_group}:${project_name}"
         licenses = ['GPL-2.0']
-        vcsUrl = 'https://github.com/PhenoLibs/JavaLibraryBuilder '
+        vcsUrl = 'https://github.com/PhenoLibs/JavaLibraryBuilder'
 
         version {
             name = "${project_version}"
