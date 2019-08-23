@@ -18,6 +18,8 @@ package org.wheatgenetics.javalib.mstrdtl;
     // endregion
 
     // region Public Methods
+    public void setContainer(org.wheatgenetics.javalib.mstrdtl.Item.Container container);
+
     public int getPosition(); public void setPosition(int position);
 
     public java.lang.String getPositionAsString();

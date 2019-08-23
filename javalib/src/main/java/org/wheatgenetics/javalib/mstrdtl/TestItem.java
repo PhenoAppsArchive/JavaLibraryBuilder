@@ -11,20 +11,24 @@ package org.wheatgenetics.javalib.mstrdtl;
 public class TestItem extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Item
 {
     // region Fields
-    private final org.wheatgenetics.javalib.mstrdtl.TestItem.Container container;
+    private transient org.wheatgenetics.javalib.mstrdtl.TestItem.Container container;
 
     private int              position           ;
     private java.lang.String title, content = "";
     // endregion
 
     TestItem(final org.wheatgenetics.javalib.mstrdtl.TestItem.Container container)
-    { super(); this.container = container; }
+    { super(); this.setContainer(container); }
 
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
-    @java.lang.Override public void setPosition(final int position)
-    { this.position = org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position); }
+    @java.lang.Override public void setContainer(
+    final org.wheatgenetics.javalib.mstrdtl.TestItem.Container container)
+    { this.container = container; }
 
     @java.lang.Override public int getPosition() { return this.position; }
+
+    @java.lang.Override public void setPosition(final int position)
+    { this.position = org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position); }
 
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }
@@ -63,7 +67,6 @@ public class TestItem extends java.lang.Object implements org.wheatgenetics.java
     }
     // endregion
 
-    @java.lang.SuppressWarnings({"WeakerAccess"})
     public void setContent(final java.lang.String content)
     { this.content = org.wheatgenetics.javalib.Utils.makeEmptyIfNull(content); }
 }
