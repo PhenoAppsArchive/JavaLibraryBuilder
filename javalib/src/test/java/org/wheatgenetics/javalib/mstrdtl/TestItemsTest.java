@@ -115,7 +115,8 @@ public class TestItemsTest extends java.lang.Object
 
     @org.junit.Test() public void fromJsonWorks()
     {
-        final org.wheatgenetics.javalib.mstrdtl.Items items;
+        final org.wheatgenetics.javalib.mstrdtl.Items items =
+            new org.wheatgenetics.javalib.mstrdtl.TestItems();
         {
             final java.lang.String json = "[\n" +
                 "  {\n" +
@@ -124,7 +125,7 @@ public class TestItemsTest extends java.lang.Object
                 "    \"content\": \"Content of Item 1:\\nMore information here.\"\n" +
                 "  }\n" +
                 "]";
-            items = new org.wheatgenetics.javalib.mstrdtl.TestItems().fromJson(json);
+            items.fromJson(json);
             org.junit.Assert.assertEquals(json, items.toJson());
         }
         org.junit.Assert.assertTrue(((org.wheatgenetics.javalib.mstrdtl.TestItem) items.get(0))

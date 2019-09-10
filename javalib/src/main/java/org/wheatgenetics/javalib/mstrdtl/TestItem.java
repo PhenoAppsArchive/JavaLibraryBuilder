@@ -56,13 +56,16 @@ public class TestItem extends java.lang.Object implements org.wheatgenetics.java
 
     @java.lang.SuppressWarnings({"DefaultLocale"}) void setTitleAndContent()
     {
-        this.title = java.lang.String.format("Item %d",this.getPosition() + 1);
+        final java.lang.StringBuilder builder;
+        {
+            final int position = this.getPosition();
+            this.title = java.lang.String.format("Item %d",position + 1);
 
-        final java.lang.StringBuilder builder =
-            new java.lang.StringBuilder("Content of ").append(this.getTitle()).append(':');
-        for (int i = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION;
-        i <= this.getPosition(); i++)
-            builder.append("\nMore information here.");
+            builder = new java.lang.StringBuilder("Content of ")
+                .append(this.getTitle()).append(':');
+            for (int i = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION; i <= position; i++)
+                builder.append("\nMore information here.");
+        }
         this.content = builder.toString();
     }
     // endregion
