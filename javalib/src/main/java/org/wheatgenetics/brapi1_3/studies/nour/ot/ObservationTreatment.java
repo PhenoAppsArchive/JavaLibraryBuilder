@@ -11,7 +11,7 @@ class ObservationTreatment extends io.swagger.client.model.ObservationTreatment
 implements org.wheatgenetics.javalib.mstrdtl.Item
 {
     // region Fields
-    private final org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment.Container
+    private transient org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment.Container
         container;
     private int position;
     // endregion
@@ -20,19 +20,29 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     { this.factor(factor).modality(modality); }
 
     // region Constructors
+    /**
+     * Called by second ObservationTreatment(), third ObservationTreatment(),
+     * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments.append(), and
+     * ObservationTreatmentsTest.
+     */
     ObservationTreatment(
     final org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment.Container container)
-    { super(); this.container = container; }
+    { super(); this.setContainer(container); }
 
+    /**
+     * Called by org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments.append(
+     * observationTreatments).
+     */
     ObservationTreatment(
-    final org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment.Container container      ,
-    final io.swagger.client.model.ObservationTreatment                         observationTreatment)
+    final org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment.Container container,
+    final io.swagger.client.model.ObservationTreatment                   observationTreatment)
     {
         this(container);
         if (null != observationTreatment)
             this.assign(observationTreatment.getFactor(), observationTreatment.getModality());
     }
 
+    /** Called by org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments(). */
     ObservationTreatment(
     final org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment observationTreatment)
     {
@@ -42,10 +52,14 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
-    @java.lang.Override public void setPosition(final int position)
-    { this.position = org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position); }
+    @java.lang.Override public void setContainer(
+    final org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment.Container container)
+    { this.container = container; }
 
     @java.lang.Override public int getPosition() { return this.position; }
+
+    @java.lang.Override public void setPosition(final int position)
+    { this.position = org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position); }
 
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }

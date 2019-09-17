@@ -2,6 +2,10 @@ package org.wheatgenetics.brapi1_3.studies.nour.o;               // nour: NewObs
 
 /**
  * Uses:
+ * com.google.gson.Gson
+ * com.google.gson.GsonBuilder
+ * com.google.gson.reflect.TypeToken
+ *
  * io.swagger.client.model.Observation
  * io.swagger.client.model.ObservationSummary
  *
@@ -14,8 +18,14 @@ package org.wheatgenetics.brapi1_3.studies.nour.o;               // nour: NewObs
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"}) public class Observations
 extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
 {
-    private java.util.List<io.swagger.client.model.Observation> listInstance = null;    // lazy load
+    // region Fields
+    private           java.lang.String                                    operator, uploadedBy;
+    private           java.util.List<io.swagger.client.model.Observation> listInstance = null; // ll
+    private transient com.google.gson.Gson                                gsonInstance = null; // ll
+    private transient java.lang.reflect.Type                              typeInstance = null; // ll
+    // endregion
 
+    // region Private Methods
     private java.util.List<io.swagger.client.model.Observation> list()
     {
         if (null == this.listInstance)
@@ -24,40 +34,76 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
         return this.listInstance;
     }
 
+    private com.google.gson.Gson gson()
+    {
+        if (null == this.gsonInstance)
+            this.gsonInstance = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
+        return this.gsonInstance;
+    }
+
+    private org.wheatgenetics.javalib.mstrdtl.Items clear()
+    { if (null != this.listInstance) this.listInstance.clear(); return this; }
+
+    private java.lang.reflect.Type type()
+    {
+        if (null == this.typeInstance) this.typeInstance = new com.google.gson.reflect.TypeToken<
+            org.wheatgenetics.brapi1_3.studies.nour.o.Observations>(){}.getType();
+        return this.typeInstance;
+    }
+    // endregion
+
     // region Constructors
+    /**
+     * Called by second Observations(), third Observations(), fourth Observations(), and
+     * ObservationsTest.
+     */
+    Observations(final java.lang.String operator, final java.lang.String uploadedBy)
+    { super(); this.operator = operator; this.uploadedBy = uploadedBy; }
+
+    /**
+     * Called by second org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.assign().
+     */
     public Observations(
     final java.util.List<io.swagger.client.model.ObservationSummary> observationSummaries,
     final java.lang.String germplasmDbId      , final java.lang.String germplasmName      ,
     final java.lang.String observationLevel   , final java.lang.String observationUnitDbId,
-    final java.lang.String observationUnitName, final java.lang.String studyDbId          )
+    final java.lang.String observationUnitName, final java.lang.String studyDbId          ,
+    final java.lang.String operator           , final java.lang.String uploadedBy         )
     {
-        super();
+        this(operator, uploadedBy);
         if (null != observationSummaries) if (observationSummaries.size() > 0)
             for (final io.swagger.client.model.ObservationSummary observationSummary:
             observationSummaries) this.append(
                 new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(this,
-                    observationSummary , germplasmDbId, germplasmName, observationLevel,
-                    observationUnitDbId, observationUnitName         , studyDbId       ));
+                    observationSummary , germplasmDbId      , germplasmName, observationLevel,
+                    observationUnitDbId, observationUnitName, studyDbId    , this.operator   ,
+                    this.uploadedBy                                                          ));
     }
 
+    /**
+     * Called by third org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.assign().
+     */
     public Observations(final org.wheatgenetics.brapi1_3.studies.nour.o.Observations observations,
     final java.lang.String operator, final java.lang.String uploadedBy)
     {
-        super();
-        if (null != observations) if (observations.size() > 0)
+        this(operator, uploadedBy); if (null != observations) if (observations.size() > 0)
             for (final io.swagger.client.model.Observation observation: observations.listInstance)
                 this.append(new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(
                     (org.wheatgenetics.brapi1_3.studies.nour.o.Observation) observation,
-                    operator, uploadedBy                                               ));
+                    this.operator, this.uploadedBy                                     ));
     }
 
-    public Observations(final java.util.List<io.swagger.client.model.Observation> observations)
+    /**
+     * Called by fourth org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.assign()
+     * and org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.observations().
+     */
+    public Observations(final java.util.List<io.swagger.client.model.Observation> observations,
+    final java.lang.String operator, final java.lang.String uploadedBy)
     {
-        super();
-        if (null != observations) if (observations.size() > 0)
+        this(operator, uploadedBy); if (null != observations) if (observations.size() > 0)
             for (final io.swagger.client.model.Observation observation: observations)
                 this.append(new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(
-                    this, observation));
+                    this, observation, this.operator, this.uploadedBy));
     }
     // endregion
 
@@ -94,7 +140,10 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     }
 
     @java.lang.Override public void append()
-    { this.append(new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(this)); }
+    {
+        this.append(new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(
+            this, this.operator, this.uploadedBy));
+    }
 
     @java.lang.Override public int size()
     { return null == this.listInstance ? 0 : this.listInstance.size(); }
@@ -106,6 +155,47 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
         return null == this.listInstance ? null :
             (org.wheatgenetics.brapi1_3.studies.nour.o.Observation)
                 this.listInstance.get(nonNegativePosition);
+    }
+
+    @java.lang.Override public java.lang.String toJson() { return this.gson().toJson(this); }
+
+    @java.lang.Override
+    public org.wheatgenetics.javalib.mstrdtl.Items fromJson(final java.lang.String json)
+    {
+        if (null == json)
+            return this.clear();
+        else
+        {
+            final java.lang.String trimmedJson = json.trim();
+            if (trimmedJson.length() <= 0)
+                return this.clear();
+            else
+            {
+                final org.wheatgenetics.brapi1_3.studies.nour.o.Observations observations =
+                    this.gson().fromJson(trimmedJson, this.type());
+                if (null == observations)
+                    return this.clear();
+                else
+                {
+                    this.operator   = observations.operator  ;
+                    this.uploadedBy = observations.uploadedBy;
+
+                    if (observations.size() <= 0)
+                        return this.clear();
+                    else
+                    {
+                        this.clear();
+
+                        for (final io.swagger.client.model.Observation observation:
+                        observations.listInstance) this.append(
+                            new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(
+                                this, observation, this.operator, this.uploadedBy));
+
+                        return this;
+                    }
+                }
+            }
+        }
     }
     // endregion
 

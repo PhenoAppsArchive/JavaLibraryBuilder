@@ -5,6 +5,7 @@ package org.wheatgenetics.javalib.mstrdtl;
  * org.junit.Assert
  * org.junit.Test
  *
+ * org.wheatgenetics.javalib.mstrdtl.Items
  * org.wheatgenetics.javalib.mstrdtl.TestItem
  * org.wheatgenetics.javalib.mstrdtl.TestItems
  */
@@ -91,4 +92,43 @@ public class TestItemsTest extends java.lang.Object
         testItems.append(); org.junit.Assert.assertTrue (testItems.canMoveDown(0));
     }
     // endregion
+
+    @org.junit.Test() public void toJsonWorks()
+    {
+        final org.wheatgenetics.javalib.mstrdtl.TestItems testItems =
+            new org.wheatgenetics.javalib.mstrdtl.TestItems();
+        {
+            final org.wheatgenetics.javalib.mstrdtl.TestItem testItem =
+                new org.wheatgenetics.javalib.mstrdtl.TestItem(testItems);
+            testItem.setTitleAndContent(); testItems.append(testItem);
+        }
+        org.junit.Assert.assertEquals(
+            /* expected => */"[\n" +
+                "  {\n"                                                              +
+                "    \"position\": 0,\n"                                             +
+                "    \"title\": \"Item 1\",\n"                                       +
+                "    \"content\": \"Content of Item 1:\\nMore information here.\"\n" +
+                "  }\n"                                                              +
+                "]",
+            /* actual => */ testItems.toJson());
+    }
+
+    @org.junit.Test() public void fromJsonWorks()
+    {
+        final org.wheatgenetics.javalib.mstrdtl.Items items =
+            new org.wheatgenetics.javalib.mstrdtl.TestItems();
+        {
+            final java.lang.String json = "[\n"                                      +
+                "  {\n"                                                              +
+                "    \"position\": 0,\n"                                             +
+                "    \"title\": \"Item 1\",\n"                                       +
+                "    \"content\": \"Content of Item 1:\\nMore information here.\"\n" +
+                "  }\n"                                                              +
+                "]";
+            items.fromJson(json);
+            org.junit.Assert.assertEquals(json, items.toJson());
+        }
+        org.junit.Assert.assertTrue(((org.wheatgenetics.javalib.mstrdtl.TestItem) items.get(0))
+            .containersAreTheSame(items));
+    }
 }

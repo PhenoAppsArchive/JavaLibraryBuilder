@@ -18,19 +18,25 @@ class StudyLayoutRequestLayout extends io.swagger.client.model.StudyLayoutReques
 implements org.wheatgenetics.javalib.mstrdtl.Item
 {
     // region Fields
-    private final org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout.Container
+    private transient org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout.Container
         container;
     private int position;
     // endregion
 
     // region Constructors
+    /**
+     * Called by second StudyLayoutRequestLayout(), third StudyLayoutRequestLayout(),
+     * org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest.append(), and
+     * StudyLayoutRequestTest.
+     */
     StudyLayoutRequestLayout(final
     org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout.Container container)
-    { super(); this.container = container; }
+    { super(); this.setContainer(container); }
 
+    /** Called by org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest(). */
     StudyLayoutRequestLayout(
-    final org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout.Container container      ,
-    final io.swagger.client.model.ObservationUnitPosition                   observationUnitPosition)
+    final org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout.Container container,
+    final io.swagger.client.model.ObservationUnitPosition             observationUnitPosition)
     {
         this(container);
         if (null != observationUnitPosition)
@@ -218,13 +224,34 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             // endregion
         }
     }
+
+    /** Called by org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest.fromJson(). */
+    StudyLayoutRequestLayout(
+    final org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout.Container container,
+    final io.swagger.client.model.StudyLayoutRequestLayout           studyLayoutRequestLayout)
+    {
+        this(container);
+        if (null != studyLayoutRequestLayout) this
+            .blockNumber            (studyLayoutRequestLayout.getBlockNumber            ())
+            .entryType              (studyLayoutRequestLayout.getEntryType              ())
+            .observationUnitDbId    (studyLayoutRequestLayout.getObservationUnitDbId    ())
+            .positionCoordinateX    (studyLayoutRequestLayout.getPositionCoordinateX    ())
+            .positionCoordinateXType(studyLayoutRequestLayout.getPositionCoordinateXType())
+            .positionCoordinateY    (studyLayoutRequestLayout.getPositionCoordinateY    ())
+            .positionCoordinateYType(studyLayoutRequestLayout.getPositionCoordinateYType())
+            .replicate              (studyLayoutRequestLayout.getReplicate              ());
+    }
     // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
-    @java.lang.Override public void setPosition(final int position)
-    { this.position = org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position); }
+    @java.lang.Override public void setContainer(
+    final org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout.Container container)
+    { this.container = container; }
 
     @java.lang.Override public int getPosition() { return this.position; }
+
+    @java.lang.Override public void setPosition(final int position)
+    { this.position = org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position); }
 
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }

@@ -11,7 +11,7 @@ class ObservationUnitXref extends io.swagger.client.model.ObservationUnitXref
 implements org.wheatgenetics.javalib.mstrdtl.Item
 {
     // region Fields
-    private final org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref.Container
+    private transient org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref.Container
         container;
     private int position;
     // endregion
@@ -20,10 +20,19 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     { this.id(id).source(source); }
 
     // region Constructors
+    /**
+     * Called by second ObservationUnitXref(), third ObservationUnitXref(),
+     * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs.append(), and
+     * ObservationUnitXrefsTest.
+     */
     ObservationUnitXref(final
     org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref.Container container)
-    { super(); this.container = container; }
+    { super(); this.setContainer(container); }
 
+    /**
+     * Called by org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs.append(
+     * observationUnitXrefs).
+     */
     ObservationUnitXref(final
     org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref.Container container,
     final io.swagger.client.model.ObservationUnitXref observationUnitXref)
@@ -33,6 +42,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             this.assign(observationUnitXref.getId(), observationUnitXref.getSource());
     }
 
+    /** Called by org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs(). */
     ObservationUnitXref(
     final org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref observationUnitXref)
     {
@@ -42,10 +52,14 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
-    @java.lang.Override public void setPosition(final int position)
-    { this.position = org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position); }
+    @java.lang.Override public void setContainer(
+    final org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref.Container container)
+    { this.container = container; }
 
     @java.lang.Override public int getPosition() { return this.position; }
+
+    @java.lang.Override public void setPosition(final int position)
+    { this.position = org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position); }
 
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }

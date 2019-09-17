@@ -2,6 +2,10 @@ package org.wheatgenetics.brapi1_3.studies.nour.ot;              // nour: NewObs
 
 /**
  * Uses:
+ * com.google.gson.Gson
+ * com.google.gson.GsonBuilder
+ * com.google.gson.reflect.TypeToken
+ *
  * io.swagger.client.model.ObservationTreatment
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
@@ -13,8 +17,13 @@ package org.wheatgenetics.brapi1_3.studies.nour.ot;              // nour: NewObs
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"}) public class ObservationTreatments
 extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
 {
+    // region Fields
     private java.util.List<io.swagger.client.model.ObservationTreatment> listInstance = null;  // ll
+    private transient com.google.gson.Gson                               gsonInstance = null;  // ll
+    private transient java.lang.reflect.Type                             typeInstance = null;  // ll
+    // endregion
 
+    // region Private Methods
     private java.util.List<io.swagger.client.model.ObservationTreatment> list()
     {
         if (null == this.listInstance)
@@ -24,22 +33,59 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
         return this.listInstance;
     }
 
+    private org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments append(
+    final java.util.List<io.swagger.client.model.ObservationTreatment> observationTreatments)
+    {
+        for (final io.swagger.client.model.ObservationTreatment observationTreatment:
+        observationTreatments) this.append(
+            new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment(
+                this, observationTreatment));
+        return this;
+    }
+
+    private com.google.gson.Gson gson()
+    {
+        if (null == this.gsonInstance)
+            this.gsonInstance = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
+        return this.gsonInstance;
+    }
+
+    private org.wheatgenetics.javalib.mstrdtl.Items clear()
+    { if (null != this.listInstance) this.listInstance.clear(); return this; }
+
+    private java.lang.reflect.Type type()
+    {
+        if (null == this.typeInstance) this.typeInstance = new com.google.gson.reflect.TypeToken<
+            org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments>(){}.getType();
+        return this.typeInstance;
+    }
+    // endregion
+
     // region Constructors
+    /**
+     * Called by second ObservationTreatments(), third ObservationTreatments(), and
+     * ObservationTreatmentsTest.
+     */
+    ObservationTreatments() { super(); }
+
+    /**
+     * Called by org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.assign(),
+     * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest(), and
+     * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.treatments().
+     */
     public ObservationTreatments(
     final java.util.List<io.swagger.client.model.ObservationTreatment> observationTreatments)
     {
-        super();
-        if (null != observationTreatments) if (observationTreatments.size() > 0)
-            for (final io.swagger.client.model.ObservationTreatment observationTreatment:
-            observationTreatments) this.append(
-                new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment(
-                    this, observationTreatment));
+        this();
+        if (null != observationTreatments)
+            if (observationTreatments.size() > 0) this.append(observationTreatments);
     }
 
+    /** Called by org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.assign(). */
     @java.lang.SuppressWarnings({"CopyConstructorMissesField"}) public ObservationTreatments(
     final org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments observationTreatments)
     {
-        super();
+        this();
         if (null != observationTreatments) if (observationTreatments.size() > 0)
             for (final io.swagger.client.model.ObservationTreatment observationTreatment:
             observationTreatments.listInstance) this.append(
@@ -101,6 +147,33 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
         return null == this.listInstance ? null :
             (org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment)
                 this.listInstance.get(nonNegativePosition);
+    }
+
+    @java.lang.Override public java.lang.String toJson() { return this.gson().toJson(this); }
+
+    @java.lang.Override
+    public org.wheatgenetics.javalib.mstrdtl.Items fromJson(final java.lang.String json)
+    {
+        if (null == json)
+            return this.clear();
+        else
+        {
+            final java.lang.String trimmedJson = json.trim();
+            if (trimmedJson.length() <= 0)
+                return this.clear();
+            else
+            {
+                final org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments
+                    observationTreatments = this.gson().fromJson(trimmedJson, this.type());
+                if (null == observationTreatments)
+                    return this.clear();
+                else
+                    if (observationTreatments.size() <= 0)
+                        return this.clear();
+                    else
+                        { this.clear(); return this.append(observationTreatments.listInstance); }
+            }
+        }
     }
     // endregion
 

@@ -2,6 +2,10 @@ package org.wheatgenetics.brapi1_3.studies.slr;                           // slr
 
 /**
  * Uses:
+ * com.google.gson.Gson
+ * com.google.gson.GsonBuilder
+ * com.google.gson.reflect.TypeToken
+ *
  * io.swagger.client.model.ObservationUnitPosition
  * io.swagger.client.model.ObservationUnitPositionsResponse
  * io.swagger.client.model.ObservationUnitPositionsResponseResult
@@ -18,10 +22,46 @@ package org.wheatgenetics.brapi1_3.studies.slr;                           // slr
 public class StudyLayoutRequest extends io.swagger.client.model.StudyLayoutRequest
 implements org.wheatgenetics.javalib.mstrdtl.Items
 {
+    // region Fields
+    private transient com.google.gson.Gson   gsonInstance = null;                       // lazy load
+    private transient java.lang.reflect.Type typeInstance = null;                       // lazy load
+    // endregion
+
+    // region Private Methods
+    private com.google.gson.Gson gson()
+    {
+        if (null == this.gsonInstance)
+            this.gsonInstance = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
+        return this.gsonInstance;
+    }
+
+    private org.wheatgenetics.javalib.mstrdtl.Items clear()
+    {
+        {
+            final java.util.List<io.swagger.client.model.StudyLayoutRequestLayout> layout =
+                this.getLayout();
+            if (null != layout) layout.clear();
+        }
+        return this;
+    }
+
+    private java.lang.reflect.Type type()
+    {
+        if (null == this.typeInstance) this.typeInstance = new com.google.gson.reflect.TypeToken<
+            org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest>(){}.getType();
+        return this.typeInstance;
+    }
+    // endregion
+
+    // region Constructors
+    /** Called by second StudyLayoutRequest() and StudyLayoutRequestTest. */
+    StudyLayoutRequest() { super(); }
+
+    /** Called by androidlibrary org.wheatgenetics.brapi1_3.Application.makeStudyLayoutRequest(). */
     public StudyLayoutRequest(
     final io.swagger.client.model.ObservationUnitPositionsResponse observationUnitPositionsResponse)
     {
-        super();
+        this();
         if (null != observationUnitPositionsResponse)
         {
             final io.swagger.client.model.ObservationUnitPositionsResponseResult result =
@@ -38,6 +78,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
             }
         }
     }
+    // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
     @java.lang.Override public boolean canMoveDown(final int position)
@@ -97,6 +138,42 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
         return null == layout ? null :
             (org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout)
                 layout.get(nonNegativePosition);
+    }
+
+    @java.lang.Override public java.lang.String toJson() { return this.gson().toJson(this); }
+
+    @java.lang.Override
+    public org.wheatgenetics.javalib.mstrdtl.Items fromJson(final java.lang.String json)
+    {
+        if (null == json)
+            return this.clear();
+        else
+        {
+            final java.lang.String trimmedJson = json.trim();
+            if (trimmedJson.length() <= 0)
+                return this.clear();
+            else
+            {
+                final org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest studyLayoutRequest =
+                    this.gson().fromJson(trimmedJson, this.type());
+                if (null == studyLayoutRequest)
+                    return this.clear();
+                else
+                    if (studyLayoutRequest.size() <= 0)
+                        return this.clear();
+                    else
+                    {
+                        this.clear();
+
+                        for (final io.swagger.client.model.StudyLayoutRequestLayout
+                        studyLayoutRequestLayout: studyLayoutRequest.getLayout()) this.append(
+                            new org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout(
+                                this, studyLayoutRequestLayout));
+
+                        return this;
+                    }
+            }
+        }
     }
     // endregion
 }

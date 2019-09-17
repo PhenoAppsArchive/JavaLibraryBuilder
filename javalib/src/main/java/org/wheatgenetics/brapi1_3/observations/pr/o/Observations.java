@@ -2,6 +2,10 @@ package org.wheatgenetics.brapi1_3.observations.pr.o;
 
 /**
  * Uses:
+ * com.google.gson.Gson
+ * com.google.gson.GsonBuilder
+ * com.google.gson.reflect.TypeToken
+ *
  * io.swagger.client.model.PhenotypesRequestObservation
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
@@ -13,9 +17,14 @@ package org.wheatgenetics.brapi1_3.observations.pr.o;
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"}) public class Observations
 extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
 {
+    // region Fields
     private java.util.List<io.swagger.client.model.PhenotypesRequestObservation>
         listInstance = null;                                                            // lazy load
+    private transient com.google.gson.Gson   gsonInstance = null;                       // lazy load
+    private transient java.lang.reflect.Type typeInstance = null;                       // lazy load
+    // endregion
 
+    // region Private Methods
     private java.util.List<io.swagger.client.model.PhenotypesRequestObservation> list()
     {
         if (null == this.listInstance)
@@ -25,17 +34,50 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
         return this.listInstance;
     }
 
+    private org.wheatgenetics.brapi1_3.observations.pr.o.Observations append(final
+    java.util.List<io.swagger.client.model.PhenotypesRequestObservation> observations)
+    {
+        for (final io.swagger.client.model.PhenotypesRequestObservation
+        phenotypesRequestObservation: observations) this.append(
+            new org.wheatgenetics.brapi1_3.observations.pr.o.Observation(
+                this, phenotypesRequestObservation));
+        return this;
+    }
+
+    private com.google.gson.Gson gson()
+    {
+        if (null == this.gsonInstance)
+            this.gsonInstance = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
+        return this.gsonInstance;
+    }
+
+    private org.wheatgenetics.javalib.mstrdtl.Items clear()
+    { if (null != this.listInstance) this.listInstance.clear(); return this; }
+
+    private java.lang.reflect.Type type()
+    {
+        if (null == this.typeInstance) this.typeInstance = new com.google.gson.reflect.TypeToken<
+            org.wheatgenetics.brapi1_3.observations.pr.o.Observations>(){}.getType();
+        return this.typeInstance;
+    }
+    // endregion
+
     // region Constructors
+    /** Called by second Observations(),
+     * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.getObservationsAsItems(),
+     * and ObservationsTest.
+     */
     public Observations() { super(); }
 
-    public Observations(
-    final java.util.List<io.swagger.client.model.PhenotypesRequestObservation> observations)
+    /**
+     * Called by org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.observations().
+     */
+    public Observations(final java.util.List<io.swagger.client.model.PhenotypesRequestObservation>
+    phenotypesRequestObservations)
     {
         this();
-        if (null != observations) if (observations.size() > 0)
-            for (final io.swagger.client.model.PhenotypesRequestObservation observation:
-            observations) this.append(new org.wheatgenetics.brapi1_3.observations.pr.o.Observation(
-                this, observation));
+        if (null != phenotypesRequestObservations) if (phenotypesRequestObservations.size() > 0)
+            this.append(phenotypesRequestObservations);
     }
     // endregion
 
@@ -84,6 +126,33 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
         return null == this.listInstance ? null :
             (org.wheatgenetics.brapi1_3.observations.pr.o.Observation)
                 this.listInstance.get(nonNegativePosition);
+    }
+
+    @java.lang.Override public java.lang.String toJson() { return this.gson().toJson(this); }
+
+    @java.lang.Override
+    public org.wheatgenetics.javalib.mstrdtl.Items fromJson(final java.lang.String json)
+    {
+        if (null == json)
+            return this.clear();
+        else
+        {
+            final java.lang.String trimmedJson = json.trim();
+            if (trimmedJson.length() <= 0)
+                return this.clear();
+            else
+            {
+                final org.wheatgenetics.brapi1_3.observations.pr.o.Observations observations =
+                    this.gson().fromJson(trimmedJson, this.type());
+                if (null == observations)
+                    return this.clear();
+                else
+                    if (observations.size() <= 0)
+                        return this.clear();
+                    else
+                        { this.clear(); return this.append(observations.listInstance); }
+            }
+        }
     }
     // endregion
 

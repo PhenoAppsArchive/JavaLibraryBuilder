@@ -30,7 +30,6 @@ public class Utils extends java.lang.Object
     final java.lang.String s, final java.lang.String valueIfNull)
     { return null == s ? valueIfNull : s; }
 
-    @java.lang.SuppressWarnings({"WeakerAccess"})
     public static java.lang.String makeEmptyIfNull(final java.lang.String s)
     { return org.wheatgenetics.javalib.Utils.replaceIfNull(s,""); }
 
@@ -98,109 +97,187 @@ public class Utils extends java.lang.Object
     }
 
     // region get() Methods
-    @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"}) public static
-    org.wheatgenetics.javalib.Utils.Response get(final java.net.URL url) throws java.io.IOException
+    /*@java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"}) public static
+    org.wheatgenetics.javalib.Utils.Response get(final java.net.URL url) throws java.io.IOException*/
+    private static java.net.HttpURLConnection makeHttpURLConnection(final java.net.URL url)
+    throws java.io.IOException
     {
         if (null == url)
             return null;
         else
+            return (java.net.HttpURLConnection) url.openConnection();  // throws java.io.IOException
+    }
+
+    private static org.wheatgenetics.javalib.Utils.Response get(
+    final java.net.HttpURLConnection httpURLConnection) throws java.io.IOException
+    {
+        try { httpURLConnection.connect() /* throws java.io.IOException */; }
+        catch (final java.net.SocketTimeoutException e)
         {
-            final java.net.HttpURLConnection httpURLConnection =
-                (java.net.HttpURLConnection) url.openConnection();     // throws java.io.IOException
-            if (null == httpURLConnection)
-                return null;
-            else
-            {
-                httpURLConnection.connect();                           // throws java.io.IOException
-                final int responseCode = httpURLConnection.getResponseCode();     // throws java.io-
-                if (responseCode != java.net.HttpURLConnection.HTTP_OK)           //  .IOException
-                    throw new java.io.IOException(java.lang.String.format(
-                        "Response code is %d, not %d", responseCode,
-                        java.net.HttpURLConnection.HTTP_OK));
-                else
+            return new org.wheatgenetics.javalib.Utils.Response(
+                null,null,"timeout");
+        }
+
+        final int responseCode = httpURLConnection.getResponseCode();  // throws java.io.IOException
+        if (responseCode != java.net.HttpURLConnection.HTTP_OK)
+            throw new java.io.IOException(java.lang.String.format("Response code is %d, not %d",
+                responseCode, java.net.HttpURLConnection.HTTP_OK));
+        else
+        {
+            final java.io.InputStream inputStream = httpURLConnection.getInputStream(); // throws
+            if (null == inputStream)                                                    //  java.io-
+                return null;                                                            //  .IOEx-
+            else                                                                        //  ception
+                try
                 {
-                    final java.io.InputStream inputStream =
-                        httpURLConnection.getInputStream();            // throws java.io.IOException
-                    if (null == inputStream)
-                        return null;
-                    else
-                        try
+                    final java.lang.StringBuilder stringBuilder = new java.lang.StringBuilder();
+                    {
+                        class InputStreamReader extends java.lang.Object
                         {
-                            final java.lang.StringBuilder stringBuilder =
-                                new java.lang.StringBuilder();
+                            private final java.io.InputStreamReader inputStreamReader;
+
+                            private InputStreamReader(final java.io.InputStream inputStream)
                             {
-                                class InputStreamReader extends java.lang.Object
-                                {
-                                    private final java.io.InputStreamReader inputStreamReader;
-
-                                    private InputStreamReader(final java.io.InputStream inputStream)
-                                    {
-                                        super();
-                                        this.inputStreamReader =
-                                            new java.io.InputStreamReader(inputStream);
-                                    }
-
-                                    private java.lang.String read()
-                                    {
-                                        final int length = 1024;
-
-                                        @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
-                                        final char cbuf[] = new char[length];
-                                        try
-                                        {
-                                            final int numberOfCharactersRead =
-                                                this.inputStreamReader.read(      // throws java.io-
-                                                    cbuf,0, length);           //  .IOException
-                                            if (-1 == numberOfCharactersRead)
-                                                return null;
-                                            else
-                                                return new java.lang.String(
-                                                    cbuf,0, numberOfCharactersRead);
-                                        }
-                                        catch (final java.io.IOException e) { return null; }
-                                    }
-                                }
-                                final InputStreamReader inputStreamReader =
-                                    new InputStreamReader(inputStream);
-                                java.lang.String chunk;
-                                while (null != (chunk = inputStreamReader.read()))
-                                    stringBuilder.append(chunk);
+                                super();
+                                this.inputStreamReader = new java.io.InputStreamReader(inputStream);
                             }
-                            return new org.wheatgenetics.javalib.Utils.Response(
-                                httpURLConnection.getContentType    (),
-                                httpURLConnection.getContentEncoding(),
-                                stringBuilder.toString              ());
+
+                            private java.lang.String read()
+                            {
+                                final int length = 1024;
+
+                                @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
+                                final char cbuf[] = new char[length];
+                                try
+                                {
+                                    final int numberOfCharactersRead =
+                                        this.inputStreamReader.read(cbuf,0, length);// throws ja-
+                                    if (-1 == numberOfCharactersRead)                  //  va.io.IO-
+                                        return null;                                   //  Exception
+                                    else
+                                        return new java.lang.String(
+                                            cbuf,0, numberOfCharactersRead);
+                                }
+                                catch (final java.io.IOException e) { return null; }
+                            }
                         }
-                        finally { inputStream.close() /* throws java.io.IOException */; }
+                        final InputStreamReader inputStreamReader =
+                            new InputStreamReader(inputStream);
+                        java.lang.String chunk;
+                        while (null != (chunk = inputStreamReader.read()))
+                            stringBuilder.append(chunk);
+                    }
+                    return new org.wheatgenetics.javalib.Utils.Response(
+                        httpURLConnection.getContentType    (),
+                        httpURLConnection.getContentEncoding(),
+                        stringBuilder.toString              ());
                 }
-            }
+                finally { inputStream.close() /* throws java.io.IOException */; }
         }
     }
 
+    @java.lang.SuppressWarnings({"WeakerAccess"})
+    public static org.wheatgenetics.javalib.Utils.Response get(final java.net.URL url)
+        throws java.io.IOException
+    {
+        final java.net.HttpURLConnection httpURLConnection =
+            org.wheatgenetics.javalib.Utils.makeHttpURLConnection(url);
+        return null == httpURLConnection ? null :
+            org.wheatgenetics.javalib.Utils.get(httpURLConnection);
+    }
+
+    @java.lang.SuppressWarnings({"WeakerAccess"})
+    public static org.wheatgenetics.javalib.Utils.Response get(
+    final java.net.URL url, final int timeout) throws java.io.IOException
+    {
+        final java.net.HttpURLConnection httpURLConnection =
+            org.wheatgenetics.javalib.Utils.makeHttpURLConnection(url);
+        if (null == httpURLConnection)
+            return null;
+        else
+        {
+            httpURLConnection.setConnectTimeout(timeout);
+            return org.wheatgenetics.javalib.Utils.get(httpURLConnection);
+        }
+    }
+
+    // region threadedGet() Methods
+    private abstract static class BaseThread extends java.lang.Thread
+    {
+        // region Fields
+        private final java.net.URL                             url            ;
+        private       org.wheatgenetics.javalib.Utils.Response response = null;
+        // endregion
+
+        // region Package Methods
+        java.net.URL getUrl() { return this.url; }
+
+        void setResponse(final org.wheatgenetics.javalib.Utils.Response response)
+        { this.response = response; }
+        // endregion
+
+        private BaseThread(final java.net.URL url) { super(); this.url = url; }
+
+        org.wheatgenetics.javalib.Utils.Response getResponse() { return this.response; }
+    }
+
+    private static class DefaultTimeoutThread extends org.wheatgenetics.javalib.Utils.BaseThread
+    {
+        DefaultTimeoutThread(final java.net.URL url) { super(url); }
+
+        @java.lang.Override public void run()
+        {
+            try
+            { this.setResponse(org.wheatgenetics.javalib.Utils.get(this.getUrl()) /* throws */); }
+            catch (final java.io.IOException e) { this.setResponse(null); }
+        }
+    }
+
+    private static class CustomTimeoutThread extends org.wheatgenetics.javalib.Utils.BaseThread
+    {
+        final int timeout;
+
+        CustomTimeoutThread(final java.net.URL url, final int timeout)
+        { super(url); this.timeout = timeout; }
+
+        @java.lang.Override public void run()
+        {
+            try
+            {
+                this.setResponse(org.wheatgenetics.javalib.Utils.get(
+                    this.getUrl(), this.timeout) /* throws */);
+            }
+            catch (final java.io.IOException e) { this.setResponse(null); }
+        }
+    }
+
+    private static org.wheatgenetics.javalib.Utils.Response threadedGet(
+    final org.wheatgenetics.javalib.Utils.BaseThread thread)
+    {
+        if (null == thread)
+            return null;
+        else
+        {
+            thread.start();
+            try { thread.join(); } catch (final java.lang.InterruptedException e) { return null; }
+
+            return thread.getResponse();
+        }
+    }
+
+    @java.lang.SuppressWarnings({"unused"})
     public static org.wheatgenetics.javalib.Utils.Response threadedGet(final java.net.URL url)
     {
-        class Thread extends java.lang.Thread
-        {
-            // region Fields
-            private final java.net.URL                             url            ;
-            private       org.wheatgenetics.javalib.Utils.Response response = null;
-            // endregion
-
-            private Thread(final java.net.URL url) { super(); this.url = url; }
-
-            @java.lang.Override public void run()
-            {
-                try { this.response = org.wheatgenetics.javalib.Utils.get(this.url) /* throws */; }
-                catch (final java.io.IOException e) { this.response = null; }
-            }
-
-            private org.wheatgenetics.javalib.Utils.Response getResponse() { return this.response; }
-        }
-
-        final Thread thread = new Thread(url);
-        thread.start();
-        try { thread.join(); } catch (final java.lang.InterruptedException e) { return null; }
-        return thread.getResponse();
+        return org.wheatgenetics.javalib.Utils.threadedGet(
+            new org.wheatgenetics.javalib.Utils.DefaultTimeoutThread(url));
     }
+
+    public static org.wheatgenetics.javalib.Utils.Response threadedGet(
+    final java.net.URL url, final int timeout)
+    {
+        return org.wheatgenetics.javalib.Utils.threadedGet(
+            new org.wheatgenetics.javalib.Utils.CustomTimeoutThread(url, timeout));
+    }
+    // endregion
     // endregion
 }

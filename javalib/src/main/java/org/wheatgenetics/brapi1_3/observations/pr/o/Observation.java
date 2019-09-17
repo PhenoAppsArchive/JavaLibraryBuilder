@@ -11,16 +11,25 @@ class Observation extends io.swagger.client.model.PhenotypesRequestObservation
 implements org.wheatgenetics.javalib.mstrdtl.Item
 {
     // region Fields
-    private final org.wheatgenetics.brapi1_3.observations.pr.o.Observation.Container container;
-    private       int                                                                position ;
+    private transient org.wheatgenetics.brapi1_3.observations.pr.o.Observation.Container container;
+    private           int                                                                position ;
     // endregion
 
     // region Constructors
+    /**
+     * Called by second Observation(),
+     * org.wheatgenetics.brapi1_3.observations.pr.o.Observations.append(), and ObservationsTest.
+     */
     Observation(final org.wheatgenetics.brapi1_3.observations.pr.o.Observation.Container container)
-    { super(); this.container = container; }
+    { super(); this.setContainer(container); }
 
-    Observation(final org.wheatgenetics.brapi1_3.observations.pr.o.Observation.Container container,
-    final io.swagger.client.model.PhenotypesRequestObservation observation)
+    /**
+     * Called by third Observation() and
+     * org.wheatgenetics.brapi1_3.observations.pr.o.Observations.append(observations).
+     */
+    Observation(
+    final org.wheatgenetics.brapi1_3.observations.pr.o.Observation.Container container  ,
+    final io.swagger.client.model.PhenotypesRequestObservation               observation)
     {
         this(container);
         if (null != observation) this
@@ -33,16 +42,24 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             .value                  (observation.getValue                  ());
     }
 
+    /**
+     * Called by androidlibrary
+     * org.wheatgenetics.brapi1_3.observations.pr.o.ObservationAlertDialog.show().
+     */
     @java.lang.SuppressWarnings({"unused"})
     Observation(final org.wheatgenetics.brapi1_3.observations.pr.o.Observation observation)
     { this(observation.container, observation); }
     // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
-    @java.lang.Override public void setPosition(final int position)
-    { this.position = org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position); }
+    @java.lang.Override public void setContainer(
+    final org.wheatgenetics.brapi1_3.observations.pr.o.Observation.Container container)
+    { this.container = container; }
 
     @java.lang.Override public int getPosition() { return this.position; }
+
+    @java.lang.Override public void setPosition(final int position)
+    { this.position = org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position); }
 
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }

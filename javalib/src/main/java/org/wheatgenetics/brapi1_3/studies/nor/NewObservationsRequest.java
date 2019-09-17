@@ -2,6 +2,10 @@ package org.wheatgenetics.brapi1_3.studies.nor;                       // nor: Ne
 
 /**
  * Uses:
+ * com.google.gson.Gson
+ * com.google.gson.GsonBuilder
+ * com.google.gson.reflect.TypeToken
+ *
  * io.swagger.client.model.NewObservationsRequest
  * io.swagger.client.model.NewObservationsRequestObservations
  * io.swagger.client.model.Observation
@@ -18,10 +22,50 @@ package org.wheatgenetics.brapi1_3.studies.nor;                       // nor: Ne
 public class NewObservationsRequest extends io.swagger.client.model.NewObservationsRequest
 implements org.wheatgenetics.javalib.mstrdtl.Items
 {
-    public NewObservationsRequest(
-    final io.swagger.client.model.ObservationsResponse observationsResponse)
+    // region Fields
+    private transient com.google.gson.Gson   gsonInstance = null;                       // lazy load
+    private transient java.lang.reflect.Type typeInstance = null;                       // lazy load
+    // endregion
+
+    // region Private Methods
+    private com.google.gson.Gson gson()
     {
-        super();
+        if (null == this.gsonInstance)
+            this.gsonInstance = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
+        return this.gsonInstance;
+    }
+
+    private org.wheatgenetics.javalib.mstrdtl.Items clear()
+    {
+        {
+            final java.util.List<io.swagger.client.model.NewObservationsRequestObservations>
+                observations = this.getObservations();
+            if (null != observations) observations.clear();
+        }
+        return this;
+    }
+
+    private java.lang.reflect.Type type()
+    {
+        if (null == this.typeInstance) this.typeInstance = new com.google.gson.reflect.TypeToken<
+            org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest>(){}.getType();
+        return this.typeInstance;
+    }
+    // endregion
+
+    // region Constructors
+    /** Called by second NewObservationsRequest() and NewObservationsRequestTest. */
+    NewObservationsRequest() { super(); }
+
+    /**
+     * Called by androidlibrary
+     * org.wheatgenetics.brapi1_3.Application.makeNewObservationsRequest().
+     */
+    @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
+    public NewObservationsRequest(
+        final io.swagger.client.model.ObservationsResponse observationsResponse)
+    {
+        this();
         if (null != observationsResponse)
         {
             final io.swagger.client.model.ObservationsResponseResult result =
@@ -36,6 +80,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
             }
         }
     }
+    // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
     @java.lang.Override public boolean canMoveDown(final int position)
@@ -98,6 +143,43 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
         return null == observations ? null :
             (org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservations)
                 observations.get(nonNegativePosition);
+    }
+
+    @java.lang.Override public java.lang.String toJson() { return this.gson().toJson(this); }
+
+    @java.lang.Override
+    public org.wheatgenetics.javalib.mstrdtl.Items fromJson(final java.lang.String json)
+    {
+        if (null == json)
+            return this.clear();
+        else
+        {
+            final java.lang.String trimmedJson = json.trim();
+            if (trimmedJson.length() <= 0)
+                return this.clear();
+            else
+            {
+                final org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest
+                    newObservationsRequest = this.gson().fromJson(trimmedJson, this.type());
+                if (null == newObservationsRequest)
+                    return this.clear();
+                else
+                    if (newObservationsRequest.size() <= 0)
+                        return this.clear();
+                    else
+                    {
+                        this.clear();
+
+                        for (final io.swagger.client.model.NewObservationsRequestObservations
+                        newObservationsRequestObservations:
+                        newObservationsRequest.getObservations()) this.append(new org.wheatgenetics
+                            .brapi1_3.studies.nor.NewObservationsRequestObservations(
+                                this, newObservationsRequestObservations));
+
+                        return this;
+                    }
+            }
+        }
     }
     // endregion
 }
