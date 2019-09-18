@@ -23,6 +23,7 @@ package org.wheatgenetics.javalibrarybuilder;
  * org.wheatgenetics.javalibrarybuilder.R
  * org.wheatgenetics.javalibrarybuilder.WebViewActivity
  */
+@java.lang.SuppressWarnings({"unused"})
 public class MainActivity extends android.support.v7.app.AppCompatActivity
 {
     // region Constants

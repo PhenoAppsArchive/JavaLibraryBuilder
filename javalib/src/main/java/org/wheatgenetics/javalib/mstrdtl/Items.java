@@ -4,7 +4,7 @@ package org.wheatgenetics.javalib.mstrdtl;
  * Uses:
  * org.wheatgenetics.javalib.mstrdtl.Item
  */
-@java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"})
+@java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier", "unused"})
 public interface Items extends org.wheatgenetics.javalib.mstrdtl.Item.Container
 {
     public boolean canMoveDown(int position);

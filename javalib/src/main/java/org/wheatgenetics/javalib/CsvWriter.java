@@ -4,7 +4,7 @@ package org.wheatgenetics.javalib;
  * Uses:
  * com.csvreader.CsvWriter
  */
-@java.lang.SuppressWarnings({"WeakerAccess"}) public class CsvWriter extends com.csvreader.CsvWriter
+@java.lang.SuppressWarnings({"unused"}) public class CsvWriter extends com.csvreader.CsvWriter
 {
     // region Constructors
     @java.lang.SuppressWarnings({"WeakerAccess", "unused"})
