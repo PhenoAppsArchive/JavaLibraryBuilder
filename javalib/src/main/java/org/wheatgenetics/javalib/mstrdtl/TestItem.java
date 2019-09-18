@@ -7,7 +7,7 @@ package org.wheatgenetics.javalib.mstrdtl;
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Utils
  */
-@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject", "unused"})
 public class TestItem extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Item
 {
     // region Fields

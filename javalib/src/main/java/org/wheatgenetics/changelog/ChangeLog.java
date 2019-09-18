@@ -1,6 +1,6 @@
 package org.wheatgenetics.changelog;
 
-@java.lang.SuppressWarnings({"unused", "ClassExplicitlyExtendsObject"})
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject", "unused"})
 class ChangeLog extends java.lang.Object
 {
     @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) interface LineHandler

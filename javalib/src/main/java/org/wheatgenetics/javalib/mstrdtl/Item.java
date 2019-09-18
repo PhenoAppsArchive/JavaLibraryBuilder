@@ -1,6 +1,6 @@
 package org.wheatgenetics.javalib.mstrdtl;
 
-@java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface Item
+@java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier", "unused"}) public interface Item
 {
     interface Container
     {
