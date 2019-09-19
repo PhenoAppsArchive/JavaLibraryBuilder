@@ -54,8 +54,12 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
     // endregion
 
     // region Constructors
-    /** Called by second StudyLayoutRequest() and StudyLayoutRequestTest. */
-    StudyLayoutRequest() { super(); }
+    /**
+     * Called by androidlibrarybuilder
+     * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.studyLayoutRequest(),
+     * second StudyLayoutRequest() and StudyLayoutRequestTest.
+     */
+    @java.lang.SuppressWarnings({"WeakerAccess"}) public StudyLayoutRequest() { super(); }
 
     /** Called by androidlibrary org.wheatgenetics.brapi1_3.Application.makeStudyLayoutRequest(). */
     public StudyLayoutRequest(
