@@ -54,8 +54,12 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
     // endregion
 
     // region Constructors
-    /** Called by second NewObservationsRequest() and NewObservationsRequestTest. */
-    NewObservationsRequest() { super(); }
+    /**
+     * Called by androidlibrarybuilder
+     * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.setNewObservationsRequest(),
+     * second NewObservationsRequest(), and NewObservationsRequestTest.
+     */
+    @java.lang.SuppressWarnings({"WeakerAccess"}) public NewObservationsRequest() { super(); }
 
     /**
      * Called by androidlibrary

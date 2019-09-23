@@ -56,7 +56,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
     // region Constructors
     /**
      * Called by androidlibrarybuilder
-     * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.studyLayoutRequest(),
+     * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.setStudyLayoutRequest(),
      * second StudyLayoutRequest() and StudyLayoutRequestTest.
      */
     @java.lang.SuppressWarnings({"WeakerAccess"}) public StudyLayoutRequest() { super(); }
