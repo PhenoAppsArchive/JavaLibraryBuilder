@@ -55,13 +55,22 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
 
     // region Constructors
     /**
-     * Called by androidlibrarybuilder
-     * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.setStudyLayoutRequest(),
-     * second StudyLayoutRequest() and StudyLayoutRequestTest.
+     * Called by
+     * 1) androidlibrarybuilder org.wheatgenetics.androidlibrarybuilder.brapi1_3:
+     *     a) Activity.studyLayoutRequest(),
+     *     b) studies.Fragment.setStudyLayoutRequest(json),
+     * 2) androidlibrary org.wheatgenetics.brapi1_3.studies.slr:
+     *     a) StudyLayoutRequestListActivity.items(),
+     *     b) StudyLayoutRequestLayoutItemActivity.items(),
+     * 3) second StudyLayoutRequest(), and
+     * 4) StudyLayoutRequestTest.
      */
     @java.lang.SuppressWarnings({"WeakerAccess"}) public StudyLayoutRequest() { super(); }
 
-    /** Called by androidlibrary org.wheatgenetics.brapi1_3.Application.makeStudyLayoutRequest(). */
+    /**
+     * Called by androidlibrarybuilder org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+     * .Fragment.StudiesStudyDbIdLayoutsGetCallback.handleSuccess().
+     */
     public StudyLayoutRequest(
     final io.swagger.client.model.ObservationUnitPositionsResponse observationUnitPositionsResponse)
     {

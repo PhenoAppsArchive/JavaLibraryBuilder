@@ -55,19 +55,24 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
 
     // region Constructors
     /**
-     * Called by androidlibrarybuilder
-     * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.setNewObservationsRequest(),
-     * second NewObservationsRequest(), and NewObservationsRequestTest.
+     * Called by
+     * 1) androidlibrarybuilder org.wheatgenetics.androidlibrarybuilder.brapi1_3:
+     *     a) Activity.newObservationsRequest(),
+     *     b) studies.Fragment.setNewObservationsRequest(json),
+     * 2) androidlibrary org.wheatgenetics.brapi1_3.studies.nor:
+     *     a) NewObservationsRequestListActivity.items(),
+     *     b) NewObservationsRequestObservationsItemActivity.items(),
+     * 3) second NewObservationsRequest(), and
+     * 4) NewObservationsRequestTest.
      */
     @java.lang.SuppressWarnings({"WeakerAccess"}) public NewObservationsRequest() { super(); }
 
     /**
-     * Called by androidlibrary
-     * org.wheatgenetics.brapi1_3.Application.makeNewObservationsRequest().
+     * Called by androidlibrarybuilder org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+     * .Fragment.observationsResponseCallback().
      */
-    @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
-    public NewObservationsRequest(
-        final io.swagger.client.model.ObservationsResponse observationsResponse)
+    @java.lang.SuppressWarnings({"unused"}) public NewObservationsRequest(
+    final io.swagger.client.model.ObservationsResponse observationsResponse)
     {
         this();
         if (null != observationsResponse)

@@ -62,18 +62,31 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
     // endregion
 
     // region Constructors
-    /** Called by third NewObservationUnitRequests() and NewObservationUnitRequestsTest. */
+    /**
+     * Called by
+     * 1) androidlibrarybuilder org.wheatgenetics.androidlibrarybuilder.brapi1_3:
+     *     a) Activity.newObservationUnitRequests(),
+     *     b) studies.Fragment.setNewObservationUnitRequests(json),
+     * 2) androidlibrary org.wheatgenetics.brapi1_3.studies.nour:
+     *     a) NewObservationUnitRequestsListActivity.items(),
+     *     b) NewObservationUnitRequestItemActivity.items(),
+     * 3) second NewObservationUnitRequests(), and
+     * 4) third NewObservationUnitRequests().
+     */
+    @java.lang.SuppressWarnings({"WeakerAccess"}) public NewObservationUnitRequests() { super(); }
+
+    /** Called by fourth NewObservationUnitRequests() and NewObservationUnitRequestsTest. */
     NewObservationUnitRequests(final java.lang.String operator, final java.lang.String uploadedBy)
-    { super(); this.operator = operator; this.uploadedBy = uploadedBy; }
+    { this(); this.operator = operator; this.uploadedBy = uploadedBy; }
 
     /**
-     * Called by androidlibrary
-     * org.wheatgenetics.brapi1_3.Application.makeNewObservationUnitRequests().
+     * Called by androidlibrarybuilder org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+     * .Fragment.observationUnitsResponse1Callback().
      */
     public NewObservationUnitRequests(
     final io.swagger.client.model.ObservationUnitsResponse1 observationUnitsResponse1)
     {
-        super();
+        this();
         if (null != observationUnitsResponse1)
         {
             final io.swagger.client.model.ObservationUnitsResponse1Result result =
