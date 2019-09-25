@@ -30,31 +30,31 @@ import java.util.List;
 @Schema(description = "new phenotypes")
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-11-15T17:05:32.234Z[GMT]")public class PhenotypesRequestData {
 
-  @SerializedName("observatioUnitDbId")
-  private String observatioUnitDbId = null;
+  @SerializedName("observationUnitDbId")
+  private String observationUnitDbId = null;
 
   @SerializedName("observations")
   private List<PhenotypesRequestObservation> observations = null;
 
   @SerializedName("studyDbId")
   private String studyDbId = null;
-  public PhenotypesRequestData observatioUnitDbId(String observatioUnitDbId) {
-    this.observatioUnitDbId = observatioUnitDbId;
+  public PhenotypesRequestData observationUnitDbId(String observationUnitDbId) {
+    this.observationUnitDbId = observationUnitDbId;
     return this;
   }
 
   
 
   /**
-  * Get observatioUnitDbId
-  * @return observatioUnitDbId
+  * Get observationUnitDbId
+  * @return observationUnitDbId
   **/
   @Schema(description = "")
-  public String getObservatioUnitDbId() {
-    return observatioUnitDbId;
+  public String getObservationUnitDbId() {
+    return observationUnitDbId;
   }
-  public void setObservatioUnitDbId(String observatioUnitDbId) {
-    this.observatioUnitDbId = observatioUnitDbId;
+  public void setObservationUnitDbId(String observationUnitDbId) {
+    this.observationUnitDbId = observationUnitDbId;
   }
   public PhenotypesRequestData observations(List<PhenotypesRequestObservation> observations) {
     this.observations = observations;
@@ -107,14 +107,14 @@ import java.util.List;
       return false;
     }
     PhenotypesRequestData phenotypesRequestData = (PhenotypesRequestData) o;
-    return Objects.equals(this.observatioUnitDbId, phenotypesRequestData.observatioUnitDbId) &&
+    return Objects.equals(this.observationUnitDbId, phenotypesRequestData.observationUnitDbId) &&
         Objects.equals(this.observations, phenotypesRequestData.observations) &&
         Objects.equals(this.studyDbId, phenotypesRequestData.studyDbId);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(observatioUnitDbId, observations, studyDbId);
+    return java.util.Objects.hash(observationUnitDbId, observations, studyDbId);
   }
 
   @Override
@@ -122,7 +122,7 @@ import java.util.List;
     StringBuilder sb = new StringBuilder();
     sb.append("class PhenotypesRequestData {\n");
     
-    sb.append("    observatioUnitDbId: ").append(toIndentedString(observatioUnitDbId)).append("\n");
+    sb.append("    observationUnitDbId: ").append(toIndentedString(observationUnitDbId)).append("\n");
     sb.append("    observations: ").append(toIndentedString(observations)).append("\n");
     sb.append("    studyDbId: ").append(toIndentedString(studyDbId)).append("\n");
     sb.append("}");

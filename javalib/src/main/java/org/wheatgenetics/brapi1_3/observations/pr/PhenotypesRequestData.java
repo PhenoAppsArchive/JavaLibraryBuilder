@@ -70,7 +70,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }
 
-    @java.lang.Override public java.lang.String getTitle() { return this.getObservatioUnitDbId(); }
+    @java.lang.Override public java.lang.String getTitle() { return this.getObservationUnitDbId(); }
     @java.lang.Override public java.lang.String getContent() { return this.toString           (); }
 
     @java.lang.Override public boolean canMoveUp()
