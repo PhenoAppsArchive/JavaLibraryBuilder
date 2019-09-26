@@ -341,9 +341,9 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     final java.util.List<io.swagger.client.model.ObservationUnitXref> observationUnitXrefs)
     {
         if (null == observationUnitXrefs)
-            this.setObservationUnitXrefsAsItems(null);
+            this.clearObservationUnitXrefsAsItems();
         else
-            if (null == this.observationUnitXrefsAsItems) this.setObservationUnitXrefsAsItems(
+            if (null == this.getObservationUnitXrefsAsItems()) this.setObservationUnitXrefsAsItems(
                 new org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs(
                     observationUnitXrefs));
             else
@@ -369,9 +369,9 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     final java.util.List<io.swagger.client.model.Observation> observations)
     {
         if (null == observations)
-            this.setObservationsAsItems(null);
+            this.clearObservationsAsItems();
         else
-            if (null == this.observationsAsItems) this.setObservationsAsItems(
+            if (null == this.getObservationsAsItems()) this.setObservationsAsItems(
                 new org.wheatgenetics.brapi1_3.studies.nour.o.Observations(
                     observations, this.operator, this.uploadedBy));
             else
@@ -393,11 +393,12 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     final java.util.List<io.swagger.client.model.ObservationTreatment> observationTreatments)
     {
         if (null == observationTreatments)
-            this.setObservationTreatmentsAsItems(null);
+            this.clearObservationTreatmentsAsItems();
         else
-            if (null == this.observationTreatmentsAsItems) this.setObservationTreatmentsAsItems(
-                new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments(
-                    observationTreatments));
+            if (null == this.getObservationTreatmentsAsItems())
+                this.setObservationTreatmentsAsItems(
+                    new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments(
+                        observationTreatments));
             else
                 throw new java.lang.UnsupportedOperationException(
                     "this.observationTreatmentsAsItems already initialized");
@@ -473,6 +474,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // endregion
 
     // region Public Methods
+    // region getAsItems() Public Methods
     @java.lang.SuppressWarnings({"WeakerAccess"})
     public org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs
     getObservationUnitXrefsAsItems() { return this.observationUnitXrefsAsItems; }
@@ -484,5 +486,82 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     @java.lang.SuppressWarnings({"WeakerAccess"})
     public org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments
     getObservationTreatmentsAsItems() { return this.observationTreatmentsAsItems; }
+    // endregion
+
+    // region clearAsItems() Public Methods
+    public void clearObservationUnitXrefsAsItems()
+    {
+        this.setObservationUnitXrefsAsItems(
+            (org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs) null);
+    }
+
+    public void clearObservationsAsItems()
+    { this.setObservationsAsItems((org.wheatgenetics.brapi1_3.studies.nour.o.Observations) null); }
+
+    public void clearObservationTreatmentsAsItems()
+    {
+        this.setObservationTreatmentsAsItems(
+            (org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments) null);
+    }
+    // endregion
+
+    // region setAsItems() Public Methods
+    @java.lang.SuppressWarnings({"unused"})
+    public void setObservationUnitXrefsAsItems(final java.lang.String json)
+    {
+        if (null == json)
+            this.clearObservationUnitXrefsAsItems();
+        else
+        {
+            final java.lang.String trimmedJson = json.trim();
+            if (trimmedJson.length() <= 0)
+                this.clearObservationUnitXrefsAsItems();
+            else
+            {
+                if (null == this.observationUnitXrefsAsItems) this.setObservationUnitXrefsAsItems(
+                    new org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs());
+                this.getObservationUnitXrefsAsItems().fromJson(trimmedJson);
+            }
+        }
+    }
+
+    @java.lang.SuppressWarnings({"unused"})
+    public void setObservationsAsItems(final java.lang.String json)
+    {
+        if (null == json)
+            this.clearObservationsAsItems();
+        else
+        {
+            final java.lang.String trimmedJson = json.trim();
+            if (trimmedJson.length() <= 0)
+                this.clearObservationsAsItems();
+            else
+            {
+                if (null == this.observationsAsItems) this.setObservationsAsItems(
+                    new org.wheatgenetics.brapi1_3.studies.nour.o.Observations());
+                this.getObservationsAsItems().fromJson(trimmedJson);
+            }
+        }
+    }
+
+    @java.lang.SuppressWarnings({"unused"})
+    public void setObservationTreatmentsAsItems(final java.lang.String json)
+    {
+        if (null == json)
+            this.clearObservationTreatmentsAsItems();
+        else
+        {
+            final java.lang.String trimmedJson = json.trim();
+            if (trimmedJson.length() <= 0)
+                this.clearObservationTreatmentsAsItems();
+            else
+            {
+                if (null == this.observationTreatmentsAsItems) this.setObservationTreatmentsAsItems(
+                    new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments());
+                this.getObservationTreatmentsAsItems().fromJson(trimmedJson);
+            }
+        }
+    }
+    // endregion
     // endregion
 }

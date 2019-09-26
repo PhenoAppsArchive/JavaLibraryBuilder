@@ -63,10 +63,17 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
 
     // region Constructors
     /**
-     * Called by second ObservationUnitXrefs(), third ObservationUnitXrefs(), and
-     * ObservationUnitXrefsTest.
+     * Called by
+     * 1) org.wheatgenetics.brapi1_3.studies.nour.oux:
+     *    a) ObservationUnitXrefItemActivity.items(),
+     *    b) ObservationUnitXrefListActivity.items(),
+     * 2) org.wheatgenetics.brapi1_3.studies.nour.newObservationUnitRequest
+     *    .setObservationUnitXrefsAsItems(),
+     * 3) second ObservationUnitXrefs(),
+     * 4) third ObservationUnitXrefs(), and
+     * 5) ObservationUnitXrefsTest.
      */
-    ObservationUnitXrefs() { super(); }
+    public ObservationUnitXrefs() { super(); }
 
     /**
      * Called by org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.assign(),

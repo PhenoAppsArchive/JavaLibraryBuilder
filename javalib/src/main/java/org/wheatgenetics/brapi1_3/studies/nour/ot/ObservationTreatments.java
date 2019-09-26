@@ -63,15 +63,23 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
 
     // region Constructors
     /**
-     * Called by second ObservationTreatments(), third ObservationTreatments(), and
-     * ObservationTreatmentsTest.
+     * Called by
+     * 1) org.wheatgenetics.brapi1_3.studies.nour.ot:
+     *    a) ObservationTreatmentItemActivity.items(),
+     *    b) ObservationTreatmentsListActivity.items(),
+     * 2) org.wheatgenetics.brapi1_3.studies.nour.newObservationUnitRequest
+     *    .setObservationTreatmentsAsItems(),
+     * 3) second ObservationTreatments(),
+     * 4) third  ObservationTreatments(), and
+     * 5) ObservationTreatmentsTest.
      */
-    ObservationTreatments() { super(); }
+    public ObservationTreatments() { super(); }
 
     /**
-     * Called by org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.assign(),
-     * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest(), and
-     * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.treatments().
+     * Called by
+     * 1) org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.assign(),
+     * 2) org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest(), and
+     * 3) org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.treatments().
      */
     public ObservationTreatments(
     final java.util.List<io.swagger.client.model.ObservationTreatment> observationTreatments)

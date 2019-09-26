@@ -54,11 +54,22 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
 
     // region Constructors
     /**
-     * Called by second Observations(), third Observations(), fourth Observations(), and
+     * Called by
+     * 1) org.wheatgenetics.brapi1_3.studies.nour.o:
+     *    a) ObservationItemActivity.items(),
+     *    b) ObservationsListActivity.items(),
+     * 2) org.wheatgenetics.brapi1_3.studies.nour.newObservationUnitRequest
+     *    .setObservationsAsItems(), and
+     * 3) second Observations().
+     */
+    public Observations() { super(); }
+
+    /**
+     * Called by third Observations(), fourth Observations(), fifth Observations(), and
      * ObservationsTest.
      */
     Observations(final java.lang.String operator, final java.lang.String uploadedBy)
-    { super(); this.operator = operator; this.uploadedBy = uploadedBy; }
+    { this(); this.operator = operator; this.uploadedBy = uploadedBy; }
 
     /**
      * Called by second org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.assign().
@@ -94,8 +105,9 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     }
 
     /**
-     * Called by fourth org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.assign()
-     * and org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.observations().
+     * Called by
+     * 1) fourth org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.assign() and
+     * 2) org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.observations().
      */
     public Observations(final java.util.List<io.swagger.client.model.Observation> observations,
     final java.lang.String operator, final java.lang.String uploadedBy)
