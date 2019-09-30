@@ -21,9 +21,8 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
 
     // region Constructors
     /**
-     * Called by second ObservationUnitXref(), third ObservationUnitXref(),
-     * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs.append(), and
-     * ObservationUnitXrefsTest.
+     * Called by org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs.append(), second
+     * ObservationUnitXref(), and ObservationUnitXrefsTest.
      */
     ObservationUnitXref(final
     org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref.Container container)
@@ -31,23 +30,24 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
 
     /**
      * Called by org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs.append(
-     * observationUnitXrefs).
+     * observationUnitXrefs) and third ObservationUnitXref().
      */
-    ObservationUnitXref(final
-    org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref.Container container,
-    final io.swagger.client.model.ObservationUnitXref observationUnitXref)
+    ObservationUnitXref(
+    final org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref.Container container,
+    final io.swagger.client.model.ObservationUnitXref                     observationUnitXref)
     {
         this(container);
         if (null != observationUnitXref)
             this.assign(observationUnitXref.getId(), observationUnitXref.getSource());
     }
 
-    /** Called by org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs(). */
+    /** Called by third org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs(). */
     ObservationUnitXref(
+    final org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref.Container container,
     final org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref observationUnitXref)
     {
-        this(observationUnitXref.container); this.setPosition(observationUnitXref.getPosition());
-        this.assign(observationUnitXref.getId(), observationUnitXref.getSource());
+        this(container, (io.swagger.client.model.ObservationUnitXref) observationUnitXref);
+        this.setPosition(observationUnitXref.getPosition());
     }
     // endregion
 

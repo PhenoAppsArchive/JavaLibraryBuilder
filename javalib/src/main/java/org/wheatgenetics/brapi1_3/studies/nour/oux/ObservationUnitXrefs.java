@@ -24,6 +24,17 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     // endregion
 
     // region Private Methods
+    private org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs append(
+    final java.util.List<io.swagger.client.model.ObservationUnitXref> observationUnitXrefs)
+    {
+        if (null != observationUnitXrefs) if (observationUnitXrefs.size() > 0)
+            for (final io.swagger.client.model.ObservationUnitXref observationUnitXref:
+            observationUnitXrefs) this.append(
+                new org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref(
+                    this, observationUnitXref));
+        return this;
+    }
+
     private java.util.List<io.swagger.client.model.ObservationUnitXref> list()
     {
         if (null == this.listInstance)
@@ -31,16 +42,6 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
             this.listInstance =
                 new java.util.ArrayList<io.swagger.client.model.ObservationUnitXref>();
         return this.listInstance;
-    }
-
-    private org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs append(
-    final java.util.List<io.swagger.client.model.ObservationUnitXref> observationUnitXrefs)
-    {
-        for (final io.swagger.client.model.ObservationUnitXref observationUnitXref:
-        observationUnitXrefs) this.append(
-            new org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref(
-                this, observationUnitXref));
-        return this;
     }
 
     private com.google.gson.Gson gson()
@@ -64,31 +65,32 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     // region Constructors
     /**
      * Called by
-     * 1) org.wheatgenetics.brapi1_3.studies.nour.oux:
+     * 1) androidlibrary org.wheatgenetics.brapi1_3.studies.nour.oux:
      *    a) ObservationUnitXrefItemActivity.items(),
      *    b) ObservationUnitXrefListActivity.items(),
      * 2) org.wheatgenetics.brapi1_3.studies.nour.newObservationUnitRequest
      *    .setObservationUnitXrefsAsItems(),
      * 3) second ObservationUnitXrefs(),
-     * 4) third ObservationUnitXrefs(), and
-     * 5) ObservationUnitXrefsTest.
+     * 4) third ObservationUnitXrefs(),
+     * 5) ObservationUnitXrefsTest, and
+     * 6) NewObservationUnitRequestTest.
      */
     public ObservationUnitXrefs() { super(); }
 
     /**
-     * Called by org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.assign(),
-     * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest(), and
-     * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.observationUnitXref().
+     * Called by
+     * 1) org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest:
+     *    a) second assign(),
+     *    b) third assign(), and
+     * 2) org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.observationUnitXref().
      */
     public ObservationUnitXrefs(
     final java.util.List<io.swagger.client.model.ObservationUnitXref> observationUnitXrefs)
-    {
-        this();
-        if (null != observationUnitXrefs)
-            if (observationUnitXrefs.size() > 0) this.append(observationUnitXrefs);
-    }
+    { this(); this.append(observationUnitXrefs); }
 
-    /** Called by org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.assign(). */
+    /**
+     * Called by third org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.assign().
+     */
     @java.lang.SuppressWarnings({"CopyConstructorMissesField"}) public ObservationUnitXrefs(
     final org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs observationUnitXrefs)
     {
@@ -96,7 +98,7 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
         if (null != observationUnitXrefs) if (observationUnitXrefs.size() > 0)
             for (final io.swagger.client.model.ObservationUnitXref observationUnitXref:
             observationUnitXrefs.listInstance) this.append(
-                new org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref(
+                new org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref(this,
                     (org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXref)
                         observationUnitXref));
     }

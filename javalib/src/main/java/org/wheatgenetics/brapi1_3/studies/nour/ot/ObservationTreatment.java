@@ -21,9 +21,8 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
 
     // region Constructors
     /**
-     * Called by second ObservationTreatment(), third ObservationTreatment(),
-     * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments.append(), and
-     * ObservationTreatmentsTest.
+     * Called by org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments.append(), second
+     * ObservationTreatment(), and ObservationTreatmentsTest.
      */
     ObservationTreatment(
     final org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment.Container container)
@@ -31,23 +30,23 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
 
     /**
      * Called by org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments.append(
-     * observationTreatments).
+     * observationTreatments) and third ObservationTreatment().
      */
     ObservationTreatment(
     final org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment.Container container,
     final io.swagger.client.model.ObservationTreatment                   observationTreatment)
     {
-        this(container);
-        if (null != observationTreatment)
-            this.assign(observationTreatment.getFactor(), observationTreatment.getModality());
+        this(container); if (null != observationTreatment) this.assign(
+            observationTreatment.getFactor(), observationTreatment.getModality());
     }
 
-    /** Called by org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments(). */
+    /** Called by third org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments(). */
     ObservationTreatment(
+    final org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment.Container  container,
     final org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment observationTreatment)
     {
-        this(observationTreatment.container); this.setPosition(observationTreatment.getPosition());
-        this.assign(observationTreatment.getFactor(), observationTreatment.getModality());
+        this(container, (io.swagger.client.model.ObservationTreatment) observationTreatment);
+        this.setPosition(observationTreatment.getPosition());
     }
     // endregion
 

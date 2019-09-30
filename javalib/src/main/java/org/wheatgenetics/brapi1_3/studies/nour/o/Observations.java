@@ -26,6 +26,16 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     // endregion
 
     // region Private Methods
+    private org.wheatgenetics.brapi1_3.studies.nour.o.Observations append(
+    final java.util.List<io.swagger.client.model.Observation> observations)
+    {
+        if (null != observations) if (observations.size() > 0)
+            for (final io.swagger.client.model.Observation observation: observations)
+                this.append(new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(
+                    this, observation, this.operator, this.uploadedBy));
+        return this;
+    }
+
     private java.util.List<io.swagger.client.model.Observation> list()
     {
         if (null == this.listInstance)
@@ -55,12 +65,13 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     // region Constructors
     /**
      * Called by
-     * 1) org.wheatgenetics.brapi1_3.studies.nour.o:
+     * 1) androidlibrary org.wheatgenetics.brapi1_3.studies.nour.o:
      *    a) ObservationItemActivity.items(),
      *    b) ObservationsListActivity.items(),
      * 2) org.wheatgenetics.brapi1_3.studies.nour.newObservationUnitRequest
      *    .setObservationsAsItems(), and
-     * 3) second Observations().
+     * 3) second Observations(), and
+     * 4) NewObservationUnitRequestTest.
      */
     public Observations() { super(); }
 
@@ -99,7 +110,7 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     {
         this(operator, uploadedBy); if (null != observations) if (observations.size() > 0)
             for (final io.swagger.client.model.Observation observation: observations.listInstance)
-                this.append(new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(
+                this.append(new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(this,
                     (org.wheatgenetics.brapi1_3.studies.nour.o.Observation) observation,
                     this.operator, this.uploadedBy                                     ));
     }
@@ -111,12 +122,7 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
      */
     public Observations(final java.util.List<io.swagger.client.model.Observation> observations,
     final java.lang.String operator, final java.lang.String uploadedBy)
-    {
-        this(operator, uploadedBy); if (null != observations) if (observations.size() > 0)
-            for (final io.swagger.client.model.Observation observation: observations)
-                this.append(new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(
-                    this, observation, this.operator, this.uploadedBy));
-    }
+    { this(operator, uploadedBy); this.append(observations); }
     // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
@@ -195,16 +201,7 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
                     if (observations.size() <= 0)
                         return this.clear();
                     else
-                    {
-                        this.clear();
-
-                        for (final io.swagger.client.model.Observation observation:
-                        observations.listInstance) this.append(
-                            new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(
-                                this, observation, this.operator, this.uploadedBy));
-
-                        return this;
-                    }
+                        { this.clear(); return this.append(observations.listInstance); }
                 }
             }
         }

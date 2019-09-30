@@ -24,6 +24,17 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     // endregion
 
     // region Private Methods
+    private org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments append(
+    final java.util.List<io.swagger.client.model.ObservationTreatment> observationTreatments)
+    {
+        if (null != observationTreatments) if (observationTreatments.size() > 0)
+            for (final io.swagger.client.model.ObservationTreatment observationTreatment:
+            observationTreatments) this.append(
+                new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment(
+                    this, observationTreatment));
+        return this;
+    }
+
     private java.util.List<io.swagger.client.model.ObservationTreatment> list()
     {
         if (null == this.listInstance)
@@ -31,16 +42,6 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
             this.listInstance =
                 new java.util.ArrayList<io.swagger.client.model.ObservationTreatment>();
         return this.listInstance;
-    }
-
-    private org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments append(
-    final java.util.List<io.swagger.client.model.ObservationTreatment> observationTreatments)
-    {
-        for (final io.swagger.client.model.ObservationTreatment observationTreatment:
-        observationTreatments) this.append(
-            new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment(
-                this, observationTreatment));
-        return this;
     }
 
     private com.google.gson.Gson gson()
@@ -64,32 +65,32 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     // region Constructors
     /**
      * Called by
-     * 1) org.wheatgenetics.brapi1_3.studies.nour.ot:
+     * 1) androidlibrary org.wheatgenetics.brapi1_3.studies.nour.ot:
      *    a) ObservationTreatmentItemActivity.items(),
      *    b) ObservationTreatmentsListActivity.items(),
      * 2) org.wheatgenetics.brapi1_3.studies.nour.newObservationUnitRequest
      *    .setObservationTreatmentsAsItems(),
      * 3) second ObservationTreatments(),
      * 4) third  ObservationTreatments(), and
-     * 5) ObservationTreatmentsTest.
+     * 5) ObservationTreatmentsTest, and
+     * 6) NewObservationUnitRequestTest.
      */
     public ObservationTreatments() { super(); }
 
     /**
      * Called by
-     * 1) org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.assign(),
-     * 2) org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest(), and
-     * 3) org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.treatments().
+     * 1) org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest:
+     *    a) second assign(),
+     *    b) fourth assign(), and
+     * 2) org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.treatments().
      */
     public ObservationTreatments(
     final java.util.List<io.swagger.client.model.ObservationTreatment> observationTreatments)
-    {
-        this();
-        if (null != observationTreatments)
-            if (observationTreatments.size() > 0) this.append(observationTreatments);
-    }
+    { this(); this.append(observationTreatments); }
 
-    /** Called by org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.assign(). */
+    /**
+     * Called by third org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.assign().
+     */
     @java.lang.SuppressWarnings({"CopyConstructorMissesField"}) public ObservationTreatments(
     final org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments observationTreatments)
     {
@@ -97,7 +98,7 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
         if (null != observationTreatments) if (observationTreatments.size() > 0)
             for (final io.swagger.client.model.ObservationTreatment observationTreatment:
             observationTreatments.listInstance) this.append(
-                new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment(
+                new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment(this,
                     (org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatment)
                         observationTreatment));
     }

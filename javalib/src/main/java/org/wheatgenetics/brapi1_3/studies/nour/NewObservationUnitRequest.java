@@ -136,7 +136,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
         return this;
     }
 
-    /** Called by third NewObservationUnitRequest(). */
+    /** Called by fourth NewObservationUnitRequest(). */
     private void assign(
     final java.lang.String blockNumber        , final java.lang.String entryNumber        ,
     final java.lang.String entryType          , final java.lang.String germplasmDbId      ,
@@ -175,7 +175,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
                 observationTreatments));
     }
 
-    /** Called by fourth NewObservationUnitRequest(). */
+    /** Called by fifth NewObservationUnitRequest(). */
     private void assign(
     final java.lang.String blockNumber        , final java.lang.String entryNumber        ,
     final java.lang.String entryType          , final java.lang.String germplasmDbId      ,
@@ -209,7 +209,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
                 observationTreatments));
     }
 
-    /** Called by fifth NewObservationUnitRequest(). */
+    /** Called by sixth NewObservationUnitRequest(). */
     private void assign(
     final java.lang.String blockNumber        , final java.lang.String entryNumber        ,
     final java.lang.String entryType          , final java.lang.String germplasmDbId      ,
@@ -246,13 +246,16 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // endregion
 
     // region Constructors
-    /** Called by second NewObservationUnitRequest() and third NewObservationUnitRequest(). */
+    /** Called by second NewObservationUnitRequest() and NewObservationUnitRequestsTest. */
+    NewObservationUnitRequest() { super(); }
+
+    /** Called by third NewObservationUnitRequest() and fourth NewObservationUnitRequest(). */
     private NewObservationUnitRequest(final
     org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest.Container container)
-    { super(); this.setContainer(container); }
+    { this(); this.setContainer(container); }
 
     /**
-     * Called by fourth NewObservationUnitRequest(), fifth NewObservationUnitRequest(),
+     * Called by fifth NewObservationUnitRequest(), sixth NewObservationUnitRequest(),
      * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests.append(), and
      * NewObservationUnitRequestsTest.
      */
@@ -279,7 +282,10 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             observationUnit.getTreatments         ()                                              );
     }
 
-    /** Called by third org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests(). */
+    /**
+     * Called by third org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests() and
+     * seventh NewObservationUnitRequest().
+     */
     NewObservationUnitRequest(final
     org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest newObservationUnitRequest,
     final java.lang.String operator, final java.lang.String uploadedBy)
@@ -331,6 +337,18 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             newObservationUnitRequest.getReplicate              (),
             newObservationUnitRequest.getStudyDbId              (),
             newObservationUnitRequest.getTreatments             ());
+    }
+
+    /**
+     * Called by androidlibrary
+     * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.show() and
+     * NewObservationUnitRequestTest.
+     */
+    NewObservationUnitRequest(final
+    org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest newObservationUnitRequest)
+    {
+        this(newObservationUnitRequest, newObservationUnitRequest.operator,
+            newObservationUnitRequest.uploadedBy);
     }
     // endregion
 

@@ -48,14 +48,14 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
 
     // region Constructors
     /**
-     * Called by second Observation(), third Observation(), fourth Observation(),
-     * org.wheatgenetics.brapi1_3.studies.nour.o.Observations.append(), and ObservationsTest.
+     * Called by org.wheatgenetics.brapi1_3.studies.nour.o.Observations.append(), second
+     * Observation(), third Observation(), and ObservationsTest.
      */
     Observation(final org.wheatgenetics.brapi1_3.studies.nour.o.Observation.Container container,
     final java.lang.String operator, final java.lang.String uploadedBy)
     { super(); this.setContainer(container); this.operator(operator).uploadedBy(uploadedBy); }
 
-    /** Called by second org.wheatgenetics.brapi1_3.studies.nour.o.Observations(). */
+    /** Called by third org.wheatgenetics.brapi1_3.studies.nour.o.Observations(). */
     Observation(final org.wheatgenetics.brapi1_3.studies.nour.o.Observation.Container container,
     final io.swagger.client.model.ObservationSummary observationSummary,
     final java.lang.String germplasmDbId      , final java.lang.String germplasmName      ,
@@ -72,36 +72,33 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             studyDbId                                      ,        observationSummary.getValue ());
     }
 
-    /** Called by third org.wheatgenetics.brapi1_3.studies.nour.o.Observations(). */
-    Observation(final org.wheatgenetics.brapi1_3.studies.nour.o.Observation observation,
-    final java.lang.String operator, final java.lang.String uploadedBy)
-    {
-        this(observation.container, operator, uploadedBy);
-        this.setPosition(observation.getPosition()); this.assign(
-            observation.getGermplasmDbId          (), observation.getGermplasmName          (),
-            observation.getObservationDbId        (), observation.getObservationLevel       (),
-            observation.getObservationTimeStamp   (), observation.getObservationUnitDbId    (),
-            observation.getObservationUnitName    (), observation.getObservationVariableDbId(),
-            observation.getObservationVariableName(), observation.getSeason                 (),
-            observation.getStudyDbId              (), observation.getValue                  ());
-
-    }
-
     /**
-     * Called by fourth org.wheatgenetics.brapi1_3.studies.nour.o.Observations() and
-     * org.wheatgenetics.brapi1_3.studies.nour.o.Observations.fromJson().
+     * Called by fourth org.wheatgenetics.brapi1_3.studies.nour.o.Observations.append(observations)
+     * and fourth Observation().
      */
     Observation(final org.wheatgenetics.brapi1_3.studies.nour.o.Observation.Container container,
     final io.swagger.client.model.Observation observation, final java.lang.String operator,
     final java.lang.String uploadedBy)
     {
         this(container, operator, uploadedBy); if (null != observation) this.assign(
-        observation.getGermplasmDbId          (), observation.getGermplasmName          (),
-        observation.getObservationDbId        (), observation.getObservationLevel       (),
-        observation.getObservationTimeStamp   (), observation.getObservationUnitDbId    (),
-        observation.getObservationUnitName    (), observation.getObservationVariableDbId(),
-        observation.getObservationVariableName(), observation.getSeason                 (),
-        observation.getStudyDbId              (), observation.getValue                  ());
+            observation.getGermplasmDbId          (), observation.getGermplasmName          (),
+            observation.getObservationDbId        (), observation.getObservationLevel       (),
+            observation.getObservationTimeStamp   (), observation.getObservationUnitDbId    (),
+            observation.getObservationUnitName    (), observation.getObservationVariableDbId(),
+            observation.getObservationVariableName(), observation.getSeason                 (),
+            observation.getStudyDbId              (), observation.getValue                  ());
+    }
+
+    /**
+     * Called by fourth org.wheatgenetics.brapi1_3.studies.nour.o.Observations() and fifth
+     * Observation().
+     */
+    Observation(final org.wheatgenetics.brapi1_3.studies.nour.o.Observation.Container container,
+    final org.wheatgenetics.brapi1_3.studies.nour.o.Observation observation,
+    final java.lang.String operator, final java.lang.String uploadedBy)
+    {
+        this(container, (io.swagger.client.model.Observation) observation, operator, uploadedBy);
+        this.setPosition(observation.getPosition());
     }
 
     /**
@@ -110,7 +107,10 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
      */
     @java.lang.SuppressWarnings({"unused"})
     Observation(final org.wheatgenetics.brapi1_3.studies.nour.o.Observation observation)
-    { this(observation, observation.getOperator(), observation.getUploadedBy()); }
+    {
+        this(observation.container, observation,
+            observation.getOperator(), observation.getUploadedBy());
+    }
     // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
