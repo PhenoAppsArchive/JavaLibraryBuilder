@@ -14,6 +14,7 @@ package org.wheatgenetics.brapi1_3.studies.nour;
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public class NewObservationUnitRequestTest extends java.lang.Object
 {
+    // region Private Methods
     private static <T> int size(final java.util.List<T> list)
     { return null == list ? 0 : list.size(); }
 
@@ -44,6 +45,7 @@ public class NewObservationUnitRequestTest extends java.lang.Object
             org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestTest.size(
                 destinationNewObservationUnitRequest.getTreatments()));
     }
+    // endregion
 
     @org.junit.Test() public void constructorWorks()
     {
@@ -80,10 +82,6 @@ public class NewObservationUnitRequestTest extends java.lang.Object
 
 
             observationUnitXrefs.append(); observations.append(); observationTreatments.append();
-
-            sourceNewObservationUnitRequest.setObservationUnitXrefsAsItems (observationUnitXrefs );
-            sourceNewObservationUnitRequest.setObservationsAsItems         (observations         );
-            sourceNewObservationUnitRequest.setObservationTreatmentsAsItems(observationTreatments);
         }
         destinationNewObservationUnitRequest =
             new org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest(

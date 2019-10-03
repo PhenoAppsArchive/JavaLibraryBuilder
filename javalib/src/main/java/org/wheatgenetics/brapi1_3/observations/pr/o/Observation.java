@@ -31,8 +31,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     final org.wheatgenetics.brapi1_3.observations.pr.o.Observation.Container container  ,
     final io.swagger.client.model.PhenotypesRequestObservation               observation)
     {
-        this(container);
-        if (null != observation) this
+        this(container); if (null != observation) this
             .collector              (observation.getCollector              ())
             .observationDbId        (observation.getObservationDbId        ())
             .observationTimeStamp   (observation.getObservationTimeStamp   ())

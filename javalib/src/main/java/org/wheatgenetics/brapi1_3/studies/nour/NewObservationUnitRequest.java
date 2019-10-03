@@ -361,7 +361,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
         if (null == observationUnitXrefs)
             this.clearObservationUnitXrefsAsItems();
         else
-            if (null == this.getObservationUnitXrefsAsItems()) this.setObservationUnitXrefsAsItems(
+            if (this.getObservationUnitXrefsAsItems() == null) this.setObservationUnitXrefsAsItems(
                 new org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs(
                     observationUnitXrefs));
             else
@@ -389,7 +389,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
         if (null == observations)
             this.clearObservationsAsItems();
         else
-            if (null == this.getObservationsAsItems()) this.setObservationsAsItems(
+            if (this.getObservationsAsItems() == null) this.setObservationsAsItems(
                 new org.wheatgenetics.brapi1_3.studies.nour.o.Observations(
                     observations, this.operator, this.uploadedBy));
             else
@@ -413,7 +413,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
         if (null == observationTreatments)
             this.clearObservationTreatmentsAsItems();
         else
-            if (null == this.getObservationTreatmentsAsItems())
+            if (this.getObservationTreatmentsAsItems() == null)
                 this.setObservationTreatmentsAsItems(
                     new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments(
                         observationTreatments));

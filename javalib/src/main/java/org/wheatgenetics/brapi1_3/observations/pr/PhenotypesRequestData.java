@@ -22,40 +22,44 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
         observationsAsItems = null;                                                     // lazy load
     // endregion
 
-    // region Private Methods
-    private void setObservationsAsItems(
-    final org.wheatgenetics.brapi1_3.observations.pr.o.Observations observationsAsItems)
-    { this.observationsAsItems = observationsAsItems; super.observations(this.getObservations()); }
-
-    private boolean setObservationsAsItemsIfNull(
-    final org.wheatgenetics.brapi1_3.observations.pr.o.Observations observationsAsItems)
-    {
-        final boolean observationsAsItemsWasNull = null == this.observationsAsItems;
-        if (observationsAsItemsWasNull) this.setObservationsAsItems(observationsAsItems);
-        return !observationsAsItemsWasNull;
-    }
-    // endregion
-
     // region Constructors
+    /** Called by second PhenotypesRequestData() and PhenotypesRequestTest. */
+    PhenotypesRequestData() { super(); }
+
     /**
-     * Called by second PhenotypesRequestData(),
+     * Called by third PhenotypesRequestData(), fourth PhenotypesRequestData(),
      * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest.append(), and
      * PhenotypesRequestTest.
      */
     PhenotypesRequestData(
     final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.Container container)
-    { super(); this.setContainer(container); }
+    { this(); this.setContainer(container); }
 
     /** Called by org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest.fromJson(). */
     PhenotypesRequestData(
     final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.Container container,
     final io.swagger.client.model.PhenotypesRequestData                  phenotypesRequestData)
     {
-        this(container);
-        if (null != phenotypesRequestData) this
+        this(container); if (null != phenotypesRequestData) this
             .observatioUnitDbId(phenotypesRequestData.getObservatioUnitDbId())
             .observations      (phenotypesRequestData.getObservations      ())
             .studyDbId         (phenotypesRequestData.getStudyDbId         ());
+    }
+
+    /**
+     * Called by androidlibrary
+     * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataAlertDialog.show() and
+     * PhenotypesRequestTest.
+     */
+    PhenotypesRequestData(
+    final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData phenotypesRequestData)
+    {
+        this(phenotypesRequestData.container);
+        this.setPosition(phenotypesRequestData.getPosition()); this
+            .observatioUnitDbId(phenotypesRequestData.getObservatioUnitDbId())
+            .studyDbId         (phenotypesRequestData.getStudyDbId         ());
+        this.setObservationsAsItems(new org.wheatgenetics.brapi1_3.observations.pr.o.Observations(
+            phenotypesRequestData.getObservationsAsItems()));
     }
     // endregion
 
@@ -64,10 +68,11 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     final java.util.List<io.swagger.client.model.PhenotypesRequestObservation> observations)
     {
         if (null == observations)
-            this.setObservationsAsItems(null);
+            this.clearObservationsAsItems();
         else
-            if (this.setObservationsAsItemsIfNull(
-            new org.wheatgenetics.brapi1_3.observations.pr.o.Observations(observations)))
+            if (this.getObservationsAsItems() == null) this.setObservationsAsItems(
+                new org.wheatgenetics.brapi1_3.observations.pr.o.Observations(observations));
+            else
                 throw new java.lang.UnsupportedOperationException(
                     "this.observationsAsItems already initialized");
         return this;
@@ -111,15 +116,41 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // endregion
     // endregion
 
+    // region Package Methods
     boolean containersAreTheSame(
     final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.Container container)
     { return container == this.container; }
 
-    @java.lang.SuppressWarnings({"unused"})
-    public org.wheatgenetics.brapi1_3.observations.pr.o.Observations getObservationsAsItems()
+    @java.lang.SuppressWarnings({"WeakerAccess"})
+    org.wheatgenetics.brapi1_3.observations.pr.o.Observations getObservationsAsItems()
+    { return this.observationsAsItems; }
+
+    void setObservationsAsItems(
+    final org.wheatgenetics.brapi1_3.observations.pr.o.Observations observationsAsItems)
+    { this.observationsAsItems = observationsAsItems; super.observations(this.getObservations()); }
+
+    @java.lang.SuppressWarnings({"WeakerAccess"}) void clearObservationsAsItems()
     {
-        this.setObservationsAsItemsIfNull(
-            new org.wheatgenetics.brapi1_3.observations.pr.o.Observations());
-        return this.observationsAsItems;
+        this.setObservationsAsItems(
+            (org.wheatgenetics.brapi1_3.observations.pr.o.Observations) null);
     }
+
+    @java.lang.SuppressWarnings({"unused"}) void setObservationsAsItems(final java.lang.String json)
+    {
+        if (null == json)
+            this.clearObservationsAsItems();
+        else
+        {
+            final java.lang.String trimmedJson = json.trim();
+            if (trimmedJson.length() <= 0)
+                this.clearObservationsAsItems();
+            else
+            {
+                if (null == this.observationsAsItems) this.setObservationsAsItems(
+                    new org.wheatgenetics.brapi1_3.observations.pr.o.Observations());
+                this.getObservationsAsItems().fromJson(trimmedJson);
+            }
+        }
+    }
+    // endregion
 }

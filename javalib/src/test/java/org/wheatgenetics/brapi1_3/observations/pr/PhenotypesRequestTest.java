@@ -5,6 +5,7 @@ package org.wheatgenetics.brapi1_3.observations.pr;
  * org.junit.Assert
  * org.junit.Test
  *
+ * org.wheatgenetics.brapi1_3.observations.pr.o.Observations
  * org.wheatgenetics.brapi1_3.observations.pr.o.ObservationsTest
  *
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest
@@ -13,6 +14,26 @@ package org.wheatgenetics.brapi1_3.observations.pr;
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public class PhenotypesRequestTest extends java.lang.Object
 {
+    // region Private Methods
+    private static <T> int size(final java.util.List<T> list)
+    { return null == list ? 0 : list.size(); }
+
+    private static void assertEquals(final int expected,
+    final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData
+        sourcePhenotypesRequestData,
+    final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData
+        destinationPhenotypesRequestData)
+    {
+        org.junit.Assert.assertEquals(expected,
+            org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestTest.size(
+                sourcePhenotypesRequestData.getObservations()));
+        org.junit.Assert.assertEquals(expected,
+            org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestTest.size(
+                destinationPhenotypesRequestData.getObservations()));
+    }
+    // endregion
+
+    // region Tests
     @org.junit.Test() public void toJsonWorks()
     {
         final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest phenotypesRequest =
@@ -124,4 +145,36 @@ public class PhenotypesRequestTest extends java.lang.Object
             "}";
         org.junit.Assert.assertEquals(json, phenotypesRequest.fromJson(json).toJson());
     }
+
+    @org.junit.Test() public void constructorWorks()
+    {
+        final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData
+            sourcePhenotypesRequestData =
+                new org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData();
+        org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData
+            destinationPhenotypesRequestData =
+                new org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData(
+                    sourcePhenotypesRequestData);
+        org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestTest.assertEquals(
+            0, sourcePhenotypesRequestData, destinationPhenotypesRequestData);
+
+        {
+            final org.wheatgenetics.brapi1_3.observations.pr.o.Observations observations =
+                new org.wheatgenetics.brapi1_3.observations.pr.o.Observations();
+            sourcePhenotypesRequestData.setObservationsAsItems(observations);
+            destinationPhenotypesRequestData =
+                new org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData(
+                    sourcePhenotypesRequestData);
+            org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestTest.assertEquals(
+                0, sourcePhenotypesRequestData, destinationPhenotypesRequestData);
+
+            observations.append();
+        }
+        destinationPhenotypesRequestData =
+            new org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData(
+                sourcePhenotypesRequestData);
+        org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestTest.assertEquals(
+            1, sourcePhenotypesRequestData, destinationPhenotypesRequestData);
+    }
+    // endregion
 }

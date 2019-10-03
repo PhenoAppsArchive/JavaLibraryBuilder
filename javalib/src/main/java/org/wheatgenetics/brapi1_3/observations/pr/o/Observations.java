@@ -25,6 +25,17 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     // endregion
 
     // region Private Methods
+    private org.wheatgenetics.brapi1_3.observations.pr.o.Observations append(final
+    java.util.List<io.swagger.client.model.PhenotypesRequestObservation> observations)
+    {
+        if (null != observations) if (observations.size() > 0)
+            for (final io.swagger.client.model.PhenotypesRequestObservation
+            phenotypesRequestObservation: observations) this.append(
+                new org.wheatgenetics.brapi1_3.observations.pr.o.Observation(
+                    this, phenotypesRequestObservation));
+        return this;
+    }
+
     private java.util.List<io.swagger.client.model.PhenotypesRequestObservation> list()
     {
         if (null == this.listInstance)
@@ -32,16 +43,6 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
             this.listInstance =
                 new java.util.ArrayList<io.swagger.client.model.PhenotypesRequestObservation>();
         return this.listInstance;
-    }
-
-    private org.wheatgenetics.brapi1_3.observations.pr.o.Observations append(final
-    java.util.List<io.swagger.client.model.PhenotypesRequestObservation> observations)
-    {
-        for (final io.swagger.client.model.PhenotypesRequestObservation
-        phenotypesRequestObservation: observations) this.append(
-            new org.wheatgenetics.brapi1_3.observations.pr.o.Observation(
-                this, phenotypesRequestObservation));
-        return this;
     }
 
     private com.google.gson.Gson gson()
@@ -63,22 +64,23 @@ extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
     // endregion
 
     // region Constructors
-    /** Called by second Observations(),
-     * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.getObservationsAsItems(),
-     * and ObservationsTest.
+    /**
+     * Called by second Observations(), org.wheatgenetics.brapi1_3.observations.pr
+     * .PhenotypesRequestData.setObservationsAsItems(json), and ObservationsTest.
      */
     public Observations() { super(); }
 
     /**
-     * Called by org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.observations().
+     * Called by third Observations() and
+     * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData.observations().
      */
     public Observations(final java.util.List<io.swagger.client.model.PhenotypesRequestObservation>
-    phenotypesRequestObservations)
-    {
-        this();
-        if (null != phenotypesRequestObservations) if (phenotypesRequestObservations.size() > 0)
-            this.append(phenotypesRequestObservations);
-    }
+    phenotypesRequestObservations) { this(); this.append(phenotypesRequestObservations); }
+
+    /** Called by third org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData(). */
+    @java.lang.SuppressWarnings({"CopyConstructorMissesField"}) public Observations(
+    final org.wheatgenetics.brapi1_3.observations.pr.o.Observations observations)
+    { this(null == observations ? null : observations.listInstance); }
     // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
