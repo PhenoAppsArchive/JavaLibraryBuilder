@@ -12,7 +12,6 @@ public class Utils extends java.lang.Object
     { return position > org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION; }
 
     // region Public Methods
-    @java.lang.SuppressWarnings({"WeakerAccess"})
     public static int nonNegativePosition(final int position)
     {
         if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
@@ -22,25 +21,23 @@ public class Utils extends java.lang.Object
             return position;
     }
 
-    @java.lang.SuppressWarnings({"WeakerAccess"}) public static boolean canMoveUp(
+    public static boolean canMoveUp(
     final org.wheatgenetics.javalib.mstrdtl.Item.Container container, final int position)
     { return null != container && org.wheatgenetics.javalib.mstrdtl.Utils.canMoveUp(position); }
 
-    @java.lang.SuppressWarnings({"WeakerAccess"}) public static boolean canMoveDown(
+    public static boolean canMoveDown(
     final org.wheatgenetics.javalib.mstrdtl.Item.Container container, final int position)
     {
         // noinspection SimplifiableConditionalExpression
         return null == container ? false : container.canMoveDown(position);
     }
 
-    @java.lang.SuppressWarnings({"WeakerAccess"})
     public static boolean canMoveUp(final int position, final int size)
     {
         // noinspection SimplifiableConditionalExpression
         return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveUp(position) ? size > 0 : false;
     }
 
-    @java.lang.SuppressWarnings({"WeakerAccess"})
     public static boolean canMoveDown(final int position, final int size)
     {
         if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
