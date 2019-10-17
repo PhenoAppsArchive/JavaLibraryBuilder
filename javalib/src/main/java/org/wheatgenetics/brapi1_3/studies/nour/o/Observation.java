@@ -10,6 +10,8 @@ package org.wheatgenetics.brapi1_3.studies.nour.o;               // nour: NewObs
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Utils
+ *
+ * org.wheatgenetics.brapi1_3.Utils
  */
 class Observation extends io.swagger.client.model.Observation
 implements org.wheatgenetics.javalib.mstrdtl.Item
@@ -32,18 +34,18 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
             new io.swagger.client.model.Season().season(season.getSeason())
                 .seasonDbId(season.getSeasonDbId()).year(season.getYear());
         this
-            .germplasmDbId          (germplasmDbId          )
-            .germplasmName          (germplasmName          )
-            .observationDbId        (observationDbId        )
-            .observationLevel       (observationLevel       )
-            .observationTimeStamp   (observationTimeStamp   )
-            .observationUnitDbId    (observationUnitDbId    )
-            .observationUnitName    (observationUnitName    )
-            .observationVariableDbId(observationVariableDbId)
-            .observationVariableName(observationVariableName)
-            .season                 (copyOfSeason           )
-            .studyDbId              (studyDbId              )
-            .value                  (value                  );
+            .germplasmDbId          (germplasmDbId                                                )
+            .germplasmName          (germplasmName                                                )
+            .observationDbId        (observationDbId                                              )
+            .observationLevel       (observationLevel                                             )
+            .observationTimeStamp   (org.wheatgenetics.brapi1_3.Utils.adjust(observationTimeStamp))
+            .observationUnitDbId    (observationUnitDbId                                          )
+            .observationUnitName    (observationUnitName                                          )
+            .observationVariableDbId(observationVariableDbId                                      )
+            .observationVariableName(observationVariableName                                      )
+            .season                 (copyOfSeason                                                 )
+            .studyDbId              (studyDbId                                                    )
+            .value                  (value                                                        );
     }
 
     // region Constructors

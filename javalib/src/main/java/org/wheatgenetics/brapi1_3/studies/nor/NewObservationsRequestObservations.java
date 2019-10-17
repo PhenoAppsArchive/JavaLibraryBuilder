@@ -9,6 +9,8 @@ package org.wheatgenetics.brapi1_3.studies.nor;                       // nor: Ne
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Utils
+ *
+ * org.wheatgenetics.brapi1_3.Utils
  */
 class NewObservationsRequestObservations
 extends io.swagger.client.model.NewObservationsRequestObservations
@@ -29,12 +31,12 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     final java.lang.String               observationVariableDbId,
     final java.lang.String               value                  )
     {
-        this.collector              (collector              )
-            .observationDbId        (observationDbId        )
-            .observationTimeStamp   (observationTimeStamp   )
-            .observationUnitDbId    (observationUnitDbId    )
-            .observationVariableDbId(observationVariableDbId)
-            .value                  (value                  );
+        this.collector              (collector                                                    )
+            .observationDbId        (observationDbId                                              )
+            .observationTimeStamp   (org.wheatgenetics.brapi1_3.Utils.adjust(observationTimeStamp))
+            .observationUnitDbId    (observationUnitDbId                                          )
+            .observationVariableDbId(observationVariableDbId                                      )
+            .value                  (value                                                        );
     }
 
     // region Constructors
@@ -53,8 +55,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservations.Container container,
     final io.swagger.client.model.Observation observation)
     {
-        this(container);
-        if (null != observation) this.assign(
+        this(container); if (null != observation) this.assign(
             observation.getOperator               (),
             observation.getObservationDbId        (),
             observation.getObservationTimeStamp   (),
@@ -69,8 +70,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     final io.swagger.client.model.NewObservationsRequestObservations
         newObservationsRequestObservations)
     {
-        this(container);
-        if (null != newObservationsRequestObservations) this.assign(
+        this(container); if (null != newObservationsRequestObservations) this.assign(
             newObservationsRequestObservations.getCollector              (),
             newObservationsRequestObservations.getObservationDbId        (),
             newObservationsRequestObservations.getObservationTimeStamp   (),
