@@ -1,6 +1,7 @@
 *.iml
 .gradle
 /local.properties
+/.idea/caches
 /.idea/libraries
 /.idea/modules.xml
 /.idea/workspace.xml
@@ -8,5 +9,5 @@
 /build
 /captures
 .externalNativeBuild
-/javalib/build/classes
-/javalib/build/tmp
+/javalib/build/
+!/javalib/build/lib/javalib.jar
