@@ -3,8 +3,8 @@ apply plugin: 'java-library'
 ext { gson_version = "2.8.6" }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'junit:junit:4.12'
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api 'junit:junit:4.12'
 
-    implementation "com.google.code.gson:gson:${gson_version}"
+    api "com.google.code.gson:gson:${gson_version}"
 }
