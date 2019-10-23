@@ -8,5 +8,5 @@
 /build
 /captures
 .externalNativeBuild
-/javalib/build/classes
-/javalib/build/tmp
+/javalib/build/
+!/javalib/build/lib/javalib.jar
