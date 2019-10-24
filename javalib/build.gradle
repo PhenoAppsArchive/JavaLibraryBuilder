@@ -10,14 +10,14 @@ ext {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'junit:junit:4.12'
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api 'junit:junit:4.12'
 
-    implementation "com.squareup.okhttp:okhttp:${okhttp_version}"
-    implementation "com.squareup.okhttp:logging-interceptor:${okhttp_version}"
-    implementation "org.threeten:threetenbp:${threetenbp_version}"
-    implementation "com.google.code.gson:gson:${gson_version}"
-    implementation "io.gsonfire:gson-fire:${gsonfire_version}"
-    implementation "javax.annotation:javax.annotation-api:${javax_annotation_version}"
-    implementation "io.swagger.core.v3:swagger-annotations:${swagger_annotations_version}"
+    api "com.squareup.okhttp:okhttp:${okhttp_version}"
+    api "com.squareup.okhttp:logging-interceptor:${okhttp_version}"
+    api "org.threeten:threetenbp:${threetenbp_version}"
+    api "com.google.code.gson:gson:${gson_version}"
+    api "io.gsonfire:gson-fire:${gsonfire_version}"
+    api "javax.annotation:javax.annotation-api:${javax_annotation_version}"
+    api "io.swagger.core.v3:swagger-annotations:${swagger_annotations_version}"
 }
