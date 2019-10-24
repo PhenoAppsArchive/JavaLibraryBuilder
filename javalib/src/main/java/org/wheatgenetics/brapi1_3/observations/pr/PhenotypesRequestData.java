@@ -41,9 +41,9 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     final io.swagger.client.model.PhenotypesRequestData                  phenotypesRequestData)
     {
         this(container); if (null != phenotypesRequestData) this
-            .observatioUnitDbId(phenotypesRequestData.getObservatioUnitDbId())
-            .observations      (phenotypesRequestData.getObservations      ())
-            .studyDbId         (phenotypesRequestData.getStudyDbId         ());
+            .observationUnitDbId(phenotypesRequestData.getObservationUnitDbId())
+            .observations       (phenotypesRequestData.getObservations       ())
+            .studyDbId          (phenotypesRequestData.getStudyDbId          ());
     }
 
     /**
@@ -56,8 +56,8 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     {
         this(phenotypesRequestData.container);
         this.setPosition(phenotypesRequestData.getPosition()); this
-            .observatioUnitDbId(phenotypesRequestData.getObservatioUnitDbId())
-            .studyDbId         (phenotypesRequestData.getStudyDbId         ());
+            .observationUnitDbId(phenotypesRequestData.getObservationUnitDbId())
+            .studyDbId          (phenotypesRequestData.getStudyDbId          ());
         this.setObservationsAsItems(new org.wheatgenetics.brapi1_3.observations.pr.o.Observations(
             phenotypesRequestData.getObservationsAsItems()));
     }
@@ -99,8 +99,8 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }
 
-    @java.lang.Override public java.lang.String getTitle() { return this.getObservatioUnitDbId(); }
-    @java.lang.Override public java.lang.String getContent() { return this.toString           (); }
+    @java.lang.Override public java.lang.String getTitle() { return this.getObservationUnitDbId(); }
+    @java.lang.Override public java.lang.String getContent() { return this.toString            (); }
 
     @java.lang.Override public boolean canMoveUp()
     {
