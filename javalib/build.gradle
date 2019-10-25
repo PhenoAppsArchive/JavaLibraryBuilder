@@ -1,5 +1,6 @@
 // USAGE:
-// Run the command 'gradle :javalib:bintrayUpload'
+// Run the command 'export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home"'
+// Run the command './gradlew :javalib:bintrayUpload'
 
 apply plugin: 'java-library'
 apply plugin: "maven-publish"
