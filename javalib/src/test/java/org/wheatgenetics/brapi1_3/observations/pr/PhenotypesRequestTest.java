@@ -44,7 +44,7 @@ public class PhenotypesRequestTest extends java.lang.Object
                 phenotypesRequestData =
                     new org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData(
                         phenotypesRequest);
-            phenotypesRequestData.observatioUnitDbId("56").observations(
+            phenotypesRequestData.observationUnitDbId("56").observations(
                 org.wheatgenetics.brapi1_3.observations.pr.o.ObservationsTest.makeObservations()
                     .getList()).studyDbId("789");
             phenotypesRequest.append(phenotypesRequestData);
