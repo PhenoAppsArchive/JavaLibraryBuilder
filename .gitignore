@@ -12,3 +12,5 @@
 /captures
 .externalNativeBuild
 .cxx
+/javalib/build/
+!/javalib/build/lib/javalib.jar
