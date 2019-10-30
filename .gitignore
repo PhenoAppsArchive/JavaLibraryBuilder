@@ -13,5 +13,4 @@
 .externalNativeBuild
 .cxx
 /javalib/build/
-!/javalib/build/lib/javalib.jar
 secrets.properties
