@@ -29,6 +29,7 @@ dependencies {
     api "io.gsonfire:gson-fire:${gsonfire_version}"
     api "javax.annotation:javax.annotation-api:${javax_annotation_version}"
     api "io.swagger.core.v3:swagger-annotations:${swagger_annotations_version}"
+    implementation 'junit:junit:4.12'
 }
 
 sourceCompatibility = "7"
