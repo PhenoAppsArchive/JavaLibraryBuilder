@@ -88,7 +88,8 @@ bintray {
     }
 }
 
-def getSecret(key) {
+static def getSecret(key) {
+    // noinspection GrUnnecessaryDefModifier
     def Properties props = new Properties()
     props.load(new FileInputStream(new File('secrets.properties')))
     return props[key]

@@ -12,6 +12,7 @@ public class Utils extends java.lang.Object
     final org.threeten.bp.OffsetDateTime offsetDateTime)
     {
         if (null == offsetDateTime)
+            // noinspection ConstantConditions
             return offsetDateTime;
         else
             if (offsetDateTime.getOffset().getId() == null)

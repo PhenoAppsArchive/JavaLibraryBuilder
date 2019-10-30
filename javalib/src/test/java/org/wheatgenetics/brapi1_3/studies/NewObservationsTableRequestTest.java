@@ -144,7 +144,6 @@ public class NewObservationsTableRequestTest extends java.lang.Object
 
     @org.junit.Test() public void emptyGetHeaderRowAsCSV()
     {
-        // noinspection Convert2Diamond
         this.newObservationsTableRequest.setHeaderRow(new java.util.ArrayList<java.lang.String>());
 
         org.junit.Assert.assertNull(this.newObservationsTableRequest.getHeaderRowAsCSV());

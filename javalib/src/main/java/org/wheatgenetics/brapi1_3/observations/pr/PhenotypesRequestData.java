@@ -96,19 +96,23 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     @java.lang.Override public void setPosition(final int position)
     { this.position = org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position); }
 
-    @java.lang.Override public java.lang.String getPositionAsString()
+    @java.lang.SuppressWarnings({"unused"}) @java.lang.Override
+    public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }
 
-    @java.lang.Override public java.lang.String getTitle() { return this.getObservationUnitDbId(); }
-    @java.lang.Override public java.lang.String getContent() { return this.toString            (); }
+    @java.lang.SuppressWarnings({"unused"}) @java.lang.Override public java.lang.String getTitle()
+    { return this.getObservationUnitDbId(); }
 
-    @java.lang.Override public boolean canMoveUp()
+    @java.lang.SuppressWarnings({"unused"}) @java.lang.Override public java.lang.String getContent()
+    { return this.toString(); }
+
+    @java.lang.SuppressWarnings({"unused"}) @java.lang.Override public boolean canMoveUp()
     {
         return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveUp(
             this.container, this.getPosition());
     }
 
-    @java.lang.Override public boolean canMoveDown()
+    @java.lang.SuppressWarnings({"unused"}) @java.lang.Override public boolean canMoveDown()
     {
         return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(
             this.container, this.getPosition());

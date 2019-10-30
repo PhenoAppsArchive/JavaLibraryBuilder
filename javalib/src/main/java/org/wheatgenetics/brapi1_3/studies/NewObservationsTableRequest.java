@@ -75,11 +75,7 @@ public class NewObservationsTableRequest extends io.swagger.client.model.NewObse
 
     private static java.util.List<java.util.List<java.lang.String>> list(
     final java.util.List<java.util.List<java.lang.String>> list)
-    {
-        // noinspection Convert2Diamond
-        return null == list ?
-            new java.util.ArrayList<java.util.List<java.lang.String>>() : list;
-    }
+    { return null == list ? new java.util.ArrayList<java.util.List<java.lang.String>>() : list; }
 
     private static java.util.List<java.util.List<java.lang.String>> toListList(
     final java.lang.String multiLineString, final java.lang.Character delimiter)
