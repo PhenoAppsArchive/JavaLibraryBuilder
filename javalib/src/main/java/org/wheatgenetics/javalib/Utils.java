@@ -97,6 +97,8 @@ public class Utils extends java.lang.Object
     }
 
     // region get() Methods
+    /*@java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"}) public static
+    org.wheatgenetics.javalib.Utils.Response get(final java.net.URL url) throws java.io.IOException*/
     private static java.net.HttpURLConnection makeHttpURLConnection(final java.net.URL url)
     throws java.io.IOException
     {

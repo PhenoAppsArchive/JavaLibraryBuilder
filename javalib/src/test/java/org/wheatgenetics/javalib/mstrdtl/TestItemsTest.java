@@ -104,11 +104,11 @@ public class TestItemsTest extends java.lang.Object
         }
         org.junit.Assert.assertEquals(
             /* expected => */"[\n" +
-                "  {\n" +
-                "    \"position\": 0,\n" +
-                "    \"title\": \"Item 1\",\n" +
+                "  {\n"                                                              +
+                "    \"position\": 0,\n"                                             +
+                "    \"title\": \"Item 1\",\n"                                       +
                 "    \"content\": \"Content of Item 1:\\nMore information here.\"\n" +
-                "  }\n" +
+                "  }\n"                                                              +
                 "]",
             /* actual => */ testItems.toJson());
     }
@@ -118,12 +118,12 @@ public class TestItemsTest extends java.lang.Object
         final org.wheatgenetics.javalib.mstrdtl.Items items =
             new org.wheatgenetics.javalib.mstrdtl.TestItems();
         {
-            final java.lang.String json = "[\n" +
-                "  {\n" +
-                "    \"position\": 0,\n" +
-                "    \"title\": \"Item 1\",\n" +
+            final java.lang.String json = "[\n"                                      +
+                "  {\n"                                                              +
+                "    \"position\": 0,\n"                                             +
+                "    \"title\": \"Item 1\",\n"                                       +
                 "    \"content\": \"Content of Item 1:\\nMore information here.\"\n" +
-                "  }\n" +
+                "  }\n"                                                              +
                 "]";
             items.fromJson(json);
             org.junit.Assert.assertEquals(json, items.toJson());

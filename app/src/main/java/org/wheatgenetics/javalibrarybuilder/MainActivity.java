@@ -6,13 +6,13 @@ package org.wheatgenetics.javalibrarybuilder;
  * android.content.Intent
  * android.os.Bundle
  * android.os.Environment
- * android.support.annotation.IdRes
- * android.support.annotation.IntRange
- * android.support.annotation.NonNull
- * android.support.v7.app.AppCompatActivity
  * android.view.View
  * android.widget.Button
  * android.widget.TextView
+ * androidx.annotation.IdRes
+ * androidx.annotation.IntRange
+ * androidx.annotation.NonNull
+ * androidx.appcompat.app.AppCompatActivity
  *
  * org.wheatgenetics.javalib.Dir
  * org.wheatgenetics.javalib.Dir.PermissionException
@@ -23,8 +23,7 @@ package org.wheatgenetics.javalibrarybuilder;
  * org.wheatgenetics.javalibrarybuilder.R
  * org.wheatgenetics.javalibrarybuilder.WebViewActivity
  */
-@java.lang.SuppressWarnings({"unused"})
-public class MainActivity extends android.support.v7.app.AppCompatActivity
+public class MainActivity extends androidx.appcompat.app.AppCompatActivity
 {
     // region Constants
     private static final java.lang.String BLANK_HIDDEN_FILE = ".javalibrarybuilder",
@@ -36,8 +35,8 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
     private static class Dir extends org.wheatgenetics.javalib.Dir
     {
         private Dir(final java.io.File path,
-        @android.support.annotation.NonNull final android.app.Activity activity,
-        @android.support.annotation.IdRes   final int                  id      )
+        @androidx.annotation.NonNull final android.app.Activity activity,
+        @androidx.annotation.IdRes   final int                  id      )
         {
             super(path, org.wheatgenetics.javalibrarybuilder.MainActivity.BLANK_HIDDEN_FILE);
 
@@ -57,13 +56,13 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
     private org.wheatgenetics.javalibrarybuilder.MainActivity.Dir
         internalDir = null, externalPrivateDir = null, externalPublicDir = null;
     private org.wheatgenetics.javalibrarybuilder.MainActivity.PermissionDir
-        internalPermissionDir = null, externalPrivatePermissionDir = null,
+        internalPermissionDir       = null, externalPrivatePermissionDir = null,
         externalPublicPermissionDir = null;
 
     private android.widget.Button   button            = null;
     private android.widget.TextView multiLineTextView = null;
 
-    @android.support.annotation.IntRange(
+    @androidx.annotation.IntRange(
     from = org.wheatgenetics.javalibrarybuilder.MainActivity.MIN_BUTTON_STATE,
     to   = org.wheatgenetics.javalibrarybuilder.MainActivity.MAX_BUTTON_STATE)
     private int buttonState = org.wheatgenetics.javalibrarybuilder.MainActivity.MIN_BUTTON_STATE;
@@ -73,7 +72,7 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
 
     // region Private Methods
     private void setMultiLineTextViewText(final java.lang.CharSequence text)
-    { assert null != this.multiLineTextView; this.multiLineTextView.setText(text); }
+    { if (null != this.multiLineTextView) this.multiLineTextView.setText(text); }
 
     private void setMultiLineTextViewText(
     @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) final java.lang.String lines[])
@@ -119,21 +118,20 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
     }
 
     private android.content.Intent intent(
-    final java.lang.String content, final java.lang.String encoding)
+    @androidx.annotation.NonNull final org.wheatgenetics.javalib.Utils.Response response)
     {
         if (null == this.intentInstance) this.intentInstance = new android.content.Intent(
             this, org.wheatgenetics.javalibrarybuilder.WebViewActivity.class);
 
-        this.intentInstance.putExtra(
-            org.wheatgenetics.javalibrarybuilder.WebViewActivity.CONTENT, content);
-        this.intentInstance.putExtra(
-            org.wheatgenetics.javalibrarybuilder.WebViewActivity.ENCODING, encoding);
-
-        return this.intentInstance;
+        return this.intentInstance
+            .putExtra(org.wheatgenetics.javalibrarybuilder.WebViewActivity.CONTENT,
+                response.content())
+            .putExtra(org.wheatgenetics.javalibrarybuilder.WebViewActivity.ENCODING,
+                response.contentEncoding());
     }
 
     private void setButtonText(final java.lang.String text)
-    { assert null != this.button; this.button.setText(text); }
+    { if (null != this.button) this.button.setText(text); }
 
     private void makeButtonReflectCurrentButtonState()
     {
@@ -210,7 +208,7 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
             if (savedInstanceState.containsKey(
             org.wheatgenetics.javalibrarybuilder.MainActivity.BUTTON_STATE_KEY))
             {
-                @android.support.annotation.IntRange(
+                @androidx.annotation.IntRange(
                 from = org.wheatgenetics.javalibrarybuilder.MainActivity.MIN_BUTTON_STATE,
                 to   = org.wheatgenetics.javalibrarybuilder.MainActivity.MAX_BUTTON_STATE) final int
                     oldButtonState = this.buttonState,
@@ -230,21 +228,20 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
         }
     }
 
-    @java.lang.Override protected void onSaveInstanceState(final android.os.Bundle outState)
+    @java.lang.Override protected void onSaveInstanceState(
+    @androidx.annotation.NonNull final android.os.Bundle outState)
     {
         super.onSaveInstanceState(outState);
-        if (null != outState)
-        {
-            outState.putInt(
-                org.wheatgenetics.javalibrarybuilder.MainActivity.BUTTON_STATE_KEY, this.buttonState);
-            if (null != this.multiLineTextView) outState.putCharSequence(
-                org.wheatgenetics.javalibrarybuilder.MainActivity.MULTI_LINE_TEXT_VIEW_TEXT_KEY,
-                this.multiLineTextView.getText()                                               );
-        }
+
+        outState.putInt(
+            org.wheatgenetics.javalibrarybuilder.MainActivity.BUTTON_STATE_KEY, this.buttonState);
+        if (null != this.multiLineTextView) outState.putCharSequence(
+            org.wheatgenetics.javalibrarybuilder.MainActivity.MULTI_LINE_TEXT_VIEW_TEXT_KEY,
+            this.multiLineTextView.getText()                                               );
     }
     // endregion
 
-    public void onButtonClick(final android.view.View view)
+    public void onButtonClick(@java.lang.SuppressWarnings({"unused"}) final android.view.View view)
     {
         switch (this.buttonState)
         {
@@ -281,16 +278,14 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
                                     url = new java.net.URL( // throws java.net.MalformedURLException
                                         /* protocol => */ protocol,
                                         /* host     => */"www.example.org",
-                                        /* file     => */"index.html");
-                                    break;
+                                        /* file     => */"index.html"); break;
 
                                 case org.wheatgenetics.javalibrarybuilder
                                 .MainActivity.MAX_BUTTON_STATE:
                                     url = new java.net.URL( // throws java.net.MalformedURLException
                                         /* protocol => */ protocol,
                                         /* host     => */"www.youtypeitwepostit.com",
-                                        /* file     => */"api/");
-                                    break;
+                                        /* file     => */"api/"); break;
 
                                 default: url = null; break;
                             }
@@ -302,9 +297,8 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
                 if (null == response)
                     this.setMultiLineTextViewText("response is null");
                 else
-                    if ("text/html".equals(response.contentType()))
-                        this.startActivity(this.intent(
-                            response.content(), response.contentEncoding()));
+                    if (response.contentType().startsWith("text/html"))
+                        this.startActivity(this.intent(response));
                     else
                         this.setMultiLineTextViewText(response.content());
                 break;

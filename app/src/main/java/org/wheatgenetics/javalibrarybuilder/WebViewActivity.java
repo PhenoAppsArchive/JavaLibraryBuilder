@@ -4,13 +4,12 @@ package org.wheatgenetics.javalibrarybuilder;
  * Uses:
  * android.content.Intent
  * android.os.Bundle
- * android.support.v7.app.AppCompatActivity
  * android.webkit.WebView
+ * androidx.appcompat.app.AppCompatActivity
  *
  * org.wheatgenetics.javalibrarybuilder.R
  */
-@java.lang.SuppressWarnings({"unused"})
-public class WebViewActivity extends android.support.v7.app.AppCompatActivity
+public class WebViewActivity extends androidx.appcompat.app.AppCompatActivity
 {
     static final java.lang.String CONTENT = "content", ENCODING = "encoding";
 
@@ -22,10 +21,10 @@ public class WebViewActivity extends android.support.v7.app.AppCompatActivity
         final android.content.Intent intent  = this.getIntent();
         final android.webkit.WebView webView =
             this.findViewById(org.wheatgenetics.javalibrarybuilder.R.id.webView);
-        assert null != webView; webView.loadData(
+        if (null != webView) webView.loadData(
             /* data => */ intent.getStringExtra(
                 org.wheatgenetics.javalibrarybuilder.WebViewActivity.CONTENT),
-            /* mimeType => */ "text/html",
+            /* mimeType => */"text/html",
             /* encoding => */ intent.getStringExtra(
                 org.wheatgenetics.javalibrarybuilder.WebViewActivity.ENCODING));
     }

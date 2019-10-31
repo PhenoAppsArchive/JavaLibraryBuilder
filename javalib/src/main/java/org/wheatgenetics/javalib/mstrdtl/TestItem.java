@@ -70,6 +70,7 @@ public class TestItem extends java.lang.Object implements org.wheatgenetics.java
     }
     // endregion
 
+    @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
     public void setContent(final java.lang.String content)
     { this.content = org.wheatgenetics.javalib.Utils.makeEmptyIfNull(content); }
 }

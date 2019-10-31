@@ -1,1 +1,2 @@
 include ':app', ':javalib'
+rootProject.name='Java Library Builder'
