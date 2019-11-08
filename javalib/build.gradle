@@ -73,7 +73,10 @@ publishing {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // USAGE:
-// Run the command 'export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home"'
+// Run the command
+// 'export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home"' if you
+// haven't already.
+//
 // Run the command './gradlew :javalib:bintrayUpload'
 
 apply plugin: "com.jfrog.bintray"

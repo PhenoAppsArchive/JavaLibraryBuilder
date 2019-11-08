@@ -5,6 +5,7 @@ package org.wheatgenetics.javalibrarybuilder;
  * android.content.Intent
  * android.os.Bundle
  * android.webkit.WebView
+ *
  * androidx.appcompat.app.AppCompatActivity
  *
  * org.wheatgenetics.javalibrarybuilder.R
