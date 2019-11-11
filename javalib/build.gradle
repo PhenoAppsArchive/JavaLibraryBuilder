@@ -16,7 +16,7 @@ ext {
 
     project_group = "org.phenoapps"
     project_name = "javalib"
-    project_version = "1.0.2"
+    project_version = "1.0.3"
 }
 
 dependencies {
