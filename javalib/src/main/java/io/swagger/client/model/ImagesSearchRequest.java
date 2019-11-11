@@ -13,17 +13,11 @@
 package io.swagger.client.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.client.model.GeoJSON;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * ImagesSearchRequest
@@ -56,10 +50,10 @@ import org.threeten.bp.LocalDate;
   private List<String> imageNames = null;
 
   @SerializedName("imageTimeStampRangeEnd")
-  private LocalDate imageTimeStampRangeEnd = null;
+  private OffsetDateTime imageTimeStampRangeEnd = null;
 
   @SerializedName("imageTimeStampRangeStart")
-  private LocalDate imageTimeStampRangeStart = null;
+  private OffsetDateTime imageTimeStampRangeStart = null;
 
   @SerializedName("imageWidthMax")
   private Integer imageWidthMax = null;
@@ -237,7 +231,7 @@ import org.threeten.bp.LocalDate;
   public void setImageNames(List<String> imageNames) {
     this.imageNames = imageNames;
   }
-  public ImagesSearchRequest imageTimeStampRangeEnd(LocalDate imageTimeStampRangeEnd) {
+  public ImagesSearchRequest imageTimeStampRangeEnd(OffsetDateTime imageTimeStampRangeEnd) {
     this.imageTimeStampRangeEnd = imageTimeStampRangeEnd;
     return this;
   }
@@ -249,13 +243,13 @@ import org.threeten.bp.LocalDate;
   * @return imageTimeStampRangeEnd
   **/
   @Schema(description = "The latest timestamp to search for.")
-  public LocalDate getImageTimeStampRangeEnd() {
+  public OffsetDateTime getImageTimeStampRangeEnd() {
     return imageTimeStampRangeEnd;
   }
-  public void setImageTimeStampRangeEnd(LocalDate imageTimeStampRangeEnd) {
+  public void setImageTimeStampRangeEnd(OffsetDateTime imageTimeStampRangeEnd) {
     this.imageTimeStampRangeEnd = imageTimeStampRangeEnd;
   }
-  public ImagesSearchRequest imageTimeStampRangeStart(LocalDate imageTimeStampRangeStart) {
+  public ImagesSearchRequest imageTimeStampRangeStart(OffsetDateTime imageTimeStampRangeStart) {
     this.imageTimeStampRangeStart = imageTimeStampRangeStart;
     return this;
   }
@@ -267,10 +261,10 @@ import org.threeten.bp.LocalDate;
   * @return imageTimeStampRangeStart
   **/
   @Schema(description = "The earliest timestamp to search for.")
-  public LocalDate getImageTimeStampRangeStart() {
+  public OffsetDateTime getImageTimeStampRangeStart() {
     return imageTimeStampRangeStart;
   }
-  public void setImageTimeStampRangeStart(LocalDate imageTimeStampRangeStart) {
+  public void setImageTimeStampRangeStart(OffsetDateTime imageTimeStampRangeStart) {
     this.imageTimeStampRangeStart = imageTimeStampRangeStart;
   }
   public ImagesSearchRequest imageWidthMax(Integer imageWidthMax) {
