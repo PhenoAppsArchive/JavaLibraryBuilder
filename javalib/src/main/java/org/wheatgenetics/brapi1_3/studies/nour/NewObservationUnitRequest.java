@@ -20,7 +20,6 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments
  * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs
  */
-@java.lang.SuppressWarnings({"WeakerAccess"})
 public class NewObservationUnitRequest extends io.swagger.client.model.NewObservationUnitRequest
 implements org.wheatgenetics.javalib.mstrdtl.Item
 {
@@ -445,23 +444,19 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     @java.lang.Override public void setPosition(final int position)
     { this.position = org.wheatgenetics.javalib.mstrdtl.Utils.nonNegativePosition(position); }
 
-    @java.lang.SuppressWarnings({"unused"}) @java.lang.Override
-    public java.lang.String getPositionAsString()
+    @java.lang.Override public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }
 
-    @java.lang.SuppressWarnings({"unused"}) @java.lang.Override public java.lang.String getTitle()
-    { return this.getObservationUnitDbId(); }
+    @java.lang.Override public java.lang.String getTitle() { return this.getObservationUnitDbId(); }
+    @java.lang.Override public java.lang.String getContent() { return this.toString            (); }
 
-    @java.lang.SuppressWarnings({"unused"}) @java.lang.Override public java.lang.String getContent()
-    { return this.toString(); }
-
-    @java.lang.SuppressWarnings({"unused"}) @java.lang.Override public boolean canMoveUp()
+    @java.lang.Override public boolean canMoveUp()
     {
         return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveUp(
             this.container, this.getPosition());
     }
 
-    @java.lang.SuppressWarnings({"unused"}) @java.lang.Override public boolean canMoveDown()
+    @java.lang.Override public boolean canMoveDown()
     {
         return org.wheatgenetics.javalib.mstrdtl.Utils.canMoveDown(
             this.container, this.getPosition());
@@ -511,16 +506,16 @@ implements org.wheatgenetics.javalib.mstrdtl.Item
     // endregion
 
     // region clearAsItems() Public Methods
-    public void clearObservationUnitXrefsAsItems()
+    @java.lang.SuppressWarnings({"WeakerAccess"}) public void clearObservationUnitXrefsAsItems()
     {
         this.setObservationUnitXrefsAsItems(
             (org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs) null);
     }
 
-    public void clearObservationsAsItems()
+    @java.lang.SuppressWarnings({"WeakerAccess"}) public void clearObservationsAsItems()
     { this.setObservationsAsItems((org.wheatgenetics.brapi1_3.studies.nour.o.Observations) null); }
 
-    public void clearObservationTreatmentsAsItems()
+    @java.lang.SuppressWarnings({"WeakerAccess"}) public void clearObservationTreatmentsAsItems()
     {
         this.setObservationTreatmentsAsItems(
             (org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments) null);

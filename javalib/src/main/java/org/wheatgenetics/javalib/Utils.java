@@ -97,8 +97,6 @@ public class Utils extends java.lang.Object
     }
 
     // region get() Methods
-    /*@java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"}) public static
-    org.wheatgenetics.javalib.Utils.Response get(final java.net.URL url) throws java.io.IOException*/
     private static java.net.HttpURLConnection makeHttpURLConnection(final java.net.URL url)
     throws java.io.IOException
     {
@@ -176,9 +174,9 @@ public class Utils extends java.lang.Object
         }
     }
 
-    @java.lang.SuppressWarnings({"WeakerAccess"})
+    @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
     public static org.wheatgenetics.javalib.Utils.Response get(final java.net.URL url)
-        throws java.io.IOException
+    throws java.io.IOException
     {
         final java.net.HttpURLConnection httpURLConnection =
             org.wheatgenetics.javalib.Utils.makeHttpURLConnection(url);
@@ -186,7 +184,7 @@ public class Utils extends java.lang.Object
             org.wheatgenetics.javalib.Utils.get(httpURLConnection);
     }
 
-    @java.lang.SuppressWarnings({"WeakerAccess"})
+    @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
     public static org.wheatgenetics.javalib.Utils.Response get(
     final java.net.URL url, final int timeout) throws java.io.IOException
     {

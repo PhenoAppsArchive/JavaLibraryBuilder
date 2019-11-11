@@ -5,7 +5,7 @@ package org.wheatgenetics.javalib.mstrdtl;
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Item.Container
  */
-@java.lang.SuppressWarnings({"WeakerAccess", "ClassExplicitlyExtendsObject"})
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public class Utils extends java.lang.Object
 {
     private static boolean canMoveUp(final int position)

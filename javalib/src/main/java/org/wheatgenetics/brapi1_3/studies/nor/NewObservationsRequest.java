@@ -18,7 +18,6 @@ package org.wheatgenetics.brapi1_3.studies.nor;                       // nor: Ne
  *
  * org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservations
  */
-@java.lang.SuppressWarnings({"unused"})
 public class NewObservationsRequest extends io.swagger.client.model.NewObservationsRequest
 implements org.wheatgenetics.javalib.mstrdtl.Items
 {

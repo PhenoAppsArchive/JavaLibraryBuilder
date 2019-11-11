@@ -15,7 +15,6 @@ package org.wheatgenetics.brapi1_3.observations.pr;
  *
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData
  */
-@java.lang.SuppressWarnings({"unused"})
 public class PhenotypesRequest extends io.swagger.client.model.PhenotypesRequest
 implements org.wheatgenetics.javalib.mstrdtl.Items
 {
