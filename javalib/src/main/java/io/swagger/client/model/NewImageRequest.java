@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * NewImageRequest
@@ -61,7 +61,7 @@ import org.threeten.bp.LocalDate;
   private String imageName = null;
 
   @SerializedName("imageTimeStamp")
-  private LocalDate imageTimeStamp = null;
+  private OffsetDateTime imageTimeStamp = null;
 
   @SerializedName("imageWidth")
   private Integer imageWidth = null;
@@ -248,7 +248,7 @@ import org.threeten.bp.LocalDate;
   public void setImageName(String imageName) {
     this.imageName = imageName;
   }
-  public NewImageRequest imageTimeStamp(LocalDate imageTimeStamp) {
+  public NewImageRequest imageTimeStamp(OffsetDateTime imageTimeStamp) {
     this.imageTimeStamp = imageTimeStamp;
     return this;
   }
@@ -260,10 +260,10 @@ import org.threeten.bp.LocalDate;
   * @return imageTimeStamp
   **/
   @Schema(description = "The date and time the image was taken")
-  public LocalDate getImageTimeStamp() {
+  public OffsetDateTime getImageTimeStamp() {
     return imageTimeStamp;
   }
-  public void setImageTimeStamp(LocalDate imageTimeStamp) {
+  public void setImageTimeStamp(OffsetDateTime imageTimeStamp) {
     this.imageTimeStamp = imageTimeStamp;
   }
   public NewImageRequest imageWidth(Integer imageWidth) {
