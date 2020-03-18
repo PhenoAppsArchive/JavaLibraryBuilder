@@ -1,96 +1,104 @@
-// USAGE:
-// Run the command 'export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home"'
-// Run the command './gradlew :javalib:bintrayUpload'
-
-apply plugin: 'java-library'
-apply plugin: "maven-publish"
-apply plugin: 'com.jfrog.bintray'
+apply plugin: "java-library"
 
 ext {
-    okhttp_version = "2.7.5"
-    threetenbp_version = "1.4.0"
-    gson_version = "2.8.6"
-    gsonfire_version = "1.8.3"
-    javax_annotation_version = "1.3.2"
-    swagger_annotations_version = "2.0.8"
-
-    project_group = "org.phenoapps"
-    project_name = "javalib"
-    project_version = "1.0.2"
+    gson_version                = "2.8.6"
+    okhttp_version              = "2.7.5"
+    gsonfire_version            = "1.8.3"
+    swagger_annotations_version = "2.0.10"
+    javax_annotation_version    = "1.3.2"
+    threetenbp_version          = "1.4.0"
+    junit_version               = "4.13"
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: "libs", include: ["*.jar"])
 
+    api "com.google.code.gson:gson:${gson_version}"
     api "com.squareup.okhttp:okhttp:${okhttp_version}"
     api "com.squareup.okhttp:logging-interceptor:${okhttp_version}"
-    api "org.threeten:threetenbp:${threetenbp_version}"
-    api "com.google.code.gson:gson:${gson_version}"
     api "io.gsonfire:gson-fire:${gsonfire_version}"
-    api "javax.annotation:javax.annotation-api:${javax_annotation_version}"
     api "io.swagger.core.v3:swagger-annotations:${swagger_annotations_version}"
-    implementation 'junit:junit:4.12'
+    api "javax.annotation:javax.annotation-api:${javax_annotation_version}"
+    api "org.threeten:threetenbp:${threetenbp_version}"
+
+    implementation "junit:junit:${junit_version}"
 }
 
 sourceCompatibility = "7"
 targetCompatibility = "7"
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+apply plugin: "maven-publish"
+
 publishing.publications.all {
     pom.withXml {
-        asNode().dependencies.'*'.findAll() {
-            it.scope.text() == 'runtime' && project.configurations.compile.allDependencies.find { dep ->
+        asNode().dependencies."*".findAll() {
+            it.scope.text() == "runtime" && project.configurations.compile.allDependencies.find { dep ->
                 dep.name == it.artifactId.text()
             }
-        }.each { it.scope*.value = 'compile'}
+        }.each { it.scope*.value = "compile"}
     }
+}
+
+ext {
+    bintrayGroupId    = "org.phenoapps"
+    bintrayArtifactId = "javalib"
+    bintrayVersion    = "1.0.2"
+    url               = "https://github.com/PhenoLibs/JavaLibraryBuilder"
 }
 
 publishing {
     publications {
         myPublication(MavenPublication) {
-            from components.java
-            groupId "${project_group}"
-            artifactId "${project_name}"
-            version "${project_version}"
+            from       components.java
+            groupId    "${bintrayGroupId}"
+            artifactId "${bintrayArtifactId}"
+            version    "${bintrayVersion}"
             pom {
-                name = "${project_name}"
-                description = "${project_name}"
-                url = "https://github.com/PhenoLibs/JavaLibraryBuilder"
+                name        = "${bintrayArtifactId}"
+                description = "${bintrayArtifactId}"
+                url         = "${url}"
                 licenses {
                     license {
-                        name = 'GNU General Public License version 2'
-                        url = 'https://opensource.org/licenses/gpl-2.0.php'
+                        name = "GNU General Public License version 2"
+                        url  = "https://opensource.org/licenses/gpl-2.0.php"
                     }
                 }
-                scm {
-                    url = "https://github.com/PhenoLibs/JavaLibraryBuilder"
-                }
+                scm { url = "${url}" }
             }
         }
     }
 }
 
-bintray {
-    user = getSecret('bintray_user')
-    key = getSecret('bintray_api_key')
-    publications = ['myPublication']
-    pkg {
-        userOrg = 'pheno-apps'
-        repo = 'pheno-apps-java-client-library'
-        name = "${project_group}:${project_name}"
-        licenses = ['GPL-2.0']
-        vcsUrl = 'https://github.com/PhenoLibs/JavaLibraryBuilder'
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// USAGE:
+// Run the command
+// 'export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home"' if you
+// haven't already.
+//
+// Run the command './gradlew :javalib:bintrayUpload'
+
+apply plugin: "com.jfrog.bintray"
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file("secrets.properties").newDataInputStream())
+
+bintray {
+    user         = properties.getProperty("bintray.username")
+    key          = properties.getProperty("bintray.apiKey"  )
+    publications = ["myPublication"]
+    pkg {
+        repo     = "pheno-apps-java-client-library"
+        name     = "${bintrayGroupId}:${bintrayArtifactId}"
+        licenses = ["GPL-2.0"]
+        vcsUrl   = "${url}"
+
+        userOrg = "pheno-apps"
         version {
-            name = "${project_version}"
-            released  = new Date()
+            name     = "${bintrayVersion}"
+            released = new Date()
         }
     }
-}
-
-static def getSecret(key) {
-    // noinspection GrUnnecessaryDefModifier
-    def Properties props = new Properties()
-    props.load(new FileInputStream(new File('secrets.properties')))
-    return props[key]
 }

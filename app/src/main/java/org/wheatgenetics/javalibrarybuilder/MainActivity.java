@@ -9,6 +9,7 @@ package org.wheatgenetics.javalibrarybuilder;
  * android.view.View
  * android.widget.Button
  * android.widget.TextView
+ *
  * androidx.annotation.IdRes
  * androidx.annotation.IntRange
  * androidx.annotation.NonNull

@@ -9,7 +9,7 @@ package org.wheatgenetics.brapi1_3.studies;
 public class NewObservationsTableRequest extends io.swagger.client.model.NewObservationsTableRequest
 {
     // region Private Methods
-    // region GeneralPrivate Methods
+    // region General Private Methods
     private static void clearStringList(final java.util.List<java.lang.String> stringList)
     { if (null != stringList) stringList.clear(); }
 

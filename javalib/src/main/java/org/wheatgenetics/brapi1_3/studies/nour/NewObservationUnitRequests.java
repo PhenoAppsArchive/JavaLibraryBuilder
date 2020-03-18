@@ -17,7 +17,7 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  *
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
  */
-@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject", "unused"})
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public class NewObservationUnitRequests extends java.lang.Object
 implements org.wheatgenetics.javalib.mstrdtl.Items
 {
@@ -83,7 +83,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
      * Called by androidlibrarybuilder org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
      * .Fragment.observationUnitsResponse1Callback().
      */
-    public NewObservationUnitRequests(
+    @java.lang.SuppressWarnings({"unused"}) public NewObservationUnitRequests(
     final io.swagger.client.model.ObservationUnitsResponse1 observationUnitsResponse1)
     {
         this();
@@ -108,7 +108,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
      * Called by androidlibrarybuilder org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
      * .Fragment.studiesStudyDbIdObservationunitsPut().
      */
-    public NewObservationUnitRequests(final
+    @java.lang.SuppressWarnings({"unused"}) public NewObservationUnitRequests(final
     org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests newObservationUnitRequests,
     final java.lang.String operator, final java.lang.String uploadedBy)
     {
@@ -237,6 +237,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
     // endregion
     // endregion
 
+    @java.lang.SuppressWarnings({"unused"})
     public java.util.List<io.swagger.client.model.NewObservationUnitRequest> getList()
     { return this.listInstance; }
 }

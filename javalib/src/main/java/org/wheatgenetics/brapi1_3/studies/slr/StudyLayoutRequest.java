@@ -18,7 +18,6 @@ package org.wheatgenetics.brapi1_3.studies.slr;                           // slr
  *
  * org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayout
  */
-@java.lang.SuppressWarnings({"unused"})
 public class StudyLayoutRequest extends io.swagger.client.model.StudyLayoutRequest
 implements org.wheatgenetics.javalib.mstrdtl.Items
 {
@@ -71,7 +70,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
      * Called by androidlibrarybuilder org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
      * .Fragment.StudiesStudyDbIdLayoutsGetCallback.handleSuccess().
      */
-    public StudyLayoutRequest(
+    @java.lang.SuppressWarnings({"unused"}) public StudyLayoutRequest(
     final io.swagger.client.model.ObservationUnitPositionsResponse observationUnitPositionsResponse)
     {
         this();
