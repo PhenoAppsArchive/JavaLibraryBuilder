@@ -44,7 +44,7 @@ publishing.publications.all {
 ext {
     bintrayGroupId    = "org.phenoapps"
     bintrayArtifactId = "javalib"
-    bintrayVersion    = "1.0.2"
+    bintrayVersion    = "1.0.5"
     url               = "https://github.com/PhenoLibs/JavaLibraryBuilder"
 }
 

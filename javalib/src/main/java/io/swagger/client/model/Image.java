@@ -13,19 +13,12 @@
 package io.swagger.client.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.client.model.GeoJSON;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * Image
@@ -64,7 +57,7 @@ import org.threeten.bp.LocalDate;
   private String imageName = null;
 
   @SerializedName("imageTimeStamp")
-  private LocalDate imageTimeStamp = null;
+  private OffsetDateTime imageTimeStamp = null;
 
   @SerializedName("imageURL")
   private String imageURL = null;
@@ -272,7 +265,7 @@ import org.threeten.bp.LocalDate;
   public void setImageName(String imageName) {
     this.imageName = imageName;
   }
-  public Image imageTimeStamp(LocalDate imageTimeStamp) {
+  public Image imageTimeStamp(OffsetDateTime imageTimeStamp) {
     this.imageTimeStamp = imageTimeStamp;
     return this;
   }
@@ -284,10 +277,10 @@ import org.threeten.bp.LocalDate;
   * @return imageTimeStamp
   **/
   @Schema(description = "The date and time the image was taken")
-  public LocalDate getImageTimeStamp() {
+  public OffsetDateTime getImageTimeStamp() {
     return imageTimeStamp;
   }
-  public void setImageTimeStamp(LocalDate imageTimeStamp) {
+  public void setImageTimeStamp(OffsetDateTime imageTimeStamp) {
     this.imageTimeStamp = imageTimeStamp;
   }
   public Image imageURL(String imageURL) {
